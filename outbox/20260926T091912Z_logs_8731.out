@@ -1,0 +1,5 @@
+### id=20260926T091912Z_logs_8731 started=2026-09-26T09:20:14Z request: logs w12a
+== heartbeat
+== chain full.out
+== /tmp/s6_logs/w12a: files 4, tracebacks 0
+### exit=0 finished=2026-09-26T09:20:14Z
