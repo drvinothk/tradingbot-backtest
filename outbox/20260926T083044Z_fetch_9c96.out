@@ -1,0 +1,5 @@
+### id=20260926T083044Z_fetch_9c96 started=2026-09-26T08:30:54Z request: fetch logs/w13_chain.heartbeat
+2026-09-26 13:55:51 IST w13: reaper timer stopped
+2026-09-26 13:55:51 IST w13: frozen md5s: 6a26192c 587fefca 69ce1dd9 0bb606be cdec5753 dd220499 
+2026-09-26 13:55:51 IST w13: chunk w13a: launching sweep_configs/renko12a_warm_batch.txt (4 configs, avg 4200s/cfg, SHARD_COUNT=4, extra='--extra-warmup-days 12')
+### exit=0 finished=2026-09-26T08:30:54Z
