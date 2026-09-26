@@ -3,7 +3,7 @@
 #   TAG=w12 END_BY_UTC="2026-09-28 02:00:00" ./launch_chain.sh sweep_configs/renko12a_warm_batch.txt sweep_configs/renko12b_warm_batch.txt ...
 # Guards: single-instance, reaper stop/restart (trap), engine+script md5 frozen at start (abort between chunks if any changed -- another session
 # deployed mid-run), chunk-level QC (rows, tracebacks, shard failures), no NEW chunk if its projected end passes END_BY_UTC (Monday-open guard),
-# stop after 2 consecutive failed chunks. Every config runs with --extra-warmup-days 21 (production-like 20-day ATR/EMA history).
+# stop after 2 consecutive failed chunks. Every config runs with --extra-warmup-days $WARMUP_DAYS (default 12: production-equivalent ATR/EMA history at ~60% of the 21-day cost).
 set -u
 ENGINE=/home/ubuntu/backtest_engine
 TAG="${TAG:?set TAG}"
@@ -16,9 +16,10 @@ cleanup() { sudo -n systemctl start backtest-reaper.timer && say "reaper timer r
 sudo -n systemctl stop backtest-reaper.timer && say "reaper timer stopped"
 trap cleanup EXIT
 cd "$ENGINE" || { say "ABORT cd"; exit 1; }
-FILES="backend/scripts/run_backtest.py run_sweep_perday.sh run_sweep_default.sh backend/app/modules/strategy_engine/strategies/renko_trend.py backend/app/modules/strategy_engine/higher_timeframe.py"
+FILES="launch_chain.sh backend/scripts/run_backtest.py run_sweep_perday.sh run_sweep_default.sh backend/app/modules/strategy_engine/strategies/renko_trend.py backend/app/modules/strategy_engine/higher_timeframe.py"
 SUMS0=$(md5sum $FILES); say "frozen md5s: $(echo "$SUMS0" | awk '{print substr($1,1,8)}' | tr '\n' ' ')"
-export MULTI_TRADE=1 SHARD_COUNT="${SHARD_COUNT:-4}" EXTRA_BT_ARGS="--extra-warmup-days 21"
+WARMUP_DAYS="${WARMUP_DAYS:-12}"   # 12 calendar days reproduce the 20-day ATR14(30m)/EMA30(15m) to <0.4% / <0.9pt (analysis/renko/warm_len_check.py); 21 days cost ~2.4x runtime
+export MULTI_TRADE=1 SHARD_COUNT="${SHARD_COUNT:-4}" EXTRA_BT_ARGS="--extra-warmup-days $WARMUP_DAYS"
 fails=0; done_cfg=0; done_secs=0
 for f in "$@"; do
   n=$(grep -cv '^#' "$f"); ctag="${TAG}$(basename "$f" | sed -E 's/^renko[0-9]+([a-z]?)_.*/\1/')"

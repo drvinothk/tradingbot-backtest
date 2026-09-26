@@ -92,6 +92,7 @@ results)
   ;;
 apply-code)
   p="${A[1]:-}"; coderel "$p" || die "path not in the backtest-bundle code whitelist"
+  arm=$(tr -dc 0-9 < "$ENGINE/ALLOW_CODE_EDIT" 2>/dev/null); if [ -z "$arm" ] || [ "$(date +%s)" -ge "$arm" ]; then die "code edits are NOT armed (edited scripts run as ubuntu = passwordless sudo = root, so only the user can arm them, with an expiry). Report the needed fix to the user instead."; fi
   if sweep_running || [ -n "$(bt_units)" ]; then die "a sweep/backtest is running -- code files are read incrementally; wait or stop-chain first"; fi
   tmp=$(mktemp /tmp/btctl_code.XXXXXX); head -c 1500001 > "$tmp"
   if [ "$(stat -c %s "$tmp")" -gt 1500000 ]; then rm -f "${tmp:?}"; die "> 1.5MB"; fi
@@ -127,7 +128,7 @@ analyze)
   tagok "${A[1]:-}" || die "bad TAG"
   set +f; files=$(ls "$REPORTS"/s6_${A[1]}*/*_current.csv 2>/dev/null); set -f
   [ -n "$files" ] || die "no finished CSVs for ${A[1]}*"
-  nice -n 10 python3 "$ENGINE/analysis/csv_analyze.py" $files
+  nice -n 10 python3 /usr/local/lib/btctl/csv_analyze.py $files
   ;;
 make-resume)
   cfgok "sweep_configs/${A[1]:-x}.txt" || die "bad NAME"; chunkname "${A[1]}.txt" || die "NAME must look like renko13r_resume (chain derives the chunk tag from renkoNN[x]_)"; out="sweep_configs/${A[1]}.txt"; [ -e "$ENGINE/$out" ] && die "$out exists"

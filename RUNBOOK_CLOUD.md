@@ -15,7 +15,7 @@ backtest bundle). Results and status come back through the repo.
   polls `outbox/<id>.out` (the box answers within ~1-2 min). Exit code = btctl exit code (2 = refused, 3 = pending, 4 = git problem).
   `python tools/bt_cmd.py --status` just prints the latest status.
 - Everything is audited: git history of `inbox/`, `outbox/`, and `logs/btctl_audit.log` on the box.
-- Never edit `status/` or `outbox/` (the box owns them). Do not put secrets in this repo.
+- Never edit `status/` or `outbox/` (the box owns them). Do not put secrets in this repo. **Never commit symlinks** (btsync refuses to run while any exists; delete it and push to heal). Avoid huge outputs (`fetch` of large CSVs repeatedly): every output is committed to git history; prefer `analyze`.
 
 | command | use |
 |---|---|
@@ -27,16 +27,16 @@ backtest bundle). Results and status come back through the repo.
 | `analyze TAG` | run `analysis/csv_analyze.py` on finished CSVs of TAG* (or fetch CSVs and run the script locally — it is stdlib only) |
 | `make-resume NAME FILE...` | new config file with only the not-yet-OK configs of the given chunk files |
 | `apply sweep_configs/NAME.txt` (stdin) | write a config file (JSON parsed + real QC gate dry-run) |
-| `apply-code RELPATH` (stdin) / `revert RELPATH` | replace / restore a backtest-bundle code file (see whitelist; refused while anything runs) |
+| `apply-code RELPATH` (stdin) / `revert RELPATH` | replace / restore a backtest-bundle code file. **Refused unless the user has armed it** (`ALLOW_CODE_EDIT` with an expiry — edited scripts run as ubuntu = passwordless sudo, so this is deliberately user-controlled). If refused: describe the exact fix and stop. Also refused while anything runs. |
 | `start-chain TAG END_BY SHARDS FILE...` | launch the guarded chain (END_BY = `YYYY-MM-DD_HH:MM` UTC; shards 1-4, forced to 2 in market hours) |
-| `stop-chain YES` | stop running backtest units, restart reaper timer, reap leaked DBs |
+| `stop-chain YES` | stop ALL running `backtest-*` units (could include another session's run — check `status` first), restart reaper timer, reap leaked DBs |
 | `reaper-start`, `reap` | housekeeping when idle |
 
 ## 2. Boundaries (hard rules)
 - **Never** touch the live bot: `~/trading-bot`, `trading-bot.service`, its DB, broker credentials/sessions, Telegram, nginx, systemd units other than `backtest-*`.
   `btctl` cannot; do not look for ways around it (no other keys, no sudo, no tunnels). If something needs it, stop and tell the user.
 - No promotion of any backtest result to live/paper config. Recommendations only, in the report.
-- Code edits (`apply-code`) only in the backtest bundle whitelist: `backend/scripts/*.py`, bundle `strategy_engine/strategies/*.py` + `higher_timeframe.py`,
+- Code edits (`apply-code`, only when the user has armed it) only in the backtest bundle whitelist: `backend/scripts/*.py`, bundle `strategy_engine/strategies/*.py` + `higher_timeframe.py`,
   `setup/*`, `analysis/**.py`, root `*.sh`, notes/docs. The box copy is the source of truth; this repo is a snapshot.
   Tripwires reject files that mention live-bot paths/credentials, `sudo` in Python, or unapproved `sudo` in shell.
 - Never edit `run_sweep_*.sh`, `run_backtest.py`, `launch_chain.sh`, strategy code while a run is active (bash/python read them incrementally). `apply-code` refuses; do not stop a healthy chain just to edit — wait for a chunk boundary or fix after.
@@ -48,9 +48,10 @@ Full context: `handover/RENKO_HANDOFF_2026_09_24.md` (read the last ~6 sections)
 - Strategy under test: `renko_trend` (Modified Renko trend-following option BUYING, NIFTY 1-min index + weekly options, ~1 year of options data 2025-08-28..2026-09-18, 236 tradable days). Nothing is live; never merged.
 - Results so far (gross per lot, multi-trade, 1000-bar warm-up = "mt1", so ATR/EMA numbers approximate): every 5-min/15-min fixed-brick config loses (base −174k, mv50 −59k, Fib+EMA −127k, no-filter controls −151k/−171k); re-entries (trade #2+) lose in all of them; EMA filter only helps the first trade on DTE6 (day after weekly expiry). Only **30-min ATR bricks + Fib/POB + trail (mt3, "s1_top")** is positive: +10.7k, 100 trades/65 days, PF 1.24, t≈0.9, ≈ break-even after ~130/trade costs; Tue (expiry day) and Wed (DTE6) carry it, Thu/Fri lose. Details in the hand-off.
 - **Warm-up finding:** per-day DB only held 4 days of bars while the strategy reads 20 days of ATR/EMA history; fixed by `--extra-warmup-days 21` (md5 587fefca…). All w12+ results use it.
-- **Running now:** chain **TAG=w12** (started 2026-09-26 11:38 IST): pilot `renko11_pilot.txt` (mv50 PE-only) then chunks `renko12a..d_warm_batch.txt` (24 configs; controls `w12_base_ctrl`, `w12_s1top_ctrl` quantify the warm-up effect; families: s1_top brick sizing/rules/filters, fixed-brick families with max 1 signal per direction). ~55-70 min per config, END_BY 2026-09-28 02:00 UTC (Mon 07:30 IST). Results: `data/historical/backtest_reports/s6_w12{,a,b,c,d}/`.
+- **Warm-up length (decided 2026-09-26 13:55 IST):** 21 days of history cost ~2.4x runtime (pilot took 2h17m/config). Offline check (`analysis/renko/warm_len_check.py`): 12 calendar days reproduce the 20-day ATR brick size to <0.4% (mean 0.03%) and EMA30 to <0.05 index points, so the chain now uses `WARMUP_DAYS=12` (~85 min/config expected). Pilot `renko11_p1_mv50_pe` (mv50 PE-only, multi-trade, 21-day history) finished under tag **w12**: 152 trades, results in `s6_w12/`.
+- **Running now:** chain **TAG=w13** (started 13:55 IST, unit `backtest-20260926-082551`), chunks `renko12a..d_warm_batch.txt` = 24 configs, tags w13a..w13d: A s1_top controls (`w12_s1top_ctrl`, `w12_base_ctrl` quantify the warm-up effect vs mt3/mt1) + PE-only + msd1; B s1_top brick sizing; C s1 rules/filters; D fixed-brick families (max 1 signal/direction). END_BY 2026-09-28 02:00 UTC (Mon 07:30 IST): the chain will not start a chunk that cannot finish by then (chunk d may be skipped). Results: `data/historical/backtest_reports/s6_w13{a,b,c,d}/`. Heartbeat `logs/w13_chain.heartbeat`.
 
-## 4. Each check (the user wants one every 30 minutes)
+## 4. Each check (the user asked for every 30 minutes; if the scheduler cannot do that, hourly is acceptable — tell the user)
 1. `status`. If `ATTENTION: none` → one line to the user ("w12: N/25 configs done, current <name>, OK") and stop.
 2. If flags: diagnose with `logs TAG` / `fetch logs/...` / `results TAG`, then act per the playbook. Report what you saw and did.
 3. When a chunk completes: run `analyze <chunk tag>` and add a short table to your report (see §6).

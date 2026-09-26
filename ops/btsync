@@ -18,6 +18,9 @@ log() { echo "$(date -u +%FT%TZ) $*" >> /home/btops/btsync.log; }
 G fetch -q origin main || { log "fetch failed"; exit 1; }
 if G merge-base --is-ancestor HEAD origin/main 2>/dev/null; then G reset -q --hard origin/main; else G rebase -q origin/main >/dev/null 2>&1 || { G rebase --abort >/dev/null 2>&1; G reset -q --hard origin/main; log "rebase failed -> hard reset"; }; fi
 mkdir -p "$REPO/outbox" "$REPO/status" "$REPO/inbox"
+# a committed symlink could redirect our writes (e.g. onto btops' deploy key) or our stdin reads: refuse to run while any exists (commit a deletion to heal)
+sl=$(find "$REPO" -path "$REPO/.git" -prune -o -type l -print -quit)
+if [ -n "$sl" ]; then log "REFUSED: symlink in repo working tree: $sl"; exit 1; fi
 
 changed=0; n=0
 for f in "$REPO"/inbox/*.cmd; do
@@ -30,7 +33,8 @@ for f in "$REPO"/inbox/*.cmd; do
   pl="$REPO/inbox/$id.payload"; [ -f "$pl" ] && [ "$(stat -c %s "$pl")" -le 1600000 ] || pl=/dev/null
   start=$(date -u +%FT%TZ)
   out=$(timeout 300 $BTCTL "$req" < "$pl" 2>&1); rc=$?
-  { echo "### id=$id started=$start request: $req"; printf '%s\n' "$out" | head -c 3500000; echo "### exit=$rc finished=$(date -u +%FT%TZ)"; } > "$REPO/outbox/$id.out"
+  tmpo=$(mktemp /home/btops/.btsync_out.XXXXXX)
+  { echo "### id=$id started=$start request: $req"; printf '%s\n' "$out" | head -c 3500000; echo "### exit=$rc finished=$(date -u +%FT%TZ)"; } > "$tmpo" && mv -f "$tmpo" "$REPO/outbox/$id.out"
   log "ran $id rc=$rc: $req"
   n=$((n+1)); changed=1
 done
@@ -38,8 +42,9 @@ done
 now=$(date +%s); last=$(cat "$STATE.last" 2>/dev/null || echo 0)
 att=$(timeout 60 $BTCTL attention 2>&1 | md5sum | cut -c1-8); lastatt=$(cat "$STATE.att" 2>/dev/null || echo x)
 if [ $((now - last)) -ge 1800 ] || [ "$att" != "$lastatt" ] || [ "$changed" -eq 1 ]; then
+  tmps=$(mktemp /home/btops/.btsync_st.XXXXXX)
   { echo "# btsync status  $(date -u +%FT%TZ) UTC / $(TZ=Asia/Kolkata date '+%F %T IST')  (refreshed every 30 min, on ATTENTION change, and after commands)"
-    echo '```'; timeout 120 $BTCTL status 2>&1; echo '```'; } > "$REPO/status/latest.md"
+    echo '```'; timeout 120 $BTCTL status 2>&1; echo '```'; } > "$tmps" && mv -f "$tmps" "$REPO/status/latest.md"
   echo "$now" > "$STATE.last"; echo "$att" > "$STATE.att"; changed=1
 fi
 
