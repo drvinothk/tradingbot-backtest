@@ -1,16 +1,17 @@
-# btsync status  2026-09-26T15:12:44Z UTC / 2026-09-26 20:42:44 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-09-26T15:36:41Z UTC / 2026-09-26 21:06:41 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-09-26 20:42:44 IST / 15:12:44 UTC  load: 4.26 4.36 4.38  free: 7G avail  disk: 75G free
+== now: 2026-09-26 21:06:41 IST / 15:36:41 UTC  load: 4.27 4.33 4.35  free: 7G avail  disk: 75G free
 == units:
   backtest-20260926-082551.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && TAG=w13 END_BY_UTC=\"2026-09-28 02:00:00\" S
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
 -- w13_chain.heartbeat
-2026-09-26 13:55:51 IST w13: reaper timer stopped
 2026-09-26 13:55:51 IST w13: frozen md5s: 6a26192c 587fefca 69ce1dd9 0bb606be cdec5753 dd220499 
 2026-09-26 13:55:51 IST w13: chunk w13a: launching sweep_configs/renko12a_warm_batch.txt (4 configs, avg 4200s/cfg, SHARD_COUNT=4, extra='--extra-warmup-days 12')
 2026-09-26 17:37:54 IST w13: chunk w13a: rc=0 13323s ok=4 shard-failures=0 tracebacks=0
 2026-09-26 17:37:54 IST w13: chunk w13b: launching sweep_configs/renko12b_warm_batch.txt (4 configs, avg 3330s/cfg, SHARD_COUNT=4, extra='--extra-warmup-days 12')
+2026-09-26 20:58:07 IST w13: chunk w13b: rc=0 12013s ok=4 shard-failures=0 tracebacks=0
+2026-09-26 20:58:07 IST w13: chunk w13c: launching sweep_configs/renko12c_warm_batch.txt (6 configs, avg 3167s/cfg, SHARD_COUNT=4, extra='--extra-warmup-days 12')
 -- w12_chain.heartbeat
 2026-09-26 11:38:28 IST w12: reaper timer stopped
 2026-09-26 11:38:28 IST w12: frozen md5s: 587fefca 69ce1dd9 0bb606be cdec5753 dd220499 
@@ -24,15 +25,15 @@
 2026-09-26 06:27:30 IST mt1: batch finished rc=0 -- 6 OK (cumulative), 0 with failures
 2026-09-26 06:27:30 IST mt1: reaper timer restarted
 == last 8 s6_status lines:
-[2026-09-26T12:07:57Z] [w13b] ==========================================
-[2026-09-26T12:07:57Z] [w13b] --- w12_s1_m075 (renko_trend, src=alice_index) params={"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 0.75, "confirm_bricks": 2, "entry_mode": "br
-[2026-09-26T12:57:59Z] [w13b] w12_s1_m075 OK (3002s, 237 trades, 75G free)
-[2026-09-26T12:57:59Z] [w13b] --- w12_s1_m05 (renko_trend, src=alice_index) params={"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 0.5, "confirm_bricks": 2, "entry_mode": "brea
-[2026-09-26T13:49:08Z] [w13b] w12_s1_m05 OK (3069s, 466 trades, 75G free)
-[2026-09-26T13:49:08Z] [w13b] --- w12_s1_htf15_m1 (renko_trend, src=alice_index) params={"htf_timeframe_minutes": 15, "atr_period": 14, "brick_atr_multiplier": 1.0, "confirm_bricks": 2, "entry_mode": 
-[2026-09-26T14:39:16Z] [w13b] w12_s1_htf15_m1 OK (3008s, 310 trades, 75G free)
-[2026-09-26T14:39:16Z] [w13b] --- w12_s1_htf15_m15 (renko_trend, src=alice_index) params={"htf_timeframe_minutes": 15, "atr_period": 14, "brick_atr_multiplier": 1.5, "confirm_bricks": 2, "entry_mode":
-== finished configs (all chains): 472
+[2026-09-26T15:28:07Z] [w13b] w12_s1_htf15_m15 OK (2931s, 96 trades, 75G free)
+[2026-09-26T15:28:07Z] [w13b] ==========================================
+[2026-09-26T15:28:07Z] [w13b] sweep [w13b] COMPLETE -> data/historical/backtest_reports/s6_w13b (200min)
+[2026-09-26T15:28:07Z] [w13b] ==========================================
+[2026-09-26T15:28:10Z] [w13c] ==========================================
+[2026-09-26T15:28:10Z] [w13c] sweep [w13c] -> data/historical/backtest_reports/s6_w13c (6 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
+[2026-09-26T15:28:10Z] [w13c] ==========================================
+[2026-09-26T15:28:10Z] [w13c] --- w12_s1_conf3 (renko_trend, src=alice_index) params={"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 1.0, "confirm_bricks": 3, "entry_mode": "br
+== finished configs (all chains): 473
 == md5:
 587fefca backend/scripts/run_backtest.py
 69ce1dd9 run_sweep_perday.sh
