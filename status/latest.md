@@ -1,6 +1,6 @@
-# btsync status  2026-09-26T23:14:51Z UTC / 2026-09-27 04:44:51 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-09-26T23:45:31Z UTC / 2026-09-27 05:15:31 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-09-27 04:44:51 IST / 23:14:51 UTC  load: 4.38 4.40 4.31  free: 7G avail  disk: 75G free
+== now: 2026-09-27 05:15:31 IST / 23:45:31 UTC  load: 4.18 4.12 4.09  free: 7G avail  disk: 75G free
 == units:
   backtest-20260926-082551.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && TAG=w13 END_BY_UTC=\"2026-09-28 02:00:00\" S
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
@@ -25,15 +25,15 @@
 2026-09-26 06:27:30 IST mt1: batch finished rc=0 -- 6 OK (cumulative), 0 with failures
 2026-09-26 06:27:30 IST mt1: reaper timer restarted
 == last 8 s6_status lines:
-[2026-09-26T20:27:08Z] [w13c] sweep [w13c] COMPLETE -> data/historical/backtest_reports/s6_w13c (298min)
-[2026-09-26T20:27:08Z] [w13c] ==========================================
 [2026-09-26T20:27:11Z] [w13d] ==========================================
 [2026-09-26T20:27:11Z] [w13d] sweep [w13d] -> data/historical/backtest_reports/s6_w13d (10 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
 [2026-09-26T20:27:11Z] [w13d] ==========================================
 [2026-09-26T20:27:11Z] [w13d] --- w12_mv50_msd1 (renko_trend, src=alice_index) params={"brick_size_mode": "fixed", "fixed_brick_size_points": 6.25, "brick_source_timeframe_minutes": 15, "direction_fil
 [2026-09-26T22:04:52Z] [w13d] w12_mv50_msd1 OK (5861s, 161 trades, 75G free)
 [2026-09-26T22:04:52Z] [w13d] --- w12_base_msd1 (renko_trend, src=alice_index) params={"brick_size_mode": "fixed", "fixed_brick_size_points": 8.33, "brick_source_timeframe_minutes": 5, "direction_filt
-== finished configs (all chains): 480
+[2026-09-26T23:35:52Z] [w13d] w12_base_msd1 OK (5460s, 359 trades, 75G free)
+[2026-09-26T23:35:52Z] [w13d] --- w12_base_pe_msd1 (renko_trend, src=alice_index) params={"brick_size_mode": "fixed", "fixed_brick_size_points": 8.33, "brick_source_timeframe_minutes": 5, "direction_f
+== finished configs (all chains): 481
 == md5:
 587fefca backend/scripts/run_backtest.py
 69ce1dd9 run_sweep_perday.sh
