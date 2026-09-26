@@ -1,6 +1,6 @@
-# btsync status  2026-09-26T21:43:20Z UTC / 2026-09-27 03:13:20 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-09-26T22:13:50Z UTC / 2026-09-27 03:43:50 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-09-27 03:13:20 IST / 21:43:20 UTC  load: 4.13 4.18 4.18  free: 7G avail  disk: 75G free
+== now: 2026-09-27 03:43:50 IST / 22:13:50 UTC  load: 4.16 4.10 4.06  free: 7G avail  disk: 75G free
 == units:
   backtest-20260926-082551.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && TAG=w13 END_BY_UTC=\"2026-09-28 02:00:00\" S
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
@@ -25,15 +25,15 @@
 2026-09-26 06:27:30 IST mt1: batch finished rc=0 -- 6 OK (cumulative), 0 with failures
 2026-09-26 06:27:30 IST mt1: reaper timer restarted
 == last 8 s6_status lines:
-[2026-09-26T20:27:08Z] [w13c] w12_s1_nofilter OK (2911s, 94 trades, 75G free)
-[2026-09-26T20:27:08Z] [w13c] ==========================================
 [2026-09-26T20:27:08Z] [w13c] sweep [w13c] COMPLETE -> data/historical/backtest_reports/s6_w13c (298min)
 [2026-09-26T20:27:08Z] [w13c] ==========================================
 [2026-09-26T20:27:11Z] [w13d] ==========================================
 [2026-09-26T20:27:11Z] [w13d] sweep [w13d] -> data/historical/backtest_reports/s6_w13d (10 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
 [2026-09-26T20:27:11Z] [w13d] ==========================================
 [2026-09-26T20:27:11Z] [w13d] --- w12_mv50_msd1 (renko_trend, src=alice_index) params={"brick_size_mode": "fixed", "fixed_brick_size_points": 6.25, "brick_source_timeframe_minutes": 15, "direction_fil
-== finished configs (all chains): 479
+[2026-09-26T22:04:52Z] [w13d] w12_mv50_msd1 OK (5861s, 161 trades, 75G free)
+[2026-09-26T22:04:52Z] [w13d] --- w12_base_msd1 (renko_trend, src=alice_index) params={"brick_size_mode": "fixed", "fixed_brick_size_points": 8.33, "brick_source_timeframe_minutes": 5, "direction_filt
+== finished configs (all chains): 480
 == md5:
 587fefca backend/scripts/run_backtest.py
 69ce1dd9 run_sweep_perday.sh
