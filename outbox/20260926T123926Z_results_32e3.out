@@ -1,0 +1,6 @@
+### id=20260926T123926Z_results_32e3 started=2026-09-26T12:40:04Z request: results w13a
+[2026-09-26T09:14:44Z] [w13a] w12_s1top_ctrl OK (2929s, 92 trades, 75G free)
+[2026-09-26T10:30:34Z] [w13a] w12_base_ctrl OK (4550s, 785 trades, 75G free)
+[2026-09-26T11:19:10Z] [w13a] w12_s1_pe OK (2916s, 64 trades, 75G free)
+[2026-09-26T12:07:54Z] [w13a] w12_s1_msd1 OK (2924s, 66 trades, 75G free)
+### exit=0 finished=2026-09-26T12:40:04Z
