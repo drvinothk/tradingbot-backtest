@@ -1,6 +1,6 @@
-# btsync status  2026-09-26T07:46:37Z UTC / 2026-09-26 13:16:37 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-09-26T07:47:44Z UTC / 2026-09-26 13:17:44 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-09-26 13:16:37 IST / 07:46:37 UTC  load: 4.47 4.27 4.21  free: 7G avail  disk: 75G free
+== now: 2026-09-26 13:17:44 IST / 07:47:44 UTC  load: 4.24 4.23 4.20  free: 7G avail  disk: 75G free
 == units:
   backtest-20260926-060828.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && TAG=w12 END_BY_UTC=\"2026-09-28 02:00:00\" S
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
@@ -37,5 +37,5 @@
 0bb606be run_sweep_default.sh
 764ef01e launch_chain.sh
 == ATTENTION:
-! 18 Traceback line(s) in current shard logs
+ATTENTION: none
 ```
