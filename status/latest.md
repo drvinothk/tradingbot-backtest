@@ -1,6 +1,6 @@
-# btsync status  2026-09-26T14:11:41Z UTC / 2026-09-26 19:41:41 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-09-26T14:42:11Z UTC / 2026-09-26 20:12:11 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-09-26 19:41:41 IST / 14:11:41 UTC  load: 4.31 4.35 4.38  free: 7G avail  disk: 75G free
+== now: 2026-09-26 20:12:11 IST / 14:42:11 UTC  load: 4.40 4.34 4.39  free: 7G avail  disk: 75G free
 == units:
   backtest-20260926-082551.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && TAG=w13 END_BY_UTC=\"2026-09-28 02:00:00\" S
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
@@ -25,14 +25,14 @@
 2026-09-26 06:27:30 IST mt1: reaper timer restarted
 == last 8 s6_status lines:
 [2026-09-26T12:07:57Z] [w13b] ==========================================
-[2026-09-26T12:07:57Z] [w13b] sweep [w13b] -> data/historical/backtest_reports/s6_w13b (4 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
-[2026-09-26T12:07:57Z] [w13b] ==========================================
 [2026-09-26T12:07:57Z] [w13b] --- w12_s1_m075 (renko_trend, src=alice_index) params={"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 0.75, "confirm_bricks": 2, "entry_mode": "br
 [2026-09-26T12:57:59Z] [w13b] w12_s1_m075 OK (3002s, 237 trades, 75G free)
 [2026-09-26T12:57:59Z] [w13b] --- w12_s1_m05 (renko_trend, src=alice_index) params={"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 0.5, "confirm_bricks": 2, "entry_mode": "brea
 [2026-09-26T13:49:08Z] [w13b] w12_s1_m05 OK (3069s, 466 trades, 75G free)
 [2026-09-26T13:49:08Z] [w13b] --- w12_s1_htf15_m1 (renko_trend, src=alice_index) params={"htf_timeframe_minutes": 15, "atr_period": 14, "brick_atr_multiplier": 1.0, "confirm_bricks": 2, "entry_mode": 
-== finished configs (all chains): 471
+[2026-09-26T14:39:16Z] [w13b] w12_s1_htf15_m1 OK (3008s, 310 trades, 75G free)
+[2026-09-26T14:39:16Z] [w13b] --- w12_s1_htf15_m15 (renko_trend, src=alice_index) params={"htf_timeframe_minutes": 15, "atr_period": 14, "brick_atr_multiplier": 1.5, "confirm_bricks": 2, "entry_mode":
+== finished configs (all chains): 472
 == md5:
 587fefca backend/scripts/run_backtest.py
 69ce1dd9 run_sweep_perday.sh
