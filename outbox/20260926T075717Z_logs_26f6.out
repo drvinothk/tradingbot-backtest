@@ -1,0 +1,11 @@
+### id=20260926T075717Z_logs_26f6 started=2026-09-26T07:57:41Z request: logs w12
+== heartbeat
+2026-09-26 11:38:28 IST w12: reaper timer stopped
+2026-09-26 11:38:28 IST w12: frozen md5s: 587fefca 69ce1dd9 0bb606be cdec5753 dd220499 
+2026-09-26 11:38:28 IST w12: chunk w12: launching sweep_configs/renko11_pilot.txt (1 configs, avg 4200s/cfg, SHARD_COUNT=4, extra='--extra-warmup-days 21')
+== chain full.out
+2026-09-26 11:38:28 IST w12: reaper timer stopped
+2026-09-26 11:38:28 IST w12: frozen md5s: 587fefca 69ce1dd9 0bb606be cdec5753 dd220499 
+2026-09-26 11:38:28 IST w12: chunk w12: launching sweep_configs/renko11_pilot.txt (1 configs, avg 4200s/cfg, SHARD_COUNT=4, extra='--extra-warmup-days 21')
+== /tmp/s6_logs/w12: files 4, tracebacks 0
+### exit=0 finished=2026-09-26T07:57:41Z
