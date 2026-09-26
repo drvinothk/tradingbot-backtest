@@ -1,17 +1,17 @@
-# btsync status  2026-09-26T20:11:40Z UTC / 2026-09-27 01:41:40 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-09-26T20:42:19Z UTC / 2026-09-27 02:12:19 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-09-27 01:41:40 IST / 20:11:40 UTC  load: 4.50 4.47 4.41  free: 7G avail  disk: 75G free
+== now: 2026-09-27 02:12:19 IST / 20:42:19 UTC  load: 4.24 4.24 4.26  free: 7G avail  disk: 75G free
 == units:
   backtest-20260926-082551.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && TAG=w13 END_BY_UTC=\"2026-09-28 02:00:00\" S
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
 -- w13_chain.heartbeat
-2026-09-26 13:55:51 IST w13: frozen md5s: 6a26192c 587fefca 69ce1dd9 0bb606be cdec5753 dd220499 
-2026-09-26 13:55:51 IST w13: chunk w13a: launching sweep_configs/renko12a_warm_batch.txt (4 configs, avg 4200s/cfg, SHARD_COUNT=4, extra='--extra-warmup-days 12')
 2026-09-26 17:37:54 IST w13: chunk w13a: rc=0 13323s ok=4 shard-failures=0 tracebacks=0
 2026-09-26 17:37:54 IST w13: chunk w13b: launching sweep_configs/renko12b_warm_batch.txt (4 configs, avg 3330s/cfg, SHARD_COUNT=4, extra='--extra-warmup-days 12')
 2026-09-26 20:58:07 IST w13: chunk w13b: rc=0 12013s ok=4 shard-failures=0 tracebacks=0
 2026-09-26 20:58:07 IST w13: chunk w13c: launching sweep_configs/renko12c_warm_batch.txt (6 configs, avg 3167s/cfg, SHARD_COUNT=4, extra='--extra-warmup-days 12')
+2026-09-27 01:57:08 IST w13: chunk w13c: rc=0 17941s ok=6 shard-failures=0 tracebacks=0
+2026-09-27 01:57:08 IST w13: chunk w13d: launching sweep_configs/renko12d_warm_batch.txt (10 configs, avg 3091s/cfg, SHARD_COUNT=4, extra='--extra-warmup-days 12')
 -- w12_chain.heartbeat
 2026-09-26 11:38:28 IST w12: reaper timer stopped
 2026-09-26 11:38:28 IST w12: frozen md5s: 587fefca 69ce1dd9 0bb606be cdec5753 dd220499 
@@ -25,15 +25,15 @@
 2026-09-26 06:27:30 IST mt1: batch finished rc=0 -- 6 OK (cumulative), 0 with failures
 2026-09-26 06:27:30 IST mt1: reaper timer restarted
 == last 8 s6_status lines:
-[2026-09-26T17:06:10Z] [w13c] w12_s1_conf1 OK (2980s, 216 trades, 75G free)
-[2026-09-26T17:06:10Z] [w13c] --- w12_s1_exit_wide (renko_trend, src=alice_index) params={"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 1.0, "confirm_bricks": 2, "entry_mode":
-[2026-09-26T17:55:05Z] [w13c] w12_s1_exit_wide OK (2935s, 85 trades, 75G free)
-[2026-09-26T17:55:05Z] [w13c] --- w12_s1_pe_m075 (renko_trend, src=alice_index) params={"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 0.75, "confirm_bricks": 2, "entry_mode": 
-[2026-09-26T18:44:23Z] [w13c] w12_s1_pe_m075 OK (2958s, 147 trades, 75G free)
-[2026-09-26T18:44:23Z] [w13c] --- w12_s1_ema30x15 (renko_trend, src=alice_index) params={"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 1.0, "confirm_bricks": 2, "entry_mode": 
-[2026-09-26T19:38:37Z] [w13c] w12_s1_ema30x15 OK (3254s, 89 trades, 75G free)
-[2026-09-26T19:38:37Z] [w13c] --- w12_s1_nofilter (renko_trend, src=alice_index) params={"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 1.0, "confirm_bricks": 2, "entry_mode": 
-== finished configs (all chains): 478
+[2026-09-26T20:27:08Z] [w13c] w12_s1_nofilter OK (2911s, 94 trades, 75G free)
+[2026-09-26T20:27:08Z] [w13c] ==========================================
+[2026-09-26T20:27:08Z] [w13c] sweep [w13c] COMPLETE -> data/historical/backtest_reports/s6_w13c (298min)
+[2026-09-26T20:27:08Z] [w13c] ==========================================
+[2026-09-26T20:27:11Z] [w13d] ==========================================
+[2026-09-26T20:27:11Z] [w13d] sweep [w13d] -> data/historical/backtest_reports/s6_w13d (10 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
+[2026-09-26T20:27:11Z] [w13d] ==========================================
+[2026-09-26T20:27:11Z] [w13d] --- w12_mv50_msd1 (renko_trend, src=alice_index) params={"brick_size_mode": "fixed", "fixed_brick_size_points": 6.25, "brick_source_timeframe_minutes": 15, "direction_fil
+== finished configs (all chains): 479
 == md5:
 587fefca backend/scripts/run_backtest.py
 69ce1dd9 run_sweep_perday.sh
