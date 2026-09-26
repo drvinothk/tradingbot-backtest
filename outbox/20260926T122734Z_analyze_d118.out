@@ -1,0 +1,127 @@
+### id=20260926T122734Z_analyze_d118 started=2026-09-26T12:28:01Z request: analyze w13a
+
+=== /home/ubuntu/backtest_engine/backend/data/historical/backtest_reports/s6_w13a/w12_base_ctrl_current.csv
+  trades=785 days_traded=236 net=-172,906 est-net(-130/trade)=-274,956 PF=0.66 WR=32% avgW=1,348 avgL=-948 maxDD=178,250 Calmar=-0.97 Sharpe(daily)=-3.65 t=-3.58
+  ex-top-2 net=-200,028   halves: H1=-73,349 H2=-99,557
+  first trade of day       n= 236 net=  -12,305 PF= 0.91 WR= 35% avg=    -52 ex-best=  -29,988
+  re-entries (#2+)         n= 549 net= -160,602 PF= 0.56 WR= 30% avg=   -293 ex-best= -170,040
+ by weekday [ALL]
+  Mon      n= 144 net=  -28,818 PF= 0.69 WR= 32% avg=   -200 ex-best=  -35,913
+  Tue      n= 181 net=  -32,715 PF= 0.64 WR= 22% avg=   -181 ex-best=  -42,153
+  Wed      n= 153 net=  -31,710 PF= 0.72 WR= 35% avg=   -207 ex-best=  -49,394
+  Thu      n= 154 net=  -61,938 PF= 0.51 WR= 35% avg=   -402 ex-best=  -67,489
+  Fri      n= 153 net=  -17,726 PF= 0.79 WR= 36% avg=   -116 ex-best=  -23,953
+ by weekday [FIRST]
+  Mon      n=  47 net=   -4,872 PF= 0.81 WR= 30% avg=   -104 ex-best=   -8,960
+  Tue      n=  49 net=  -18,775 PF= 0.37 WR= 27% avg=   -383 ex-best=  -21,281
+  Wed      n=  47 net=   29,620 PF= 2.01 WR= 49% avg=    630 ex-best=   11,937
+  Thu      n=  46 net=  -11,472 PF= 0.62 WR= 30% avg=   -249 ex-best=  -15,779
+  Fri      n=  47 net=   -6,806 PF= 0.75 WR= 40% avg=   -145 ex-best=  -11,011
+ by DTE [ALL] (0=expiry day, 6=day after expiry)
+  DTE0     n= 181 net=  -32,715 PF= 0.64 WR= 22% avg=   -181 ex-best=  -42,153
+  DTE1     n= 144 net=  -28,818 PF= 0.69 WR= 32% avg=   -200 ex-best=  -35,913
+  DTE4     n= 153 net=  -17,726 PF= 0.79 WR= 36% avg=   -116 ex-best=  -23,953
+  DTE5     n= 154 net=  -61,938 PF= 0.51 WR= 35% avg=   -402 ex-best=  -67,489
+  DTE6     n= 153 net=  -31,710 PF= 0.72 WR= 35% avg=   -207 ex-best=  -49,394
+  CE                       n= 385 net= -109,889 PF= 0.53 WR= 31% avg=   -285 ex-best= -116,984
+  PE                       n= 400 net=  -63,018 PF= 0.77 WR= 32% avg=   -158 ex-best=  -80,701
+ exit reasons
+  candle_reversal          n= 626 net= -126,893 PF= 0.66 WR= 33% avg=   -203 ex-best= -136,331
+  eod_square_off           n=  52 net=   69,998 PF= 6.01 WR= 79% avg=  1,346 ex-best=   52,315
+  stop                     n= 107 net= -116,012 PF= 0.00 WR=  0% avg= -1,084 ex-best= -115,892
+
+=== /home/ubuntu/backtest_engine/backend/data/historical/backtest_reports/s6_w13a/w12_s1_msd1_current.csv
+  trades=66 days_traded=64 net=-7,629 est-net(-130/trade)=-16,209 PF=0.81 WR=59% avgW=818 avgL=-1,464 maxDD=14,731 Calmar=-0.52 Sharpe(daily)=-1.40 t=-0.71
+  ex-top-2 net=-11,911   halves: H1=-10,225 H2=2,596
+  first trade of day       n=  64 net=   -6,225 PF= 0.84 WR= 61% avg=    -97 ex-best=   -8,792
+  re-entries (#2+)         n=   2 net=   -1,404 PF= 0.00 WR=  0% avg=   -702 ex-best=   -1,118
+ by weekday [ALL]
+  Mon      n=  12 net=    2,275 PF= 1.65 WR= 75% avg=    190 ex-best=    1,357
+  Tue      n=  14 net=    3,744 PF= 4.62 WR= 79% avg=    267 ex-best=    2,841
+  Wed      n=  15 net=    2,186 PF= 1.24 WR= 67% avg=    146 ex-best=      472
+  Thu      n=  13 net=  -11,665 PF= 0.23 WR= 31% avg=   -897 ex-best=  -12,970
+  Fri      n=  12 net=   -4,169 PF= 0.61 WR= 42% avg=   -347 ex-best=   -6,736
+ by weekday [FIRST]
+  Mon      n=  11 net=    3,393 PF= 2.42 WR= 82% avg=    308 ex-best=    2,475
+  Tue      n=  13 net=    4,030 PF= 6.39 WR= 85% avg=    310 ex-best=    3,127
+  Wed      n=  15 net=    2,186 PF= 1.24 WR= 67% avg=    146 ex-best=      472
+  Thu      n=  13 net=  -11,665 PF= 0.23 WR= 31% avg=   -897 ex-best=  -12,970
+  Fri      n=  12 net=   -4,169 PF= 0.61 WR= 42% avg=   -347 ex-best=   -6,736
+ by DTE [ALL] (0=expiry day, 6=day after expiry)
+  DTE0     n=  14 net=    3,744 PF= 4.62 WR= 79% avg=    267 ex-best=    2,841
+  DTE1     n=  12 net=    2,275 PF= 1.65 WR= 75% avg=    190 ex-best=    1,357
+  DTE4     n=  12 net=   -4,169 PF= 0.61 WR= 42% avg=   -347 ex-best=   -6,736
+  DTE5     n=  13 net=  -11,665 PF= 0.23 WR= 31% avg=   -897 ex-best=  -12,970
+  DTE6     n=  15 net=    2,186 PF= 1.24 WR= 67% avg=    146 ex-best=      472
+  CE                       n=  22 net=  -11,156 PF= 0.46 WR= 41% avg=   -507 ex-best=  -13,723
+  PE                       n=  44 net=    3,527 PF= 1.19 WR= 68% avg=     80 ex-best=    1,813
+ exit reasons
+  eod_square_off           n=   9 net=   -7,829 PF= 0.02 WR= 22% avg=   -870 ex-best=   -7,959
+  stop                     n=  19 net=  -29,949 PF= 0.00 WR=  0% avg= -1,576 ex-best=  -29,676
+  structure_break          n=   1 net=   -1,563 PF= 0.00 WR=  0% avg= -1,563 ex-best=        0
+  target                   n=   3 net=    3,786 PF=  inf WR=100% avg=  1,262 ex-best=    1,219
+  trail                    n=  34 net=   27,926 PF=  inf WR=100% avg=    821 ex-best=   26,212
+
+=== /home/ubuntu/backtest_engine/backend/data/historical/backtest_reports/s6_w13a/w12_s1_pe_current.csv
+  trades=64 days_traded=44 net=4,207 est-net(-130/trade)=-4,113 PF=1.15 WR=67% avgW=763 avgL=-1,362 maxDD=6,416 Calmar=0.66 Sharpe(daily)=1.10 t=0.45
+  ex-top-2 net=756   halves: H1=-1,722 H2=5,929
+  first trade of day       n=  44 net=    3,527 PF= 1.19 WR= 68% avg=     80 ex-best=    1,813
+  re-entries (#2+)         n=  20 net=      680 PF= 1.07 WR= 65% avg=     34 ex-best=   -1,057
+ by weekday [ALL]
+  Mon      n=  11 net=      909 PF= 1.24 WR= 73% avg=     83 ex-best=       95
+  Tue      n=  19 net=    4,159 PF= 2.70 WR= 79% avg=    219 ex-best=    3,255
+  Wed      n=  13 net=     -411 PF= 0.96 WR= 62% avg=    -32 ex-best=   -2,148
+  Thu      n=  13 net=     -346 PF= 0.96 WR= 62% avg=    -27 ex-best=   -1,979
+  Fri      n=   8 net=     -103 PF= 0.97 WR= 50% avg=    -13 ex-best=   -1,335
+ by weekday [FIRST]
+  Mon      n=   8 net=    1,062 PF= 1.44 WR= 75% avg=    133 ex-best=      249
+  Tue      n=  11 net=    4,189 PF=16.35 WR= 91% avg=    381 ex-best=    3,286
+  Wed      n=  10 net=   -1,397 PF= 0.83 WR= 60% avg=   -140 ex-best=   -3,111
+  Thu      n=   8 net=   -2,032 PF= 0.64 WR= 50% avg=   -254 ex-best=   -3,337
+  Fri      n=   7 net=    1,704 PF= 1.78 WR= 57% avg=    243 ex-best=      472
+ by DTE [ALL] (0=expiry day, 6=day after expiry)
+  DTE0     n=  19 net=    4,159 PF= 2.70 WR= 79% avg=    219 ex-best=    3,255
+  DTE1     n=  11 net=      909 PF= 1.24 WR= 73% avg=     83 ex-best=       95
+  DTE4     n=   8 net=     -103 PF= 0.97 WR= 50% avg=    -13 ex-best=   -1,335
+  DTE5     n=  13 net=     -346 PF= 0.96 WR= 62% avg=    -27 ex-best=   -1,979
+  DTE6     n=  13 net=     -411 PF= 0.96 WR= 62% avg=    -32 ex-best=   -2,148
+  CE                       n=0
+  PE                       n=  64 net=    4,207 PF= 1.15 WR= 67% avg=     66 ex-best=    2,470
+ exit reasons
+  eod_square_off           n=   7 net=   -3,416 PF= 0.08 WR= 29% avg=   -488 ex-best=   -3,640
+  stop                     n=  16 net=  -24,898 PF= 0.00 WR=  0% avg= -1,556 ex-best=  -24,625
+  target                   n=   1 net=      904 PF=  inf WR=100% avg=    904 ex-best=        0
+  trail                    n=  40 net=   31,617 PF=  inf WR=100% avg=    790 ex-best=   29,880
+
+=== /home/ubuntu/backtest_engine/backend/data/historical/backtest_reports/s6_w13a/w12_s1top_ctrl_current.csv
+  trades=92 days_traded=64 net=-13,710 est-net(-130/trade)=-25,670 PF=0.76 WR=58% avgW=818 avgL=-1,463 maxDD=17,196 Calmar=-0.80 Sharpe(daily)=-2.30 t=-1.08
+  ex-top-2 net=-18,014   halves: H1=-13,792 H2=83
+  first trade of day       n=  64 net=   -6,225 PF= 0.84 WR= 61% avg=    -97 ex-best=   -8,792
+  re-entries (#2+)         n=  28 net=   -7,485 PF= 0.61 WR= 50% avg=   -267 ex-best=   -9,222
+ by weekday [ALL]
+  Mon      n=  17 net=   -2,335 PF= 0.75 WR= 65% avg=   -137 ex-best=   -3,252
+  Tue      n=  23 net=    3,379 PF= 1.96 WR= 70% avg=    147 ex-best=    2,475
+  Wed      n=  21 net=    1,201 PF= 1.08 WR= 62% avg=     57 ex-best=     -536
+  Thu      n=  18 net=   -9,979 PF= 0.42 WR= 44% avg=   -554 ex-best=  -11,612
+  Fri      n=  13 net=   -5,976 PF= 0.52 WR= 38% avg=   -460 ex-best=   -8,543
+ by weekday [FIRST]
+  Mon      n=  11 net=    3,393 PF= 2.42 WR= 82% avg=    308 ex-best=    2,475
+  Tue      n=  13 net=    4,030 PF= 6.39 WR= 85% avg=    310 ex-best=    3,127
+  Wed      n=  15 net=    2,186 PF= 1.24 WR= 67% avg=    146 ex-best=      472
+  Thu      n=  13 net=  -11,665 PF= 0.23 WR= 31% avg=   -897 ex-best=  -12,970
+  Fri      n=  12 net=   -4,169 PF= 0.61 WR= 42% avg=   -347 ex-best=   -6,736
+ by DTE [ALL] (0=expiry day, 6=day after expiry)
+  DTE0     n=  23 net=    3,379 PF= 1.96 WR= 70% avg=    147 ex-best=    2,475
+  DTE1     n=  17 net=   -2,335 PF= 0.75 WR= 65% avg=   -137 ex-best=   -3,252
+  DTE4     n=  13 net=   -5,976 PF= 0.52 WR= 38% avg=   -460 ex-best=   -8,543
+  DTE5     n=  18 net=   -9,979 PF= 0.42 WR= 44% avg=   -554 ex-best=  -11,612
+  DTE6     n=  21 net=    1,201 PF= 1.08 WR= 62% avg=     57 ex-best=     -536
+  CE                       n=  28 net=  -17,917 PF= 0.37 WR= 36% avg=   -640 ex-best=  -20,484
+  PE                       n=  64 net=    4,207 PF= 1.15 WR= 67% avg=     66 ex-best=    2,470
+ exit reasons
+  eod_square_off           n=  12 net=  -10,471 PF= 0.04 WR= 25% avg=   -873 ex-best=  -10,696
+  stop                     n=  29 net=  -44,632 PF= 0.00 WR=  0% avg= -1,539 ex-best=  -44,359
+  structure_break          n=   1 net=   -1,563 PF= 0.00 WR=  0% avg= -1,563 ex-best=        0
+  target                   n=   3 net=    3,786 PF=  inf WR=100% avg=  1,262 ex-best=    1,219
+  trail                    n=  47 net=   39,171 PF=  inf WR=100% avg=    833 ex-best=   37,434
+### exit=0 finished=2026-09-26T12:28:01Z
