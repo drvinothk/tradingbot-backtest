@@ -6,14 +6,16 @@ analyze completed configs, plan new configs from the data. **You never touch the
 
 Style: lean messages (tables/bullets, no narration), **IST timestamps** (box clock is UTC), gross P&L **per lot (65 qty)**, always label the harness.
 
-## 1. Access (one restricted SSH key, no shell)
-```
-ssh -i <bt_cloud_key> -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes btops@144.24.137.112 "<btctl request>"
-```
-Pin the host key (ED25519, SHA256:ZNKdTGegJ177rB7EQm3Jf1m3jfyesD6YY9Kw1OkSRbA) in known_hosts:
-`144.24.137.112 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID+6ozXSEEWWLETAA6iRbYSzeeWVylXTxOfrHcCBgycX`
-The key is forced to `btctl` (root-owned wrapper): there is no shell, no scp, no port forwarding. `ssh ... "help"` lists commands. Every call is audited
-(`logs/btctl_audit.log` on the box). Pipe file content on stdin for `apply` / `apply-code`: `ssh ... "apply sweep_configs/x.txt" < x.txt`.
+## 1. Access = this repo (no SSH, no inbound port)
+The box polls this private repo once a minute (`btsync`, runs as user `btops`) and executes your requests through `btctl` (root-owned wrapper, scoped to the
+backtest bundle). Results and status come back through the repo.
+- **Status** (refreshed every 30 min, and immediately when ATTENTION flags change or after a command): `git pull`, read `status/latest.md`.
+  Its first line has the UTC time; **if it is older than ~45 min, btsync/box is not running — tell the user** (you cannot fix that yourself).
+- **Commands:** `python tools/bt_cmd.py "<request>" [--payload FILE]` — writes `inbox/<id>.cmd` (+`.payload` = stdin for `apply`/`apply-code`), commits, pushes, then
+  polls `outbox/<id>.out` (the box answers within ~1-2 min). Exit code = btctl exit code (2 = refused, 3 = pending, 4 = git problem).
+  `python tools/bt_cmd.py --status` just prints the latest status.
+- Everything is audited: git history of `inbox/`, `outbox/`, and `logs/btctl_audit.log` on the box.
+- Never edit `status/` or `outbox/` (the box owns them). Do not put secrets in this repo.
 
 | command | use |
 |---|---|
@@ -42,7 +44,7 @@ The key is forced to `btctl` (root-owned wrapper): there is no shell, no scp, no
 - Every backtest is **per-day MULTI-TRADE** with `--extra-warmup-days 21` (the chain applies both). Never compare numbers across harnesses (weekly, first-signal-only, mt1 without warm-up, multi-trade + warm-up).
 
 ## 3. Situation at hand-off (2026-09-26 ~12:45 IST)
-Full context: `handover/RENKO_HANDOFF_2026_09_24.md` (read the last ~5 sections), `handover/README_engine.md` (rules 1-19), `handover/BACKTEST_LEARNINGS.md` (top entries).
+Full context: `handover/RENKO_HANDOFF_2026_09_24.md` (read the last ~6 sections), `handover/README_engine.md` (rules 1-19), `handover/BACKTEST_LEARNINGS.md` (top entries).
 - Strategy under test: `renko_trend` (Modified Renko trend-following option BUYING, NIFTY 1-min index + weekly options, ~1 year of options data 2025-08-28..2026-09-18, 236 tradable days). Nothing is live; never merged.
 - Results so far (gross per lot, multi-trade, 1000-bar warm-up = "mt1", so ATR/EMA numbers approximate): every 5-min/15-min fixed-brick config loses (base −174k, mv50 −59k, Fib+EMA −127k, no-filter controls −151k/−171k); re-entries (trade #2+) lose in all of them; EMA filter only helps the first trade on DTE6 (day after weekly expiry). Only **30-min ATR bricks + Fib/POB + trail (mt3, "s1_top")** is positive: +10.7k, 100 trades/65 days, PF 1.24, t≈0.9, ≈ break-even after ~130/trade costs; Tue (expiry day) and Wed (DTE6) carry it, Thu/Fri lose. Details in the hand-off.
 - **Warm-up finding:** per-day DB only held 4 days of bars while the strategy reads 20 days of ATR/EMA history; fixed by `--extra-warmup-days 21` (md5 587fefca…). All w12+ results use it.

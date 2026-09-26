@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# btsync -- GitHub <-> btctl bridge for the cloud supervisor (2026-09-26). Installed root-owned at /usr/local/sbin/btsync, run as user btops
+# by btsync.timer every 60 s. The private repo is the ONLY channel: the cloud session commits inbox/<id>.cmd (+ optional inbox/<id>.payload used as
+# stdin); this script pulls, runs each unseen request through `sudo -u ubuntu btctl` (which validates everything and is scoped to the backtest
+# bundle), writes outbox/<id>.out and pushes. It also refreshes status/latest.md every 30 min, or immediately when the ATTENTION flags change.
+# No inbound port is opened. The box never edits files other than status/, outbox/ and deleting old inbox/outbox entries.
+set -uo pipefail
+REPO=/home/btops/repo
+URL=git@github.com:drvinothk/tradingbot-backtest.git
+STATE=/home/btops/.btsync_state
+export GIT_SSH_COMMAND="ssh -i /home/btops/.ssh/gh_deploy -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=/home/btops/.ssh/known_hosts_gh -o BatchMode=yes -o ConnectTimeout=20"
+exec 9>/home/btops/.btsync.lock; flock -n 9 || exit 0
+G() { git -C "$REPO" -c user.name="bt-box" -c user.email="bt-box@localhost" "$@"; }
+BTCTL="sudo -n -u ubuntu /usr/local/sbin/btctl"
+log() { echo "$(date -u +%FT%TZ) $*" >> /home/btops/btsync.log; }
+
+[ -d "$REPO/.git" ] || { git clone -q "$URL" "$REPO" || { log "clone failed"; exit 1; }; }
+G fetch -q origin main || { log "fetch failed"; exit 1; }
+if G merge-base --is-ancestor HEAD origin/main 2>/dev/null; then G reset -q --hard origin/main; else G rebase -q origin/main >/dev/null 2>&1 || { G rebase --abort >/dev/null 2>&1; G reset -q --hard origin/main; log "rebase failed -> hard reset"; }; fi
+mkdir -p "$REPO/outbox" "$REPO/status" "$REPO/inbox"
+
+changed=0; n=0
+for f in "$REPO"/inbox/*.cmd; do
+  [ -e "$f" ] || break
+  id=$(basename "$f" .cmd)
+  [[ "$id" =~ ^[A-Za-z0-9_]{6,80}$ ]] || continue
+  [ -e "$REPO/outbox/$id.out" ] && continue
+  [ "$n" -ge 10 ] && break
+  req=$(head -n 1 "$f" | tr -d '\r' | cut -c1-500)
+  pl="$REPO/inbox/$id.payload"; [ -f "$pl" ] && [ "$(stat -c %s "$pl")" -le 1600000 ] || pl=/dev/null
+  start=$(date -u +%FT%TZ)
+  out=$(timeout 300 $BTCTL "$req" < "$pl" 2>&1); rc=$?
+  { echo "### id=$id started=$start request: $req"; printf '%s\n' "$out" | head -c 3500000; echo "### exit=$rc finished=$(date -u +%FT%TZ)"; } > "$REPO/outbox/$id.out"
+  log "ran $id rc=$rc: $req"
+  n=$((n+1)); changed=1
+done
+
+now=$(date +%s); last=$(cat "$STATE.last" 2>/dev/null || echo 0)
+att=$(timeout 60 $BTCTL attention 2>&1 | md5sum | cut -c1-8); lastatt=$(cat "$STATE.att" 2>/dev/null || echo x)
+if [ $((now - last)) -ge 1800 ] || [ "$att" != "$lastatt" ] || [ "$changed" -eq 1 ]; then
+  { echo "# btsync status  $(date -u +%FT%TZ) UTC / $(TZ=Asia/Kolkata date '+%F %T IST')  (refreshed every 30 min, on ATTENTION change, and after commands)"
+    echo '```'; timeout 120 $BTCTL status 2>&1; echo '```'; } > "$REPO/status/latest.md"
+  echo "$now" > "$STATE.last"; echo "$att" > "$STATE.att"; changed=1
+fi
+
+# housekeeping: drop processed inbox/outbox entries older than 7 days
+find "$REPO/outbox" "$REPO/inbox" -type f -mtime +7 -delete 2>/dev/null
+
+G add -A status outbox inbox
+if ! G diff --cached --quiet; then
+  G commit -q -m "btsync $(date -u +%FT%TZ): $n command(s), status" || { log "commit failed"; exit 1; }
+  G push -q origin HEAD:main 2>/dev/null || { G fetch -q origin main && G rebase -q origin/main >/dev/null 2>&1 && G push -q origin HEAD:main 2>/dev/null || log "push failed"; }
+fi
+exit 0
