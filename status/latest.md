@@ -1,6 +1,6 @@
-# btsync status  2026-09-26T16:07:21Z UTC / 2026-09-26 21:37:21 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-09-26T16:37:51Z UTC / 2026-09-26 22:07:51 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-09-26 21:37:21 IST / 16:07:21 UTC  load: 4.66 4.52 4.42  free: 7G avail  disk: 75G free
+== now: 2026-09-26 22:07:51 IST / 16:37:51 UTC  load: 4.63 4.50 4.47  free: 7G avail  disk: 75G free
 == units:
   backtest-20260926-082551.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && TAG=w13 END_BY_UTC=\"2026-09-28 02:00:00\" S
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
@@ -25,15 +25,15 @@
 2026-09-26 06:27:30 IST mt1: batch finished rc=0 -- 6 OK (cumulative), 0 with failures
 2026-09-26 06:27:30 IST mt1: reaper timer restarted
 == last 8 s6_status lines:
-[2026-09-26T15:28:07Z] [w13b] w12_s1_htf15_m15 OK (2931s, 96 trades, 75G free)
-[2026-09-26T15:28:07Z] [w13b] ==========================================
 [2026-09-26T15:28:07Z] [w13b] sweep [w13b] COMPLETE -> data/historical/backtest_reports/s6_w13b (200min)
 [2026-09-26T15:28:07Z] [w13b] ==========================================
 [2026-09-26T15:28:10Z] [w13c] ==========================================
 [2026-09-26T15:28:10Z] [w13c] sweep [w13c] -> data/historical/backtest_reports/s6_w13c (6 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
 [2026-09-26T15:28:10Z] [w13c] ==========================================
 [2026-09-26T15:28:10Z] [w13c] --- w12_s1_conf3 (renko_trend, src=alice_index) params={"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 1.0, "confirm_bricks": 3, "entry_mode": "br
-== finished configs (all chains): 473
+[2026-09-26T16:16:30Z] [w13c] w12_s1_conf3 OK (2900s, 32 trades, 75G free)
+[2026-09-26T16:16:30Z] [w13c] --- w12_s1_conf1 (renko_trend, src=alice_index) params={"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 1.0, "confirm_bricks": 1, "entry_mode": "br
+== finished configs (all chains): 474
 == md5:
 587fefca backend/scripts/run_backtest.py
 69ce1dd9 run_sweep_perday.sh
