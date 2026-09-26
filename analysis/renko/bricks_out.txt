@@ -1,0 +1,121 @@
+A. peak favourable bricks reached (current exit), share of trades reaching >=k and P(k+1 | k)
+ tf5       n=47 reach>=k  1:31 2:26 3:24 4:22 6:14 8:9 10:6 12:6 15:3 20:2
+           P(next|k) 1->2:0.84 2->3:0.92 3->4:0.92 4->5:0.82 6->7:0.86 8->9:0.67 10->11:1.00 12->13:1.00
+ base15    n=47 reach>=k  1:28 2:24 3:21 4:18 6:14 8:11 10:10 12:9 15:3 20:3
+           P(next|k) 1->2:0.86 2->3:0.88 3->4:0.86 4->5:0.89 6->7:0.86 8->9:1.00 10->11:0.90 12->13:0.78
+ b625      n=47 reach>=k  1:29 2:25 3:22 4:18 6:16 8:16 10:11 12:11 15:8 20:3
+           P(next|k) 1->2:0.86 2->3:0.88 3->4:0.82 4->5:0.94 6->7:1.00 8->9:0.75 10->11:1.00 12->13:0.91
+ fresh_ext n=46 reach>=k  1:30 2:24 3:24 4:16 6:12 8:7 10:4 12:3 15:2 20:2
+           P(next|k) 1->2:0.80 2->3:1.00 3->4:0.67 4->5:0.88 6->7:0.75 8->9:0.71 10->11:0.75 12->13:1.00
+ tf20      n=47 reach>=k  1:29 2:24 3:24 4:21 6:15 8:10 10:9 12:7 15:4 20:2
+           P(next|k) 1->2:0.83 2->3:1.00 3->4:0.88 4->5:0.90 6->7:0.87 8->9:1.00 10->11:0.89 12->13:0.71
+
+B. tf5 (B=8.33, tf=5m, n=47)
+  current rev1            net= 15,941 PF=1.71 ex2=    390 CE=11,173 PE= 4,768 WR= 40%
+  target  4 bricks        net=    773 PF=1.04 ex2= -4,680 CE= 4,417 PE=-3,643 WR= 49%
+  target  6 bricks        net=  4,673 PF=1.21 ex2= -2,184 CE= 6,646 PE=-1,973 WR= 43%
+  target  8 bricks        net=  5,960 PF=1.26 ex2= -2,802 CE= 6,123 PE=  -163 WR= 40%
+  target 10 bricks        net=  7,719 PF=1.34 ex2= -2,386 CE= 8,434 PE=  -715 WR= 40%
+  target 12 bricks        net= 10,247 PF=1.45 ex2= -1,147 CE=10,010 PE=   237 WR= 40%
+  rev1 -> rev2 after 3 br net= 12,158 PF=1.51 ex2= -2,347 CE=10,829 PE= 1,329 WR= 38%
+  rev1 -> rev2 after 5 br net= 14,267 PF=1.64 ex2=   -237 CE=12,457 PE= 1,810 WR= 43%
+  rev1 -> rev2 after 8 br net= 12,873 PF=1.57 ex2= -1,632 CE=10,709 PE= 2,164 WR= 40%
+  rev2 -> rev1 after 3 br net= 12,314 PF=1.43 ex2= -3,237 CE= 8,768 PE= 3,546 WR= 43%
+  rev2 -> rev1 after 5 br net=  9,763 PF=1.32 ex2= -5,788 CE= 6,698 PE= 3,065 WR= 38%
+  rev2 -> rev1 after 8 br net= 11,752 PF=1.39 ex2= -3,799 CE= 9,041 PE= 2,710 WR= 40%
+  breakeven after 2 br     net= 15,038 PF=1.77 ex2=   -514 CE=12,298 PE= 2,740 WR= 32%
+  breakeven after 3 br     net= 15,733 PF=1.78 ex2=    182 CE=12,399 PE= 3,334 WR= 36%
+  breakeven after 4 br     net= 16,149 PF=1.73 ex2=    598 CE=11,570 PE= 4,579 WR= 38%
+  BE+10% after 3 br       net= 11,248 PF=1.59 ex2= -2,402 CE= 6,344 PE= 4,904 WR= 51%
+  BE+10% after 5 br       net= 14,917 PF=1.69 ex2=   -634 CE=11,277 PE= 3,640 WR= 49%
+  no-progress exit 2 cndl net=  7,790 PF=1.43 ex2= -3,153 CE=10,741 PE=-2,951 WR= 38%
+  no-progress exit 3 cndl net= 16,724 PF=1.81 ex2=  1,173 CE=11,820 PE= 4,904 WR= 38%
+  no-progress exit 4 cndl net= 14,888 PF=1.66 ex2=   -663 CE=11,492 PE= 3,396 WR= 38%
+
+B. base15 (B=8.33, tf=15m, n=47)
+  current rev1            net= 10,588 PF=1.33 ex2=-11,300 CE= 3,796 PE= 6,793 WR= 30%
+  target  4 bricks        net= -8,391 PF=0.72 ex2=-14,423 CE=    62 PE=-8,453 WR= 40%
+  target  6 bricks        net= -8,167 PF=0.74 ex2=-14,313 CE=  -991 PE=-7,176 WR= 34%
+  target  8 bricks        net=  2,581 PF=1.08 ex2=-13,617 CE=   510 PE= 2,070 WR= 30%
+  target 10 bricks        net= 10,013 PF=1.31 ex2= -6,838 CE= 5,002 PE= 5,012 WR= 30%
+  target 12 bricks        net= 12,539 PF=1.39 ex2= -5,395 CE= 7,875 PE= 4,664 WR= 30%
+  rev1 -> rev2 after 3 br net= 10,449 PF=1.31 ex2=-13,124 CE= 2,853 PE= 7,595 WR= 30%
+  rev1 -> rev2 after 5 br net= 12,483 PF=1.39 ex2=-11,089 CE= 3,208 PE= 9,276 WR= 32%
+  rev1 -> rev2 after 8 br net= 12,032 PF=1.37 ex2=-11,541 CE= 2,756 PE= 9,276 WR= 30%
+  rev2 -> rev1 after 3 br net=  3,802 PF=1.10 ex2=-18,086 CE= 1,722 PE= 2,080 WR= 32%
+  rev2 -> rev1 after 5 br net=  1,852 PF=1.05 ex2=-20,036 CE= 1,453 PE=   400 WR= 30%
+  rev2 -> rev1 after 8 br net=  2,194 PF=1.05 ex2=-19,695 CE= 1,904 PE=   289 WR= 30%
+  breakeven after 2 br     net= 11,924 PF=1.41 ex2= -9,965 CE= 2,012 PE= 9,913 WR= 26%
+  breakeven after 3 br     net= 10,189 PF=1.33 ex2=-11,700 CE= 1,911 PE= 8,278 WR= 26%
+  breakeven after 4 br     net= 10,296 PF=1.33 ex2=-11,593 CE= 1,911 PE= 8,385 WR= 28%
+  BE+10% after 3 br       net= -7,319 PF=0.76 ex2=-15,158 CE=   422 PE=-7,741 WR= 43%
+  BE+10% after 5 br       net= -4,459 PF=0.86 ex2=-12,785 CE= 3,958 PE=-8,417 WR= 36%
+  no-progress exit 2 cndl net= 12,812 PF=1.44 ex2= -9,077 CE= 6,477 PE= 6,334 WR= 28%
+  no-progress exit 3 cndl net= 10,910 PF=1.35 ex2=-10,978 CE= 4,745 PE= 6,165 WR= 28%
+  no-progress exit 4 cndl net= 10,127 PF=1.32 ex2=-11,762 CE= 4,673 PE= 5,454 WR= 28%
+
+B. b625 (B=6.25, tf=15m, n=47)
+  current rev1            net= 14,674 PF=1.49 ex2= -7,524 CE= 2,535 PE=12,139 WR= 36%
+  target  4 bricks        net= -7,280 PF=0.76 ex2=-13,312 CE=  -247 PE=-7,033 WR= 40%
+  target  6 bricks        net= -4,842 PF=0.84 ex2=-10,874 CE=   712 PE=-5,554 WR= 38%
+  target  8 bricks        net=   -224 PF=0.99 ex2= -6,802 CE= 1,498 PE=-1,722 WR= 38%
+  target 10 bricks        net=  5,941 PF=1.20 ex2=-10,257 CE=  -878 PE= 6,819 WR= 36%
+  target 12 bricks        net= 13,153 PF=1.44 ex2= -3,698 CE= 1,394 PE=11,759 WR= 36%
+  rev1 -> rev2 after 3 br net= 12,249 PF=1.40 ex2= -9,948 CE= 2,642 PE= 9,607 WR= 34%
+  rev1 -> rev2 after 5 br net= 12,519 PF=1.41 ex2= -9,678 CE= 2,535 PE= 9,984 WR= 34%
+  rev1 -> rev2 after 8 br net= 13,078 PF=1.44 ex2= -9,120 CE= 2,535 PE=10,543 WR= 36%
+  rev2 -> rev1 after 3 br net= 15,161 PF=1.47 ex2= -7,036 CE= 2,785 PE=12,376 WR= 40%
+  rev2 -> rev1 after 5 br net= 14,440 PF=1.44 ex2= -7,758 CE= 2,441 PE=11,999 WR= 38%
+  rev2 -> rev1 after 8 br net= 14,332 PF=1.43 ex2= -7,865 CE= 2,892 PE=11,440 WR= 38%
+  breakeven after 2 br     net= 16,237 PF=1.63 ex2= -5,961 CE= 5,180 PE=11,057 WR= 30%
+  breakeven after 3 br     net= 16,357 PF=1.58 ex2= -5,840 CE= 3,494 PE=12,864 WR= 36%
+  breakeven after 4 br     net= 14,843 PF=1.50 ex2= -7,355 CE= 2,535 PE=12,308 WR= 36%
+  BE+10% after 3 br       net= -3,253 PF=0.88 ex2=-11,173 CE=   211 PE=-3,464 WR= 43%
+  BE+10% after 5 br       net=   -627 PF=0.98 ex2= -9,262 CE= 3,039 PE=-3,666 WR= 38%
+  no-progress exit 2 cndl net= 16,627 PF=1.59 ex2= -5,571 CE= 3,438 PE=13,189 WR= 36%
+  no-progress exit 3 cndl net= 15,463 PF=1.53 ex2= -6,734 CE= 2,350 PE=13,114 WR= 36%
+  no-progress exit 4 cndl net= 14,687 PF=1.49 ex2= -7,511 CE= 2,548 PE=12,139 WR= 36%
+
+B. fresh_ext (B=8.33, tf=15m, n=46)
+  current rev1            net=  9,347 PF=1.34 ex2=-15,171 CE=-5,866 PE=15,213 WR= 39%
+  target  4 bricks        net= -7,088 PF=0.74 ex2=-11,902 CE=-3,721 PE=-3,367 WR= 43%
+  target  6 bricks        net= -7,738 PF=0.72 ex2=-12,552 CE=-4,878 PE=-2,860 WR= 39%
+  target  8 bricks        net=  1,963 PF=1.07 ex2=-13,553 CE=-5,372 PE= 7,335 WR= 39%
+  target 10 bricks        net=  2,369 PF=1.09 ex2=-13,832 CE=-4,966 PE= 7,335 WR= 39%
+  target 12 bricks        net=  1,245 PF=1.04 ex2=-14,957 CE=-4,966 PE= 6,211 WR= 39%
+  rev1 -> rev2 after 3 br net=  5,720 PF=1.18 ex2=-19,864 CE=-10,758 PE=16,478 WR= 35%
+  rev1 -> rev2 after 5 br net=  6,659 PF=1.22 ex2=-18,925 CE=-10,842 PE=17,501 WR= 37%
+  rev1 -> rev2 after 8 br net=  9,347 PF=1.33 ex2=-16,237 CE=-8,154 PE=17,501 WR= 37%
+  rev2 -> rev1 after 3 br net=  6,523 PF=1.21 ex2=-17,995 CE=-7,443 PE=13,965 WR= 39%
+  rev2 -> rev1 after 5 br net=  5,584 PF=1.18 ex2=-18,934 CE=-7,358 PE=12,942 WR= 37%
+  rev2 -> rev1 after 8 br net=  2,896 PF=1.09 ex2=-21,622 CE=-10,046 PE=12,942 WR= 37%
+  breakeven after 2 br     net= 11,251 PF=1.45 ex2=-13,267 CE=-5,597 PE=16,848 WR= 30%
+  breakeven after 3 br     net= 11,742 PF=1.47 ex2=-12,776 CE=-5,473 PE=17,215 WR= 35%
+  breakeven after 4 br     net=  8,716 PF=1.31 ex2=-15,802 CE=-6,204 PE=14,921 WR= 37%
+  BE+10% after 3 br       net=    998 PF=1.04 ex2= -9,555 CE=-2,298 PE= 3,296 WR= 52%
+  BE+10% after 5 br       net= -5,278 PF=0.81 ex2=-15,831 CE=-3,734 PE=-1,544 WR= 41%
+  no-progress exit 2 cndl net= 14,254 PF=1.63 ex2=-10,264 CE=-1,199 PE=15,454 WR= 37%
+  no-progress exit 3 cndl net= 11,079 PF=1.43 ex2=-13,439 CE=-5,239 PE=16,318 WR= 39%
+  no-progress exit 4 cndl net= 11,492 PF=1.45 ex2=-13,026 CE=-4,973 PE=16,464 WR= 41%
+
+B. tf20 (B=8.33, tf=20m, n=47)
+  current rev1            net= -1,401 PF=0.96 ex2=-12,613 CE=   965 PE=-2,366 WR= 38%
+  target  4 bricks        net= -2,896 PF=0.90 ex2= -9,269 CE=-2,398 PE=  -497 WR= 47%
+  target  6 bricks        net= -5,405 PF=0.83 ex2=-12,753 CE=-1,362 PE=-4,043 WR= 40%
+  target  8 bricks        net= -4,374 PF=0.87 ex2=-13,104 CE=   991 PE=-5,366 WR= 38%
+  target 10 bricks        net=    751 PF=1.02 ex2=-10,276 CE= 2,769 PE=-2,018 WR= 38%
+  target 12 bricks        net=  5,766 PF=1.18 ex2= -8,834 CE= 3,416 PE= 2,350 WR= 38%
+  rev1 -> rev2 after 3 br net= 15,174 PF=1.44 ex2= -8,733 CE=  -842 PE=16,016 WR= 32%
+  rev1 -> rev2 after 5 br net= 15,584 PF=1.45 ex2= -8,323 CE=  -432 PE=16,016 WR= 32%
+  rev1 -> rev2 after 8 br net= -1,401 PF=0.96 ex2=-12,613 CE=   965 PE=-2,366 WR= 38%
+  rev2 -> rev1 after 3 br net= -1,498 PF=0.96 ex2=-12,711 CE= 2,555 PE=-4,053 WR= 40%
+  rev2 -> rev1 after 5 br net= -1,908 PF=0.94 ex2=-13,120 CE= 2,145 PE=-4,053 WR= 40%
+  rev2 -> rev1 after 8 br net= 16,793 PF=1.47 ex2= -7,114 CE=   748 PE=16,045 WR= 34%
+  breakeven after 2 br     net=  2,958 PF=1.11 ex2= -8,255 CE= 2,135 PE=   822 WR= 30%
+  breakeven after 3 br     net=  2,925 PF=1.11 ex2= -8,287 CE= 2,103 PE=   822 WR= 30%
+  breakeven after 4 br     net=  1,134 PF=1.04 ex2=-10,078 CE=   741 PE=   393 WR= 34%
+  BE+10% after 3 br       net= -2,116 PF=0.92 ex2=-11,797 CE=-1,245 PE=  -871 WR= 51%
+  BE+10% after 5 br       net=    296 PF=1.01 ex2=-10,917 CE=   -19 PE=   315 WR= 43%
+  no-progress exit 2 cndl net=  2,658 PF=1.09 ex2= -8,554 CE= 2,353 PE=   305 WR= 36%
+  no-progress exit 3 cndl net=   -829 PF=0.97 ex2=-12,041 CE=   965 PE=-1,794 WR= 38%
+  no-progress exit 4 cndl net= -1,401 PF=0.96 ex2=-12,613 CE=   965 PE=-2,366 WR= 38%

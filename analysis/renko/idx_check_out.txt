@@ -1,0 +1,53 @@
+days with data 787 2023-06-13..2026-08-20; signals 786
+VALIDATION vs engine per-day entries: 236 engine trades; same entry time 220, same direction 223, both 220 (93%); my extra signals on engine-covered days without an engine trade: 18
+ mismatches (first 12): [('2025-09-09', '11:25:00', True, '10:40:00', False), ('2025-10-31', '09:45:00', False, '10:05:00', False), ('2026-01-14', '09:45:00', False, '09:50:00', False), ('2026-03-11', '09:45:00', False, '09:40:00', False), ('2026-09-02', 'no signal'), ('2026-09-03', 'no signal'), ('2026-09-04', 'no signal'), ('2026-09-07', 'no signal'), ('2026-09-08', 'no signal'), ('2026-09-09', 'no signal'), ('2026-09-10', 'no signal'), ('2026-09-11', 'no signal')]
+ sign(index pts) == sign(option pnl) on 220 matched trades: 196 (89%)
+
+=== ERA 2023-06..2025-08 (Thu expiry, options n/a): 544 trades, all =544 mean=  -0.9pt t=-0.35 win=43% PF=0.95 sum=   -514
+ by weekday:
+   Mon                      n=106 mean=  -6.6pt t=-1.31 win=44% PF=0.69 sum=   -702
+   Tue                      n=111 mean=  -5.3pt t=-0.75 win=37% PF=0.79 sum=   -585
+   Wed                      n=108 mean=  -1.1pt t=-0.27 win=43% PF=0.93 sum=   -124
+   Thu                      n=110 mean=  -0.4pt t=-0.07 win=45% PF=0.98 sum=    -39
+   Fri                      n=107 mean=   8.7pt t= 1.12 win=47% PF=1.42 sum=    930
+ by calendar DTE:
+   DTE 0                    n=110 mean=  -0.4pt t=-0.07 win=45% PF=0.98 sum=    -39
+   DTE 1                    n=108 mean=  -1.1pt t=-0.27 win=43% PF=0.93 sum=   -124
+   DTE 2                    n=111 mean=  -5.3pt t=-0.75 win=37% PF=0.79 sum=   -585
+   DTE 3                    n=106 mean=  -6.6pt t=-1.31 win=44% PF=0.69 sum=   -702
+   DTE 5                    n=  2 mean=   2.9pt t= 0.44 win=50% PF=2.56 sum=      6
+   DTE 6                    n=107 mean=   8.7pt t= 1.12 win=47% PF=1.42 sum=    930
+ Wednesday vs other days: mean diff -0.3 pt, t=-0.05
+ DTE 6 vs other days:     mean diff 12.0 pt, t=1.45
+ CE/PE: CE                       n=280 mean=  -2.5pt t=-0.76 win=42% PF=0.87 sum=   -711 | PE                       n=264 mean=   0.7pt t= 0.18 win=44% PF=1.03 sum=    197
+
+=== ERA 2025-08-28..2026-08 (Tue expiry, options era): 242 trades, all =242 mean=   4.8pt t= 1.38 win=44% PF=1.30 sum=  1,157
+ by weekday:
+   Mon                      n= 50 mean=   1.4pt t= 0.19 win=40% PF=1.08 sum=     70
+   Tue                      n= 47 mean=   2.8pt t= 0.48 win=43% PF=1.22 sum=    131
+   Wed                      n= 49 mean=  22.5pt t= 1.96 win=57% PF=2.49 sum=  1,101
+   Thu                      n= 47 mean=  -6.2pt t=-0.99 win=36% PF=0.66 sum=   -291
+   Fri                      n= 48 mean=   3.2pt t= 0.54 win=44% PF=1.22 sum=    156
+ by calendar DTE:
+   DTE 0                    n= 48 mean=   2.4pt t= 0.42 win=42% PF=1.18 sum=    113
+   DTE 1                    n= 50 mean=   1.4pt t= 0.19 win=40% PF=1.08 sum=     70
+   DTE 2                    n=1
+   DTE 4                    n= 47 mean=   3.6pt t= 0.58 win=45% PF=1.24 sum=    168
+   DTE 5                    n= 46 mean=  -5.9pt t=-0.93 win=37% PF=0.68 sum=   -274
+   DTE 6                    n= 50 mean=  21.8pt t= 1.94 win=56% PF=2.45 sum=  1,089
+ Wednesday vs other days: mean diff 22.2 pt, t=1.87
+ DTE 6 vs other days:     mean diff 21.4 pt, t=1.83
+ CE/PE: CE                       n=120 mean=   3.4pt t= 0.89 win=43% PF=1.25 sum=    404 | PE                       n=122 mean=   6.2pt t= 1.06 win=44% PF=1.34 sum=    753
+
+=== EXTRA: is DTE 6 ('day after expiry') stable out-of-sample?
+ pooled 3y DTE6: DTE6                     n=157 mean=  12.9pt t= 2.01 win=50% PF=1.68 sum=  2,019 
+ pooled 3y other: other                    n=629 mean=  -2.2pt t=-1.03 win=42% PF=0.89 sum= -1,376
+ pooled DTE6 - other: 15.0 pt, t=2.23
+ 2023-06-13..2024-01-01: DTE6 n=29 mean=  -0.3 | other n=106 mean=  -5.6 | all n=135 mean= -4.5
+ 2024-01-01..2024-07-01: DTE6 n=23 mean=   9.3 | other n=98 mean=   4.8 | all n=121 mean=  5.6
+ 2024-07-01..2025-01-01: DTE6 n=24 mean=  25.6 | other n=101 mean=  -5.0 | all n=125 mean=  0.9
+ 2025-01-01..2025-08-28: DTE6 n=31 mean=   3.6 | other n=132 mean=  -6.2 | all n=163 mean= -4.3
+ 2025-08-28..2026-03-01: DTE6 n=25 mean=  16.0 | other n=101 mean=   1.6 | all n=126 mean=  4.5
+ 2026-03-01..2026-09-01: DTE6 n=25 mean=  27.6 | other n=91 mean=  -1.1 | all n=116 mean=  5.1
+ DTE6 by side pooled: CE                       n= 80 mean=  15.6pt t= 1.89 win=52% PF=1.99 sum=  1,245 | PE                       n= 77 mean=  10.1pt t= 1.01 win=47% PF=1.45 sum=    774
+ index open->close mean (pts) by calendar DTE (all days, no signal): {0: (158, -18.8, 156.0), 1: (158, 13.7, 131.0), 2: (113, -47.5, 177.0), 3: (106, 2.6, 136.0), 4: (47, -21.1, 159.0), 5: (48, -26.5, 133.0), 6: (157, 14.6, 157.0)}

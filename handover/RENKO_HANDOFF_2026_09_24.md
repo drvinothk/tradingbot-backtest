@@ -1,0 +1,185 @@
+# Modified Renko (`renko_trend`) -- hand-off, 2026-09-24 night
+
+Start a new session here. Everything is backtest-only, on branch `wip/renko-trend-strategy` (worktree `C:\Users\drvin\tb-renko-fix`, never merged to main, never live). Read `backtest_engine/README.md` rules before touching the box. User style: lean messages, IST timestamps.
+
+## 1. State right now (2026-09-24 ~23:25 IST)
+- **renko5** (12 configs, ~28 min each) launched 22:25 IST on the VM, unit `backtest-20260924-165518.service`, ends ~04:25 IST. Results: `~/backtest_engine/backend/data/historical/backtest_reports/s6_renko5/`; out `logs/renko5_chain_full.out`; heartbeat `logs/renko5_chain.heartbeat`.
+- **renko6** (8 configs) is CHAINED: watcher unit `backtest-20260924-174413.service` (`chain_renko6.sh`) waits for renko5 to end, then runs as many configs as fit before 08:45 IST (top of `sweep_configs/renko6_candle_exit5_batch.txt` first, max 8), writes `logs/renko6_chain_full.out`, results `s6_renko6/`. Both chains stop the reaper timer during the run and restart it at the end (README rule 13). If a chain died, check `systemctl is-active backtest-reaper.timer` and start it.
+- Nothing else is running. Live trading (`trading-bot.service`) is unaffected; check `systemctl is-active trading-bot`, `curl localhost:5000/health`.
+- First results in: renko5_c3_e5 and c3_e15 (see 5). Morning: pull all `*_current.csv`, run the reports (section 8).
+
+## 2. Tomorrow's plan (user request)
+Refine with a few configs from SWEEP 1 (renko1 + renko2a), which used a different trend/direction reference than the EMA: **Fib/POB** (`direction_filter_mode="fib_pob"`, default): POB = midpoint of the first 5-min candle of the day, fib levels from its range; CE only if price above POB, PE below, with a secondary 5-min EMA10 confirmation (`_ema_filter_ok`); exits were the static fib structure level (fib_382 CE / fib_618 PE) + premium stop/target/trail. Mix and match with the learnings below (dynamic brick exit, candle exit, no-progress exit, move-from-open cap, tf5/15-min bricks). Sweep-1 results (n~50; PE halves INVALID -- engine PE structure-break bug, fixed 09-23):
+
+| config | n | net | PF | CE / PE |
+|---|---|---|---|---|
+| htf30_k1_cb2_breakout (ATR-30min bricks x1.0) | 33 | +5,716 | 2.00 | +3,265 / +2,451 |
+| htf30_k1_cb2_pullback | 12 | +3,102 | 5.15 | tiny n |
+| htf30_k1_cb1_breakout | 39 | +3,323 | 1.27 | |
+| htf10_k1_cb2_breakout | 51 | +3,322 | 1.19 | |
+| htf20_k1_cb2_breakout | 44 | +2,846 | 1.23 | |
+| htf15 / htf30_k075 / cb3 | | -7.5k / -9.4k / -1.6k | 0.66 / 0.54 / 0.70 | |
+| renko2a_b833_r15 (fixed 8.33pt, 15-min bricks, fib_pob) | 51 | +7,594 | 1.53 | +8,094 / -500 |
+| renko2a_b125_r30 | 50 | +3,366 | 1.21 | |
+| renko2a_b25_* / b125_r15 / b833_r30 | | ~0 to -10.7k | | |
+Sweep-1 configs: `sweep_configs/renko1_trend_timeframe.txt`, `renko2a_entry_pilot.txt`; CSVs in `analysis/renko/renko1`, `renko2a`. Their exits were the old static structure exit, so re-run with the dynamic/candle exits (entries are exit-independent -> exit variants can be replayed offline first).
+
+## 3. Strategy (`backend/app/modules/strategy_engine/strategies/renko_trend.py`, `renko.py`)
+Fixed-box Renko (up brick when close >= top+B, down when <= bottom-B, reversal needs 2B, flat prints nothing), fed from `brick_source_timeframe_minutes` candle closes (1/5/10/15/20/30). Brick series is seeded at the first boundary candle evaluated that day. Trend = trailing same-colour run >= `confirm_bricks` (2). Entry window `entry_start_time`..`entry_cutoff_time` (09:30-14:30). One trade per run/day in the harness.
+Params added over the work (all in `RENKO_TREND_PARAM_KEYS`):
+- `brick_size_mode="fixed"`, `fixed_brick_size_points`, `brick_source_timeframe_minutes`.
+- `direction_filter_mode`: `fib_pob` | `ema_crossover` (EMA of `ema_period` on `ema_timeframe_minutes`, multi-day) | `none` (no reference; control).
+- `ema_candle_position`: `close` | `extreme` (whole candle beyond EMA; breakout mode only). `entry_run_rule`: `any`|`fresh`|`fresh_or_cross`, `ema_cross_lookback_candles`.
+- `entry_mode`: `breakout` | `pullback` | `candle_confirm` (5-min brick trend + EMA guide + `entry_confirm_candles` consecutive rising/falling 1-MIN closes, fires on any 1-min bar).
+- Exits (backtest-only, engine reads `dynamic_reversal_exit_spec`): `exit_on_reversal`, `reversal_exit_mode="dynamic"`, `reversal_confirm_bricks` (1 = one completed reverse brick; 30 = effectively off), `flat_exit_candles`, `no_progress_exit_candles` (exit if no net favourable brick after N candles), `candle_exit_confirm` (exit after N consecutive adverse 1-min closes; reason `candle_reversal`). Premium trail/target disabled with `target_pct=9.0`, `trail_activation_fraction=20.0` (DB numeric(6,4): must be <100), `stop_pct=0.35` kept.
+- Gates: `allowed_directions` (both/ce/pe), `max_move_from_open_points` (anti-chase: move from the 09:15 open in trade direction), `min_flips_today`.
+Commits: 04ead50 (multi-day EMA), d68badc (dynamic exit spec), 9451cd3 (entry_run_rule/extreme/flat), 36d63b4 (no_progress, allowed_directions, move cap, flips, none), 7124c53 (candle_confirm, candle exit). Tests: `tests/unit/test_renko.py`, `test_renko_dynamic_exit_spec.py`, `tests/integration/test_renko_trend_strategy.py` (82 pass, ruff/mypy clean, mutation-checked).
+
+## 4. Backtest engine / harness facts (gotchas)
+- Engine = `backtest_engine/backend/scripts/run_backtest.py` (bundle, gitignored, LF). Local == box (md5 f68ac3d7962726e83c07fc333e1938a2 at 09-24 night; renko_trend.py 9c67026beb5ccbfee3c43743f7a953e9; renko.py 7970ddf436f3a78abfeff58a694f05ac). Backups on box `*.bak-20260924-*`. Tracked repo copy of run_backtest.py is NOT edited.
+- Engine fixes made: PE structure-break bug (`structure_favorable`, 09-23; production fixed 09-01) -- sweep1/2a PE results invalid; dynamic Renko exit (`_renko_boundary_events`); flat exit; no-progress exit; candle exit. Offline replay (`analysis/renko/replay.py`, `bricks.py`) reproduces engine exits exactly (47/47; the 4 trades after 2026-08-20 lack local data; a 35% premium stop trade can differ).
+- Harness limits: max ONE trade per run/day (`max_signals_per_direction>1` no effect); a gate/direction filter blocks a signal and the harness takes a LATER one, so "filtered" results differ from offline "kept-trades" subsets (tf5 ceonly +4.95k vs CE half of base +11.2k). `--from/--to` do NOT shorten runs; use `--pairs 'DAY:EXPIRY,...'` for a short smoke (`smoke_renko5.sh`). Warmup = last 1000 underlying bars.
+- `run_cycle` only calls `evaluate()` 09:31-15:09, so the brick series is seeded at the first boundary >= 09:31 (5-min: 09:34, 15-min: 09:44) => no entry before 09:40 in ANY run. PROPOSAL (user): evaluate/warm up from 09:16 (skip the 09:15 candle), trade only after 09:31 -- see memory `project_evaluate_from_0916_trade_after_0931_proposal_2026_09_24`. Not implemented; touches the live runner.
+- Launch rules: `sudo /opt/backtest/run_bt.sh /bin/bash -c "cd /home/ubuntu/backtest_engine && RUN_TAG=<tag> SHARD_COUNT=4 backend/scripts/run_sweep_canonical.sh <abs config>"`; stop `backtest-reaper.timer` first (restart after); never two sweeps at once; sweeps preferably 15:30-09:00 IST (market-hours quota 100%, 2 shards); a chain script must be launched via run_bt.sh and use plain child calls (rule 16); config QC = `resolve_and_qc.py` (real `_build_strategy`; unrecognised keys are silently dropped, so also run `analysis/renko/qc_configs.py`). ~28-30 min per config at 4 shards.
+- Evaluation discipline: n~50/config is directional only; always report net, PF, ex-top-2, CE/PE, halves; single winners dominate (2026-07-08 PE +17.7k).
+
+## 5. Results and learnings (engine unless noted; `ex2` = net without top-2 trades)
+- Exit: dynamic 1-reverse-brick exit >> static structure level; flat-candle exit, hold-to-EOD, brick target <=8, wider/tighter reversal, breakeven: no help. Brick continuation ~85-90% per brick at every depth (no natural target). ~2/3 of trades never print a favourable brick after entry (median 0); winners run 7-14 bricks / 80-150 min.
+- No-progress exit: small plus (+2-5k on 15/20-min configs; tf5 N=3 +0.8k; tf5_np3 engine +16.2k PF1.75 ex2 +0.6k).
+- Candle exit: after N consecutive adverse 1-min closes. Offline: N=5 is the peak (tf5 brick entries +29.3k PF2.03 ex2 +4.6k; c3_e5 entries +24.9k PF1.87; c3_e15 +23.0k PF1.78); N=2-4 and 10-12 poor; N=6-8 middle. Picked post hoc -> confirm via engine (renko6).
+- Base: tf5 (8.33pt bricks on 5-min, EMA30@5-min) +15,369 PF1.66 ex2 -182 (CE +11.2k PF2.37 / PE +4.2k); 6.25pt/15-min +11.8k; b625_mv50 (move cap 50pt) +21,349 PF1.58 (CE +5.2k / PE +16.1k, ex2 -12.9k).
+- EMA guidance is worth ~+15k on tf5 (noema -215). EMA30@15-min with 5-min bricks +13.9k (~equal). fresh/freshcross/pullback/EMA20/tf20 hurt; whole-candle-beyond-EMA ~neutral; PE-only fresh_ext works on 15-min (+16.7k PE) but not on tf5 (-12.8k).
+- Move-from-open cap: helps 15-min/6.25pt (+11.8k -> +21.3k) but hurts tf5 (mv40 +3.4k, mv60 +10.4k). min_flips_today and entry_start 10:30 hurt. Direction-only configs (ceonly) differ from the same side inside a two-sided run.
+- Two-timeframe candle entry (renko5_c3_e5/c3_e15): entries fine (41% WR); the 3-candle exit loses (-1.4k) but replayed with 5-min brick exit +13.9k/+12.7k, with candle exit 5 +24.9k/+23.0k.
+- Live/paper: none of this is promoted; dynamic/candle exits are backtest-only (live PositionManager doesn't support them).
+
+## 6. Batches run (configs in `sweep_configs/`, results in `analysis/renko/<dir>` and on the box `s6_<tag>/`)
+renko1 (9), renko2a (6), renko2c smoke (2), renko3b (dyn exit smoke), renko3c (12, entry variations), renko4s (5) + renko4a (7) = entry-quality batch, renko5 (12, running), renko6 (8, chained). Config files: `renko3c_overnight_batch.txt`, `renko4a_entry_batch.full12.txt` (box) / `renko4s_smoke.txt`, `renko5_overnight_batch.txt`, `renko6_candle_exit5_batch.txt`.
+renko5 configs: c3_e5, c3_e15, b625_mv40, b625_mv60, b625_mv50ext, b625_mv50fresh, c5_e5, b625_mv50ema20, b500_mv50, b833_mv50, c3_e5_mv60, b625_tf10_mv50.
+renko6 configs: c5_x5_e5, tf5_x5, c5_x5_e15, c7_x5_e5, c5_x5_e5_mv60, tf5_x5_ema15tf, c4_x5_e5, c5_x5_e5_ema20 (x5 = candle exit 5).
+
+## 7. Pending ideas
+- Merged ONE config with per-direction logic (CE = tf5-style, PE = fresh+extreme on 15-min) sharing the one-trade/day slot -- needs per-direction params and possibly two brick engines.
+- Evaluate from 09:16 / trade after 09:31 (runner change).
+- Mix sweep-1 Fib/POB trend with the current exits (tomorrow).
+- Deferred "other entry/exit logic" table (PE-bug re-validation of live finalists, harness one-trade/day, leg-mode exits, static structure levels, tight premium trail).
+- Candidate ideas from the feature study (hypotheses, n~47): don't chase (move from open), enter after a turn (flips; but the gate hurt in engine), 10:30-12:00 best on 15-min.
+
+## 8. How to analyse
+`cd backtest_engine/analysis/renko`; pull CSVs: `scp ubuntu@144.24.137.112:backtest_engine/backend/data/historical/backtest_reports/s6_<tag>/*_current.csv <dir>/` (key `D:\Documents\Trading Bot_Oracle\ssh-key-2026-08-03_Pvt Key.key`; box clock is UTC).
+- `python report4.py <dir> <config file> [pattern]` -- engine result + CE/PE + replay of rev1 / no-progress 2,3 / rev2 (uses venv-less python; `replay.py` reads `backtest_engine/backend/data/historical/underlyings` and `options_1min_past`).
+- `bricks.py` (`sim(t,B,tf,rev_early,rev_late,noprog,cexit,...)`), `features.py` (entry features), `insights.py` (CE/PE + hold-in-bricks), `noema.py` (offline no-EMA estimate), `engine_check*.py` (engine-vs-replay parity; needs the backend venv python `C:\Users\drvin\Trading Bot\backend\.venv\Scripts\python.exe`), `qc_configs.py <config file>` (real builder).
+- For candle-exit configs also replay `cexit=2..8` and the 5-min brick exit on the same entries; check entries of variants against their base (e.g. a `*_x5` run must have the same entries as its `*_x3`/base).
+
+## RESULTS renko5 + renko6 (pulled 2026-09-25 ~11:20 IST; both batches complete, 20/20 OK, reaper restarted)
+CSVs: analysis/renko/renko5/, renko6/. Summary script: analysis/renko/q5.py. Naming: cN = N-candle 1-min entry confirm; xN = candle exit N (renko5 c-configs used exit 3); eN/ema = EMA tf; mvN = max move from open cap; b625/b500/b833 = brick size on 15-min source.
+| config | n | net | PF | ex2 | CE | PE | H1/H2 |
+| tf5_x5_ema15tf | 50 | +29,367 | 1.96 | +4,615 | +9.3k | +20.1k | +11.3k/+18.0k |
+| b625_mv50ext | 50 | +29,929 | 1.96 | -3,403 | +14.7k | +15.2k | +11.2k/+18.8k |
+| tf5_x5 | 51 | +27,553 | 1.91 | +2,801 | +11.2k | +16.4k | +9.6k/+18.0k |
+| b833_mv50 | 50 | +24,775 | 1.65 | -9,503 | +9.0k | +15.8k | +7.2k/+17.6k |
+| b625_mv40 | 51 | +24,758 | 1.68 | -9,519 | +9.2k | +15.6k | +3.2k/+21.5k |
+| c4_x5_e5 | 50 | +23,679 | 1.71 | -1,073 | +9.0k | +14.7k | +2.1k/+21.6k |
+| c5_x5_e5 | 50 | +23,498 | 1.75 | -1,254 | +6.0k | +17.5k | +4.8k/+18.7k |
+| b625_mv60 | 51 | +23,504 | 1.68 | -10,774 | +10.1k | +13.4k | +0.7k/+22.8k |
+| b625_mv50ema20 | 51 | +18,879 | 1.49 | -15,399 | +3.4k | +15.5k | -3.5k/+22.3k |
+| c5_x5_e15 | 50 | +17,582 | 1.54 | -7,170 | +1.1k | +16.4k | +1.6k/+16.0k |
+| b625_mv50fresh | 46 | +12,301 | 1.58 | +2,980 | +8.3k | +4.0k | +21.1k/-8.8k |
+| c5_x5_e5_mv60 | 50 | +11,940 | 1.38 | -12,812 | -7.7k | +19.7k | +3.3k/+8.7k |
+| b625_tf10_mv50 | 51 | +5,788 | 1.16 | -9,396 | -0.3k | +6.1k | +5.5k/+0.3k |
+| c5_e5 (exit3) | 50 | +3,692 | 1.26 | -4,482 | +9.7k | -6.0k | -0.1k/+3.8k |
+| c3_e5_mv60 (exit3) | 50 | +2,642 | 1.20 | -6,220 | +9.7k | -7.0k | -4.4k/+7.1k |
+| c5_x5_e5_ema20 | 51 | +1,316 | 1.04 | -11,846 | +7.3k | -6.0k | -0.3k/+1.6k |
+| c3_e15 / c3_e5 (exit3) | 51 | -1.4k | 0.90 | -8.9k | | | |
+| b500_mv50 | 51 | -15,493 | 0.57 | -24,134 | -14.9k | -0.6k | |
+| c7_x5_e5 | 50 | -11,024 | 0.66 | -21,070 | | | |
+Findings: candle exit 5 confirmed in the engine (c5 entry: exit3 +3.7k -> exit5 +23.5k; tf5 brick entry +27.6k vs prior best tf5 +16.2k). Best = 5-min bricks + candle exit 5 (tf5_x5[_ema15tf]) - only configs positive after dropping top 2 with both halves positive. 1-min candle entry does not beat brick entry (n=1 trade/day, similar counts). Entry N: 4-5 ok, 3 and 7 bad. EMA20 hurts, EMA30@5m/15m fine. Brick 6.25 ok, 5.0 bad, 8.33 ok. Move cap: mv60 hurts candle configs. Fresh-only: fewer trades, H2 negative. tf10 weak.
+
+## EXIT-VARIANT REPLAY on renko5/6 entries (2026-09-25; analysis/renko/exitvar.py -> exitvar_out.txt)
+Replay covers 46-47 of 50 trades; control (engine-equivalent exit) within ~2k of engine net. Candle-exit N (rev off), on tf5_x5_ema15tf entries: N2 -1.4k, N3 -1.2k, N4 +3.5k, N5 +31.1k (ex2 +6.3k), N6 +19.4k, N7 +21.5k, N8 +27.4k, N10 +10.6k. tf5_x5: N5 +29.3k, N6 17.2k, N7 16.8k, N8 22.8k. c5_x5_e5: N5 25.9k, N8 36.7k (ex2 +5.3k, sole outlier). 15-min-source entries (b625/b833): native brick rev1 (32.8k/27.9k/27.6k) >= candle exit; cexit N>=6-7 comparable, N5 worse (13-14k).
+5-min brick reversal exit alone on tf5 entries: +15.9k (vs 29.3k cexit5); cexit5 + brick rev1 = 12k (brick rev cuts winners). Target 10 bricks: -19k (hurts). No-progress 3 / BE after 3 bricks: neutral (+-1-2k); noprog 2 hurts H1.
+Caveat: N=5 peak chosen post hoc; engine confirming N=5 is the same data (validates replay fidelity, not independent evidence). Robust part: adverse-run <=4 candles is too tight; >=5 positive in both halves for tf5 entries.
+
+## QC of renko5/6 results + replay (2026-09-25; analysis/renko/qc2.py)
+All P&L figures = total Rs over ~50 trades, 1 lot (65 qty) each, GROSS (pnl == (exit-entry)*65 exactly; no brokerage/STT/slippage). 50 distinct days (2025-08-28..2026-09-16), max 1 trade/day. Entry = close of the bar after the signal bar; exit = close of trigger bar (no look-ahead; slight conservatism vs open).
+Checks OK: pnl arithmetic 0 mismatches; replay exit time/price identical to engine on 47/47, 47/47, 46/47 (1 = 35% stop vs candle exit 1 min apart), 46/46; no structure_break exits in any of 20 configs (PE engine bug of 09-23 not triggered).
+Caveats: replay excludes 3-4 no-local-data trades (all losers, -1.7k..-2.8k) so replay nets are ~Rs2k above engine (variant ranking unaffected). Concentration: top-5 trades = 138-193% of net; ex-top-5 = -11k (tf5) to -23k (15-min configs); median trade negative (-114 tf5 .. -647). Cost sensitivity (tf5_x5_ema15tf): 21.9k @150/trade, 14.4k @300/trade. Entry-set overlap: tf5_x5 vs tf5_x5_ema15tf 43/50 (near-identical evidence); 5-min-source vs 15-min-source sets 1-6/50 (two ~independent sets, each +23..30k); b833/b625_mv40/mv50ext share 19-35/50. 20 configs -> 19 distinct entry sets; best-of-20 selection bias + N=5 chosen post hoc.
+
+## RENKO-GATED / COMBINED EXIT replay (2026-09-25; analysis/renko/gate.py -> gate_out.txt) - offline replay was sufficient, engine patch needed only to confirm
+Ref cexit5 (my sim reproduces 31,076 on tf5_x5_ema15tf). (A) OR: exit on adverse 5-min brick OR candle exit = 10-12k (worse than 29-31k; already in exitvar). (B) Tighten candle N once a 5-min brick is adverse (base5->armed 2/3/4): 7-13k (much worse). (C) AND/arm: candle exit N=5 evaluated only after an adverse 5-min brick ('any'): tf5_x5_ema15tf 34.2k PF2.10 ex2 +9.4k (vs 31.1k/+6.3k), tf5_x5 32.3k ex2 +7.6k, c4 27.4k, c5 25.7k (=ref), b625_mv50ext 24.5k and b833 26.9k (vs cexit5 13-14k; ~= native brick exit 28-33k). Arm-while-current-adverse: slightly lower than 'any'. base8/armed5: ~= ref. N<=4 armed: bad everywhere. Net: arming adds ~+2-3k on 5-min entries (a few trades, within noise); does not fix N<=4. Not adopted; engine-confirm only if wanted.
+
+## RED-BAR zone/trend vs top configs (2026-09-25; analysis/renko/redbar_top.py). Definition = shadow v5 (5-min candles from 09:15, C1 any colour, first red after C1, SD 10% range; zone = spot between the two mids; trend CE needs 1-min bar low > red-mid+SD, PE needs high < red-mid-SD); judged at entry time with bars finished before it; NO_RED_YET = pass; 3-4 trades/config without local underlying data excluded (all losers).
+Base (known days) vs zone-kept vs trend-kept net: b625_mv50ext 32.8k / 32.2k / 10.6k; tf5_x5_ema15tf 31.1k / 26.8k / 19.7k; tf5_x5 29.3k / 26.4k / 22.2k; b833_mv50 27.9k / 30.0k / 14.1k; b625_mv40 27.6k / 30.5k / 14.5k. Zone blocks 6-12 trades: helps 15-min configs (+2-3k), hurts 5-min (-3..-4k; blocked set +2.9..+4.3k PF 2-4). Trend blocks 45-60% of trades and 40-65% of net; PF up slightly but ex2 not better. Top-2 winners: 2026-07-08 11:45 PE +17.7k (BELOW) survives both rules in all configs; 2nd winner = 2026-05-06 CE +15.6-16.6k (state BELOW -> blocked by trend rule) for 15-min configs, 2026-01-21 09:40 PE +7.1k (INSIDE -> blocked by trend) for 5-min configs. Zone never blocks a top-2. Neither rule raises top-2 outcome; trend removes the 2nd winner. Caveat: harness would substitute a later same-day signal for blocked trades (not modelled). Forward shadow-v5 data starts 2026-09-25.
+
+## PROPOSED shadow `renko` block (2026-09-25, not built): variant A = NIFTY 5-min source, 8.33pt fixed bricks, confirm 2, EMA30 on 5-min + 15-min; variant B = 15-min source, 6.25pt (opt. 8.33). Seed at first source-timeframe boundary >= 09:31 (backtest-equivalent; also log 09:16-seeded as variant). Log at signal time: trend (up/down/none), same-colour run length, bricks since last flip, net bricks from seed, top/bottom, agrees(side), ema30_5m/15m agrees, dist from day open, adverse 1-min close run. Exits reconstructed offline from stored 1-min bars (candle-exit-5 = 5 consecutive adverse 1-min closes). 5.0pt bricks and EMA20 were bad; sizes 6.25-8.33 fine; BANKNIFTY scale untested (~0.035% of spot).
+
+## RENKO7 evening batch (planned 2026-09-25 ~15:10 IST; sweep_configs/renko7_entry_batch.txt, 12 configs, launched by the assistant after a smoke, NOT by a chain watcher)
+Base = renko6_tf5_x5_ema15tf. f1 fib_pob(EMA10@5 secondary) on tf5 skeleton; f2 fib_pob + EMA30@15; a1/a2 = sweep-1 ATR bricks approximated by fixed 50pt fed by 1-min closes (a1 EMA30@15, a2 fib_pob) with candle exit 5; s1_top_orig = original renko_htf30_k1_cb2_breakout (ATR bricks, fib_pob, static exits incl. trail) re-run on the fixed engine; e1 extreme candle position; e2 cb3; e3 6.25pt; e4 10pt; e5 cb1; e6 EMA30@30-min; e7 cb3+extreme. Correction: renko2a (incl. renko2a_b833_r15) is EMA30@15 with OLD exits, NOT Fib/POB; only renko1 is Fib/POB. Median 30-min ATR14 ~51 pts (p10 39, p90 75).
+Scripts on box: smoke_renko7.sh (all 12 x 5 --pairs windows, 4 parallel, summary /tmp/smoke7_summary.txt), launch_renko7.sh (reaper stop, run_sweep_canonical.sh, reaper start; launch via `sudo /opt/backtest/run_bt.sh bash launch_renko7.sh`; heartbeat logs/renko7_chain.heartbeat, output logs/renko7_chain_full.out). Results dir data/historical/backtest_reports/s6_renko7. Expected end ~21:40 IST.
+
+## 2026-09-25 late: renko7 done (12 OK, reaper restarted) + top-3 offline exit variants
+- All 72 configs (n>=20) by net: b625_mv50ext 29.9k (ex2 -3.4k), BASE tf5_x5_ema15tf 29.4k (ex2 +4.6k), tf5_x5 27.6k, b833_mv50 24.8k, b625_mv40 24.8k, renko7_e4 24.5k (6th). By ex-top-2: BASE, s1_top_orig, b625_mv50fresh, tf5_x5.
+- Top 3 chosen for further work (distinct entry sets): BASE (5-min, EMA30@15), MV50 b625_mv50ext (15-min bricks; 8% entry overlap with BASE), E4 tf5_b1000 (74% overlap with BASE). Alt for E4: renko6_tf5_x5 (84% overlap, ex2 +2.8k).
+- Offline exit variants: analysis/renko/exitvar3.py -> exitvar3_out.txt (adds premium-trail overlay to bricks.sim). Findings: candle exit N is a sharp peak at 5 for the 5-min-brick configs (N=4 ~0, N=6 -35%); trail overlays hurt every candle-exit variant; BASE cexit5+BE3 ~ equal net, PF 2.25, DD 13.6k; MV50 best = cexit7+brick rev1 (34.3k, ex2 +0.9k).
+
+## 2026-09-25 night: HARNESS FINDING + night chain launched 22:41 IST
+- FINDING: the standard `--all-expiries` harness gives ONE trade per expiry week (50 trades = 50 expiries) and 47/50 of them fall on WEDNESDAY (first day of the expiry week; the position never closes in-DB so later days are risk-blocked). All renko results so far (n~50) are essentially Wednesday-only. Per-day harness = `--pairs` (isolated fresh DB per day): 236 day:expiry pairs (2025-08-28..2026-09-18, near-expiry-days-6 rule, days with underlying data). Parity smoke: per-day trade == standard trade on all 3 shared days (base).
+- New files (box + local): run_sweep_perday.sh (needs PAIRS_FILE), sweep_configs/perday_pairs.txt, perday_top5.txt (pd1_base, pd2_mv50, pd3_e4, pd4_tf5x5, pd5_b833mv50), renko9_fib_sides_batch.txt (priority order; h3 fixed: ema_candle_position needs ema_crossover), renko8_exit_batch.txt (NOT run; engine exit variants, needs breakeven_after_bricks patch already on box, backups ~/deploy-bak/renko8), launch_night2.sh (A: per-day top5, no new config after 07:45 IST; B: renko9 in priority order, no new config after 08:20 IST; heartbeat logs/night2_chain.heartbeat; results s6_perday1 / s6_renko9).
+- Engine patch (box+local, backtest-only): `breakeven_after_bricks` (renko_trend.py + run_backtest.py, exit reason "breakeven"); smoke: fires on 5-min configs.
+
+## 2026-09-25 23:45: STANDING RULE -- per-day harness is the DEFAULT (weekly only if the user asks)
+- Use `sudo /opt/backtest/run_bt.sh /bin/bash -c "cd /home/ubuntu/backtest_engine && RUN_TAG=<tag> SHARD_COUNT=4 ./run_sweep_default.sh sweep_configs/<file>.txt"` (per-day). `HARNESS=weekly` = old harness, explicit request only. Details: backtest_engine/README.md "Run a sweep" + restrictive rule 17; ledger entry 2026-09-25 ~23:30.
+- ALL earlier numbers in this file (renko1..renko7, "top-5", exit-variant replays on 50 trades) are WEEKLY-harness = Wednesday-only. First per-day result: base tf5_x5_ema15tf = -14,112 / PF 0.90 (236 trades) vs +29,367 weekly; Wed +29.2k, every other weekday negative (Tue expiry-day -19.2k). Treat prior "best config" claims as Wednesday-only until re-ranked per-day.
+- Offline replay tools (replay.py/bricks.py/exitvar*.py) work on any trade CSV: point them at analysis/renko/perday1/*.csv to study exits on the per-day set.
+- Night chain re-plan (23:55 IST, per the standing rule): phase B of launch_night2.sh (renko9 in the WEEKLY harness) was neutralised by emptying sweep_configs/renko9_fib_sides_batch.txt; the same 14 configs now live in sweep_configs/renko9d_fib_sides_batch.txt and run PER-DAY via launch_sat.sh (started by watch_then_sat.sh when launch_night2.sh exits, ~02:40 IST; ~47 min/config, ~11h, results s6_renko9d). launch_sat.sh also finishes any per-day top-5 config skipped at the 07:45 cutoff. Per-day top-5 results: s6_perday1 (pd1_base done: -14,112 / 236 trades). renko8_exit_batch.txt (weekly engine exit variants) is superseded: replay exits on the per-day CSVs instead.
+
+## 2026-09-26 00:25 IST: PER-DAY RUNS PAUSED after pd2_mv50 (user: wait for the other session's `--multi-trade` engine)
+- Reason: multi-trade (several trades per day, plan docs/ops/plan_backtest_multi_trade_2026_09_25.md) is closer to live and gives more samples; don't spend more compute on 1-trade/day runs.
+- Mechanism: flag file `~/backtest_engine/STOP_PERDAY` on the box makes `run_sweep_perday.sh` refuse to start any NEW config (an already-running config, pd2_mv50, finishes normally, then launch_night2.sh's remaining pd3-pd5 iterations exit immediately, phase B is a no-op, reaper timer restarts). watch_then_sat.sh was killed, so launch_sat.sh (renko9d per-day) does NOT auto-start.
+- Results kept: s6_perday1/pd1_base_current.csv (-14,112, 236 trades) and pd2_mv50 (when it finishes). Not run: pd3_e4, pd4_tf5x5, pd5_b833mv50, renko9d (14 configs, sweep_configs/renko9d_fib_sides_batch.txt), renko8 exits.
+- To resume: `rm ~/backtest_engine/STOP_PERDAY`, then launch `launch_sat.sh` (per-day top-5 leftovers + renko9d) via `sudo /opt/backtest/run_bt.sh /bin/bash -c "cd /home/ubuntu/backtest_engine && ./launch_sat.sh"`; with multi-trade, re-plan first (results are NOT comparable with 1-trade/day results; label the harness).
+
+## 2026-09-26 01:10 IST: offline analysis on the per-day (one trade/day) sets -- analysis/renko/perday_offline.py, perday_offline_out.txt
+- QC: bricks.sim had NO premium stop (weekly trades never hit it); per-day trades do (23/224 base, 12/147 mv50, mostly DTE 0), so replay exits were wrong until `sim_stop` (bar low <= rt(entry*0.65) -> exit at stop) was added; parity now 224/224 and 147/147 identical to the engine.
+- DTE table (base / mv50 net): Tue0 -19.2k/-11.6k, Mon1 -4.9k/-3.6k, Fri4 -7.7k/-13.3k, Thu5 -11.5k/-4.2k, Wed6 +29.2k/+35.8k (PF 2.00/2.98; both sides positive, both halves positive; ex-top-2 +4.4k/+2.4k). Every non-Wed DTE is negative for both configs and (mostly) both sides.
+- DTE gates: DTE>=5 (Wed+Thu) base +17.7k PF1.30 (n=93), mv50 +31.6k PF1.79 (n=63); DTE6 only +29.2k/+35.8k; chosen-on-H1 -> tested-on-H2 all positive for these gates (base DTE6 H2 +18.0k, mv50 +21.2k) -- in-sample gate choice, small n.
+- Exits do NOT rescue non-Wed days: best non-Wed net over 11 variants = base -33.6k (cexit5+BE3), mv50 -21.2k (rev1+BE3). cexit N is a peak at 5 for the base (cexit6 -49.8k all-days). => the edge is DTE-specific, not exit-specific.
+- Day-wise config switching: base and mv50 trade the same day 154/155 days (131 same direction) -- near-identical signal; no day where one is good and the other bad in a stable way (Thu mv50 H1 +5.3k -> H2 -9.4k). A day-wise strategy needs structurally different strategies, not these two.
+- Next offline idea (free): test the Wednesday effect on 3.2y of UNDERLYING data (underlyings back to 2023-06, options only ~1y): underlying move after the Renko entry signal by weekday.
+
+## 2026-09-26 02:00 IST: 3-year UNDERLYING check of the Wednesday effect -- analysis/renko/idx_check.py, idx_check_out.txt
+- Rebuilt the base entry signal on 787 days of NIFTY 1-min index (2023-06-13..2026-08-20; options exist only ~1y). Validation vs the engine's per-day entries: 220/224 identical (day, entry time, direction) on days with local data (12 more engine trades are after the local data ends 08-20); index-point sign == option-pnl sign on 89% of matched trades.
+- Index points (gross, 5-adverse-close exit): pre-options era 2023-06..2025-08 (544 trades): mean -0.9 pt, PF 0.95 -> the signal has ~no index edge overall; WEEKDAY: Wed -1.1 pt (no effect), Fri +8.7 pt (t 1.1). Options era (242): Wed +22.5 pt (t 1.96, PF 2.49) = essentially all of the era's gain.
+- So NOT a calendar-Wednesday effect: expiry moved Thu->Tue on 2025-09-01, and the best day is always DTE 6 = the trading day AFTER the weekly expiry (Fri before, Wed after). Pooled 3y DTE6: n=157, mean +12.9 pt, PF 1.68, t 2.01; other days n=629 mean -2.2 pt PF 0.89; diff +15.0 pt, t 2.23; DTE6 mean > other-days mean in 6/6 half-year sub-periods (-0.3, 9.3, 25.6, 3.6, 16.0, 27.6). CE +15.6 / PE +10.1 on DTE6. Baseline (no signal) index open->close on DTE6 = +14.6 pt (drift is part of it, but PE also profits).
+- Caveats: t~2 is modest, DTE6 was picked after seeing the options-era results (pre-2025-09 part is genuinely out-of-sample: +8.7 pt/t 1.1, diff vs other +12.0 pt/t 1.45); index points ignore premium/gamma/spread; expiry holiday-shifts ignored (calendar DTE).
+- Implication: treat it as a "day-after-weekly-expiry" candidate, not "Wednesday"; other days show no edge for this signal. Re-test in multi-trade (more trades on DTE 6 days) and check the mechanism (post-expiry positioning) before trusting.
+
+## 2026-09-26 01:10 IST: renko10 MULTI-TRADE per-day batch LAUNCHED (results s6_mt1; heartbeat logs/mt1_chain.heartbeat; launcher launch_mt1.sh -> run_sweep_default.sh with MULTI_TRADE=1)
+- Engine: other session's `--multi-trade` (README rule 18, md5 8de4eabc… on box). Configs (sweep_configs/renko10_mt_batch.txt), all max_signals_per_direction=3, production re-entry cooldown ON: mt1 base | mt2 mv50 | mt3 original Sweep-1 top (30-min ATR + Fib/POB + static exits/trail) | mt4 Fib+EMA30@15 (5-min) | controls mt5 = base with NO direction filter, mt6 = base, no filter, confirm_bricks=1.
+- QC before start: 6/6 configs construct (resolve_and_qc); smoke on the box, 6 pairs x 6 configs, multi-trade: rc=0, 0 tracebacks, 0 same-day overlaps, <=5 trades/day, first trade of each day == the one-trade/day result (base 6/6, mv50 5/5). QC after start: 4/4 shards carry --multi-trade, rows accumulating, 0 tracebacks. Fixed on the way: run_sweep_default.sh passed a relative config path into the QC step (now absolute).
+- Expect ~50-70 min/config, ~6h total (holiday: no market-hours limit). Analyse before the next batch (user's instruction). Label results "multi-trade"; compare with one-trade/day only via each day's FIRST trade.
+- 2026-09-26 01:25: other session staged (local only, NOT on box) default-change scripts: multi-trade becomes the per-day default, weekly harness OFF (run_sweep_canonical.sh refuses), ONE_TRADE_PER_DAY=1 for first-signal-only; they build on my absolute-path fix. Deploy only after mt1 finishes and via atomic mv (the running sweep is ONE run_sweep_perday.sh process; an in-place edit would corrupt it). launch_renko7/8/9 and launch_night2 (B) call the canonical script and now refuse -- repoint to run_sweep_default.sh before reuse.
+
+## 2026-09-26 02:40 IST: renko10 mt1_base (multi-trade, per-day) -- analysis/renko/mt_analyze.py, mt1/renko10_mt1_base_current.csv
+- 786 trades / 236 days (max 6/day, msd=3): net -173,937, PF 0.66, WR 32%, DD 178,990, ex2 -201,058, halves -73.1k/-100.8k (gross, 1 lot). First trade of each day = the one-trade/day result exactly (236/236 identical, -14,112).
+- Trade # by day: #1 -14.1k (PF 0.90), #2 -61.6k (0.60), #3 -64.6k (0.47), #4+ -33.5k (0.62). DTE6 first trades +29.2k (47) but DTE6 re-entries -61.7k (106, PF 0.27) => DTE6 all = -32.6k. Non-DTE6 first -43.3k, later -98.1k.
+- Re-entry: after a candle_reversal exit (481 re-entries) -160.1k; after a stop (69) ~0. Same-direction re-entries -118.8k (PF 0.51) vs opposite -41.0k; prev winner -69.3k, prev loser -90.5k. CE -110.9k / PE -63.0k. By entry hour all negative (10:xx worst -79.0k).
+- Read: the only positive thing found is the FIRST trade on DTE6 days (day after weekly expiry); the strategy as a repeatable multi-entry system loses heavily. Costs not included (786 trades -> worse).
+
+## 2026-09-26 11:10 IST: renko10 (multi-trade per-day, tag mt1) COMPLETE -- 6/6 OK, finished 06:27 IST; CSVs analysis/renko/mt1/, script mt_analyze.py
+Gross, 1 lot; est. cost = 40 + 0.04% turnover + 0.1% STT(sell) + 0.5%/side slippage (ledger convention, ~130/trade for these).
+| cfg | trades/days | gross net | PF | WR | DD | ex2 | 1st-trade net | trade#2+ net | est. net of cost |
+| mt1 base (5m, EMA30@15, cexit5) | 786/236 | -173,937 | 0.66 | 32% | 178,990 | -201,058 | -14,112 | -159,825 | -276,753 |
+| mt2 mv50 (15m, cap, brick rev1) | 291/155 | -58,841 | 0.69 | 25% | 65,640 | -92,173 | +3,052 | -61,893 | -97,738 |
+| mt3 s1_top (30m ATR bricks, Fib/POB, trail) | 100/65 | +10,658 | 1.24 | 62% | 11,795 | +6,568 | +3,341 | +7,318 | +104 |
+| mt4 Fib + EMA30@15 (5m) | 643/233 | -126,857 | 0.68 | 33% | 130,738 | -151,785 | -17,394 | -109,463 | -209,412 |
+| mt5 ctrl: base, no filter | 1007/237 | -151,236 | 0.76 | 31% | 168,821 | -178,357 | -23,771 | -127,465 | -282,593 |
+| mt6 ctrl: no filter, confirm 1 | 1077/237 | -171,187 | 0.74 | 31% | 185,750 | -198,510 | -27,274 | -143,913 | -309,251 |
+- Every 5-min/15-min-brick candle-exit config loses under multi-trade; trade #2+ (re-entries) lose -62k..-160k in all of them. The first trade of each day == the one-trade/day result (parity 236/236 base). EMA filter helps only the DTE6 FIRST trade (base +29.2k, fib+EMA +23.8k vs controls -0.2k/-1.9k); all other DTE and all re-entries lose.
+- s1_top is the only positive: trail exits +52.7k (58) vs stops -33.2k (21) and EOD -8.4k; PE +15.6k (71) / CE -4.9k (29); halves +2.1k/+8.6k; t-stat 0.88, cost-adjusted ~0; months mixed. CAVEAT: ATR-sized config -- 13 of 33 weekly-harness trades are NOT reproduced per-day (same contract, entry shifted 2 min..1.5 h) => brick-size (ATR warm-up) differs between harnesses; fixed-size configs reproduce 100%.
+
+## 2026-09-26 11:40 IST: ATR/EMA WARM-UP FINDING + `--extra-warmup-days 21` + unattended 28h chain (tag w12)
+- **Finding (why 13/33 s1_top weekly trades did not reproduce; why every ATR/EMA config was subtly non-production):** the engine persists only the last 1000 underlying 1-min bars (~2.7 trading days, 4 distinct days) into the fresh per-day DB, but `renko_trend` reads multi-day history from `price_bars`: ATR14 brick size on 30-min candles over `atr_lookback_days`=20 and EMA over `ema_lookback_days`=20. Production has ~14 trading days. Offline (`analysis/renko/atr_warm_check.py`, 242 days): short-warm-up brick size differs from 20-day by mean 1.9% (max 16%; 12 days >5%), and the [10,60] band flips on 5 days (bricks are ~55-60 pt, right at the max band, ~97 of 242 days sit out as out-of-band under either). Effect on trades is material: smoke on 6 days, s1_top msd=3: entries/exits differ (e.g. 2025-09-04 first entry 10:41 -> 10:38, an extra stop trade; 2025-11-12 trade disappears).
+- **Fix (opt-in, default off):** `run_backtest.py --extra-warmup-days N` persists N calendar days of older underlying bars as `PriceBar` rows only (one bulk insert, not replayed, no indicators). Verified: flag 0 = byte-identical (6-day smoke == mt1 rows exactly); DB check: W=0 -> 1375 bars/4 days, W=21 -> 5250 bars/14 days from 2025-10-23 for a 2025-11-12 run (= production 20-day lookback). Engine md5 8de4eabc… -> 587fefca… (box + local; backups `~/deploy-bak/run_backtest.py.pre-warm-20260926`, local `run_backtest.py.pre-warm-20260926`). **Every run from w12 on uses `EXTRA_BT_ARGS="--extra-warmup-days 21"` (harness label: multi-trade + warm-up). NOT comparable with mt1 (1000-bar warm-up): mt1 ATR/EMA numbers are approximate.** The fixed-brick configs are only EMA-sensitive; ATR configs (s1_top family) are the most affected.
+- **Chain:** `launch_chain.sh` (TAG=w12, END_BY_UTC=2026-09-28 02:00 = Mon 07:30 IST): pilot `renko11_pilot.txt` (mv50 PE-only, msd3 -- per-side item from the earlier plan) then chunks `renko12a..d_warm_batch.txt` (24 configs: A s1_top controls+PE+msd1; B s1 brick sizing 0.75/0.5/htf15 x1/x1.5; C s1 rules (confirm 3/1, wide exit, PE+0.75, EMA30@15 filter, no filter); D fixed-brick families msd=1: mv50, base, base PE, h2, h1, h6, h4, pd3, pd4, pd5). Guards: single instance, reaper stop + trap restart, md5 freeze of engine/scripts/strategy (abort if another session deploys mid-run), per-chunk QC line (ok / shard failures / tracebacks), projected-end check vs END_BY, abort after 2 failed chunks. Heartbeat: `~/backtest_engine/logs/w12_chain.heartbeat`. Results: `data/historical/backtest_reports/s6_w12{,a,b,c,d}/*_current.csv`. Dry-run QC (real `_build_strategy`) passed for all 5 files.
+- Controls inside the batch to quantify the warm-up effect: `w12_base_ctrl` (== mt1 base + warm-up), `w12_s1top_ctrl` (== mt3 + warm-up).

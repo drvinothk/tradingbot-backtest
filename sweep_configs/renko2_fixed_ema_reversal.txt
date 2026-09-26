@@ -1,0 +1,64 @@
+# Modified Renko -- second sweep, 2026-09-22/23. NOT launched yet -- saved
+# ready to run once sweep #1 (renko1_trend_timeframe.txt) completes.
+#
+# User variant: fixed (not ATR-derived) brick size, brick engine fed from
+# 1/5/15-min resampled closes, EMA(30) crossover decides CE/PE (replacing
+# Fib/POB), exit driven by a brick-reversal level instead of a Fib band.
+#
+# Design mapping from the user's plain-language description to actual
+# params (documented here since it required a judgment call, not a literal
+# 1:1 translation):
+# - "target ... closed on 2-3 boxes flat or reversing" and "SL 3-4 boxes
+#   below entry" are both underlying-index-level concepts, but this
+#   strategy's TradeProposal has exactly ONE such level (structure_level),
+#   not two independent ones. Rather than force two thresholds onto one
+#   slot, this sweep tests reversal_confirm_bricks across {2, 3, 4} as a
+#   single width axis spanning both the "tight target" (2-3) and "wider
+#   SL" (3-4) framings the user gave -- the backtest itself shows which
+#   width trades off cut-losers-fast vs. give-trades-room better, rather
+#   than guessing a combined rule. See renko_trend.py's own
+#   `_reversal_structure_level` -- it is already an exact price level (N
+#   bricks against the held direction from the live box), not an
+#   approximation, so this is a real test of the idea as stated.
+# - ema_timeframe_minutes is set equal to brick_source_timeframe_minutes
+#   for every config (EMA(30) computed on the same chart the bricks are
+#   built from -- the most literal reading of "use EMA 30 crossover" with
+#   no separate timeframe given).
+# - TSL: fixed at trail_activation_fraction=0.5 / trail_lock_fraction=0.6
+#   (the user's own numbers) for every config in this batch, not swept --
+#   the user said "I don't know if we should have TSL," which read as
+#   wanting a recommendation, not a sweep axis; applying it uniformly is a
+#   safe default (it only ever locks in MORE profit than doing nothing,
+#   never widens risk) and keeps the grid from doubling again. Flag if you
+#   want a with/without-TSL comparison added as a follow-up.
+# - target_pct=0.60 / stop_pct=0.35 (generous premium ceiling / spec's own
+#   25-35% floor) stay as a background dual-layer safety net so a config
+#   still exits if the underlying-level reversal signal somehow lags
+#   (e.g. an IV move not yet reflected in brick count) -- same "exit on
+#   whichever hits first" principle every strategy here already follows,
+#   not a new behavior.
+#
+# Grid: brick size {8.33, 12.5} x resolution {1, 5, 15} x reversal width
+# {2, 3, 4} = 18 configs. All NIFTY, breakout entry mode, confirm_bricks=2
+# for entry (unchanged from sweep #1). Estimated runtime at SHARD_COUNT=4
+# off-hours: budget from sweep #1's own per-config timing once observed
+# (this session's smoke test + sweep #1 will tell you the real number
+# before this is launched) x 18.
+renko2_b833_r1_rev2|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 8.33, "brick_source_timeframe_minutes": 1, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 1, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 2, "stop_pct": 0.35, "target_pct": 0.60, "trail_activation_fraction": 0.5, "trail_lock_fraction": 0.6}
+renko2_b833_r1_rev3|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 8.33, "brick_source_timeframe_minutes": 1, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 1, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 3, "stop_pct": 0.35, "target_pct": 0.60, "trail_activation_fraction": 0.5, "trail_lock_fraction": 0.6}
+renko2_b833_r1_rev4|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 8.33, "brick_source_timeframe_minutes": 1, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 1, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 4, "stop_pct": 0.35, "target_pct": 0.60, "trail_activation_fraction": 0.5, "trail_lock_fraction": 0.6}
+renko2_b833_r5_rev2|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 8.33, "brick_source_timeframe_minutes": 5, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 5, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 2, "stop_pct": 0.35, "target_pct": 0.60, "trail_activation_fraction": 0.5, "trail_lock_fraction": 0.6}
+renko2_b833_r5_rev3|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 8.33, "brick_source_timeframe_minutes": 5, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 5, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 3, "stop_pct": 0.35, "target_pct": 0.60, "trail_activation_fraction": 0.5, "trail_lock_fraction": 0.6}
+renko2_b833_r5_rev4|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 8.33, "brick_source_timeframe_minutes": 5, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 5, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 4, "stop_pct": 0.35, "target_pct": 0.60, "trail_activation_fraction": 0.5, "trail_lock_fraction": 0.6}
+renko2_b833_r15_rev2|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 8.33, "brick_source_timeframe_minutes": 15, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 15, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 2, "stop_pct": 0.35, "target_pct": 0.60, "trail_activation_fraction": 0.5, "trail_lock_fraction": 0.6}
+renko2_b833_r15_rev3|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 8.33, "brick_source_timeframe_minutes": 15, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 15, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 3, "stop_pct": 0.35, "target_pct": 0.60, "trail_activation_fraction": 0.5, "trail_lock_fraction": 0.6}
+renko2_b833_r15_rev4|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 8.33, "brick_source_timeframe_minutes": 15, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 15, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 4, "stop_pct": 0.35, "target_pct": 0.60, "trail_activation_fraction": 0.5, "trail_lock_fraction": 0.6}
+renko2_b125_r1_rev2|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 12.5, "brick_source_timeframe_minutes": 1, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 1, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 2, "stop_pct": 0.35, "target_pct": 0.60, "trail_activation_fraction": 0.5, "trail_lock_fraction": 0.6}
+renko2_b125_r1_rev3|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 12.5, "brick_source_timeframe_minutes": 1, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 1, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 3, "stop_pct": 0.35, "target_pct": 0.60, "trail_activation_fraction": 0.5, "trail_lock_fraction": 0.6}
+renko2_b125_r1_rev4|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 12.5, "brick_source_timeframe_minutes": 1, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 1, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 4, "stop_pct": 0.35, "target_pct": 0.60, "trail_activation_fraction": 0.5, "trail_lock_fraction": 0.6}
+renko2_b125_r5_rev2|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 12.5, "brick_source_timeframe_minutes": 5, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 5, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 2, "stop_pct": 0.35, "target_pct": 0.60, "trail_activation_fraction": 0.5, "trail_lock_fraction": 0.6}
+renko2_b125_r5_rev3|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 12.5, "brick_source_timeframe_minutes": 5, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 5, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 3, "stop_pct": 0.35, "target_pct": 0.60, "trail_activation_fraction": 0.5, "trail_lock_fraction": 0.6}
+renko2_b125_r5_rev4|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 12.5, "brick_source_timeframe_minutes": 5, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 5, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 4, "stop_pct": 0.35, "target_pct": 0.60, "trail_activation_fraction": 0.5, "trail_lock_fraction": 0.6}
+renko2_b125_r15_rev2|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 12.5, "brick_source_timeframe_minutes": 15, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 15, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 2, "stop_pct": 0.35, "target_pct": 0.60, "trail_activation_fraction": 0.5, "trail_lock_fraction": 0.6}
+renko2_b125_r15_rev3|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 12.5, "brick_source_timeframe_minutes": 15, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 15, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 3, "stop_pct": 0.35, "target_pct": 0.60, "trail_activation_fraction": 0.5, "trail_lock_fraction": 0.6}
+renko2_b125_r15_rev4|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 12.5, "brick_source_timeframe_minutes": 15, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 15, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 4, "stop_pct": 0.35, "target_pct": 0.60, "trail_activation_fraction": 0.5, "trail_lock_fraction": 0.6}

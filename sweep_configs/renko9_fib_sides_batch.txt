@@ -1,0 +1,2 @@
+# MOVED 2026-09-25 night: renko9 now runs on the PER-DAY harness (standing rule) from sweep_configs/renko9d_fib_sides_batch.txt. This file is intentionally empty of configs
+# so launch_night2.sh's phase B (weekly harness) is a no-op.

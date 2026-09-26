@@ -1,0 +1,19 @@
+# Modified Renko trend-following strategy -- first sweep, 2026-09-22.
+# Axis A (primary, as requested): brick-sizing higher-timeframe, ATR period
+# scaled to hold the real lookback span constant (~420 real minutes ==
+# 14 x 30min == 28 x 15min == 42 x 10min == 21 x 20min).
+# Axis B: entry flavour (breakout vs pullback).
+# Axis C: brick-size ATR multiplier k (0.75 / 1.0 / 1.5).
+# Axis D: confirm_bricks (1 = the naive "trade the first flip" baseline
+# the research spec explicitly warns against, kept as a control / 2 = spec
+# default / 3 = extra confirmation).
+# All NIFTY, underlying_source resolved by resolve_and_qc.py (alice_index).
+renko_htf30_k1_cb2_breakout|renko_trend|{"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 1.0, "confirm_bricks": 2, "entry_mode": "breakout"}
+renko_htf20_k1_cb2_breakout|renko_trend|{"htf_timeframe_minutes": 20, "atr_period": 21, "brick_atr_multiplier": 1.0, "confirm_bricks": 2, "entry_mode": "breakout"}
+renko_htf15_k1_cb2_breakout|renko_trend|{"htf_timeframe_minutes": 15, "atr_period": 28, "brick_atr_multiplier": 1.0, "confirm_bricks": 2, "entry_mode": "breakout"}
+renko_htf10_k1_cb2_breakout|renko_trend|{"htf_timeframe_minutes": 10, "atr_period": 42, "brick_atr_multiplier": 1.0, "confirm_bricks": 2, "entry_mode": "breakout"}
+renko_htf30_k1_cb2_pullback|renko_trend|{"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 1.0, "confirm_bricks": 2, "entry_mode": "pullback", "max_signals_per_direction": 2}
+renko_htf30_k075_cb2_breakout|renko_trend|{"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 0.75, "confirm_bricks": 2, "entry_mode": "breakout"}
+renko_htf30_k15_cb2_breakout|renko_trend|{"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 1.5, "confirm_bricks": 2, "entry_mode": "breakout"}
+renko_htf30_k1_cb1_breakout|renko_trend|{"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 1.0, "confirm_bricks": 1, "entry_mode": "breakout"}
+renko_htf30_k1_cb3_breakout|renko_trend|{"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 1.0, "confirm_bricks": 3, "entry_mode": "breakout"}

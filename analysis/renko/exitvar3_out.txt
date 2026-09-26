@@ -1,0 +1,81 @@
+
+=== BASE tf5_x5_ema15tf B=8.33 tf=5 | replay 47/50 trades | engine net 29,367
+ cexit 4              n=47 net=  3,526 PF=1.16 WR=34% avgW=1,609 avgL=  -717 DD=11,411 ex2=-10,101 CE= 5,259 PE=-1,732 H1= 6,123 H2=-2,597
+ cexit 5              n=47 net= 31,076 PF=2.09 WR=49% avgW=2,593 avgL=-1,190 DD=15,577 ex2=  6,324 CE= 9,292 PE=21,785 H1=12,850 H2=18,226
+ cexit 6              n=47 net= 19,370 PF=1.48 WR=43% avgW=2,966 avgL=-1,480 DD=17,901 ex2= -4,716 CE= 4,235 PE=15,135 H1= 8,336 H2=11,034
+ cexit 7              n=47 net= 21,499 PF=1.44 WR=45% avgW=3,351 avgL=-1,879 DD=19,802 ex2= -4,537 CE= 3,152 PE=18,346 H1=17,024 H2= 4,475
+ cexit 8              n=47 net= 27,397 PF=1.49 WR=47% avgW=3,777 avgL=-2,228 DD=20,384 ex2= -3,985 CE=19,094 PE= 8,304 H1=11,096 H2=16,302
+ cexit 10             n=47 net= 10,598 PF=1.15 WR=45% avgW=3,765 avgL=-2,633 DD=28,444 ex2=-20,784 CE=11,232 PE=  -634 H1=11,827 H2=-1,229
+ brick rev1           n=47 net= 14,794 PF=1.63 WR=38% avgW=2,118 avgL=  -804 DD= 9,116 ex2=   -757 CE= 9,747 PE= 5,047 H1=10,832 H2= 3,962
+ brick rev2           n=47 net=  6,220 PF=1.20 WR=38% avgW=2,105 avgL=-1,092 DD=14,219 ex2= -8,284 CE= 6,159 PE=    62 H1=10,498 H2=-4,277
+ cexit5+rev1          n=47 net= 10,514 PF=1.47 WR=38% avgW=1,832 avgL=  -775 DD= 9,149 ex2= -5,037 CE= 6,887 PE= 3,627 H1= 6,116 H2= 4,397
+ cexit7+rev1          n=47 net= 15,519 PF=1.67 WR=38% avgW=2,148 avgL=  -798 DD= 9,116 ex2=    -33 CE=10,471 PE= 5,047 H1=11,498 H2= 4,020
+ cexit5+noprog4       n=47 net= 24,333 PF=1.80 WR=43% avgW=2,736 avgL=-1,126 DD=14,944 ex2=   -419 CE= 7,465 PE=16,867 H1= 5,818 H2=18,515
+ cexit5+BE3           n=47 net= 29,776 PF=2.25 WR=38% avgW=2,974 avgL=  -819 DD=13,624 ex2=  5,024 CE= 7,290 PE=22,487 H1=11,219 H2=18,557
+ cexit5+tgt10br       n=47 net= 13,195 PF=1.46 WR=49% avgW=1,816 avgL=-1,190 DD=15,577 ex2=  2,421 CE= 7,728 PE= 5,466 H1=11,212 H2= 1,982
+ cexit5+trail30/0.5   n=47 net=  9,196 PF=1.32 WR=49% avgW=1,642 avgL=-1,190 DD=15,577 ex2=   -493 CE= 7,751 PE= 1,445 H1= 9,581 H2=  -385
+ cexit7+trail30/0.5   n=47 net= -1,074 PF=0.98 WR=51% avgW=1,981 avgL=-2,114 DD=21,904 ex2=-10,298 CE=  -348 PE=  -726 H1=13,351 H2=-14,425
+ cexit5+trail30/0.7   n=47 net=  9,706 PF=1.34 WR=49% avgW=1,664 avgL=-1,190 DD=15,577 ex2=     -4 CE= 7,831 PE= 1,876 H1= 9,741 H2=   -35
+ cexit7+trail30/0.7   n=47 net=   -312 PF=0.99 WR=51% avgW=2,013 avgL=-2,114 DD=21,778 ex2= -9,558 CE=  -115 PE=  -196 H1=13,763 H2=-14,075
+ cexit5+trail50/0.5   n=47 net= 17,414 PF=1.61 WR=49% avgW=1,999 avgL=-1,190 DD=15,577 ex2=  4,793 CE=10,239 PE= 7,175 H1=10,688 H2= 6,727
+ cexit7+trail50/0.5   n=47 net=  7,194 PF=1.15 WR=47% avgW=2,545 avgL=-1,952 DD=19,802 ex2= -5,055 CE= 2,566 PE= 4,628 H1=14,735 H2=-7,541
+ cexit5+trail50/0.7   n=47 net= 17,887 PF=1.63 WR=49% avgW=2,020 avgL=-1,190 DD=15,577 ex2=  5,248 CE=10,261 PE= 7,627 H1=10,756 H2= 7,131
+ cexit7+trail50/0.7   n=47 net=  7,728 PF=1.16 WR=47% avgW=2,569 avgL=-1,952 DD=19,802 ex2= -4,894 CE= 2,638 PE= 5,089 H1=14,864 H2=-7,136
+ cexit5+trail80/0.5   n=47 net= 19,701 PF=1.69 WR=49% avgW=2,098 avgL=-1,190 DD=15,577 ex2=  6,765 CE= 9,732 PE= 9,969 H1=12,756 H2= 6,945
+ cexit7+trail80/0.5   n=47 net= 12,827 PF=1.26 WR=45% avgW=2,938 avgL=-1,879 DD=19,802 ex2=   -382 CE= 3,355 PE= 9,471 H1=21,310 H2=-8,483
+ cexit5+trail80/0.7   n=47 net= 19,785 PF=1.69 WR=49% avgW=2,102 avgL=-1,190 DD=15,577 ex2=  6,798 CE= 9,765 PE=10,019 H1=12,811 H2= 6,974
+ cexit7+trail80/0.7   n=47 net= 13,001 PF=1.27 WR=45% avgW=2,946 avgL=-1,879 DD=19,802 ex2=   -277 CE= 3,413 PE= 9,588 H1=21,407 H2=-8,406
+
+=== MV50 b625_mv50ext B=6.25 tf=15 | replay 46/50 trades | engine net 29,929
+ cexit 4              n=46 net=    -65 PF=1.00 WR=35% avgW=1,271 avgL=  -680 DD= 8,105 ex2= -8,236 CE=   114 PE=  -179 H1= 7,446 H2=-7,511
+ cexit 5              n=46 net= 13,692 PF=1.56 WR=43% avgW=1,905 avgL=  -938 DD=12,314 ex2= -9,396 CE=-4,362 PE=18,054 H1= 8,518 H2= 5,174
+ cexit 6              n=46 net= 25,327 PF=1.74 WR=43% avgW=2,975 avgL=-1,314 DD=10,754 ex2= -8,372 CE=16,848 PE= 8,479 H1= 3,637 H2=21,691
+ cexit 7              n=46 net= 24,287 PF=1.60 WR=41% avgW=3,416 avgL=-1,505 DD=11,953 ex2= -9,045 CE=20,644 PE= 3,643 H1= 8,015 H2=16,273
+ cexit 8              n=46 net= 13,049 PF=1.25 WR=43% avgW=3,303 avgL=-2,039 DD=20,881 ex2=-20,283 CE=18,905 PE=-5,856 H1= 6,919 H2= 6,129
+ cexit 10             n=46 net= 13,306 PF=1.21 WR=48% avgW=3,419 avgL=-2,580 DD=26,611 ex2=-20,026 CE=13,877 PE=  -572 H1= 5,571 H2= 7,735
+ brick rev1           n=46 net= 32,770 PF=2.16 WR=37% avgW=3,585 avgL=  -972 DD= 7,670 ex2=   -562 CE=15,022 PE=17,748 H1= 7,108 H2=25,662
+ brick rev2           n=46 net= 27,693 PF=1.89 WR=37% avgW=3,459 avgL=-1,073 DD= 8,479 ex2= -5,639 CE=13,416 PE=14,277 H1= 5,002 H2=22,692
+ cexit5+rev1          n=46 net= 16,120 PF=1.69 WR=39% avgW=2,196 avgL=  -836 DD=11,892 ex2= -6,968 CE=-4,284 PE=20,404 H1= 8,456 H2= 7,664
+ cexit7+rev1          n=46 net= 34,258 PF=2.25 WR=37% avgW=3,629 avgL=  -946 DD= 7,767 ex2=    926 CE=17,397 PE=16,861 H1= 8,372 H2=25,886
+ cexit5+noprog4       n=46 net= 12,451 PF=1.49 WR=41% avgW=1,986 avgL=  -936 DD=13,744 ex2=-10,637 CE=-4,667 PE=17,118 H1= 6,997 H2= 5,454
+ cexit5+BE3           n=46 net= 14,996 PF=1.67 WR=39% avgW=2,085 avgL=  -805 DD=11,537 ex2= -8,092 CE=-4,108 PE=19,104 H1=10,345 H2= 4,651
+ cexit5+tgt10br       n=46 net= 12,526 PF=1.51 WR=43% avgW=1,846 avgL=  -938 DD= 8,346 ex2= -3,627 CE=-1,326 PE=13,852 H1= 6,864 H2= 5,662
+ cexit5+trail30/0.5   n=46 net=  1,660 PF=1.07 WR=43% avgW=1,303 avgL=  -938 DD=10,506 ex2= -5,074 CE=-2,344 PE= 4,004 H1= 8,172 H2=-6,512
+ cexit7+trail30/0.5   n=46 net=  7,840 PF=1.19 WR=43% avgW=2,420 avgL=-1,560 DD= 9,228 ex2= -9,213 CE=15,118 PE=-7,278 H1= 6,745 H2= 1,095
+ cexit5+trail30/0.7   n=46 net=  2,106 PF=1.09 WR=43% avgW=1,325 avgL=  -938 DD=10,368 ex2= -4,814 CE=-2,272 PE= 4,378 H1= 8,478 H2=-6,372
+ cexit7+trail30/0.7   n=46 net=  8,532 PF=1.21 WR=43% avgW=2,454 avgL=-1,560 DD= 9,217 ex2= -8,701 CE=15,434 PE=-6,902 H1= 7,083 H2= 1,450
+ cexit5+trail50/0.5   n=46 net=  3,009 PF=1.12 WR=43% avgW=1,370 avgL=  -938 DD=12,314 ex2= -7,203 CE=-4,584 PE= 7,593 H1= 7,794 H2=-4,785
+ cexit7+trail50/0.5   n=46 net= 15,184 PF=1.37 WR=41% avgW=2,937 avgL=-1,505 DD=11,953 ex2= -5,774 CE=18,196 PE=-3,012 H1= 8,092 H2= 7,092
+ cexit5+trail50/0.7   n=46 net=  3,441 PF=1.14 WR=43% avgW=1,392 avgL=  -938 DD=12,314 ex2= -7,101 CE=-4,547 PE= 7,988 H1= 7,839 H2=-4,398
+ cexit7+trail50/0.7   n=46 net= 15,634 PF=1.38 WR=41% avgW=2,961 avgL=-1,505 DD=11,953 ex2= -5,354 CE=18,251 PE=-2,617 H1= 8,144 H2= 7,490
+ cexit5+trail80/0.5   n=46 net=  5,625 PF=1.23 WR=43% avgW=1,501 avgL=  -938 DD=12,314 ex2= -9,031 CE=-3,997 PE= 9,622 H1=11,732 H2=-6,107
+ cexit7+trail80/0.5   n=46 net= 18,586 PF=1.46 WR=41% avgW=3,116 avgL=-1,505 DD=11,953 ex2= -5,316 CE=19,569 PE=  -983 H1=13,594 H2= 4,992
+ cexit5+trail80/0.7   n=46 net=  5,857 PF=1.24 WR=43% avgW=1,513 avgL=  -938 DD=12,314 ex2= -9,005 CE=-3,971 PE= 9,828 H1=11,935 H2=-6,078
+ cexit7+trail80/0.7   n=46 net= 18,832 PF=1.46 WR=41% avgW=3,129 avgL=-1,505 DD=11,953 ex2= -5,248 CE=19,609 PE=  -777 H1=13,812 H2= 5,021
+
+=== E4 tf5_b1000 B=10.0 tf=5 | replay 47/51 trades | engine net 24,479
+ cexit 4              n=47 net=   -318 PF=0.99 WR=30% avgW=1,686 avgL=  -725 DD=13,657 ex2=-13,946 CE= 1,342 PE=-1,661 H1= 5,499 H2=-5,818
+ cexit 5              n=47 net= 27,030 PF=1.89 WR=45% avgW=2,739 avgL=-1,172 DD=14,950 ex2=  2,278 CE= 3,958 PE=23,072 H1=11,427 H2=15,603
+ cexit 6              n=47 net= 15,701 PF=1.37 WR=43% avgW=2,889 avgL=-1,559 DD=17,349 ex2= -8,385 CE=  -660 PE=16,360 H1= 7,085 H2= 8,616
+ cexit 7              n=47 net= 15,220 PF=1.28 WR=43% avgW=3,431 avgL=-1,978 DD=21,986 ex2=-10,816 CE=-4,355 PE=19,575 H1=15,824 H2=  -605
+ cexit 8              n=47 net= 21,203 PF=1.36 WR=43% avgW=4,006 avgL=-2,182 DD=21,967 ex2= -9,363 CE=11,372 PE= 9,831 H1= 9,968 H2=11,235
+ cexit 10             n=47 net=  5,200 PF=1.07 WR=40% avgW=4,010 avgL=-2,535 DD=29,338 ex2=-25,366 CE= 5,483 PE=  -283 H1=10,556 H2=-5,356
+ brick rev1           n=47 net=  7,504 PF=1.26 WR=36% avgW=2,153 avgL=  -970 DD=14,056 ex2= -8,242 CE= 2,184 PE= 5,320 H1=10,790 H2=-3,286
+ brick rev2           n=47 net= 22,025 PF=1.60 WR=34% avgW=3,684 avgL=-1,191 DD=14,544 ex2= -3,916 CE= 1,427 PE=20,598 H1= 9,162 H2=12,863
+ cexit5+rev1          n=47 net=  7,248 PF=1.29 WR=38% avgW=1,794 avgL=  -864 DD=13,585 ex2= -8,499 CE= 1,346 PE= 5,902 H1= 8,057 H2=  -809
+ cexit7+rev1          n=47 net=  9,184 PF=1.33 WR=36% avgW=2,184 avgL=  -931 DD=14,242 ex2= -6,562 CE= 3,094 PE= 6,090 H1=12,226 H2=-3,042
+ cexit5+noprog4       n=47 net= 22,113 PF=1.77 WR=38% avgW=2,832 avgL=  -995 DD=11,788 ex2= -2,639 CE= 6,013 PE=16,100 H1= 3,647 H2=18,466
+ cexit5+BE3           n=47 net= 27,098 PF=2.10 WR=34% avgW=3,240 avgL=  -798 DD=13,052 ex2=  2,346 CE= 3,325 PE=23,774 H1=10,793 H2=16,305
+ cexit5+tgt10br       n=47 net= 12,005 PF=1.39 WR=45% avgW=2,023 avgL=-1,172 DD=14,950 ex2=    611 CE= 4,212 PE= 7,793 H1=10,748 H2= 1,258
+ cexit5+trail30/0.5   n=47 net=  5,712 PF=1.19 WR=45% avgW=1,724 avgL=-1,172 DD=14,950 ex2= -3,977 CE= 2,913 PE= 2,799 H1= 8,225 H2=-2,513
+ cexit7+trail30/0.5   n=47 net= -6,818 PF=0.87 WR=49% avgW=2,013 avgL=-2,213 DD=26,612 ex2=-16,042 CE=-7,388 PE=   570 H1=12,192 H2=-19,010
+ cexit5+trail30/0.7   n=47 net=  6,211 PF=1.20 WR=45% avgW=1,747 avgL=-1,172 DD=14,950 ex2= -3,500 CE= 2,978 PE= 3,233 H1= 8,388 H2=-2,177
+ cexit7+trail30/0.7   n=47 net= -6,057 PF=0.89 WR=49% avgW=2,046 avgL=-2,213 DD=26,501 ex2=-15,302 CE=-7,159 PE= 1,102 H1=12,618 H2=-18,674
+ cexit5+trail50/0.5   n=47 net= 13,368 PF=1.44 WR=45% avgW=2,088 avgL=-1,172 DD=14,950 ex2=    747 CE= 4,906 PE= 8,462 H1= 9,264 H2= 4,104
+ cexit7+trail50/0.5   n=47 net=    750 PF=1.01 WR=45% avgW=2,576 avgL=-2,052 DD=23,958 ex2=-11,499 CE=-5,107 PE= 5,856 H1=13,370 H2=-12,621
+ cexit5+trail50/0.7   n=47 net= 13,841 PF=1.45 WR=45% avgW=2,111 avgL=-1,172 DD=14,950 ex2=  1,202 CE= 4,927 PE= 8,914 H1= 9,332 H2= 4,509
+ cexit7+trail50/0.7   n=47 net=  1,243 PF=1.02 WR=45% avgW=2,599 avgL=-2,052 DD=23,602 ex2=-11,379 CE=-5,075 PE= 6,318 H1=13,459 H2=-12,216
+ cexit5+trail80/0.5   n=47 net= 15,655 PF=1.51 WR=45% avgW=2,197 avgL=-1,172 DD=14,950 ex2=  2,719 CE= 4,399 PE=11,256 H1=11,332 H2= 4,322
+ cexit7+trail80/0.5   n=47 net=  6,510 PF=1.12 WR=43% avgW=2,996 avgL=-1,978 DD=22,467 ex2= -6,699 CE=-4,190 PE=10,700 H1=20,072 H2=-13,563
+ cexit5+trail80/0.7   n=47 net= 15,738 PF=1.52 WR=45% avgW=2,201 avgL=-1,172 DD=14,950 ex2=  2,752 CE= 4,432 PE=11,306 H1=11,387 H2= 4,351
+ cexit7+trail80/0.7   n=47 net=  6,700 PF=1.13 WR=43% avgW=3,005 avgL=-1,978 DD=22,439 ex2= -6,579 CE=-4,117 PE=10,817 H1=20,185 H2=-13,486

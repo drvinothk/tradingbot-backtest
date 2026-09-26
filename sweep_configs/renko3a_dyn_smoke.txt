@@ -1,0 +1,12 @@
+# Modified Renko -- sweep #3a SINGLE-CONFIG smoke (dynamic brick exit), 2026-09-24.
+# Same entry as renko2c_b833_r15 (51/51 entries expected identical -> paired
+# comparison). Only the exit changes:
+#  - reversal_exit_mode=dynamic, reversal_confirm_bricks=1: exit on 1 COMPLETED
+#    reverse brick (15-min candle closes), level follows the brick series.
+#  - premium trail + target effectively disabled (target_pct=9.0,
+#    trail_activation_fraction=20 (column is Numeric(6,4): 1000 overflowed -> run 1 failed)) so the brick exit is the only profit exit.
+#  - stop_pct=0.35 kept as disaster/broker-resting stop (never binds offline).
+#  - max_signals_per_direction=1 (3 has no effect: harness allows 1 trade/run).
+# Offline replay (scratchpad replay.py) predicts on the 47 entries with local
+# data: net ~+10.6k, dominated by ONE trade (NIFTY26071424200PE 2026-07-08).
+renko3a_b833_r15_dyn1|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 8.33, "brick_source_timeframe_minutes": 15, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 15, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 1, "reversal_exit_mode": "dynamic", "max_signals_per_direction": 1, "stop_pct": 0.35, "target_pct": 9.0, "trail_activation_fraction": 20.0, "trail_lock_fraction": 0.6}

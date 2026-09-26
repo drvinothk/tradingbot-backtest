@@ -1,0 +1,3 @@
+#!/bin/bash
+# SSH forced command for user btops: no shell, only btctl (as ubuntu) with the client's request string.
+exec /usr/bin/sudo -n -u ubuntu /usr/local/sbin/btctl "${SSH_ORIGINAL_COMMAND:-help}"

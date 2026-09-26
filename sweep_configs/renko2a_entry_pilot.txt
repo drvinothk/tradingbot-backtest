@@ -1,0 +1,72 @@
+# Modified Renko -- sweep #2a, ENTRY-DECISION PILOT, 2026-09-23.
+# Staged design: decide brick size + resolution (the entry-quality axes)
+# on a small pilot before committing to the full fixed-brick/EMA30/
+# reversal-exit grid. Exit width (reversal_confirm_bricks) is held FIXED
+# at 3 (the middle of the {2,3,4} range) for every config here -- this
+# stage is not about the exit at all, see renko2b_exit_pilot.txt (to be
+# built once this stage's winner is known) for that follow-up.
+#
+# Learnings carried over from sweep #1 (renko1_trend_timeframe.txt,
+# 9 configs, analyzed 2026-09-23):
+# - confirm_bricks=2 (entry-side confirmation) is the confirmed sweet
+#   spot -- cb=1 (naive) underperformed (PF 1.27, Sharpe 0.47), cb=3
+#   went net-negative (PF 0.70, Sharpe -0.45). Fixed at 2 here, not
+#   swept again -- already decided by real evidence, not a guess.
+# - Brick size has a real CLIFF, not a gentle slope: k=1.0 (~46pt avg
+#   on NIFTY 30-min ATR) was the best config in the whole sweep
+#   (PF 2.00, Sharpe 1.27); k=0.75 (~35pt avg, only 23% smaller) flipped
+#   to net-negative (PF 0.54, Sharpe -1.21); k=1.5 (~52pt avg) was too
+#   selective to read (only 4 trades). This is the direct reason a 25pt
+#   size was added here alongside the original 8.33/12.5pt asks -- both
+#   original sizes sit 4-6x BELOW the ~35-46pt zone that actually worked
+#   on the ATR-brick design, so they are real candidates to fail
+#   outright, not just underperform. 25pt is still below that zone but
+#   meaningfully closer, and gives a 3rd data point to see whether the
+#   cliff is brick-size-in-points or something scale-relative (e.g. the
+#   ATR-derived design's edge doesn't obviously transfer to a fixed-point
+#   brick at all, at any of these three sizes) -- a real possibility this
+#   pilot is partly designed to surface, not just to pick a winner among
+#   the three.
+# - Resolution/timeframe showed a clean monotonic decline (30 > 20 > 15
+#   > 10-min) on the ATR design -- the reason 30-min was added to this
+#   grid (previously only 1/5/15-min were planned) alongside the
+#   already-present 15-min. 1-min and 5-min are deliberately excluded
+#   from this pilot stage -- both sit on the "shorter is worse" side of
+#   sweep #1's finding, so including them here would likely just spend
+#   compute re-confirming a known pattern rather than deciding anything
+#   new; add them back later ONLY if this pilot's own results surprise us
+#   (e.g. finer resolution helping more here than it did on the ATR
+#   design, since the mechanism differs -- see the module docstring's own
+#   note that a fixed brick only updates on real HTF-boundary closes of
+#   whatever `brick_source_timeframe_minutes` is set to, not on every
+#   1-min close, so coarser sourcing here changes the entry timing
+#   mechanism differently than it changed ATR estimation in sweep #1).
+# - The single pullback-entry config in sweep #1 had the best ratios of
+#   the whole sweep (PF 5.15, Sharpe 1.79, Calmar 8.15) but only 12
+#   trades over ~13 months and its last trade was 2026-07-23 -- 7+ weeks
+#   before every breakout config's own most recent trade, an unexplained
+#   gap worth remembering. Too thin to trust alone, and NOT included as
+#   an axis in this pilot (entry_mode stays "breakout" throughout, same
+#   as all 18 original sweep #2 configs) -- flagged as a real follow-up
+#   candidate once the brick-size/resolution question is settled, not
+#   dropped.
+# - Sample-size discipline: several sweep #1 "winners" were still fairly
+#   thin (33-51 trades over ~1yr). Read this pilot's PF/Sharpe alongside
+#   trade count, the same way -- a strong ratio on <15 trades is a lead,
+#   not a conclusion (see the pullback point above).
+#
+# All other params unchanged from the original 18-config design
+# (direction_filter_mode=ema_crossover, ema_period=30 on the same
+# timeframe as the brick source, stop_pct=0.35/target_pct=0.60 +
+# TSL 0.5-arm/0.6-lock as the background safety net, entry confirm_bricks=2,
+# breakout entry) -- see renko2_fixed_ema_reversal.txt's own header for
+# the full reasoning behind those choices, not repeated here.
+#
+# Grid: brick size {8.33, 12.5, 25} x resolution {15, 30} = 6 configs,
+# reversal_confirm_bricks fixed at 3.
+renko2a_b833_r15|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 8.33, "brick_source_timeframe_minutes": 15, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 15, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 3, "stop_pct": 0.35, "target_pct": 0.60, "trail_activation_fraction": 0.5, "trail_lock_fraction": 0.6}
+renko2a_b833_r30|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 8.33, "brick_source_timeframe_minutes": 30, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 30, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 3, "stop_pct": 0.35, "target_pct": 0.60, "trail_activation_fraction": 0.5, "trail_lock_fraction": 0.6}
+renko2a_b125_r15|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 12.5, "brick_source_timeframe_minutes": 15, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 15, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 3, "stop_pct": 0.35, "target_pct": 0.60, "trail_activation_fraction": 0.5, "trail_lock_fraction": 0.6}
+renko2a_b125_r30|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 12.5, "brick_source_timeframe_minutes": 30, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 30, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 3, "stop_pct": 0.35, "target_pct": 0.60, "trail_activation_fraction": 0.5, "trail_lock_fraction": 0.6}
+renko2a_b25_r15|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 25.0, "brick_source_timeframe_minutes": 15, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 15, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 3, "stop_pct": 0.35, "target_pct": 0.60, "trail_activation_fraction": 0.5, "trail_lock_fraction": 0.6}
+renko2a_b25_r30|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 25.0, "brick_source_timeframe_minutes": 30, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 30, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 3, "stop_pct": 0.35, "target_pct": 0.60, "trail_activation_fraction": 0.5, "trail_lock_fraction": 0.6}

@@ -1,0 +1,168 @@
+
+=== tf5_x5 B=8.33 tf=5 entry=breakout | replay covers 47 trades | engine net (all) 27,553
+ engine-equiv (cexit5)       n=47 net= 29,312 PF=2.03 WR=49% ex2=  4,560 CE=11,203 PE=18,109 H1=10,478 H2=18,834
+ cexit  2                   n=47 net=   -699 PF=0.94 WR=26% ex2= -8,505 CE= 6,065 PE=-6,763 H1=-3,819 H2= 3,120
+ cexit  3                   n=47 net=   -364 PF=0.98 WR=40% ex2= -8,102 CE= 8,037 PE=-8,401 H1=-2,944 H2= 2,580
+ cexit  4                   n=47 net=  4,465 PF=1.20 WR=38% ex2= -9,162 CE= 6,659 PE=-2,194 H1= 6,939 H2=-2,473
+ cexit  5                   n=47 net= 29,312 PF=2.03 WR=49% ex2=  4,560 CE=11,203 PE=18,109 H1=10,478 H2=18,834
+ cexit  6                   n=47 net= 17,244 PF=1.45 WR=43% ex2= -6,841 CE= 7,511 PE= 9,734 H1= 5,603 H2=11,641
+ cexit  7                   n=47 net= 16,815 PF=1.34 WR=43% ex2= -9,220 CE= 5,466 PE=11,349 H1=11,576 H2= 5,239
+ cexit  8                   n=47 net= 22,795 PF=1.40 WR=45% ex2= -8,587 CE=21,505 PE= 1,290 H1= 5,730 H2=17,066
+ cexit 10                   n=47 net=  3,185 PF=1.04 WR=43% ex2=-28,197 CE=11,290 PE=-8,106 H1= 3,650 H2=  -465
+ brick rev1 (src tf)         n=47 net= 15,941 PF=1.71 WR=40% ex2=    390 CE=11,173 PE= 4,768 H1=11,372 H2= 4,569
+ brick rev2                  n=47 net=  8,089 PF=1.27 WR=40% ex2= -6,416 CE= 7,982 PE=   107 H1=11,758 H2=-3,669
+ cexit 5 + brick rev1        n=47 net= 12,145 PF=1.56 WR=40% ex2= -3,406 CE= 8,798 PE= 3,348 H1= 7,140 H2= 5,005
+ cexit 5 + brick rev2        n=47 net=  9,789 PF=1.40 WR=45% ex2= -4,716 CE= 7,787 PE= 2,002 H1= 9,318 H2=   471
+ cexit 6 + brick rev1        n=47 net= 13,465 PF=1.62 WR=40% ex2= -2,087 CE= 8,947 PE= 4,517 H1= 8,385 H2= 5,080
+ cexit 6 + brick rev2        n=47 net= 11,056 PF=1.43 WR=43% ex2= -3,448 CE= 9,162 PE= 1,895 H1=11,619 H2=  -562
+ cexit 7 + brick rev1        n=47 net= 16,666 PF=1.75 WR=40% ex2=  1,115 CE=11,898 PE= 4,768 H1=12,038 H2= 4,628
+ cexit 7 + brick rev2        n=47 net= 12,444 PF=1.45 WR=40% ex2= -2,061 CE=10,426 PE= 2,018 H1=14,963 H2=-2,519
+ cexit5 + noprog 2           n=47 net= 25,376 PF=2.24 WR=43% ex2=  1,371 CE= 8,307 PE=17,069 H1=  -461 H2=25,837
+ cexit5 + noprog 3           n=47 net= 29,227 PF=2.13 WR=43% ex2=  4,475 CE= 9,441 PE=19,786 H1= 8,284 H2=20,943
+ cexit5 + noprog 4           n=47 net= 26,370 PF=1.91 WR=45% ex2=  1,618 CE= 9,376 PE=16,994 H1= 7,248 H2=19,123
+ cexit5 + BE after 3br       n=47 net= 28,447 PF=2.23 WR=36% ex2=  3,695 CE= 9,877 PE=18,570 H1= 9,292 H2=19,155
+ cexit5 + target 10br        n=47 net= 10,345 PF=1.37 WR=49% ex2=   -429 CE= 9,639 PE=   705 H1= 7,754 H2= 2,590
+
+=== tf5_x5_ema15tf B=8.33 tf=5 entry=breakout | replay covers 47 trades | engine net (all) 29,367
+ engine-equiv (cexit5)       n=47 net= 31,076 PF=2.09 WR=49% ex2=  6,324 CE= 9,292 PE=21,785 H1=12,850 H2=18,226
+ cexit  2                   n=47 net= -1,410 PF=0.89 WR=19% ex2= -9,217 CE= 4,843 PE=-6,253 H1=-4,173 H2= 2,762
+ cexit  3                   n=47 net= -1,206 PF=0.92 WR=36% ex2= -8,944 CE= 6,168 PE=-7,374 H1=-3,971 H2= 2,766
+ cexit  4                   n=47 net=  3,526 PF=1.16 WR=34% ex2=-10,101 CE= 5,259 PE=-1,732 H1= 6,123 H2=-2,597
+ cexit  5                   n=47 net= 31,076 PF=2.09 WR=49% ex2=  6,324 CE= 9,292 PE=21,785 H1=12,850 H2=18,226
+ cexit  6                   n=47 net= 19,370 PF=1.48 WR=43% ex2= -4,716 CE= 4,235 PE=15,135 H1= 8,336 H2=11,034
+ cexit  7                   n=47 net= 21,499 PF=1.44 WR=45% ex2= -4,537 CE= 3,152 PE=18,346 H1=17,024 H2= 4,475
+ cexit  8                   n=47 net= 27,397 PF=1.49 WR=47% ex2= -3,985 CE=19,094 PE= 8,304 H1=11,096 H2=16,302
+ cexit 10                   n=47 net= 10,598 PF=1.15 WR=45% ex2=-20,784 CE=11,232 PE=  -634 H1=11,827 H2=-1,229
+ brick rev1 (src tf)         n=47 net= 14,794 PF=1.63 WR=38% ex2=   -757 CE= 9,747 PE= 5,047 H1=10,832 H2= 3,962
+ brick rev2                  n=47 net=  6,220 PF=1.20 WR=38% ex2= -8,284 CE= 6,159 PE=    62 H1=10,498 H2=-4,277
+ cexit 5 + brick rev1        n=47 net= 10,514 PF=1.47 WR=38% ex2= -5,037 CE= 6,887 PE= 3,627 H1= 6,116 H2= 4,397
+ cexit 5 + brick rev2        n=47 net=  7,833 PF=1.30 WR=43% ex2= -6,672 CE= 5,876 PE= 1,956 H1= 7,969 H2=  -136
+ cexit 6 + brick rev1        n=47 net= 12,317 PF=1.56 WR=38% ex2= -3,234 CE= 7,520 PE= 4,797 H1= 7,845 H2= 4,472
+ cexit 6 + brick rev2        n=47 net=  9,188 PF=1.35 WR=40% ex2= -5,317 CE= 7,338 PE= 1,849 H1=10,358 H2=-1,170
+ cexit 7 + brick rev1        n=47 net= 15,519 PF=1.67 WR=38% ex2=    -33 CE=10,471 PE= 5,047 H1=11,498 H2= 4,020
+ cexit 7 + brick rev2        n=47 net= 10,575 PF=1.36 WR=38% ex2= -3,929 CE= 8,603 PE= 1,973 H1=13,702 H2=-3,127
+ cexit5 + noprog 2           n=47 net= 24,557 PF=2.18 WR=40% ex2=    552 CE= 6,396 PE=18,161 H1=-1,098 H2=25,655
+ cexit5 + noprog 3           n=47 net= 27,485 PF=2.02 WR=40% ex2=  2,733 CE= 7,530 PE=19,955 H1= 7,170 H2=20,316
+ cexit5 + noprog 4           n=47 net= 24,333 PF=1.80 WR=43% ex2=   -419 CE= 7,465 PE=16,867 H1= 5,818 H2=18,515
+ cexit5 + BE after 3br       n=47 net= 29,776 PF=2.25 WR=38% ex2=  5,024 CE= 7,290 PE=22,487 H1=11,219 H2=18,557
+ cexit5 + target 10br        n=47 net= 13,195 PF=1.46 WR=49% ex2=  2,421 CE= 7,728 PE= 5,466 H1=11,212 H2= 1,982
+
+=== c5_x5_e5 B=8.33 tf=5 entry=candle_confirm | replay covers 47 trades | engine net (all) 23,498
+ engine-equiv (cexit5)       n=47 net= 25,919 PF=1.90 WR=40% ex2=  1,167 CE= 5,931 PE=19,987 H1= 5,785 H2=20,134
+ cexit  2                   n=47 net=  2,759 PF=1.25 WR=36% ex2= -5,213 CE= 5,759 PE=-3,000 H1=-1,320 H2= 4,079
+ cexit  3                   n=47 net=  3,965 PF=1.30 WR=43% ex2= -4,209 CE= 9,656 PE=-5,691 H1=   920 H2= 3,045
+ cexit  4                   n=47 net=  5,389 PF=1.27 WR=38% ex2= -8,011 CE= 5,730 PE=  -341 H1= 7,046 H2=-1,657
+ cexit  5                   n=47 net= 25,919 PF=1.90 WR=40% ex2=  1,167 CE= 5,931 PE=19,987 H1= 5,785 H2=20,134
+ cexit  6                   n=47 net= 15,671 PF=1.41 WR=32% ex2= -8,187 CE=  -179 PE=15,850 H1= 1,827 H2=13,845
+ cexit  7                   n=47 net= 19,191 PF=1.40 WR=40% ex2= -5,184 CE=  -315 PE=19,507 H1= 9,737 H2= 9,454
+ cexit  8                   n=47 net= 36,732 PF=1.80 WR=47% ex2=  5,349 CE=21,317 PE=15,415 H1=15,655 H2=21,076
+ cexit 10                   n=47 net= 28,187 PF=1.54 WR=45% ex2= -3,195 CE=13,838 PE=14,349 H1=15,168 H2=13,020
+ brick rev1 (src tf)         n=47 net= 15,811 PF=1.73 WR=43% ex2=    487 CE=11,092 PE= 4,719 H1=11,895 H2= 3,916
+ brick rev2                  n=47 net= 10,130 PF=1.35 WR=40% ex2= -4,147 CE= 7,442 PE= 2,688 H1=11,563 H2=-1,433
+ cexit 5 + brick rev1        n=47 net= 12,188 PF=1.59 WR=40% ex2= -3,136 CE= 9,009 PE= 3,179 H1= 7,592 H2= 4,596
+ cexit 5 + brick rev2        n=47 net=  7,946 PF=1.34 WR=38% ex2= -6,331 CE= 6,468 PE= 1,479 H1= 6,809 H2= 1,138
+ cexit 6 + brick rev1        n=47 net= 13,276 PF=1.64 WR=43% ex2= -2,048 CE= 8,957 PE= 4,319 H1= 8,668 H2= 4,609
+ cexit 6 + brick rev2        n=47 net=  8,547 PF=1.34 WR=36% ex2= -5,730 CE= 7,169 PE= 1,378 H1= 8,658 H2=  -111
+ cexit 7 + brick rev1        n=47 net= 16,468 PF=1.76 WR=43% ex2=  1,144 CE=11,749 PE= 4,719 H1=12,369 H2= 4,098
+ cexit 7 + brick rev2        n=47 net= 10,618 PF=1.38 WR=38% ex2= -3,660 CE= 7,459 PE= 3,159 H1=12,727 H2=-2,109
+ cexit5 + noprog 2           n=47 net= 23,585 PF=2.16 WR=40% ex2=   -192 CE= 8,938 PE=14,648 H1=  -322 H2=23,907
+ cexit5 + noprog 3           n=47 net= 25,643 PF=2.02 WR=40% ex2=    891 CE= 7,049 PE=18,593 H1= 6,162 H2=19,481
+ cexit5 + noprog 4           n=47 net= 25,990 PF=1.99 WR=40% ex2=  1,238 CE= 6,237 PE=19,753 H1= 6,253 H2=19,737
+ cexit5 + BE after 3br       n=47 net= 22,825 PF=1.89 WR=28% ex2= -1,927 CE= 5,434 PE=17,391 H1= 5,610 H2=17,215
+ cexit5 + target 10br        n=47 net= 10,020 PF=1.35 WR=40% ex2=   -754 CE= 5,236 PE= 4,784 H1= 3,029 H2= 6,991
+
+=== c4_x5_e5 B=8.33 tf=5 entry=candle_confirm | replay covers 47 trades | engine net (all) 23,679
+ engine-equiv (cexit5)       n=47 net= 26,081 PF=1.84 WR=40% ex2=  1,329 CE= 8,967 PE=17,114 H1= 3,042 H2=23,039
+ cexit  2                   n=47 net=   -338 PF=0.97 WR=26% ex2= -8,440 CE= 5,239 PE=-5,577 H1=-4,732 H2= 4,394
+ cexit  3                   n=47 net= -2,057 PF=0.88 WR=38% ex2=-10,147 CE= 7,374 PE=-9,432 H1=-4,726 H2= 2,668
+ cexit  4                   n=47 net=  1,853 PF=1.08 WR=38% ex2=-11,742 CE= 6,233 PE=-4,381 H1= 2,025 H2=  -172
+ cexit  5                   n=47 net= 26,081 PF=1.84 WR=40% ex2=  1,329 CE= 8,967 PE=17,114 H1= 3,042 H2=23,039
+ cexit  6                   n=47 net= 13,884 PF=1.32 WR=36% ex2=-10,169 CE= 2,574 PE=11,310 H1=-2,769 H2=16,653
+ cexit  7                   n=47 net= 17,534 PF=1.35 WR=43% ex2= -7,875 CE= 4,992 PE=12,542 H1= 5,957 H2=11,576
+ cexit  8                   n=47 net= 16,058 PF=1.25 WR=45% ex2=-15,324 CE=20,585 PE=-4,527 H1=-7,114 H2=23,172
+ cexit 10                   n=47 net=  5,512 PF=1.08 WR=40% ex2=-25,870 CE=11,433 PE=-5,922 H1=-9,347 H2=14,859
+ brick rev1 (src tf)         n=47 net= 13,825 PF=1.53 WR=43% ex2= -1,693 CE=12,766 PE= 1,059 H1= 6,906 H2= 6,919
+ brick rev2                  n=47 net=  7,270 PF=1.23 WR=40% ex2= -7,202 CE=10,127 PE=-2,857 H1= 5,899 H2= 1,371
+ cexit 5 + brick rev1        n=47 net= 11,238 PF=1.47 WR=38% ex2= -4,280 CE=11,131 PE=   107 H1= 3,640 H2= 7,599
+ cexit 5 + brick rev2        n=47 net=  7,335 PF=1.28 WR=38% ex2= -7,137 CE= 8,730 PE=-1,394 H1= 3,299 H2= 4,037
+ cexit 6 + brick rev1        n=47 net= 10,767 PF=1.41 WR=43% ex2= -4,752 CE=10,195 PE=   572 H1= 3,156 H2= 7,611
+ cexit 6 + brick rev2        n=47 net=  6,438 PF=1.22 WR=38% ex2= -8,034 CE= 8,645 PE=-2,207 H1= 3,682 H2= 2,756
+ cexit 7 + brick rev1        n=47 net= 14,427 PF=1.55 WR=43% ex2= -1,092 CE=13,422 PE= 1,004 H1= 7,325 H2= 7,101
+ cexit 7 + brick rev2        n=47 net=  8,473 PF=1.28 WR=38% ex2= -6,000 CE=10,143 PE=-1,671 H1= 7,777 H2=   695
+ cexit5 + noprog 2           n=47 net= 22,945 PF=1.96 WR=38% ex2= -1,027 CE= 8,479 PE=14,466 H1=-4,358 H2=27,303
+ cexit5 + noprog 3           n=47 net= 28,753 PF=2.07 WR=40% ex2=  4,001 CE= 9,649 PE=19,103 H1= 4,348 H2=24,404
+ cexit5 + noprog 4           n=47 net= 28,457 PF=2.00 WR=40% ex2=  3,705 CE= 8,895 PE=19,562 H1= 5,138 H2=23,319
+ cexit5 + BE after 3br       n=47 net= 25,285 PF=1.95 WR=30% ex2=    533 CE= 7,589 PE=17,696 H1= 2,948 H2=22,337
+ cexit5 + target 10br        n=47 net= 10,653 PF=1.35 WR=40% ex2=   -120 CE= 9,646 PE= 1,007 H1=   283 H2=10,371
+
+=== b625_mv50ext B=6.25 tf=15 entry=breakout | replay covers 46 trades | engine net (all) 29,929
+ engine-equiv (rev1)         n=46 net= 32,770 PF=2.16 WR=37% ex2=   -562 CE=15,022 PE=17,748 H1= 7,108 H2=25,662
+ cexit  2                   n=46 net=    930 PF=1.11 WR=33% ex2= -2,291 CE= 1,713 PE=  -783 H1= 1,797 H2=  -868
+ cexit  3                   n=46 net=  3,920 PF=1.30 WR=35% ex2= -1,505 CE= 4,466 PE=  -546 H1= 4,774 H2=  -855
+ cexit  4                   n=46 net=    -65 PF=1.00 WR=35% ex2= -8,236 CE=   114 PE=  -179 H1= 7,446 H2=-7,511
+ cexit  5                   n=46 net= 13,692 PF=1.56 WR=43% ex2= -9,396 CE=-4,362 PE=18,054 H1= 8,518 H2= 5,174
+ cexit  6                   n=46 net= 25,327 PF=1.74 WR=43% ex2= -8,372 CE=16,848 PE= 8,479 H1= 3,637 H2=21,691
+ cexit  7                   n=46 net= 24,287 PF=1.60 WR=41% ex2= -9,045 CE=20,644 PE= 3,643 H1= 8,015 H2=16,273
+ cexit  8                   n=46 net= 13,049 PF=1.25 WR=43% ex2=-20,283 CE=18,905 PE=-5,856 H1= 6,919 H2= 6,129
+ cexit 10                   n=46 net= 13,306 PF=1.21 WR=48% ex2=-20,026 CE=13,877 PE=  -572 H1= 5,571 H2= 7,735
+ brick rev1 (src tf)         n=46 net= 32,770 PF=2.16 WR=37% ex2=   -562 CE=15,022 PE=17,748 H1= 7,108 H2=25,662
+ brick rev2                  n=46 net= 27,693 PF=1.89 WR=37% ex2= -5,639 CE=13,416 PE=14,277 H1= 5,002 H2=22,692
+ cexit 5 + brick rev1        n=46 net= 16,120 PF=1.69 WR=39% ex2= -6,968 CE=-4,284 PE=20,404 H1= 8,456 H2= 7,664
+ cexit 5 + brick rev2        n=46 net= 15,116 PF=1.64 WR=41% ex2= -7,972 CE=-4,082 PE=19,198 H1= 7,992 H2= 7,124
+ cexit 6 + brick rev1        n=46 net= 33,085 PF=2.34 WR=39% ex2=   -614 CE=16,789 PE=16,296 H1= 6,029 H2=27,056
+ cexit 6 + brick rev2        n=46 net= 31,993 PF=2.27 WR=41% ex2= -1,706 CE=17,472 PE=14,521 H1= 5,681 H2=26,312
+ cexit 7 + brick rev1        n=46 net= 34,258 PF=2.25 WR=37% ex2=    926 CE=17,397 PE=16,861 H1= 8,372 H2=25,886
+ cexit 7 + brick rev2        n=46 net= 32,315 PF=2.12 WR=39% ex2= -1,017 CE=17,930 PE=14,385 H1= 8,288 H2=24,027
+ cexit5 + noprog 2           n=46 net= 12,253 PF=1.53 WR=41% ex2=-10,835 CE=-2,782 PE=15,035 H1= 7,787 H2= 4,466
+ cexit5 + noprog 3           n=46 net= 13,933 PF=1.59 WR=43% ex2= -9,155 CE=-3,367 PE=17,300 H1= 7,745 H2= 6,188
+ cexit5 + noprog 4           n=46 net= 12,451 PF=1.49 WR=41% ex2=-10,637 CE=-4,667 PE=17,118 H1= 6,997 H2= 5,454
+ cexit5 + BE after 3br       n=46 net= 14,996 PF=1.67 WR=39% ex2= -8,092 CE=-4,108 PE=19,104 H1=10,345 H2= 4,651
+ cexit5 + target 10br        n=46 net= 12,526 PF=1.51 WR=43% ex2= -3,627 CE=-1,326 PE=13,852 H1= 6,864 H2= 5,662
+
+=== b833_mv50 B=8.33 tf=15 entry=breakout | replay covers 47 trades | engine net (all) 24,775
+ engine-equiv (rev1)         n=47 net= 27,927 PF=1.79 WR=32% ex2= -6,350 CE= 9,015 PE=18,912 H1= 3,224 H2=24,703
+ cexit  2                   n=47 net= -4,277 PF=0.56 WR=32% ex2= -7,381 CE=   299 PE=-4,576 H1=  -923 H2=-3,354
+ cexit  3                   n=47 net= -6,620 PF=0.62 WR=30% ex2=-11,641 CE=   107 PE=-6,727 H1=  -731 H2=-5,889
+ cexit  4                   n=47 net= -9,162 PF=0.62 WR=26% ex2=-17,157 CE=-4,358 PE=-4,803 H1= 1,485 H2=-10,647
+ cexit  5                   n=47 net= 12,909 PF=1.49 WR=32% ex2=-10,179 CE=-5,658 PE=18,567 H1= 6,656 H2= 6,253
+ cexit  6                   n=47 net= 25,084 PF=1.66 WR=38% ex2= -9,561 CE= 8,986 PE=16,097 H1= 2,194 H2=22,890
+ cexit  7                   n=47 net= 31,281 PF=1.80 WR=47% ex2= -2,996 CE=14,479 PE=16,803 H1= 9,266 H2=22,015
+ cexit  8                   n=47 net= 25,626 PF=1.58 WR=47% ex2= -8,652 CE= 9,454 PE=16,172 H1= 6,936 H2=18,691
+ cexit 10                   n=47 net= 30,495 PF=1.55 WR=51% ex2= -3,783 CE= 7,446 PE=23,049 H1= 4,267 H2=26,227
+ brick rev1 (src tf)         n=47 net= 27,927 PF=1.79 WR=32% ex2= -6,350 CE= 9,015 PE=18,912 H1= 3,224 H2=24,703
+ brick rev2                  n=47 net= 21,596 PF=1.51 WR=34% ex2=-12,682 CE= 7,387 PE=14,209 H1=   949 H2=20,647
+ cexit 5 + brick rev1        n=47 net= 10,114 PF=1.38 WR=28% ex2=-12,974 CE=-6,419 PE=16,533 H1= 3,201 H2= 6,913
+ cexit 5 + brick rev2        n=47 net=  9,711 PF=1.37 WR=30% ex2=-13,377 CE=-5,119 PE=14,830 H1= 2,564 H2= 7,147
+ cexit 6 + brick rev1        n=47 net= 20,732 PF=1.67 WR=30% ex2=-13,913 CE= 6,029 PE=14,703 H1= 2,158 H2=18,574
+ cexit 6 + brick rev2        n=47 net= 19,578 PF=1.59 WR=32% ex2=-15,067 CE= 8,729 PE=10,849 H1= 1,511 H2=18,067
+ cexit 7 + brick rev1        n=47 net= 22,496 PF=1.66 WR=30% ex2=-11,781 CE= 6,838 PE=15,659 H1= 6,107 H2=16,390
+ cexit 7 + brick rev2        n=47 net= 20,394 PF=1.55 WR=32% ex2=-13,884 CE= 8,840 PE=11,554 H1= 4,862 H2=15,532
+ cexit5 + noprog 2           n=47 net=  6,838 PF=1.26 WR=28% ex2=-16,250 CE=-3,793 PE=10,631 H1= 2,814 H2= 4,023
+ cexit5 + noprog 3           n=47 net=  8,044 PF=1.29 WR=28% ex2=-15,044 CE=-5,363 PE=13,406 H1=   754 H2= 7,290
+ cexit5 + noprog 4           n=47 net= 10,696 PF=1.39 WR=28% ex2=-12,392 CE=-5,697 PE=16,393 H1= 4,589 H2= 6,107
+ cexit5 + BE after 3br       n=47 net= 13,601 PF=1.54 WR=30% ex2= -9,487 CE=-5,177 PE=18,778 H1= 7,855 H2= 5,746
+ cexit5 + target 10br        n=47 net= 11,375 PF=1.43 WR=32% ex2= -5,476 CE=-4,807 PE=16,182 H1= 9,084 H2= 2,291
+
+=== b625_mv40 B=6.25 tf=15 entry=breakout | replay covers 47 trades | engine net (all) 24,758
+ engine-equiv (rev1)         n=47 net= 27,599 PF=1.83 WR=28% ex2= -6,679 CE= 9,516 PE=18,083 H1= 5,145 H2=22,454
+ cexit  2                   n=47 net= -2,610 PF=0.74 WR=34% ex2= -6,019 CE=   695 PE=-3,305 H1=   384 H2=-2,993
+ cexit  3                   n=47 net= -1,677 PF=0.89 WR=38% ex2= -6,727 CE= 1,943 PE=-3,620 H1= 2,122 H2=-3,799
+ cexit  4                   n=47 net= -4,875 PF=0.79 WR=28% ex2=-13,358 CE=  -861 PE=-4,014 H1= 5,980 H2=-10,855
+ cexit  5                   n=47 net= 13,985 PF=1.50 WR=32% ex2= -9,103 CE=-3,224 PE=17,209 H1=11,284 H2= 2,701
+ cexit  6                   n=47 net= 22,763 PF=1.56 WR=38% ex2=-11,882 CE= 9,600 PE=13,163 H1= 5,226 H2=17,537
+ cexit  7                   n=47 net= 24,625 PF=1.54 WR=47% ex2= -9,652 CE=15,847 PE= 8,778 H1=11,229 H2=13,396
+ cexit  8                   n=47 net= 20,920 PF=1.42 WR=49% ex2=-13,358 CE=13,591 PE= 7,329 H1=10,897 H2=10,023
+ cexit 10                   n=47 net= 25,240 PF=1.41 WR=55% ex2= -9,038 CE=11,017 PE=14,222 H1= 8,574 H2=16,666
+ brick rev1 (src tf)         n=47 net= 27,599 PF=1.83 WR=28% ex2= -6,679 CE= 9,516 PE=18,083 H1= 5,145 H2=22,454
+ brick rev2                  n=47 net= 27,722 PF=1.76 WR=32% ex2= -6,555 CE=11,160 PE=16,562 H1= 4,166 H2=23,556
+ cexit 5 + brick rev1        n=47 net= 12,402 PF=1.44 WR=26% ex2=-10,686 CE=-2,005 PE=14,407 H1= 5,662 H2= 6,740
+ cexit 5 + brick rev2        n=47 net= 12,961 PF=1.47 WR=28% ex2=-10,127 CE=-2,158 PE=15,119 H1= 6,962 H2= 5,999
+ cexit 6 + brick rev1        n=47 net= 25,061 PF=1.86 WR=28% ex2= -9,584 CE=11,755 PE=13,306 H1= 3,767 H2=21,294
+ cexit 6 + brick rev2        n=47 net= 23,588 PF=1.77 WR=30% ex2=-11,056 CE=10,302 PE=13,286 H1= 4,417 H2=19,172
+ cexit 7 + brick rev1        n=47 net= 26,169 PF=1.82 WR=28% ex2= -8,109 CE=12,334 PE=13,835 H1= 6,503 H2=19,666
+ cexit 7 + brick rev2        n=47 net= 24,144 PF=1.70 WR=30% ex2=-10,134 CE=10,835 PE=13,309 H1= 7,595 H2=16,549
+ cexit5 + noprog 2           n=47 net=  6,724 PF=1.23 WR=26% ex2=-16,364 CE=-2,197 PE= 8,921 H1= 6,633 H2=    91
+ cexit5 + noprog 3           n=47 net=  9,292 PF=1.31 WR=30% ex2=-13,796 CE=-2,649 PE=11,940 H1= 5,382 H2= 3,910
+ cexit5 + noprog 4           n=47 net= 12,577 PF=1.44 WR=30% ex2=-10,511 CE=-2,512 PE=15,090 H1= 9,217 H2= 3,360
+ cexit5 + BE after 3br       n=47 net= 15,730 PF=1.62 WR=30% ex2= -7,358 CE=-1,082 PE=16,812 H1=11,664 H2= 4,066
+ cexit5 + target 10br        n=47 net=  6,974 PF=1.25 WR=32% ex2= -9,178 CE=-2,701 PE= 9,675 H1= 8,236 H2=-1,261

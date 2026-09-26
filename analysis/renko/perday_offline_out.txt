@@ -1,0 +1,95 @@
+=== 1. by days-to-expiry x side (per-day, one trade/day)
+BASE
+  DTE 0                              n= 49 net=-19,221 PF=0.36 WR=27% avg=  -392 DD=20,280 ex2=-23,390 H1=-3,881 H2=-15,340
+         CE                           n= 22 net= -8,141 PF=0.45 WR=23% avg=  -370 DD= 9,025 ex2=-12,311 H1=  -488 H2=-7,654
+         PE                           n= 27 net=-11,079 PF=0.28 WR=30% avg=  -410 DD=11,255 ex2=-13,514 H1=-2,772 H2=-8,307
+  DTE 1                              n= 47 net= -4,872 PF=0.81 WR=30% avg=  -104 DD= 9,301 ex2=-12,327 H1=-4,072 H2=  -800
+         CE                           n= 24 net= -5,889 PF=0.52 WR=29% avg=  -245 DD= 7,222 ex2= -9,782 H1=-5,766 H2=  -124
+         PE                           n= 23 net=  1,017 PF=1.07 WR=30% avg=    44 DD= 5,603 ex2= -6,438 H1= 2,067 H2=-1,050
+  DTE 4                              n= 47 net= -7,699 PF=0.72 WR=40% avg=  -164 DD=12,565 ex2=-14,339 H1=  -676 H2=-7,023
+         CE                           n= 24 net= -8,427 PF=0.50 WR=38% avg=  -351 DD=10,013 ex2=-13,806 H1=-2,528 H2=-5,899
+         PE                           n= 23 net=    728 PF=1.07 WR=43% avg=    32 DD= 4,001 ex2= -4,079 H1= 2,769 H2=-2,041
+  DTE 5                              n= 46 net=-11,472 PF=0.62 WR=30% avg=  -249 DD=11,541 ex2=-19,016 H1=-7,160 H2=-4,313
+         CE                           n= 22 net=-10,234 PF=0.22 WR=27% avg=  -465 DD=10,234 ex2=-12,181 H1=-5,064 H2=-5,171
+         PE                           n= 24 net= -1,238 PF=0.93 WR=33% avg=   -52 DD= 5,593 ex2= -8,781 H1=  -260 H2=  -978
+  DTE 6                              n= 47 net= 29,152 PF=2.00 WR=49% avg=   620 DD=15,577 ex2=  4,400 H1= 8,157 H2=20,995
+         CE                           n= 21 net=  9,896 PF=2.17 WR=52% avg=   471 DD= 4,219 ex2= -1,645 H1= 2,005 H2= 7,891
+         PE                           n= 26 net= 19,256 PF=1.93 WR=46% avg=   741 DD=11,528 ex2= -5,496 H1= 6,152 H2=13,104
+MV50
+  DTE 0                              n= 29 net=-11,632 PF=0.25 WR=14% avg=  -401 DD=12,129 ex2=-14,593 H1=-2,756 H2=-8,876
+         CE                           n= 14 net= -6,172 PF=0.26 WR= 7% avg=  -441 DD= 7,358 ex2= -8,070 H1=-2,252 H2=-3,920
+         PE                           n= 15 net= -5,460 PF=0.24 WR=20% avg=  -364 DD= 5,489 ex2= -7,088 H1=-2,113 H2=-3,348
+  DTE 1                              n= 30 net= -3,575 PF=0.79 WR=30% avg=  -119 DD= 7,335 ex2=-12,425 H1=-3,721 H2=   146
+         CE                           n= 15 net= -2,577 PF=0.56 WR=33% avg=  -172 DD= 4,920 ex2= -4,755 H1=   644 H2=-3,221
+         PE                           n= 15 net=   -998 PF=0.91 WR=27% avg=   -67 DD= 5,948 ex2= -9,848 H1=  -468 H2=  -530
+  DTE 4                              n= 33 net=-13,315 PF=0.31 WR=27% avg=  -403 DD=13,722 ex2=-15,675 H1=-4,794 H2=-8,522
+         CE                           n= 14 net= -7,732 PF=0.17 WR=14% avg=  -552 DD= 8,882 ex2= -9,282 H1=-2,145 H2=-5,587
+         PE                           n= 19 net= -5,584 PF=0.43 WR=37% avg=  -294 DD= 5,896 ex2= -7,920 H1=-2,691 H2=-2,893
+  DTE 5                              n= 29 net= -4,179 PF=0.81 WR=31% avg=  -144 DD=11,047 ex2=-12,529 H1= 1,833 H2=-6,012
+         CE                           n= 17 net= -2,909 PF=0.75 WR=29% avg=  -171 DD= 7,693 ex2= -9,071 H1= 1,479 H2=-4,388
+         PE                           n= 12 net= -1,271 PF=0.88 WR=33% avg=  -106 DD= 6,831 ex2= -9,620 H1=   354 H2=-1,625
+  DTE 6                              n= 34 net= 35,753 PF=2.98 WR=44% avg= 1,052 DD= 5,886 ex2=  2,421 H1=14,547 H2=21,206
+         CE                           n= 17 net= 19,416 PF=3.38 WR=35% avg= 1,142 DD= 2,571 ex2= -1,040 H1= 2,119 H2=17,296
+         PE                           n= 17 net= 16,338 PF=2.65 WR=53% avg=   961 DD= 6,438 ex2= -5,466 H1= 7,621 H2= 8,717
+
+=== 2. DTE gates (in-sample; then chosen-on-H1 -> tested-on-H2)
+BASE
+   all                          n=236 net=-14,112 PF=0.90 WR=35% avg=   -60 DD=37,950 ex2=-38,864 H1=-7,397 H2=-6,715 | H1-sel  -7,397  H2-test  -6,715
+   no Tue                       n=187 net=  5,109 PF=1.05 WR=37% avg=    27 DD=31,343 ex2=-19,643 H1=-1,999 H2= 7,108 | H1-sel  -1,999  H2-test   7,108
+   DTE>=4                       n=140 net=  9,981 PF=1.11 WR=40% avg=    71 DD=26,205 ex2=-14,771 H1=   130 H2= 9,851 | H1-sel   3,078  H2-test   6,903
+   DTE>=5                       n= 93 net= 17,680 PF=1.30 WR=40% avg=   190 DD=20,875 ex2= -7,072 H1=   998 H2=16,682 | H1-sel   5,827  H2-test  11,853
+   DTE6 only                    n= 47 net= 29,152 PF=2.00 WR=49% avg=   620 DD=15,577 ex2=  4,400 H1= 8,157 H2=20,995 | H1-sel  11,105  H2-test  18,047
+   no Tue,no Thu                n=141 net= 16,581 PF=1.20 WR=40% avg=   118 DD=25,964 ex2= -8,171 H1= 4,283 H2=12,298 | H1-sel   3,279  H2-test  13,302
+MV50
+   all                          n=155 net=  3,052 PF=1.03 WR=30% avg=    20 DD=16,845 ex2=-30,280 H1=10,283 H2=-7,231 | H1-sel  10,283  H2-test  -7,231
+   no Tue                       n=126 net= 14,684 PF=1.19 WR=33% avg=   117 DD=14,034 ex2=-18,648 H1=10,706 H2= 3,978 | H1-sel  14,407  H2-test     276
+   DTE>=4                       n= 96 net= 18,259 PF=1.31 WR=34% avg=   190 DD=11,297 ex2=-15,073 H1=12,009 H2= 6,250 | H1-sel  13,530  H2-test   4,729
+   DTE>=5                       n= 63 net= 31,574 PF=1.79 WR=38% avg=   501 DD= 8,294 ex2= -1,758 H1=17,131 H2=14,443 | H1-sel  19,815  H2-test  11,759
+   DTE6 only                    n= 34 net= 35,753 PF=2.98 WR=44% avg= 1,052 DD= 5,886 ex2=  2,421 H1=14,547 H2=21,206 | H1-sel  14,547  H2-test  21,206
+   no Tue,no Thu                n= 97 net= 18,863 PF=1.35 WR=34% avg=   194 DD=12,343 ex2=-14,469 H1= 9,139 H2= 9,724 | H1-sel   9,139  H2-test   9,724
+
+=== 3. exit variants on the per-day entries (replay; entries fixed), all days vs DTE6 vs non-DTE6
+BASE: replay covers 224/236 trades
+  engine-equivalent parity: 224/224 identical exits
+  engine-equivalent  all n=224 net=-10,803 PF=0.92 DD=37,950 | DTE6 net= 30,862 PF=2.13 | other net=-41,665 PF=0.62
+  cexit5             all n=224 net=-10,803 PF=0.92 DD=37,950 | DTE6 net= 30,862 PF=2.13 | other net=-41,665 PF=0.62
+  cexit6             all n=224 net=-49,826 PF=0.74 DD=60,206 | DTE6 net= 24,950 PF=1.76 | other net=-74,776 PF=0.53
+  cexit7             all n=224 net=-70,255 PF=0.72 DD=86,128 | DTE6 net= 22,376 PF=1.51 | other net=-92,631 PF=0.55
+  cexit8             all n=224 net=-108,488 PF=0.66 DD=111,787 | DTE6 net= 29,851 PF=1.60 | other net=-138,340 PF=0.49
+  rev1               all n=224 net=-16,907 PF=0.86 DD=37,343 | DTE6 net= 17,654 PF=1.86 | other net=-34,560 PF=0.64
+  rev2               all n=224 net=-30,696 PF=0.79 DD=40,544 | DTE6 net=  7,277 PF=1.25 | other net=-37,973 PF=0.67
+  cexit7+rev1        all n=224 net=-17,875 PF=0.84 DD=36,826 | DTE6 net= 18,379 PF=1.91 | other net=-36,254 PF=0.62
+  cexit5+BE3         all n=224 net= -4,072 PF=0.97 DD=32,653 | DTE6 net= 29,562 PF=2.32 | other net=-33,634 PF=0.65
+  rev1+BE3           all n=224 net=-15,600 PF=0.86 DD=33,758 | DTE6 net= 19,971 PF=2.11 | other net=-35,571 PF=0.61
+  cexit5+noprog4     all n=224 net= -9,367 PF=0.93 DD=34,554 | DTE6 net= 24,680 PF=1.87 | other net=-34,047 PF=0.66
+MV50: replay covers 147/155 trades
+  engine-equivalent parity: 147/147 identical exits
+  engine-equivalent  all n=147 net=  9,376 PF=1.11 DD=16,845 | DTE6 net= 38,594 PF=3.54 | other net=-29,218 PF=0.59
+  cexit5             all n=147 net= -7,247 PF=0.90 DD=28,740 | DTE6 net= 22,123 PF=3.01 | other net=-29,370 PF=0.55
+  cexit6             all n=147 net= -8,141 PF=0.92 DD=26,627 | DTE6 net= 38,578 PF=3.79 | other net=-46,719 PF=0.48
+  cexit7             all n=147 net= -1,511 PF=0.99 DD=45,276 | DTE6 net= 38,906 PF=2.98 | other net=-40,417 PF=0.63
+  cexit8             all n=147 net=-20,280 PF=0.87 DD=64,214 | DTE6 net= 35,955 PF=2.63 | other net=-56,235 PF=0.60
+  rev1               all n=147 net=  9,376 PF=1.11 DD=16,845 | DTE6 net= 38,594 PF=3.54 | other net=-29,218 PF=0.59
+  rev2               all n=147 net= -3,507 PF=0.97 DD=20,371 | DTE6 net= 34,947 PF=3.00 | other net=-38,454 PF=0.54
+  cexit7+rev1        all n=147 net= 10,712 PF=1.13 DD=16,897 | DTE6 net= 40,641 PF=3.90 | other net=-29,929 PF=0.56
+  cexit5+BE3         all n=147 net= -1,934 PF=0.97 DD=24,892 | DTE6 net= 22,805 PF=3.34 | other net=-24,739 PF=0.56
+  rev1+BE3           all n=147 net= 13,819 PF=1.19 DD=17,804 | DTE6 net= 35,035 PF=3.51 | other net=-21,216 PF=0.65
+  cexit5+noprog4     all n=147 net= -8,976 PF=0.88 DD=30,244 | DTE6 net= 21,479 PF=2.85 | other net=-30,456 PF=0.54
+
+=== 4. day-wise strategy idea: weekday x config, and pick-by-H1 -> test-on-H2
+weekday   BASE(n,net,PF)  MV50(n,net,PF)
+Mon       (47, -4,872,0.81)  (30, -3,575,0.79)
+Tue       (49,-19,221,0.36)  (29,-11,632,0.25)
+Wed       (47, 29,152,2.00)  (34, 35,753,2.98)
+Thu       (46,-11,472,0.62)  (29, -4,179,0.81)
+Fri       (47, -7,699,0.72)  (33,-13,315,0.31)
+calendar split at 2026-03-04
+  Mon: H1 {'BASE': -5077, 'MV50': -276} -> pick none; H2 {'BASE': 205, 'MV50': -3299} -> H2 result 0
+  Tue: H1 {'BASE': -5398, 'MV50': -4124} -> pick none; H2 {'BASE': -13822, 'MV50': -7508} -> H2 result 0
+  Wed: H1 {'BASE': 11105, 'MV50': 14547} -> pick MV50; H2 {'BASE': 18047, 'MV50': 21206} -> H2 result 21206
+  Thu: H1 {'BASE': -5278, 'MV50': 5268} -> pick MV50; H2 {'BASE': -6194, 'MV50': -9448} -> H2 result -9448
+  Fri: H1 {'BASE': -2750, 'MV50': -7806} -> pick none; H2 {'BASE': -4950, 'MV50': -5509} -> H2 result 0
+  day-wise pick (chosen on H1) result on H2: 11759  vs H2 of BASE all days -6715  MV50 all days -4556
+
+=== 5. overlap: same day, both configs trade?
+days both traded 154 base only 82 mv50 only 1 same direction 131

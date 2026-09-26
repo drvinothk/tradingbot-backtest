@@ -1,0 +1,148 @@
+ANOMALY extreme vs renko3b
+ only in baseline: [('2025-09-10 14:30:00', 'NIFTY25091625100PE', 234), ('2025-09-18 13:15:00', 'NIFTY25092325400PE', -884), ('2025-10-08 10:30:00', 'NIFTY25101425100PE', 806), ('2025-11-19 10:15:00', 'NIFTY25112526000CE', -1657), ('2025-12-10 10:00:00', 'NIFTY25121625900PE', -991), ('2025-12-24 11:45:00', 'NIFTY25123026200PE', 838), ('2026-01-07 10:30:00', 'NIFTY26011326000PE', -540), ('2026-01-14 10:15:00', 'NIFTY26012025500PE', -559), ('2026-02-11 10:15:00', 'NIFTY26021725900PE', -972), ('2026-02-18 10:00:00', 'NIFTY26022425600PE', -1498), ('2026-03-11 10:00:00', 'NIFTY26031723800PE', 1726), ('2026-05-06 12:30:00', 'NIFTY26051223500PE', -432), ('2026-08-26 13:45:00', 'NIFTY26090124300PE', -1632)]
+ only in extreme : [('2025-09-11 12:30:00', 'NIFTY25091625200CE', -322), ('2025-09-19 10:00:00', 'NIFTY25092325300PE', -1700), ('2025-10-08 11:00:00', 'NIFTY25101425100PE', -266), ('2025-11-19 10:30:00', 'NIFTY25112526000CE', -1657), ('2025-12-10 11:45:00', 'NIFTY25121625800PE', 1284), ('2025-12-24 13:30:00', 'NIFTY25123026200PE', 682), ('2026-01-07 12:00:00', 'NIFTY26011326000PE', 62), ('2026-01-14 10:30:00', 'NIFTY26012025500PE', -923), ('2026-02-11 10:45:00', 'NIFTY26021726000CE', -1216), ('2026-02-18 10:15:00', 'NIFTY26022425600PE', -1332), ('2026-03-11 10:15:00', 'NIFTY26031723800PE', 507), ('2026-05-06 12:45:00', 'NIFTY26051223500PE', -679)]
+ same entry, different outcome: []
+ sums base/ext: 5804 5804
+
+=== renko3c_b625 (B=6.25, tf=15m)
+  ALL n=51 net= 11,833 PF=1.36 WR= 35% ex1= -5,850 avgW= 2,484 avgL=   -997
+  CE  n=23 net=  2,223 PF=1.18 WR= 35% ex1= -2,291 avgW= 1,856 avgL=   -842
+  PE  n=28 net=  9,610 PF=1.47 WR= 36% ex1= -8,073 avgW= 2,987 avgL= -1,126
+  hold ALL win  n=17 favBricks m/med= 17.1/ 14.0  advBricks=  2.5/  2.0  candles=  7.4/  6.0  minutes=111.4/ 89.0
+  hold ALL loss n=30 favBricks m/med=  1.0/  0.0  advBricks=  3.6/  3.0  candles=  2.7/  2.0  minutes= 39.5/ 29.0
+  hold CE  win  n= 8 favBricks m/med= 13.5/ 12.0  advBricks=  2.0/  2.0  candles=  7.6/  6.0  minutes=114.6/ 89.0
+  hold CE  loss n=14 favBricks m/med=  1.4/  0.5  advBricks=  2.9/  2.5  candles=  3.4/  2.5  minutes= 50.4/ 36.5
+  hold PE  win  n= 9 favBricks m/med= 20.2/ 14.0  advBricks=  3.0/  2.0  candles=  7.2/  6.0  minutes=108.4/ 89.0
+  hold PE  loss n=16 favBricks m/med=  0.7/  0.0  advBricks=  4.2/  3.5  candles=  2.1/  2.0  minutes= 29.9/ 29.0
+
+=== renko3c_ema20 (B=8.33, tf=15m)
+  ALL n=51 net=  2,850 PF=1.07 WR= 27% ex1=-14,833 avgW= 3,099 avgL= -1,096
+  CE  n=20 net=   -787 PF=0.95 WR= 30% ex1= -4,992 avgW= 2,439 avgL= -1,101
+  PE  n=31 net=  3,637 PF=1.14 WR= 26% ex1=-14,046 avgW= 3,595 avgL= -1,092
+  hold ALL win  n=14 favBricks m/med= 14.9/ 12.5  advBricks=  2.0/  1.5  candles=  9.7/ 10.0  minutes=146.9/149.0
+  hold ALL loss n=33 favBricks m/med=  1.4/  0.0  advBricks=  2.6/  2.0  candles=  3.3/  3.0  minutes= 48.5/ 44.0
+  hold CE  win  n= 6 favBricks m/med= 12.7/ 12.5  advBricks=  1.5/  1.5  candles= 10.3/  9.5  minutes=155.7/141.5
+  hold CE  loss n=14 favBricks m/med=  1.3/  0.0  advBricks=  2.2/  2.0  candles=  3.7/  3.0  minutes= 54.7/ 44.0
+  hold PE  win  n= 8 favBricks m/med= 16.5/ 11.5  advBricks=  2.4/  1.5  candles=  9.2/ 10.0  minutes=140.2/149.0
+  hold PE  loss n=19 favBricks m/med=  1.5/  0.0  advBricks=  2.9/  2.0  candles=  3.0/  3.0  minutes= 44.0/ 44.0
+
+=== renko3c_extreme (B=8.33, tf=15m)
+  ALL n=50 net=  5,804 PF=1.16 WR= 28% ex1=-11,879 avgW= 2,993 avgL= -1,003
+  CE  n=21 net=  2,259 PF=1.18 WR= 29% ex1= -1,947 avgW= 2,439 avgL=   -825
+  PE  n=29 net=  3,546 PF=1.15 WR= 28% ex1=-14,137 avgW= 3,410 avgL= -1,130
+  hold ALL win  n=14 favBricks m/med= 13.8/ 12.0  advBricks=  1.4/  1.0  candles=  9.0/  8.0  minutes=136.1/119.0
+  hold ALL loss n=33 favBricks m/med=  1.4/  0.0  advBricks=  2.5/  2.0  candles=  3.9/  3.0  minutes= 58.3/ 44.0
+  hold CE  win  n= 6 favBricks m/med= 12.7/ 12.5  advBricks=  1.5/  1.5  candles= 10.3/  9.5  minutes=155.7/141.5
+  hold CE  loss n=15 favBricks m/med=  1.3/  0.0  advBricks=  1.7/  1.0  candles=  4.3/  3.0  minutes= 64.7/ 44.0
+  hold PE  win  n= 8 favBricks m/med= 14.6/  9.0  advBricks=  1.4/  1.0  candles=  8.0/  7.5  minutes=121.5/116.5
+  hold PE  loss n=18 favBricks m/med=  1.6/  0.0  advBricks=  3.3/  3.0  candles=  3.6/  3.0  minutes= 53.1/ 44.0
+
+=== renko3c_fresh (B=8.33, tf=15m)
+  ALL n=50 net= -1,541 PF=0.95 WR= 30% ex1=-19,224 avgW= 2,129 avgL=   -957
+  CE  n=22 net= -3,842 PF=0.70 WR= 36% ex1= -7,560 avgW= 1,121 avgL=   -915
+  PE  n=28 net=  2,301 PF=1.11 WR= 25% ex1=-15,382 avgW= 3,282 avgL=   -984
+  hold ALL win  n=14 favBricks m/med= 10.1/  7.0  advBricks=  0.6/  1.0  candles=  6.6/  5.5  minutes=101.9/ 81.5
+  hold ALL loss n=33 favBricks m/med=  1.0/  0.0  advBricks=  2.0/  1.0  candles=  3.2/  2.0  minutes= 48.9/ 29.0
+  hold CE  win  n= 8 favBricks m/med=  7.1/  7.5  advBricks=  0.8/  1.0  candles=  5.8/  5.5  minutes= 87.8/ 81.5
+  hold CE  loss n=13 favBricks m/med=  1.2/  1.0  advBricks=  1.7/  1.0  candles=  4.5/  3.0  minutes= 68.6/ 44.0
+  hold PE  win  n= 6 favBricks m/med= 14.0/  6.5  advBricks=  0.3/  0.0  candles=  7.7/  6.0  minutes=120.7/ 89.0
+  hold PE  loss n=20 favBricks m/med=  0.8/  0.0  advBricks=  2.2/  1.0  candles=  2.4/  2.0  minutes= 36.1/ 29.0
+
+=== renko3c_fresh_ext (B=8.33, tf=15m)
+  ALL n=48 net=  9,906 PF=1.35 WR= 40% ex1= -7,777 avgW= 2,023 avgL=   -984
+  CE  n=23 net= -6,819 PF=0.54 WR= 35% ex1=-10,537 avgW= 1,014 avgL=   -995
+  PE  n=25 net= 16,724 PF=2.23 WR= 44% ex1=   -959 avgW= 2,757 avgL=   -972
+  hold ALL win  n=18 favBricks m/med=  9.4/  6.5  advBricks=  0.6/  1.0  candles=  6.4/  5.0  minutes= 99.3/ 79.0
+  hold ALL loss n=28 favBricks m/med=  1.1/  0.0  advBricks=  1.8/  1.0  candles=  4.0/  2.5  minutes= 60.8/ 41.5
+  hold CE  win  n= 8 favBricks m/med=  6.9/  7.5  advBricks=  0.6/  1.0  candles=  5.5/  5.0  minutes= 85.2/ 79.0
+  hold CE  loss n=14 favBricks m/med=  1.1/  0.5  advBricks=  1.8/  1.0  candles=  4.1/  2.5  minutes= 62.6/ 36.5
+  hold PE  win  n=10 favBricks m/med= 11.4/  6.0  advBricks=  0.6/  0.5  candles=  7.1/  6.0  minutes=110.5/ 94.0
+  hold PE  loss n=14 favBricks m/med=  1.2/  0.0  advBricks=  1.8/  1.0  candles=  3.8/  2.5  minutes= 59.1/ 41.5
+
+=== renko3c_freshcross (B=8.33, tf=15m)
+  ALL n=51 net= -5,834 PF=0.84 WR= 27% ex1=-23,517 avgW= 2,215 avgL=   -996
+  CE  n=24 net=-10,953 PF=0.42 WR= 29% ex1=-14,670 avgW= 1,147 avgL= -1,117
+  PE  n=27 net=  5,119 PF=1.29 WR= 26% ex1=-12,564 avgW= 3,282 avgL=   -893
+  hold ALL win  n=13 favBricks m/med= 10.9/  8.0  advBricks=  1.2/  1.0  candles=  6.6/  6.0  minutes=100.5/ 89.0
+  hold ALL loss n=34 favBricks m/med=  0.9/  0.0  advBricks=  1.9/  1.0  candles=  3.1/  2.0  minutes= 45.9/ 29.0
+  hold CE  win  n= 7 favBricks m/med=  7.9/  8.0  advBricks=  1.1/  1.0  candles=  5.1/  5.0  minutes= 77.6/ 74.0
+  hold CE  loss n=17 favBricks m/med=  0.9/  0.0  advBricks=  1.6/  2.0  candles=  3.8/  2.0  minutes= 56.1/ 29.0
+  hold PE  win  n= 6 favBricks m/med= 14.5/  8.0  advBricks=  1.3/  1.0  candles=  8.3/  9.0  minutes=127.3/134.0
+  hold PE  loss n=17 favBricks m/med=  0.8/  0.0  advBricks=  2.1/  1.0  candles=  2.4/  2.0  minutes= 35.8/ 29.0
+
+=== renko3c_freshcross_ema20 (B=8.33, tf=15m)
+  ALL n=51 net= -8,164 PF=0.78 WR= 25% ex1=-25,847 avgW= 2,286 avgL=   -997
+  CE  n=28 net=-20,716 PF=0.20 WR= 14% ex1=-24,434 avgW= 1,285 avgL= -1,077
+  PE  n=23 net= 12,552 PF=2.04 WR= 39% ex1= -5,132 avgW= 2,730 avgL=   -858
+  hold ALL win  n=13 favBricks m/med= 11.0/  8.0  advBricks=  1.4/  1.0  candles=  7.0/  6.0  minutes=106.3/ 89.0
+  hold ALL loss n=34 favBricks m/med=  1.4/  1.0  advBricks=  1.8/  1.5  candles=  3.3/  3.0  minutes= 49.4/ 44.0
+  hold CE  win  n= 4 favBricks m/med=  8.8/  8.0  advBricks=  0.8/  1.0  candles=  4.8/  5.0  minutes= 72.8/ 74.0
+  hold CE  loss n=21 favBricks m/med=  1.4/  1.0  advBricks=  1.6/  2.0  candles=  3.6/  2.0  minutes= 53.0/ 29.0
+  hold PE  win  n= 9 favBricks m/med= 12.0/  7.0  advBricks=  1.7/  1.0  candles=  8.0/  8.0  minutes=121.2/119.0
+  hold PE  loss n=13 favBricks m/med=  1.4/  1.0  advBricks=  2.2/  1.0  candles=  2.9/  3.0  minutes= 43.6/ 44.0
+
+=== renko3c_freshcross_ext (B=8.33, tf=15m)
+  ALL n=49 net=  7,592 PF=1.24 WR= 37% ex1=-10,091 avgW= 2,207 avgL= -1,036
+  CE  n=23 net=   -432 PF=0.97 WR= 43% ex1= -4,150 avgW= 1,243 avgL=   -990
+  PE  n=26 net=  8,024 PF=1.42 WR= 31% ex1= -9,659 avgW= 3,411 avgL= -1,070
+  hold ALL win  n=17 favBricks m/med= 10.5/  8.0  advBricks=  0.8/  1.0  candles=  6.5/  5.0  minutes=100.5/ 74.0
+  hold ALL loss n=30 favBricks m/med=  1.2/  0.0  advBricks=  2.4/  2.0  candles=  3.8/  3.0  minutes= 56.8/ 44.0
+  hold CE  win  n=10 favBricks m/med=  8.8/  9.0  advBricks=  1.0/  1.0  candles=  6.3/  5.0  minutes= 95.5/ 74.0
+  hold CE  loss n=13 favBricks m/med=  1.0/  0.0  advBricks=  1.7/  2.0  candles=  4.2/  3.0  minutes= 61.3/ 44.0
+  hold PE  win  n= 7 favBricks m/med= 13.0/  5.0  advBricks=  0.4/  0.0  candles=  6.9/  6.0  minutes=107.6/ 99.0
+  hold PE  loss n=17 favBricks m/med=  1.4/  0.0  advBricks=  2.9/  2.0  candles=  3.5/  3.0  minutes= 53.3/ 44.0
+
+=== renko3c_freshcross_lb2 (B=8.33, tf=15m)
+  ALL n=51 net= -3,689 PF=0.90 WR= 29% ex1=-21,372 avgW= 2,173 avgL= -1,008
+  CE  n=24 net= -8,496 PF=0.54 WR= 33% ex1=-12,214 avgW= 1,241 avgL= -1,152
+  PE  n=27 net=  4,807 PF=1.27 WR= 26% ex1=-12,876 avgW= 3,237 avgL=   -893
+  hold ALL win  n=14 favBricks m/med= 11.0/  8.0  advBricks=  1.3/  1.0  candles=  7.1/  6.0  minutes=108.3/ 94.0
+  hold ALL loss n=33 favBricks m/med=  0.9/  0.0  advBricks=  2.0/  1.0  candles=  2.9/  2.0  minutes= 43.4/ 29.0
+  hold CE  win  n= 8 favBricks m/med=  8.5/  8.0  advBricks=  1.2/  1.0  candles=  6.2/  5.5  minutes= 94.0/ 81.5
+  hold CE  loss n=16 favBricks m/med=  0.9/  0.0  advBricks=  1.9/  2.0  candles=  3.5/  2.5  minutes= 51.5/ 36.5
+  hold PE  win  n= 6 favBricks m/med= 14.3/  7.5  advBricks=  1.3/  1.0  candles=  8.3/  9.0  minutes=127.3/134.0
+  hold PE  loss n=17 favBricks m/med=  0.8/  0.0  advBricks=  2.1/  1.0  candles=  2.4/  2.0  minutes= 35.8/ 29.0
+
+=== renko3c_pullback (B=8.33, tf=15m)
+  ALL n=51 net=-15,847 PF=0.58 WR= 37% ex1=-20,803 avgW= 1,166 avgL= -1,188
+  CE  n=19 net=-18,402 PF=0.13 WR= 21% ex1=-19,773 avgW=   703 avgL= -1,414
+  PE  n=32 net=  2,554 PF=1.15 WR= 47% ex1= -2,402 avgW= 1,290 avgL=   -988
+  hold ALL win  n=18 favBricks m/med=  8.9/  7.5  advBricks=  1.7/  1.0  candles=  6.4/  4.5  minutes= 92.4/ 66.0
+  hold ALL loss n=29 favBricks m/med=  2.4/  1.0  advBricks=  2.0/  2.0  candles=  2.6/  2.0  minutes= 33.8/ 29.0
+  hold CE  win  n= 4 favBricks m/med= 10.5/ 12.0  advBricks=  1.5/  1.5  candles=  7.0/  4.0  minutes= 98.8/ 52.5
+  hold CE  loss n=14 favBricks m/med=  1.4/  0.5  advBricks=  1.9/  2.0  candles=  2.6/  2.0  minutes= 34.0/ 26.0
+  hold PE  win  n=14 favBricks m/med=  8.5/  7.5  advBricks=  1.7/  1.0  candles=  6.3/  4.5  minutes= 90.6/ 66.0
+  hold PE  loss n=15 favBricks m/med=  3.4/  1.0  advBricks=  2.1/  2.0  candles=  2.7/  3.0  minutes= 33.7/ 34.0
+
+=== renko3c_tf20 (B=8.33, tf=20m)
+  ALL n=50 net= -4,092 PF=0.88 WR= 36% ex1=-10,296 avgW= 1,741 avgL= -1,107
+  CE  n=23 net=    965 PF=1.06 WR= 39% ex1= -2,873 avgW= 1,761 avgL= -1,063
+  PE  n=27 net= -5,057 PF=0.75 WR= 33% ex1=-11,261 avgW= 1,721 avgL= -1,141
+  hold ALL win  n=18 favBricks m/med= 11.1/  9.5  advBricks=  2.1/  1.0  candles=  7.1/  5.0  minutes=143.4/ 99.0
+  hold ALL loss n=29 favBricks m/med=  1.0/  0.0  advBricks=  3.1/  3.0  candles=  2.5/  2.0  minutes= 49.3/ 39.0
+  hold CE  win  n= 9 favBricks m/med= 11.2/ 11.0  advBricks=  1.6/  1.0  candles=  9.3/ 12.0  minutes=190.7/239.0
+  hold CE  loss n=14 favBricks m/med=  1.1/  0.0  advBricks=  2.6/  2.5  candles=  2.5/  2.0  minutes= 49.0/ 39.0
+  hold PE  win  n= 9 favBricks m/med= 11.0/  7.0  advBricks=  2.6/  1.0  candles=  4.8/  4.0  minutes= 96.2/ 79.0
+  hold PE  loss n=15 favBricks m/med=  0.9/  0.0  advBricks=  3.5/  3.0  candles=  2.5/  2.0  minutes= 49.7/ 39.0
+
+=== renko3c_tf5 (B=8.33, tf=5m)
+  ALL n=51 net= 15,369 PF=1.66 WR= 39% ex1=  6,064 avgW= 1,939 avgL=   -755
+  CE  n=22 net= 11,173 PF=2.37 WR= 41% ex1=  4,927 avgW= 2,148 avgL=   -627
+  PE  n=29 net=  4,196 PF=1.28 WR= 38% ex1= -5,109 avgW= 1,768 avgL=   -848
+  hold ALL win  n=19 favBricks m/med=  9.3/  7.0  advBricks=  1.3/  1.0  candles= 15.7/ 11.0  minutes= 77.7/ 54.0
+  hold ALL loss n=28 favBricks m/med=  1.3/  0.0  advBricks=  1.9/  1.5  candles=  4.4/  3.0  minutes= 21.1/ 14.0
+  hold CE  win  n= 9 favBricks m/med=  8.9/  7.0  advBricks=  1.4/  1.0  candles= 15.1/  9.0  minutes= 74.6/ 44.0
+  hold CE  loss n=13 favBricks m/med=  1.5/  1.0  advBricks=  1.5/  1.0  candles=  5.2/  4.0  minutes= 24.8/ 19.0
+  hold PE  win  n=10 favBricks m/med=  9.7/  8.0  advBricks=  1.1/  1.0  candles= 16.3/ 15.0  minutes= 80.5/ 74.0
+  hold PE  loss n=15 favBricks m/med=  1.1/  0.0  advBricks=  2.1/  2.0  candles=  3.8/  2.0  minutes= 18.0/  9.0
+
+=== renko3a_b833_r15_dyn1 (B=8.33, tf=15m)
+  ALL n=51 net=  5,804 PF=1.16 WR= 27% ex1=-11,879 avgW= 3,070 avgL= -1,005
+  CE  n=19 net=  3,796 PF=1.35 WR= 32% ex1=   -410 avgW= 2,439 avgL=   -834
+  PE  n=32 net=  2,009 PF=1.08 WR= 25% ex1=-15,675 avgW= 3,543 avgL= -1,097
+  hold ALL win  n=14 favBricks m/med= 14.4/ 12.5  advBricks=  1.7/  1.0  candles=  9.4/  9.5  minutes=142.6/141.5
+  hold ALL loss n=33 favBricks m/med=  1.3/  0.0  advBricks=  2.6/  2.0  candles=  3.2/  3.0  minutes= 46.3/ 44.0
+  hold CE  win  n= 6 favBricks m/med= 12.7/ 12.5  advBricks=  1.5/  1.5  candles= 10.3/  9.5  minutes=155.7/141.5
+  hold CE  loss n=13 favBricks m/med=  1.4/  0.0  advBricks=  1.8/  2.0  candles=  3.9/  3.0  minutes= 57.8/ 44.0
+  hold PE  win  n= 8 favBricks m/med= 15.8/ 11.5  advBricks=  1.9/  1.0  candles=  8.8/  9.5  minutes=132.8/141.5
+  hold PE  loss n=20 favBricks m/med=  1.2/  0.0  advBricks=  3.1/  3.0  candles=  2.6/  2.5  minutes= 38.8/ 36.5

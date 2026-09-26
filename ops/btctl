@@ -1,0 +1,192 @@
+#!/usr/bin/env bash
+# btctl -- RESTRICTED backtest control for the cloud Claude Code session (2026-09-26).
+# Installed root-owned at /usr/local/sbin/btctl; reached ONLY via ssh forced command (btctl-ssh) -> `sudo -u ubuntu btctl "<request>"`.
+# Scope = the backtest bundle (~/backtest_engine) and backtest-* systemd units. It never touches ~/trading-bot, credentials, the live DB or
+# trading-bot.service. Arguments are whitespace-split (no eval, no globbing) and every token is regex-validated.
+set -uo pipefail
+set -f
+ENGINE=/home/ubuntu/backtest_engine
+REPORTS=$ENGINE/backend/data/historical/backtest_reports
+AUDIT=$ENGINE/logs/btctl_audit.log
+BAK=/home/ubuntu/deploy-bak/btctl
+mkdir -p "$ENGINE/logs" "$BAK"
+REQ="${1:-help}"
+read -r -a A <<< "$REQ"
+cmd="${A[0]:-help}"
+echo "$(date -u +%FT%TZ) $(printf '%s' "$REQ" | cut -c1-300)" >> "$AUDIT"
+
+die() { echo "REFUSED: $*" >&2; exit 2; }
+tagok() { [[ "${1:-}" =~ ^[A-Za-z0-9_]{1,24}$ ]]; }
+chunkname() { [[ "$(basename "${1:-}")" =~ ^renko[0-9]{1,3}[a-z]?_[A-Za-z0-9_]+\.txt$ ]]; }
+cfgok() { [[ "${1:-}" =~ ^sweep_configs/[A-Za-z0-9_]{1,60}\.txt$ ]]; }
+coderel() { [[ "${1:-}" =~ ^(backend/scripts/[A-Za-z0-9_]{1,60}\.py|backend/app/modules/strategy_engine/strategies/[A-Za-z0-9_]{1,60}\.py|backend/app/modules/strategy_engine/higher_timeframe\.py|setup/[A-Za-z0-9_]{1,60}\.(py|sh)|analysis/[A-Za-z0-9_/]{0,60}[A-Za-z0-9_]{1,60}\.py|[A-Za-z0-9_]{1,40}\.sh|(README|RENKO_HANDOFF_2026_09_24|RUNBOOK_CLOUD)\.md|notes/[A-Za-z0-9_.-]{1,60}\.md)$ ]] && [[ "$1" != *..* ]]; }
+sweep_running() { pgrep -f '[s]cripts/run_backtest\.py|[r]un_sweep|[l]aunch_chain\.sh' >/dev/null; }
+market_hours() { local dow hm; dow=$(TZ=Asia/Kolkata date +%u); hm=$(TZ=Asia/Kolkata date +%H%M); [ "$dow" -le 5 ] && [ "$hm" -ge 0830 ] && [ "$hm" -lt 1600 ]; }
+bt_units() { systemctl list-units 'backtest-2*.service' --no-legend --state=running 2>/dev/null | awk '{print $1}'; }
+reap_dbs() { sudo -n -u postgres psql -tAc "SELECT 'DROP DATABASE IF EXISTS \"'||datname||'\" WITH (FORCE);' FROM pg_database WHERE datname ~ '^btengine_backtest_'" 2>/dev/null | sudo -n -u postgres psql -q 2>/dev/null; }
+hb_list() { find "$ENGINE/logs" -maxdepth 1 -name '*_chain.heartbeat' -printf '%T@ %p\n' 2>/dev/null | sort -rn | head -"${1:-3}" | cut -d' ' -f2-; }
+tb_count() { find /tmp/s6_logs -name '*.log' -exec cat {} + 2>/dev/null | grep -c Traceback; }
+recent_status() { local since; since=$(date -u -d "-${1:-30} hours" +%Y-%m-%dT%H:%M:%SZ); awk -v s="$since" 'match($0,/^\[[^]]*\]/){t=substr($0,2,RLENGTH-2); if (t>s) print}' "$ENGINE/logs/s6_status.log" 2>/dev/null; }
+done_names() { grep -E '^\[[^]]*\] \[[^]]*\] [^ ]+ OK ' "$ENGINE/logs/s6_status.log" 2>/dev/null | sed -E 's/^\[[^]]*\] \[[^]]*\] ([^ ]+) OK .*/\1/' | sort -u; }
+
+attention() {
+  local n=0 now up last lastok tb
+  now=$(date +%s)
+  if [ "$(df --output=avail -BG / | tail -1 | tr -dc 0-9)" -lt 15 ]; then echo "! disk free < 15G"; n=1; fi
+  if recent_status 30 | grep -qE 'HAD SHARD FAILURES|merge FAILED'; then echo "! shard/merge failure in s6_status.log within the last 30h:"; recent_status 30 | grep -E 'HAD SHARD FAILURES|merge FAILED' | tail -3 | cut -c1-200; n=1; fi
+  for hb in $(hb_list 3); do
+    last=$(tail -n 1 "$hb")
+    if [ -z "$(bt_units)" ] && ! echo "$last" | grep -qE 'chain finished|STOP --|reaper timer restarted'; then echo "! chain $(basename "$hb") ended without a finish line (last: $last)"; n=1; fi
+    if echo "$last" | grep -qE 'ABORT'; then echo "! $(basename "$hb"): $last"; n=1; fi
+  done
+  if [ -n "$(bt_units)" ]; then
+    lastok=$(grep -E '^\[[^]]*\] \[[^]]*\] (--- |[^ ]+ (OK|HAD SHARD))' "$ENGINE/logs/s6_status.log" 2>/dev/null | tail -1 | sed -E 's/^\[([^]]*)\].*/\1/')
+    if [ -n "$lastok" ]; then up=$(( now - $(date -u -d "$lastok" +%s) )); if [ "$up" -gt 9000 ]; then echo "! newest config started/finished ${up}s ago (>2.5h) while a unit is running -- possible stall"; n=1; fi; fi
+    tb=$(tb_count); if [ "$tb" -gt 0 ]; then echo "! $tb Traceback line(s) in current shard logs"; n=1; fi
+  fi
+  [ "$n" -eq 0 ] && echo "ATTENTION: none"
+  return 0
+}
+
+case "$cmd" in
+help)
+  cat <<'H'
+btctl commands (request string is the ssh command):
+  status                      one-screen state: units, chains, progress, disk/load, md5s, ATTENTION flags
+  attention                   only the ATTENTION flags
+  logs TAG [N]                tail heartbeat + full.out + shard traceback counts for chain TAG (N<=200 lines)
+  results [TAG]               finished configs (from s6_status.log) [prefix filter]
+  fetch RELPATH               cat: data/historical/backtest_reports/s6_X/NAME_current.csv | logs/FILE | sweep_configs/FILE.txt | RENKO_HANDOFF_2026_09_24.md (<=3MB)
+  analyze TAG                 run analysis/csv_analyze.py over finished CSVs of TAG* (stdlib, niced)
+  apply-code RELPATH          (stdin) replace a backtest-bundle code/script file (whitelisted paths, syntax check, live-bot tripwires, backup, refused while a sweep runs)
+  revert RELPATH              restore the newest backup of a file changed by apply/apply-code (refused while a sweep runs)
+  make-resume NAME FILE...    write sweep_configs/NAME.txt with the configs of FILEs that have no OK line yet
+  apply RELPATH               (stdin) write sweep_configs/NAME.txt (config lines only; JSON parsed + QC dry-run; overwrite only if idle)
+  start-chain TAG END_BY SHARDS FILE...   END_BY=YYYY-MM-DD_HH:MM (UTC); FILEs = sweep_configs/X.txt; refused if anything runs; shards forced to 2 in market hours
+  stop-chain YES              stop running backtest-* units, restart reaper, reap leaked DBs
+  reaper-start | reap         restart reaper timer | drop leaked backtest DBs (only when idle)
+NOT possible here: anything under ~/trading-bot, the live DB, credentials, trading-bot.service, other users -- report to the user instead.
+H
+  ;;
+status)
+  echo "== now: $(TZ=Asia/Kolkata date '+%F %T IST') / $(date -u '+%T UTC')  load: $(cut -d' ' -f1-3 /proc/loadavg)  free: $(free -g | awk '/Mem:/{print $7"G avail"}')  disk: $(df -h --output=avail / | tail -1 | tr -d ' ') free"
+  echo "== units:"; systemctl list-units 'backtest-2*.service' --no-legend --state=running 2>/dev/null | cut -c1-150; [ -z "$(bt_units)" ] && echo "(none running)"
+  echo "== run_backtest procs: $(pgrep -fc '[s]cripts/run_backtest\.py')   reaper timer: $(systemctl is-active backtest-reaper.timer)   leaked backtest DBs: $(sudo -n -u postgres psql -tAc "select count(*) from pg_database where datname ~ '^btengine_backtest_'" 2>/dev/null)"
+  echo "== chains (newest heartbeats):"
+  for hb in $(hb_list 3); do echo "-- $(basename "$hb")"; tail -n 6 "$hb" | cut -c1-260; done
+  echo "== last 8 s6_status lines:"; tail -n 8 "$ENGINE/logs/s6_status.log" 2>/dev/null | cut -c1-200
+  echo "== finished configs (all chains): $(done_names | wc -l)"
+  echo "== md5:"; (cd "$ENGINE" && md5sum backend/scripts/run_backtest.py run_sweep_perday.sh run_sweep_default.sh launch_chain.sh | awk '{print substr($1,1,8)" "$2}')
+  echo "== ATTENTION:"; attention
+  ;;
+attention) attention ;;
+logs)
+  tagok "${A[1]:-}" || die "bad TAG"; n="${A[2]:-60}"; [[ "$n" =~ ^[0-9]{1,3}$ ]] && [ "$n" -le 200 ] || die "bad N"
+  echo "== heartbeat"; tail -n "$n" "$ENGINE/logs/${A[1]}_chain.heartbeat" 2>/dev/null | cut -c1-300
+  echo "== chain full.out"; tail -n "$n" "$ENGINE/logs/${A[1]}_chain_full.out" 2>/dev/null | cut -c1-300
+  set +f; for d in /tmp/s6_logs/${A[1]}*; do [ -d "$d" ] && echo "== $d: files $(ls "$d" | wc -l), tracebacks $(cat "$d"/*.log 2>/dev/null | grep -c Traceback)"; done; set -f
+  ;;
+results)
+  pre="${A[1]:-}"; if [ -n "$pre" ]; then tagok "$pre" || die "bad TAG"; fi
+  grep -E "\] \[${pre}[A-Za-z0-9_]*\] [^ ]+ (OK|HAD SHARD)" "$ENGINE/logs/s6_status.log" 2>/dev/null | cut -c1-200
+  ;;
+apply-code)
+  p="${A[1]:-}"; coderel "$p" || die "path not in the backtest-bundle code whitelist"
+  if sweep_running || [ -n "$(bt_units)" ]; then die "a sweep/backtest is running -- code files are read incrementally; wait or stop-chain first"; fi
+  tmp=$(mktemp /tmp/btctl_code.XXXXXX); head -c 1500001 > "$tmp"
+  if [ "$(stat -c %s "$tmp")" -gt 1500000 ]; then rm -f "${tmp:?}"; die "> 1.5MB"; fi
+  sed -i 's/\r$//' "$tmp"
+  if grep -qE '/home/ubuntu/trading-bot|trading-bot\.service|config/credentials|shoonya\.env|alice_blue\.env|telegram\.env|TELEGRAM_BOT|\.session_cache|/etc/|~/\.ssh|authorized_keys' "$tmp"; then rm -f "${tmp:?}"; die "tripwire: file references live-bot paths/credentials/system files"; fi
+  case "$p" in
+    *.py) if grep -n 'sudo' "$tmp" | head -1 | grep -q .; then rm -f "${tmp:?}"; die "tripwire: sudo in a python file"; fi
+          python3 -m py_compile "$tmp" 2>/tmp/btctl_pyc.$$ || { cat /tmp/btctl_pyc.$$; rm -f "${tmp:?}" "/tmp/btctl_pyc.$$"; die "python syntax error"; }; rm -f "/tmp/btctl_pyc.$$" ;;
+    *.sh) bad=$(grep -n 'sudo' "$tmp" | grep -vE 'sudo (-n )?(/opt/backtest/run_bt\.sh|systemctl (start|stop) backtest-|-u postgres psql)' | head -1)
+          [ -z "$bad" ] || { rm -f "${tmp:?}"; die "tripwire: disallowed sudo usage: $bad"; }
+          bash -n "$tmp" || { rm -f "${tmp:?}"; die "bash syntax error"; } ;;
+  esac
+  dest="$ENGINE/$p"; mkdir -p "$(dirname "$dest")"
+  bk="$BAK/$(echo "$p" | tr '/' '#')"
+  if [ -e "$dest" ]; then cp -p "$dest" "$bk.$(date +%s)"; fi
+  if [ -e "$dest" ]; then chmod --reference="$dest" "$tmp"; else chmod 644 "$tmp"; fi
+  mv "$tmp" "$dest"; echo "applied $p md5=$(md5sum "$dest" | cut -c1-32) (backup kept; use: revert $p)"
+  ;;
+revert)
+  p="${A[1]:-}"; if ! coderel "$p" && ! cfgok "$p"; then die "path not allowed"; fi
+  if sweep_running || [ -n "$(bt_units)" ]; then die "a sweep/backtest is running"; fi
+  bk=$(ls -t "$BAK/$(echo "$p" | tr '/' '#')".* "$BAK/$(basename "$p")".* 2>/dev/null | head -1); [ -n "$bk" ] || die "no backup for $p"
+  cp -p "$bk" "$ENGINE/$p.reverting" && mv "$ENGINE/$p.reverting" "$ENGINE/$p" && echo "reverted $p from $bk md5=$(md5sum "$ENGINE/$p" | cut -c1-32)"
+  ;;
+fetch)
+  p="${A[1]:-}"
+  if   [[ "$p" =~ ^data/historical/backtest_reports/s6_[A-Za-z0-9_]{1,30}/[A-Za-z0-9_]{1,80}_current\.csv$ ]] \
+    || [[ "$p" =~ ^logs/[A-Za-z0-9_.]{1,60}$ ]] || cfgok "$p" || coderel "$p"; then :; else die "path not allowed"; fi
+  f="$ENGINE/$p"; case "$p" in data/*) f="$ENGINE/backend/$p";; esac; [ -f "$f" ] || die "no such file"; [ "$(stat -c %s "$f")" -le 3145728 ] || die "file > 3MB"
+  cat "$f"
+  ;;
+analyze)
+  tagok "${A[1]:-}" || die "bad TAG"
+  set +f; files=$(ls "$REPORTS"/s6_${A[1]}*/*_current.csv 2>/dev/null); set -f
+  [ -n "$files" ] || die "no finished CSVs for ${A[1]}*"
+  nice -n 10 python3 "$ENGINE/analysis/csv_analyze.py" $files
+  ;;
+make-resume)
+  cfgok "sweep_configs/${A[1]:-x}.txt" || die "bad NAME"; chunkname "${A[1]}.txt" || die "NAME must look like renko13r_resume (chain derives the chunk tag from renkoNN[x]_)"; out="sweep_configs/${A[1]}.txt"; [ -e "$ENGINE/$out" ] && die "$out exists"
+  [ "${#A[@]}" -ge 3 ] || die "need source files"
+  tmpn=$(mktemp /tmp/btctl_resume.XXXXXX); dn=$(mktemp /tmp/btctl_done.XXXXXX); done_names > "$dn"; n=0
+  for f in "${A[@]:2}"; do cfgok "$f" || die "bad file $f"; [ -f "$ENGINE/$f" ] || die "missing $f"
+    while IFS= read -r line; do case "$line" in \#*|'') continue;; esac; nm="${line%%|*}"; if ! grep -qxF "$nm" "$dn"; then echo "$line" >> "$tmpn"; n=$((n+1)); fi; done < "$ENGINE/$f"
+  done
+  { echo "# resume file $(date -u +%FT%TZ): unfinished configs from ${A[*]:2}"; cat "$tmpn"; } > "$ENGINE/$out"
+  rm -f "${tmpn:?}" "${dn:?}"
+  echo "wrote $out with $n unfinished config(s)"
+  ;;
+apply)
+  p="${A[1]:-}"; cfgok "$p" || die "only sweep_configs/NAME.txt may be written"
+  tmp=$(mktemp /tmp/btctl_apply.XXXXXX); head -c 200001 > "$tmp"
+  if [ "$(stat -c %s "$tmp")" -gt 200000 ]; then rm -f "${tmp:?}"; die "> 200KB"; fi
+  if ! python3 - "$tmp" <<'PY'
+import sys, json, re
+for i, ln in enumerate(open(sys.argv[1], encoding='utf-8').read().split('\n'), 1):
+    ln = ln.rstrip('\r')
+    if not ln.strip() or ln.startswith('#'):
+        continue
+    parts = ln.split('|', 2)
+    if len(parts) != 3 or not re.fullmatch(r'[A-Za-z0-9_]{1,80}', parts[0]) or not re.fullmatch(r'[a-z_]{3,60}', parts[1]):
+        sys.exit(f"line {i}: bad name|type|json")
+    json.loads(parts[2])
+PY
+  then rm -f "${tmp:?}"; die "content check failed (need '#comment' or name|strategy_type|json lines)"; fi
+  dest="$ENGINE/$p"
+  if [ -e "$dest" ]; then
+    if sweep_running; then rm -f "${tmp:?}"; die "$p exists and a sweep is running (new files only while running)"; fi
+    cp -p "$dest" "$BAK/$(basename "$p").$(date +%s)"
+  fi
+  sed -i 's/\r$//' "$tmp"; chmod 644 "$tmp"; mv "$tmp" "$dest"
+  dry=$(mktemp /tmp/btctl_dry.XXXXXX)
+  if ! (cd "$ENGINE" && DRY_RUN=1 RUN_TAG=btdry ./run_sweep_default.sh "$p" > "$dry" 2>&1); then tail -n 8 "$dry"; rm -f "${dry:?}"; die "QC gate failed for $p (file left in place; fix or overwrite)"; fi
+  rm -f "${dry:?}"; echo "applied $p md5=$(md5sum "$dest" | cut -c1-32) configs=$(grep -cv '^#' "$dest"), QC OK"
+  ;;
+start-chain)
+  tag="${A[1]:-}"; endby="${A[2]:-}"; sh="${A[3]:-}"; tagok "$tag" || die "bad TAG"
+  [[ "$endby" =~ ^20[0-9]{2}-[01][0-9]-[0-3][0-9]_[0-2][0-9]:[0-5][0-9]$ ]] || die "END_BY must be YYYY-MM-DD_HH:MM (UTC)"
+  [[ "$sh" =~ ^[1-4]$ ]] || die "SHARDS 1..4"; [ "${#A[@]}" -ge 5 ] || die "need FILE(s)"
+  if sweep_running; then die "a sweep/chain/backtest is running"; fi; [ -z "$(bt_units)" ] || die "a backtest unit is running"
+  [ ! -e "$ENGINE/logs/${tag}_chain.heartbeat" ] || die "TAG $tag already used (heartbeat exists)"
+  if market_hours; then sh=2; fi
+  files=""; for f in "${A[@]:4}"; do cfgok "$f" || die "bad file $f"; chunkname "$f" || die "file name must look like renko13a_xxx.txt (launch_chain derives the chunk tag from renkoNN[x]_): $f"; [ -f "$ENGINE/$f" ] || die "missing $f"; files="$files $f"; done
+  ends="${endby/_/ }:00"; date -u -d "$ends" +%s >/dev/null 2>&1 || die "bad END_BY date"
+  cat > "$ENGINE/go_${tag}.sh" <<G
+#!/bin/bash
+sudo /opt/backtest/run_bt.sh /bin/bash -c 'cd /home/ubuntu/backtest_engine && TAG=${tag} END_BY_UTC="${ends}" SHARD_COUNT=${sh} ./launch_chain.sh${files} > logs/${tag}_chain_full.out 2>&1'
+G
+  chmod +x "$ENGINE/go_${tag}.sh"; "$ENGINE/go_${tag}.sh"; sleep 5; tail -n 3 "$ENGINE/logs/${tag}_chain.heartbeat" 2>/dev/null
+  ;;
+stop-chain)
+  [ "${A[1]:-}" = "YES" ] || die "say: stop-chain YES"
+  for u in $(bt_units); do sudo -n systemctl stop "$u" && echo "stopped $u"; done; sleep 3
+  sudo -n systemctl start backtest-reaper.timer && echo "reaper timer started"; reap_dbs; echo "leaked DBs reaped"
+  ;;
+reaper-start) sudo -n systemctl start backtest-reaper.timer && echo "reaper timer started" ;;
+reap) if sweep_running; then die "sweep running"; fi; reap_dbs; echo reaped ;;
+*) die "unknown command '$cmd' (try: help)" ;;
+esac

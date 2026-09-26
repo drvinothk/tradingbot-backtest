@@ -1,0 +1,5 @@
+# renko12b (2026-09-26, unattended ~28h run): MULTI-TRADE per-day, EXTRA_BT_ARGS='--extra-warmup-days 21' (ATR/EMA history = production 20d). Chunk b. Families: A s1_top core+controls, B s1 brick sizing, C s1 rules/filter ablations, D fixed-brick families msd=1.
+w12_s1_m075|renko_trend|{"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 0.75, "confirm_bricks": 2, "entry_mode": "breakout", "max_signals_per_direction": 3}
+w12_s1_m05|renko_trend|{"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 0.5, "confirm_bricks": 2, "entry_mode": "breakout", "max_signals_per_direction": 3}
+w12_s1_htf15_m1|renko_trend|{"htf_timeframe_minutes": 15, "atr_period": 14, "brick_atr_multiplier": 1.0, "confirm_bricks": 2, "entry_mode": "breakout", "max_signals_per_direction": 3}
+w12_s1_htf15_m15|renko_trend|{"htf_timeframe_minutes": 15, "atr_period": 14, "brick_atr_multiplier": 1.5, "confirm_bricks": 2, "entry_mode": "breakout", "max_signals_per_direction": 3}

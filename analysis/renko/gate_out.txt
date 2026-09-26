@@ -1,0 +1,102 @@
+
+=== tf5_x5_ema15tf (tf=5, n=47)
+ ref cexit5 (no renko)    net= 31,076 PF=2.09 WR=49% ex2=  6,324 H1=12,850 H2=18,226
+ base5, armed3 (any)      net=  7,439 PF=1.30 WR=38% ex2= -6,321 H1= 5,311 H2= 2,129
+ base5, armed2 (any)      net=  9,783 PF=1.42 WR=36% ex2= -4,930 H1= 5,249 H2= 4,534
+ base5, armed3 (cur)      net=  7,322 PF=1.27 WR=38% ex2= -6,438 H1= 4,810 H2= 2,512
+ base5, armed4 (cur)      net=  9,896 PF=1.35 WR=45% ex2= -3,975 H1= 6,477 H2= 3,419
+ base8, armed3 (any)      net= 10,907 PF=1.42 WR=38% ex2= -2,854 H1= 9,571 H2= 1,336
+ base8, armed5 (any)      net= 33,283 PF=2.07 WR=49% ex2=  8,531 H1=16,234 H2=17,049
+ base8, armed3 (cur)      net= 10,946 PF=1.37 WR=38% ex2= -2,815 H1=10,517 H2=   429
+ AND-any N3 (base off)    net=  9,734 PF=1.37 WR=38% ex2= -4,027 H1= 9,548 H2=   185
+ AND-any N4               net= 13,465 PF=1.48 WR=43% ex2=   -406 H1=11,446 H2= 2,018
+ AND-any N5               net= 34,190 PF=2.10 WR=49% ex2=  9,438 H1=16,211 H2=17,979
+ AND-cur N3               net=  9,773 PF=1.33 WR=38% ex2= -3,988 H1=10,494 H2=  -722
+ AND-cur N5               net= 30,599 PF=1.91 WR=49% ex2=  5,847 H1=17,199 H2=13,400
+ AND-flip N3              net= 10,478 PF=1.26 WR=30% ex2=-15,558 H1= 5,973 H2= 4,504
+ AND-flip N5              net= 16,731 PF=1.38 WR=40% ex2= -9,305 H1=17,108 H2=  -377
+
+=== tf5_x5 (tf=5, n=47)
+ ref cexit5 (no renko)    net= 29,312 PF=2.03 WR=49% ex2=  4,560 H1=10,478 H2=18,834
+ base5, armed3 (any)      net=  9,266 PF=1.38 WR=40% ex2= -4,495 H1= 6,529 H2= 2,737
+ base5, armed2 (any)      net= 11,583 PF=1.52 WR=38% ex2= -3,130 H1= 6,442 H2= 5,142
+ base5, armed3 (cur)      net=  9,149 PF=1.35 WR=40% ex2= -4,612 H1= 6,029 H2= 3,120
+ base5, armed4 (cur)      net= 11,905 PF=1.44 WR=47% ex2= -1,966 H1= 7,878 H2= 4,027
+ base8, armed3 (any)      net= 11,677 PF=1.45 WR=40% ex2= -2,083 H1= 9,734 H2= 1,943
+ base8, armed5 (any)      net= 31,431 PF=2.03 WR=49% ex2=  6,679 H1=13,773 H2=17,657
+ base8, armed3 (cur)      net= 12,685 PF=1.45 WR=40% ex2= -1,076 H1=11,648 H2= 1,037
+ AND-any N3 (base off)    net= 10,504 PF=1.40 WR=40% ex2= -3,257 H1= 9,711 H2=   793
+ AND-any N4               net= 14,755 PF=1.54 WR=45% ex2=    884 H1=12,129 H2= 2,626
+ AND-any N5               net= 32,337 PF=2.06 WR=49% ex2=  7,585 H1=13,751 H2=18,587
+ AND-cur N3               net= 11,511 PF=1.40 WR=40% ex2= -2,249 H1=11,625 H2=  -114
+ AND-cur N5               net= 28,746 PF=1.87 WR=49% ex2=  3,994 H1=14,739 H2=14,007
+ AND-flip N3              net= 14,758 PF=1.37 WR=32% ex2=-11,278 H1=10,910 H2= 3,848
+ AND-flip N5              net= 10,696 PF=1.23 WR=38% ex2=-15,340 H1=11,736 H2=-1,040
+
+=== c5_x5_e5 (tf=5, n=47)
+ ref cexit5 (no renko)    net= 25,919 PF=1.90 WR=40% ex2=  1,167 H1= 5,785 H2=20,134
+ base5, armed3 (any)      net= 11,027 PF=1.53 WR=43% ex2= -2,506 H1= 6,347 H2= 4,680
+ base5, armed2 (any)      net= 12,792 PF=1.65 WR=40% ex2= -1,693 H1= 6,679 H2= 6,113
+ base5, armed3 (cur)      net= 10,910 PF=1.48 WR=43% ex2= -2,623 H1= 5,847 H2= 5,064
+ base5, armed4 (cur)      net= 12,519 PF=1.50 WR=38% ex2= -1,124 H1= 7,260 H2= 5,259
+ base8, armed3 (any)      net= 11,216 PF=1.49 WR=43% ex2= -2,317 H1= 7,855 H2= 3,360
+ base8, armed5 (any)      net= 23,029 PF=1.67 WR=40% ex2= -1,723 H1= 4,599 H2=18,431
+ base8, armed3 (cur)      net= 12,223 PF=1.49 WR=43% ex2= -1,310 H1= 9,769 H2= 2,454
+ AND-any N3 (base off)    net= 10,306 PF=1.45 WR=43% ex2= -3,227 H1= 7,855 H2= 2,451
+ AND-any N4               net= 10,780 PF=1.40 WR=38% ex2= -2,863 H1= 7,163 H2= 3,617
+ AND-any N5               net= 25,730 PF=1.75 WR=40% ex2=    978 H1= 4,599 H2=21,131
+ AND-cur N3               net= 11,313 PF=1.45 WR=43% ex2= -2,220 H1= 9,769 H2= 1,544
+ AND-cur N5               net= 24,378 PF=1.70 WR=40% ex2=   -374 H1= 7,761 H2=16,617
+ AND-flip N3              net= 17,998 PF=1.45 WR=34% ex2= -6,377 H1= 6,503 H2=11,495
+ AND-flip N5              net= 18,275 PF=1.41 WR=43% ex2= -6,100 H1=10,637 H2= 7,637
+
+=== c4_x5_e5 (tf=5, n=47)
+ ref cexit5 (no renko)    net= 26,081 PF=1.84 WR=40% ex2=  1,329 H1= 3,042 H2=23,039
+ base5, armed3 (any)      net=  9,750 PF=1.39 WR=40% ex2= -3,978 H1= 2,229 H2= 7,521
+ base5, armed2 (any)      net= 11,583 PF=1.49 WR=38% ex2= -3,097 H1= 2,548 H2= 9,035
+ base5, armed3 (cur)      net=  9,633 PF=1.36 WR=40% ex2= -4,095 H1= 1,729 H2= 7,904
+ base5, armed4 (cur)      net= 11,421 PF=1.40 WR=38% ex2= -2,418 H1= 3,256 H2= 8,164
+ base8, armed3 (any)      net= 11,823 PF=1.44 WR=45% ex2= -1,905 H1= 5,622 H2= 6,201
+ base8, armed5 (any)      net= 24,674 PF=1.68 WR=45% ex2=    -78 H1= 3,338 H2=21,336
+ base8, armed3 (cur)      net= 11,752 PF=1.39 WR=45% ex2= -1,976 H1= 6,458 H2= 5,294
+ AND-any N3 (base off)    net= 10,913 PF=1.41 WR=45% ex2= -2,815 H1= 5,622 H2= 5,291
+ AND-any N4               net= 13,182 PF=1.45 WR=43% ex2=   -657 H1= 6,519 H2= 6,662
+ AND-any N5               net= 27,375 PF=1.76 WR=45% ex2=  2,623 H1= 3,338 H2=24,037
+ AND-cur N3               net= 10,842 PF=1.36 WR=45% ex2= -2,886 H1= 6,458 H2= 4,384
+ AND-cur N5               net= 25,672 PF=1.70 WR=45% ex2=    920 H1= 6,214 H2=19,458
+ AND-flip N3              net= 20,082 PF=1.49 WR=36% ex2= -5,327 H1= 6,838 H2=13,244
+ AND-flip N5              net= 13,825 PF=1.29 WR=40% ex2=-11,583 H1= 5,271 H2= 8,554
+
+=== b625_mv50ext (tf=15, n=46)
+ ref cexit5 (no renko)    net= 13,692 PF=1.56 WR=43% ex2= -9,396 H1= 8,518 H2= 5,174
+ base5, armed3 (any)      net= 16,328 PF=1.71 WR=41% ex2= -6,760 H1= 9,614 H2= 6,715
+ base5, armed2 (any)      net= 16,058 PF=1.70 WR=39% ex2= -7,030 H1= 8,216 H2= 7,842
+ base5, armed3 (cur)      net= 15,880 PF=1.69 WR=39% ex2= -7,208 H1= 9,165 H2= 6,715
+ base5, armed4 (cur)      net= 15,278 PF=1.65 WR=41% ex2= -7,810 H1= 8,161 H2= 7,118
+ base8, armed3 (any)      net= 33,933 PF=2.19 WR=43% ex2=    601 H1= 8,031 H2=25,903
+ base8, armed5 (any)      net= 27,596 PF=1.81 WR=41% ex2= -5,736 H1= 9,035 H2=18,561
+ base8, armed3 (cur)      net= 34,320 PF=2.19 WR=41% ex2=    988 H1= 9,503 H2=24,817
+ AND-any N3 (base off)    net= 31,330 PF=2.00 WR=43% ex2= -2,002 H1= 7,459 H2=23,871
+ AND-any N4               net= 32,286 PF=2.09 WR=46% ex2= -1,046 H1= 5,811 H2=26,475
+ AND-any N5               net= 24,518 PF=1.66 WR=41% ex2= -8,814 H1= 8,187 H2=16,331
+ AND-cur N3               net= 31,938 PF=2.01 WR=41% ex2= -1,394 H1= 9,152 H2=22,786
+ AND-cur N5               net= 22,763 PF=1.57 WR=41% ex2=-10,569 H1= 7,332 H2=15,431
+ AND-flip N3              net= 19,169 PF=1.48 WR=35% ex2=-14,163 H1=-1,102 H2=20,270
+ AND-flip N5              net= 24,609 PF=1.60 WR=41% ex2= -8,723 H1= 6,052 H2=18,558
+
+=== b833_mv50 (tf=15, n=47)
+ ref cexit5 (no renko)    net= 12,909 PF=1.49 WR=32% ex2=-10,179 H1= 6,656 H2= 6,253
+ base5, armed3 (any)      net=  9,951 PF=1.37 WR=30% ex2=-13,137 H1= 3,530 H2= 6,422
+ base5, armed2 (any)      net= 10,065 PF=1.37 WR=28% ex2=-13,023 H1= 2,486 H2= 7,579
+ base5, armed3 (cur)      net=  9,535 PF=1.35 WR=30% ex2=-13,553 H1= 3,113 H2= 6,422
+ base5, armed4 (cur)      net= 13,708 PF=1.53 WR=32% ex2= -9,380 H1= 6,104 H2= 7,605
+ base8, armed3 (any)      net= 18,089 PF=1.48 WR=32% ex2=-16,188 H1= 2,662 H2=15,428
+ base8, armed5 (any)      net= 19,529 PF=1.48 WR=40% ex2=-14,749 H1= 5,752 H2=13,777
+ base8, armed3 (cur)      net= 20,091 PF=1.53 WR=34% ex2=-14,186 H1= 4,280 H2=15,811
+ AND-any N3 (base off)    net= 23,913 PF=1.61 WR=36% ex2=-10,364 H1=  -517 H2=24,430
+ AND-any N4               net= 27,820 PF=1.70 WR=43% ex2= -6,458 H1=   250 H2=27,570
+ AND-any N5               net= 26,942 PF=1.63 WR=45% ex2= -7,335 H1= 5,210 H2=21,733
+ AND-cur N3               net= 25,915 PF=1.67 WR=38% ex2= -8,362 H1= 1,102 H2=24,814
+ AND-cur N5               net= 25,493 PF=1.55 WR=45% ex2= -8,785 H1= 4,150 H2=21,343
+ AND-flip N3              net= 15,291 PF=1.32 WR=32% ex2=-18,986 H1=-8,499 H2=23,790
+ AND-flip N5              net= 23,631 PF=1.48 WR=40% ex2=-10,647 H1= 1,605 H2=22,025
