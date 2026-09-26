@@ -1,6 +1,6 @@
-# btsync status  2026-09-26T19:10:41Z UTC / 2026-09-27 00:40:41 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-09-26T19:41:12Z UTC / 2026-09-27 01:11:12 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-09-27 00:40:41 IST / 19:10:41 UTC  load: 4.64 4.38 4.36  free: 7G avail  disk: 75G free
+== now: 2026-09-27 01:11:12 IST / 19:41:12 UTC  load: 4.05 3.68 4.03  free: 7G avail  disk: 75G free
 == units:
   backtest-20260926-082551.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && TAG=w13 END_BY_UTC=\"2026-09-28 02:00:00\" S
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
@@ -25,15 +25,15 @@
 2026-09-26 06:27:30 IST mt1: batch finished rc=0 -- 6 OK (cumulative), 0 with failures
 2026-09-26 06:27:30 IST mt1: reaper timer restarted
 == last 8 s6_status lines:
-[2026-09-26T16:16:30Z] [w13c] w12_s1_conf3 OK (2900s, 32 trades, 75G free)
-[2026-09-26T16:16:30Z] [w13c] --- w12_s1_conf1 (renko_trend, src=alice_index) params={"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 1.0, "confirm_bricks": 1, "entry_mode": "br
 [2026-09-26T17:06:10Z] [w13c] w12_s1_conf1 OK (2980s, 216 trades, 75G free)
 [2026-09-26T17:06:10Z] [w13c] --- w12_s1_exit_wide (renko_trend, src=alice_index) params={"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 1.0, "confirm_bricks": 2, "entry_mode":
 [2026-09-26T17:55:05Z] [w13c] w12_s1_exit_wide OK (2935s, 85 trades, 75G free)
 [2026-09-26T17:55:05Z] [w13c] --- w12_s1_pe_m075 (renko_trend, src=alice_index) params={"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 0.75, "confirm_bricks": 2, "entry_mode": 
 [2026-09-26T18:44:23Z] [w13c] w12_s1_pe_m075 OK (2958s, 147 trades, 75G free)
 [2026-09-26T18:44:23Z] [w13c] --- w12_s1_ema30x15 (renko_trend, src=alice_index) params={"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 1.0, "confirm_bricks": 2, "entry_mode": 
-== finished configs (all chains): 477
+[2026-09-26T19:38:37Z] [w13c] w12_s1_ema30x15 OK (3254s, 89 trades, 75G free)
+[2026-09-26T19:38:37Z] [w13c] --- w12_s1_nofilter (renko_trend, src=alice_index) params={"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 1.0, "confirm_bricks": 2, "entry_mode": 
+== finished configs (all chains): 478
 == md5:
 587fefca backend/scripts/run_backtest.py
 69ce1dd9 run_sweep_perday.sh
