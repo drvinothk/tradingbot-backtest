@@ -25,7 +25,7 @@ market_hours() { local dow hm; dow=$(TZ=Asia/Kolkata date +%u); hm=$(TZ=Asia/Kol
 bt_units() { systemctl list-units 'backtest-2*.service' --no-legend --state=running 2>/dev/null | awk '{print $1}'; }
 reap_dbs() { sudo -n -u postgres psql -tAc "SELECT 'DROP DATABASE IF EXISTS \"'||datname||'\" WITH (FORCE);' FROM pg_database WHERE datname ~ '^btengine_backtest_'" 2>/dev/null | sudo -n -u postgres psql -q 2>/dev/null; }
 hb_list() { find "$ENGINE/logs" -maxdepth 1 -name '*_chain.heartbeat' -printf '%T@ %p\n' 2>/dev/null | sort -rn | head -"${1:-3}" | cut -d' ' -f2-; }
-tb_count() { find /tmp/s6_logs -name '*.log' -exec cat {} + 2>/dev/null | grep -c Traceback; }
+tb_count() { local u t; u=$(bt_units | head -1); t=$(systemctl show -p ActiveEnterTimestamp --value "$u" 2>/dev/null); [ -n "$t" ] || { echo 0; return; }; find /tmp/s6_logs -name '*.log' -newermt "$t" -exec cat {} + 2>/dev/null | grep -c Traceback; }
 recent_status() { local since; since=$(date -u -d "-${1:-30} hours" +%Y-%m-%dT%H:%M:%SZ); awk -v s="$since" 'match($0,/^\[[^]]*\]/){t=substr($0,2,RLENGTH-2); if (t>s) print}' "$ENGINE/logs/s6_status.log" 2>/dev/null; }
 done_names() { grep -E '^\[[^]]*\] \[[^]]*\] [^ ]+ OK ' "$ENGINE/logs/s6_status.log" 2>/dev/null | sed -E 's/^\[[^]]*\] \[[^]]*\] ([^ ]+) OK .*/\1/' | sort -u; }
 
