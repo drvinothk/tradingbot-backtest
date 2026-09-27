@@ -3242,7 +3242,7 @@ def main() -> None:
         "('options' = current near-term chain, 'options_1min_past' = past-year archive)",
     )
     parser.add_argument(
-        "--underlying-source", choices=("spot", "futures_proxy", "alice_index"),
+        "--underlying-source", choices=("spot", "futures_proxy", "alice_index", "combined_2020"),
         default="alice_index",
         help="'alice_index' (default) = underlyings/<u>_alice_index_1min.csv (real, "
         "continuous NSE-index 1-min history via Alice Blue's historical chart API, "
@@ -3251,7 +3251,16 @@ def main() -> None:
         "'spot' = underlyings/<u>_1min.csv (TrueData, ~12-day cap); "
         "'futures_proxy' = underlyings/<u>_underlying_proxy_1min.csv "
         "(stitched real monthly-futures history, real data only ~1wk/month near each "
-        "contract's own expiry -- see fetch_truedata_futures_underlying_history.py). "
+        "contract's own expiry -- see fetch_truedata_futures_underlying_history.py); "
+        "'combined_2020' (2026-09-28, NIFTY only) = underlyings/<u>_combined_2020_1min.csv, "
+        "built from the 2020+ vendor purchase (underlyings/<u>_vendor_index_1min.csv, "
+        "2019-11-01..2025-08-21) for timestamps before 2023-06-13 09:15 IST, then "
+        "alice_index for everything from there on (alice_index is always preferred where "
+        "both exist, per NIFTY_historical_data_Read_Me's own stated rule) -- verified "
+        "monotonic/no gap or overlap at the seam before use; see BACKTEST_LEARNINGS.md's "
+        "2026-09-28 entry for the vendor-data QC (2 real defects found+fixed pre-merge, "
+        "cross-checked against our own TrueData for a shared date, spot values independently "
+        "verified against public NIFTY history incl. the exact 2020-03-24 COVID low). "
         "'spot'/'futures_proxy' files were deleted in the 2026-08-24 data cleanup as "
         "redundant with alice_index -- re-run fetch_truedata_historical.py/"
         "fetch_truedata_futures_underlying_history.py first if either is needed again.",
@@ -3472,6 +3481,7 @@ def main() -> None:
         "spot": f"{args.underlying}_1min.csv",
         "futures_proxy": f"{args.underlying}_underlying_proxy_1min.csv",
         "alice_index": f"{args.underlying}_alice_index_1min.csv",
+        "combined_2020": f"{args.underlying}_combined_2020_1min.csv",
     }[args.underlying_source]
     underlying_path = data_dir / "underlyings" / underlying_filename
     if not underlying_path.is_file():
