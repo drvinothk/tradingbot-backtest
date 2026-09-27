@@ -1,0 +1,6 @@
+### id=20260927T114744Z_start_chain_3dad started=2026-09-27T11:48:33Z request: start-chain w14 2026-09-28_12:00 4 sweep_configs/renko14a_combo_batch.txt
+Running as unit: backtest-20260927-114833.service; invocation ID: 2a769aae79834aa995c98ba4b2fdda91
+2026-09-27 17:18:33 IST w14: reaper timer stopped
+2026-09-27 17:18:33 IST w14: frozen md5s: 6a26192c 587fefca 69ce1dd9 0bb606be cdec5753 dd220499 
+2026-09-27 17:18:33 IST w14: chunk w14a: launching sweep_configs/renko14a_combo_batch.txt (4 configs, avg 4200s/cfg, SHARD_COUNT=4, extra='--extra-warmup-days 12')
+### exit=0 finished=2026-09-27T11:48:38Z
