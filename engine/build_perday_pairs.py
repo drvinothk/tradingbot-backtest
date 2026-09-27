@@ -33,9 +33,15 @@ def main() -> None:
     ap.add_argument("--from", dest="d_from", default=None)
     ap.add_argument("--to", dest="d_to", default=None)
     ap.add_argument("--near-expiry-days", type=int, default=6)
+    ap.add_argument(
+        "--source", default="alice_index",
+        help="underlyings/<u>_<source>_1min.csv to check day-coverage against (default alice_index, "
+        "unchanged behavior). '2026-09-28: use combined_2020 for any pair-list spanning before "
+        "2023-06-13 -- alice_index has zero rows there and would silently drop every such day.",
+    )
     a = ap.parse_args()
 
-    und_csv = HIST / "underlyings" / f"{a.underlying}_alice_index_1min.csv"
+    und_csv = HIST / "underlyings" / f"{a.underlying}_{a.source}_1min.csv"
     und_days = {ln[:10] for ln in open(und_csv) if ln[:1].isdigit()}
     base = HIST / a.options_subdir / a.underlying
     pairs: dict[str, str] = {}
