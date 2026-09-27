@@ -1,10 +1,13 @@
-# btsync status  2026-09-27T21:05:33Z UTC / 2026-09-28 02:35:33 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-09-27T21:36:14Z UTC / 2026-09-28 03:06:14 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-09-28 02:35:33 IST / 21:05:33 UTC  load: 1.98 0.98 1.01  free: 8G avail  disk: 67G free
+== now: 2026-09-28 03:06:14 IST / 21:36:14 UTC  load: 4.55 4.25 3.01  free: 7G avail  disk: 66G free
 == units:
-(none running)
-== run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
+  backtest-20260927-212119.service loaded active running /bin/bash -c /home/ubuntu/backtest_engine/launch_r16.sh
+== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
+-- r16_chain.heartbeat
+2026-09-28 02:51:20 IST r16: reaper timer stopped
+2026-09-28 02:51:20 IST r16: launching full 2020-2025 sweep: full2020_base (1 config, 1393 day:expiry pairs, 2020-01-01..2025-08-21, source=combined_2020, --extra-warmup-days 12, multi-trade, SHARD_COUNT=4)
 -- w14_chain.heartbeat
 2026-09-27 17:18:33 IST w14: reaper timer stopped
 2026-09-27 17:18:33 IST w14: frozen md5s: 6a26192c 587fefca 69ce1dd9 0bb606be cdec5753 dd220499 
@@ -19,25 +22,18 @@
 2026-09-27 14:35:44 IST w13: chunk w13d: rc=0 45516s ok=10 shard-failures=0 tracebacks=0
 2026-09-27 14:35:44 IST w13: chain finished (24 configs run)
 2026-09-27 14:35:44 IST w13: reaper timer restarted
--- w12_chain.heartbeat
-2026-09-26 11:38:28 IST w12: reaper timer stopped
-2026-09-26 11:38:28 IST w12: frozen md5s: 587fefca 69ce1dd9 0bb606be cdec5753 dd220499 
-2026-09-26 11:38:28 IST w12: chunk w12: launching sweep_configs/renko11_pilot.txt (1 configs, avg 4200s/cfg, SHARD_COUNT=4, extra='--extra-warmup-days 21')
-2026-09-26 13:55:16 IST w12: chunk w12: rc=0 8208s ok=1 shard-failures=0 tracebacks=0
-2026-09-26 13:55:16 IST w12: chunk w12a: launching sweep_configs/renko12a_warm_batch.txt (4 configs, avg 8208s/cfg, SHARD_COUNT=4, extra='--extra-warmup-days 21')
-2026-09-26 13:55:34 IST w12: reaper timer restarted
 == last 8 s6_status lines:
-[2026-09-27T19:00:56Z] [r15] s1_atr2 OK (171s, 9 trades, 74G free)
-[2026-09-27T19:00:56Z] [r15] --- s1_atr25 (renko_trend, src=alice_index) params={"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 1.0, "atr_lookback_days": 2.5, "confirm_bricks":
-[2026-09-27T19:03:45Z] [r15] s1_atr25 OK (169s, 9 trades, 74G free)
-[2026-09-27T19:03:45Z] [r15] --- s1_atr3 (renko_trend, src=alice_index) params={"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 1.0, "atr_lookback_days": 3, "confirm_bricks": 2,
 [2026-09-27T19:06:36Z] [r15] s1_atr3 OK (171s, 9 trades, 74G free)
 [2026-09-27T19:06:36Z] [r15] ==========================================
 [2026-09-27T19:06:36Z] [r15] sweep [r15] COMPLETE -> data/historical/backtest_reports/s6_r15 (8min)
 [2026-09-27T19:06:36Z] [r15] ==========================================
+[2026-09-27T21:21:20Z] [r16] ==========================================
+[2026-09-27T21:21:20Z] [r16] sweep [r16] -> data/historical/backtest_reports/s6_r16 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
+[2026-09-27T21:21:20Z] [r16] ==========================================
+[2026-09-27T21:21:20Z] [r16] --- full2020_base (renko_trend, src=combined_2020) params={"brick_size_mode": "fixed", "fixed_brick_size_points": 8.33, "brick_source_timeframe_minutes": 5, "direction_fil
 == finished configs (all chains): 496
 == md5:
-94f7351d backend/scripts/run_backtest.py
+356260ad backend/scripts/run_backtest.py
 69ce1dd9 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
