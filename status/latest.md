@@ -1,6 +1,6 @@
-# btsync status  2026-09-27T02:48:19Z UTC / 2026-09-27 08:18:19 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-09-27T03:18:43Z UTC / 2026-09-27 08:48:43 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-09-27 08:18:19 IST / 02:48:19 UTC  load: 4.37 4.35 4.42  free: 7G avail  disk: 74G free
+== now: 2026-09-27 08:48:44 IST / 03:18:44 UTC  load: 4.32 4.36 4.36  free: 7G avail  disk: 74G free
 == units:
   backtest-20260926-082551.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && TAG=w13 END_BY_UTC=\"2026-09-28 02:00:00\" S
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
@@ -25,15 +25,15 @@
 2026-09-26 06:27:30 IST mt1: batch finished rc=0 -- 6 OK (cumulative), 0 with failures
 2026-09-26 06:27:30 IST mt1: reaper timer restarted
 == last 8 s6_status lines:
-[2026-09-26T22:04:52Z] [w13d] w12_mv50_msd1 OK (5861s, 161 trades, 75G free)
-[2026-09-26T22:04:52Z] [w13d] --- w12_base_msd1 (renko_trend, src=alice_index) params={"brick_size_mode": "fixed", "fixed_brick_size_points": 8.33, "brick_source_timeframe_minutes": 5, "direction_filt
 [2026-09-26T23:35:52Z] [w13d] w12_base_msd1 OK (5460s, 359 trades, 75G free)
 [2026-09-26T23:35:52Z] [w13d] --- w12_base_pe_msd1 (renko_trend, src=alice_index) params={"brick_size_mode": "fixed", "fixed_brick_size_points": 8.33, "brick_source_timeframe_minutes": 5, "direction_f
 [2026-09-27T01:13:54Z] [w13d] w12_base_pe_msd1 OK (5882s, 182 trades, 75G free)
 [2026-09-27T01:13:55Z] [w13d] --- w12_h2_15m_fib_ema15 (renko_trend, src=alice_index) params={"brick_size_mode": "fixed", "fixed_brick_size_points": 8.33, "brick_source_timeframe_minutes": 15, "direct
 [2026-09-27T02:02:40Z] [w13d] w12_h2_15m_fib_ema15 OK (2925s, 156 trades, 75G free)
 [2026-09-27T02:02:40Z] [w13d] --- w12_h1_15m_fib_mv50 (renko_trend, src=alice_index) params={"brick_size_mode": "fixed", "fixed_brick_size_points": 8.33, "brick_source_timeframe_minutes": 15, "directi
-== finished configs (all chains): 483
+[2026-09-27T02:53:27Z] [w13d] w12_h1_15m_fib_mv50 OK (3047s, 201 trades, 74G free)
+[2026-09-27T02:53:27Z] [w13d] --- w12_h6_5m_fib_cc5 (renko_trend, src=alice_index) params={"brick_size_mode": "fixed", "fixed_brick_size_points": 8.33, "brick_source_timeframe_minutes": 5, "direction_
+== finished configs (all chains): 484
 == md5:
 587fefca backend/scripts/run_backtest.py
 69ce1dd9 run_sweep_perday.sh
