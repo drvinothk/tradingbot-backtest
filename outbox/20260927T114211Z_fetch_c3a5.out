@@ -1,0 +1,7 @@
+### id=20260927T114211Z_fetch_c3a5 started=2026-09-27T11:42:44Z request: fetch sweep_configs/renko12a_warm_batch.txt
+# renko12a (2026-09-26, unattended ~28h run): MULTI-TRADE per-day, EXTRA_BT_ARGS='--extra-warmup-days 21' (ATR/EMA history = production 20d). Chunk a. Families: A s1_top core+controls, B s1 brick sizing, C s1 rules/filter ablations, D fixed-brick families msd=1.
+w12_s1top_ctrl|renko_trend|{"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 1.0, "confirm_bricks": 2, "entry_mode": "breakout", "max_signals_per_direction": 3}
+w12_base_ctrl|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 8.33, "brick_source_timeframe_minutes": 5, "direction_filter_mode": "ema_crossover", "ema_timeframe_minutes": 15, "ema_period": 30, "confirm_bricks": 2, "entry_mode": "breakout", "exit_on_reversal": true, "reversal_confirm_bricks": 30, "reversal_exit_mode": "dynamic", "candle_exit_confirm": 5, "max_signals_per_direction": 3, "stop_pct": 0.35, "target_pct": 9.0, "trail_activation_fraction": 20.0, "trail_lock_fraction": 0.6}
+w12_s1_pe|renko_trend|{"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 1.0, "confirm_bricks": 2, "entry_mode": "breakout", "max_signals_per_direction": 3, "allowed_directions": "pe"}
+w12_s1_msd1|renko_trend|{"htf_timeframe_minutes": 30, "atr_period": 14, "brick_atr_multiplier": 1.0, "confirm_bricks": 2, "entry_mode": "breakout", "max_signals_per_direction": 1}
+### exit=0 finished=2026-09-27T11:42:44Z
