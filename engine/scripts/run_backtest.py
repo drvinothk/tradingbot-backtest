@@ -1291,10 +1291,27 @@ def _load_minute_series(path: Path) -> list[tuple[datetime, float]]:
     return series
 
 
+_NEAREST_MINUTE_TS_CACHE: dict[int, list[datetime]] = {}
+
+
 def _lookup_nearest_minute(series: list[tuple[datetime, float]], ts: datetime) -> float | None:
+    """2026-09-28: `series` (e.g. `underlying_series`, `DiagnosticsSource.vix_minute`, an ATR
+    series) is the SAME object, built once, passed by reference into every call across an entire
+    process's pairs/shards -- but every call used to rebuild `[s[0] for s in series]` (an O(n)
+    list comprehension over up to ~300k rows) from scratch just to bisect into it once. Cached by
+    `id(series)` (safe: within one process these series objects are built once and never mutated
+    in place -- a length mismatch invalidates the cache defensively in case an id is ever reused).
+    Profiled: this single function was 27% of wall time on a 5-day slice before this fix (cProfile,
+    2026-09-27); output confirmed byte-identical against the pre-fix version on the same slice
+    before this was trusted -- see BACKTEST_LEARNINGS.md's 2026-09-28 entry.
+    """
     if not series:
         return None
-    idx = bisect_right([s[0] for s in series], ts) - 1
+    cached = _NEAREST_MINUTE_TS_CACHE.get(id(series))
+    if cached is None or len(cached) != len(series):
+        cached = [s[0] for s in series]
+        _NEAREST_MINUTE_TS_CACHE[id(series)] = cached
+    idx = bisect_right(cached, ts) - 1
     return series[idx][1] if idx >= 0 else None
 
 
