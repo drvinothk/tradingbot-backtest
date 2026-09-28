@@ -1,10 +1,16 @@
-# btsync status  2026-09-28T15:41:44Z UTC / 2026-09-28 21:11:44 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-09-28T16:09:04Z UTC / 2026-09-28 21:39:04 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-09-28 21:11:44 IST / 15:41:44 UTC  load: 1.81 3.85 4.38  free: 8G avail  disk: 65G free
+== now: 2026-09-28 21:39:04 IST / 16:09:04 UTC  load: 0.02 0.35 0.96  free: 8G avail  disk: 65G free
 == units:
 (none running)
 == run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
 == chains (newest heartbeats):
+-- r17b_chain.heartbeat
+2026-09-28 21:32:43 IST r17b: reaper timer stopped
+2026-09-28 21:32:45 IST r17b: QC ok; 9 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 53208abd
+2026-09-28 21:33:59 IST r17b: sweep finished rc=0
+2026-09-28 21:33:59 IST r17b: chain finished
+2026-09-28 21:33:59 IST r17b: reaper timer restarted
 -- r17_chain.heartbeat
 2026-09-28 17:53:42 IST r17: reaper timer stopped
 2026-09-28 17:53:44 IST r17: QC ok; 1636 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 53208abd
@@ -17,21 +23,15 @@
 2026-09-28 17:49:08 IST r17p: sweep finished rc=0
 2026-09-28 17:49:08 IST r17p: chain finished
 2026-09-28 17:49:08 IST r17p: reaper timer restarted
--- r16_chain.heartbeat
-2026-09-28 02:51:20 IST r16: reaper timer stopped
-2026-09-28 02:51:20 IST r16: launching full 2020-2025 sweep: full2020_base (1 config, 1393 day:expiry pairs, 2020-01-01..2025-08-21, source=combined_2020, --extra-warmup-days 12, multi-trade, SHARD_COUNT=4)
-2026-09-28 12:34:47 IST r16: sweep finished rc=0
-2026-09-28 12:34:47 IST r16: reaper timer restarted
-2026-09-28 12:34:47 IST r16: chain finished
 == last 8 s6_status lines:
-[2026-09-28T12:23:44Z] [r17] ==========================================
-[2026-09-28T12:23:44Z] [r17] sweep [r17] -> data/historical/backtest_reports/s6_r17 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
-[2026-09-28T12:23:44Z] [r17] ==========================================
-[2026-09-28T12:23:44Z] [r17] --- EMA_Base (ema_micro_pullback, src=combined_2020) params={"structure_break_atr_multiplier": 0.6, "structure_break_persistence_seconds": 6}
-[2026-09-28T15:40:58Z] [r17] EMA_Base OK (11834s, 19770 trades, 65G free)
-[2026-09-28T15:40:58Z] [r17] ==========================================
-[2026-09-28T15:40:58Z] [r17] sweep [r17] COMPLETE -> data/historical/backtest_reports/s6_r17 (197min)
-[2026-09-28T15:40:58Z] [r17] ==========================================
+[2026-09-28T16:02:45Z] [r17b] ==========================================
+[2026-09-28T16:02:45Z] [r17b] sweep [r17b] -> data/historical/backtest_reports/s6_r17b (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
+[2026-09-28T16:02:45Z] [r17b] ==========================================
+[2026-09-28T16:02:45Z] [r17b] --- EMA_Base (ema_micro_pullback, src=combined_2020) params={"structure_break_atr_multiplier": 0.6, "structure_break_persistence_seconds": 6}
+[2026-09-28T16:03:59Z] [r17b] EMA_Base OK (74s, 115 trades, 65G free)
+[2026-09-28T16:03:59Z] [r17b] ==========================================
+[2026-09-28T16:03:59Z] [r17b] sweep [r17b] COMPLETE -> data/historical/backtest_reports/s6_r17b (1min)
+[2026-09-28T16:03:59Z] [r17b] ==========================================
 == finished configs (all chains): 498
 == md5:
 53208abd backend/scripts/run_backtest.py
