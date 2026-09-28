@@ -1,9 +1,9 @@
-# btsync status  2026-09-28T07:36:09Z UTC / 2026-09-28 13:06:09 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-09-28T08:06:41Z UTC / 2026-09-28 13:36:41 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-09-28 13:06:09 IST / 07:36:09 UTC  load: 3.05 2.80 2.38  free: 7G avail  disk: 65G free
+== now: 2026-09-28 13:36:41 IST / 08:06:41 UTC  load: 0.13 0.33 0.72  free: 8G avail  disk: 65G free
 == units:
 (none running)
-== run_backtest procs: 2   reaper timer: active   leaked backtest DBs: 2
+== run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
 == chains (newest heartbeats):
 -- r16_chain.heartbeat
 2026-09-28 02:51:20 IST r16: reaper timer stopped
