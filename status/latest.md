@@ -1,6 +1,6 @@
-# btsync status  2026-09-28T21:56:10Z UTC / 2026-09-29 03:26:10 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-09-28T21:57:21Z UTC / 2026-09-29 03:27:21 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-09-29 03:26:10 IST / 21:56:10 UTC  load: 4.58 4.68 4.72  free: 8G avail  disk: 65G free
+== now: 2026-09-29 03:27:21 IST / 21:57:21 UTC  load: 4.54 4.64 4.70  free: 8G avail  disk: 65G free
 == units:
   backtest-20260928-162023.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_ema_variants.sh"
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
@@ -37,5 +37,5 @@ c8da7ba7 run_sweep_perday.sh
 ! shard/merge failure in s6_status.log within the last 30h:
 [2026-09-28T12:22:01Z] [r17] *** EMA_Base merge FAILED
 [2026-09-28T12:22:01Z] [r17] EMA_Base HAD SHARD FAILURES (13s, 0 trades, 65G free)
-! newest config started/finished 9138s ago (>2.5h) while a unit is running -- possible stall
+! newest config started/finished 9209s ago (>2.5h) while a unit is running -- possible stall
 ```
