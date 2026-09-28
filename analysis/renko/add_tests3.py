@@ -1,4 +1,4 @@
-T = "C:/Users/drvin/tb-renko-fix/backend/tests/"
+T = "D:/tb-renko-fix/backend/tests/"
 def rd(p):
     raw = open(p, 'rb').read(); return raw.decode('utf-8').replace('\r\n', '\n'), b'\r\n' in raw
 def wr(p, s, crlf): open(p, 'wb').write((s.replace('\n', '\r\n') if crlf else s).encode('utf-8'))

@@ -1,6 +1,6 @@
 import sys
 
-WT = "C:/Users/drvin/tb-renko-fix/backend/app/modules/strategy_engine/"
+WT = "D:/tb-renko-fix/backend/app/modules/strategy_engine/"
 
 
 def load(p):

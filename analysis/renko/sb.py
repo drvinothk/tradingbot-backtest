@@ -1,7 +1,7 @@
 import csv,glob,os,sys,statistics as st
 from datetime import datetime,timedelta
 from collections import defaultdict
-ROOT="C:/Users/drvin/Trading Bot/backtest_engine/backend/data/historical/underlyings_alice_1min_past/NIFTY"
+ROOT="D:/TradingBot/backtest_engine/backend/data/historical/underlyings_alice_1min_past/NIFTY"
 bars=defaultdict(list)
 for f in sorted(glob.glob(ROOT+'/*.csv')):
     for r in csv.DictReader(open(f)):

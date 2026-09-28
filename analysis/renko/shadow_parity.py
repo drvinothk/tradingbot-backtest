@@ -1,5 +1,5 @@
 import sys, random, statistics as st
-sys.path.insert(0, "C:/Users/drvin/tb-shadow-renko/backend")
+sys.path.insert(0, "D:/tb-shadow-renko/backend")
 from datetime import datetime, time, timedelta
 import replay as R
 import app.modules.strategy_engine.shadow_renko as rk

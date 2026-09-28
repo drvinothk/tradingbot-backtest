@@ -1,7 +1,7 @@
 import sys
 from datetime import datetime
 from types import SimpleNamespace
-sys.path.insert(0,"C:/Users/drvin/Trading Bot/backtest_engine/backend/scripts"); sys.path.insert(0,"C:/Users/drvin/Trading Bot/backtest_engine/backend")
+sys.path.insert(0,"D:/TradingBot/backtest_engine/backend/scripts"); sys.path.insert(0,"D:/TradingBot/backtest_engine/backend")
 import run_backtest as rb
 from app.domain.strategy.models import SignalSide
 import replay as R, bricks as BR

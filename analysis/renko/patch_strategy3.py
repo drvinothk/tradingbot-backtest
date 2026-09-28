@@ -1,4 +1,4 @@
-WT = "C:/Users/drvin/tb-renko-fix/backend/app/modules/strategy_engine/strategies/renko_trend.py"
+WT = "D:/tb-renko-fix/backend/app/modules/strategy_engine/strategies/renko_trend.py"
 raw = open(WT, 'rb').read()
 crlf = b'\r\n' in raw
 s = raw.decode('utf-8').replace('\r\n', '\n')

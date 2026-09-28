@@ -5,7 +5,7 @@ import glob, os, sys, json, re
 import replay as R
 from collections import Counter
 
-CFG = "C:/Users/drvin/Trading Bot/backtest_engine/sweep_configs/renko3c_overnight_batch.txt"
+CFG = "D:/TradingBot/backtest_engine/sweep_configs/renko3c_overnight_batch.txt"
 params = {}
 for line in open(CFG):
     if line.startswith('#') or not line.strip():

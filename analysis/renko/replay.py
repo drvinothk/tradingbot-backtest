@@ -4,7 +4,7 @@ import csv,glob,os,bisect
 from datetime import datetime,timedelta,time
 from decimal import Decimal,ROUND_HALF_UP
 from collections import defaultdict
-H="C:/Users/drvin/Trading Bot/backtest_engine/backend/data/historical/"
+H="D:/TradingBot/backtest_engine/backend/data/historical/"
 def rt(p,t=0.05): return float((Decimal(str(p))/Decimal(str(t))).to_integral_value(rounding=ROUND_HALF_UP)*Decimal(str(t)))
 U={}  # label-> (o,h,l,c)
 Ub=defaultdict(list)

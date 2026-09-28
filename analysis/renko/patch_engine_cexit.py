@@ -1,4 +1,4 @@
-p = "C:/Users/drvin/Trading Bot/backtest_engine/backend/scripts/run_backtest.py"
+p = "D:/TradingBot/backtest_engine/backend/scripts/run_backtest.py"
 raw = open(p, 'rb').read(); assert b'\r\n' not in raw
 s = raw.decode('utf-8')
 def sub(old, new):

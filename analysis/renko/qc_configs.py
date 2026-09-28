@@ -1,6 +1,6 @@
 import sys, json, uuid, inspect
 from datetime import date
-sys.path.insert(0, "C:/Users/drvin/Trading Bot/backtest_engine/backend")
+sys.path.insert(0, "D:/TradingBot/backtest_engine/backend")
 from app.api.v1 import strategies as S
 from app.domain.strategy.models import StrategyConfig
 cfgfile = sys.argv[1]

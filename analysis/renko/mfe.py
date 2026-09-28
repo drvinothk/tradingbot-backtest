@@ -1,7 +1,7 @@
 import csv,glob,os,statistics as st
 from datetime import datetime
 from collections import defaultdict
-H="C:/Users/drvin/Trading Bot/backtest_engine/backend/data/historical/"
+H="D:/TradingBot/backtest_engine/backend/data/historical/"
 idx={}
 for p in glob.glob(H+'options_1min_past/*/*/*.csv'): idx[os.path.basename(p)[:-4]]=p
 files=sorted(glob.glob(H+'backtest_reports/*/*_current.csv'),key=os.path.getmtime,reverse=True)[:200]

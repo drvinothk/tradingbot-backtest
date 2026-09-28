@@ -1,4 +1,4 @@
-T = "C:/Users/drvin/tb-renko-fix/backend/tests/"
+T = "D:/tb-renko-fix/backend/tests/"
 
 
 def rd(p):
