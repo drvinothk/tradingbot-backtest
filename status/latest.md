@@ -1,32 +1,36 @@
-# btsync status  2026-09-28T21:59:43Z UTC / 2026-09-29 03:29:43 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-09-28T22:00:50Z UTC / 2026-09-29 03:30:50 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-09-29 03:29:43 IST / 21:59:43 UTC  load: 4.78 4.71 4.73  free: 8G avail  disk: 65G free
+== now: 2026-09-29 03:30:50 IST / 22:00:50 UTC  load: 3.92 4.53 4.66  free: 10G avail  disk: 65G free
 == units:
-  backtest-20260928-162023.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_ema_variants.sh"
-== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
+(none running)
+== run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
 == chains (newest heartbeats):
+-- ema_chain.heartbeat
+2026-09-29 00:53:50 IST ema_chain: start r19 EMA_PCR_Live_Convic (1,471 pairs from 2020-09-01)
+2026-09-29 03:30:45 IST ema_chain: r19 done (rc=0)
+2026-09-29 03:30:47 IST ema_chain: variant comparison written
+2026-09-29 03:30:47 IST ema_chain: live/paper comparisons written
+2026-09-29 03:30:47 IST ema_chain: reaper timer restarted
+2026-09-29 03:30:47 IST ema_chain: chain finished
 -- r19_chain.heartbeat
 2026-09-29 00:53:50 IST r19: reaper timer stopped
 2026-09-29 00:53:52 IST r19: QC ok; 1470 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 53208abd
--- ema_chain.heartbeat
-2026-09-28 21:50:23 IST ema_chain: reaper timer stopped for the whole chain
-2026-09-28 21:50:23 IST ema_chain: start r18 EMA_Convic_Paper (1,636 pairs)
-2026-09-29 00:53:50 IST ema_chain: r18 done (rc=0)
-2026-09-29 00:53:50 IST ema_chain: start r19 EMA_PCR_Live_Convic (1,471 pairs from 2020-09-01)
+2026-09-29 03:30:45 IST r19: sweep finished rc=0
+2026-09-29 03:30:45 IST r19: chain finished
 -- r18_chain.heartbeat
 2026-09-28 21:50:24 IST r18: reaper timer stopped
 2026-09-28 21:50:25 IST r18: QC ok; 1636 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 53208abd
 2026-09-29 00:53:50 IST r18: sweep finished rc=0
 2026-09-29 00:53:50 IST r18: chain finished
 == last 8 s6_status lines:
-[2026-09-28T19:23:49Z] [r18] EMA_Convic_Paper OK (11004s, 6569 trades, 65G free)
-[2026-09-28T19:23:49Z] [r18] ==========================================
-[2026-09-28T19:23:49Z] [r18] sweep [r18] COMPLETE -> data/historical/backtest_reports/s6_r18 (183min)
-[2026-09-28T19:23:49Z] [r18] ==========================================
 [2026-09-28T19:23:52Z] [r19] ==========================================
 [2026-09-28T19:23:52Z] [r19] sweep [r19] -> data/historical/backtest_reports/s6_r19 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
 [2026-09-28T19:23:52Z] [r19] ==========================================
 [2026-09-28T19:23:52Z] [r19] --- EMA_PCR_Live_Convic (ema_micro_pullback_conviction, src=combined_2020) params={"stop_pct": 0.08, "target_pct": 0.12, "trail_lock_fraction": 0.6, "trail_min_buffer_pct"
+[2026-09-28T22:00:45Z] [r19] EMA_PCR_Live_Convic OK (9413s, 3381 trades, 65G free)
+[2026-09-28T22:00:45Z] [r19] ==========================================
+[2026-09-28T22:00:45Z] [r19] sweep [r19] COMPLETE -> data/historical/backtest_reports/s6_r19 (156min)
+[2026-09-28T22:00:45Z] [r19] ==========================================
 == finished configs (all chains): 500
 == md5:
 53208abd backend/scripts/run_backtest.py
@@ -37,5 +41,4 @@ c8da7ba7 run_sweep_perday.sh
 ! shard/merge failure in s6_status.log within the last 30h:
 [2026-09-28T12:22:01Z] [r17] *** EMA_Base merge FAILED
 [2026-09-28T12:22:01Z] [r17] EMA_Base HAD SHARD FAILURES (13s, 0 trades, 65G free)
-! newest config started/finished 9351s ago (>2.5h) while a unit is running -- possible stall
 ```
