@@ -1,6 +1,6 @@
-# btsync status  2026-09-28T03:19:24Z UTC / 2026-09-28 08:49:24 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-09-28T03:20:30Z UTC / 2026-09-28 08:50:30 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-09-28 08:49:24 IST / 03:19:24 UTC  load: 4.47 4.58 4.56  free: 6G avail  disk: 66G free
+== now: 2026-09-28 08:50:30 IST / 03:20:30 UTC  load: 4.84 4.65 4.59  free: 6G avail  disk: 66G free
 == units:
   backtest-20260927-212119.service loaded active running /bin/bash -c /home/ubuntu/backtest_engine/launch_r16.sh
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
@@ -38,5 +38,5 @@
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-! newest config started/finished 21484s ago (>2.5h) while a unit is running -- possible stall
+! newest config started/finished 21550s ago (>2.5h) while a unit is running -- possible stall
 ```
