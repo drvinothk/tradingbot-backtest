@@ -1,8 +1,8 @@
-# btsync status  2026-09-29T06:56:04Z UTC / 2026-09-29 12:26:04 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-09-29T07:02:40Z UTC / 2026-09-29 12:32:40 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-09-29 12:26:04 IST / 06:56:04 UTC  load: 0.20 0.33 0.35  free: 9G avail  disk: 65G free
+== now: 2026-09-29 12:32:40 IST / 07:02:40 UTC  load: 0.91 0.46 0.39  free: 9G avail  disk: 65G free
 == units:
-(none running)
+  backtest-20260929-070157.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_r20_notrail.sh"
 == run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
 == chains (newest heartbeats):
 -- ema_chain.heartbeat
@@ -38,5 +38,5 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-ATTENTION: none
+! newest config started/finished 32515s ago (>2.5h) while a unit is running -- possible stall
 ```
