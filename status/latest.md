@@ -1,9 +1,9 @@
-# btsync status  2026-09-29T21:42:53Z UTC / 2026-09-30 03:12:53 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-09-29T21:44:03Z UTC / 2026-09-30 03:14:03 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-09-30 03:12:53 IST / 21:42:53 UTC  load: 4.77 4.89 4.88  free: 6G avail  disk: 63G free
+== now: 2026-09-30 03:14:03 IST / 21:44:03 UTC  load: 4.84 4.89 4.88  free: 7G avail  disk: 63G free
 == units:
   backtest-20260929-184442.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_q5floor.sh"
-== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
+== run_backtest procs: 3   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
 -- r21_chain.heartbeat
 2026-09-30 00:14:42 IST r21: reaper timer stopped
@@ -33,5 +33,5 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-! newest config started/finished 10689s ago (>2.5h) while a unit is running -- possible stall
+! newest config started/finished 10760s ago (>2.5h) while a unit is running -- possible stall
 ```
