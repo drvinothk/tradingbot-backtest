@@ -1,0 +1,36 @@
+### id=20260930T043132Z_analyze_263a started=2026-09-30T04:32:24Z request: analyze r22
+
+=== /home/ubuntu/backtest_engine/backend/data/historical/backtest_reports/s6_r22/EMA_Convic_Paper_Q5Floor_current.csv
+  trades=1158 days_traded=737 net=154,969 est-net(-130/trade)=4,429 PF=2.15 WR=71% avgW=351 avgL=-403 maxDD=4,843 Calmar=32.00 Sharpe(daily)=5.32 t=9.90
+  ex-top-2 net=148,573   halves: H1=71,642 H2=83,326
+  first trade of day       n= 737 net=   96,023 PF= 2.11 WR= 72% avg=    130 ex-best=   92,919
+  re-entries (#2+)         n= 421 net=   58,946 PF= 2.22 WR= 70% avg=    140 ex-best=   55,654
+ by weekday [ALL]
+  Mon      n= 204 net=   37,331 PF= 2.50 WR= 78% avg=    183 ex-best=   35,773
+  Tue      n= 223 net=   26,405 PF= 2.00 WR= 74% avg=    118 ex-best=   23,113
+  Wed      n= 263 net=   28,979 PF= 2.01 WR= 70% avg=    110 ex-best=   26,493
+  Thu      n= 237 net=   14,140 PF= 1.73 WR= 60% avg=     60 ex-best=   12,780
+  Fri      n= 231 net=   48,113 PF= 2.37 WR= 76% avg=    208 ex-best=   45,010
+ by weekday [FIRST]
+  Mon      n= 141 net=   26,355 PF= 2.49 WR= 79% avg=    187 ex-best=   24,797
+  Tue      n= 148 net=   15,730 PF= 1.88 WR= 75% avg=    106 ex-best=   14,560
+  Wed      n= 152 net=   14,774 PF= 1.85 WR= 68% avg=     97 ex-best=   12,846
+  Thu      n= 150 net=    8,298 PF= 1.65 WR= 63% avg=     55 ex-best=    6,938
+  Fri      n= 146 net=   30,865 PF= 2.50 WR= 76% avg=    211 ex-best=   27,761
+ by DTE [ALL] (0=expiry day, 6=day after expiry)
+  DTE0     n= 240 net=    5,924 PF= 1.36 WR= 55% avg=     25 ex-best=    5,085
+  DTE1     n= 257 net=   25,350 PF= 2.04 WR= 72% avg=     99 ex-best=   24,283
+  DTE2     n= 190 net=   24,632 PF= 1.98 WR= 78% avg=    130 ex-best=   21,340
+  DTE3     n= 169 net=   33,707 PF= 2.68 WR= 79% avg=    199 ex-best=   32,563
+  DTE4     n=  29 net=   10,374 PF= 6.92 WR= 90% avg=    358 ex-best=    9,010
+  DTE5     n=  41 net=    8,156 PF= 2.04 WR= 71% avg=    199 ex-best=    6,796
+  DTE6     n= 232 net=   46,826 PF= 2.21 WR= 74% avg=    202 ex-best=   43,722
+  CE                       n= 439 net=   68,928 PF= 2.49 WR= 73% avg=    157 ex-best=   65,824
+  PE                       n= 719 net=   86,041 PF= 1.97 WR= 70% avg=    120 ex-best=   82,748
+ exit reasons
+  eod_square_off           n=   6 net=   -2,411 PF= 0.00 WR=  0% avg=   -402 ex-best=   -2,376
+  stop                     n= 319 net= -128,908 PF= 0.00 WR=  0% avg=   -404 ex-best= -128,898
+  structure_break          n=   9 net=   -3,318 PF= 0.00 WR=  0% avg=   -369 ex-best=   -3,195
+  target                   n= 134 net=   55,178 PF=  inf WR=100% avg=    412 ex-best=   51,886
+  trail                    n= 690 net=  234,428 PF=  inf WR=100% avg=    340 ex-best=  231,942
+### exit=0 finished=2026-09-30T04:32:24Z
