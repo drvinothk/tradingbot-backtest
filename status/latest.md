@@ -1,6 +1,6 @@
-# btsync status  2026-09-30T11:01:01Z UTC / 2026-09-30 16:31:01 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-09-30T11:31:54Z UTC / 2026-09-30 17:01:54 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-09-30 16:31:01 IST / 11:01:01 UTC  load: 4.75 4.76 4.74  free: 7G avail  disk: 62G free
+== now: 2026-09-30 17:01:54 IST / 11:31:54 UTC  load: 4.75 4.71 4.73  free: 6G avail  disk: 62G free
 == units:
   backtest-20260930-061007.service loaded active running /bin/bash ./chain_final_select.sh
   backtest-20260930-100731.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_vwap_sep.sh"
