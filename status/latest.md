@@ -1,6 +1,6 @@
-# btsync status  2026-09-30T10:24:32Z UTC / 2026-09-30 15:54:32 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-09-30T10:25:43Z UTC / 2026-09-30 15:55:43 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-09-30 15:54:32 IST / 10:24:32 UTC  load: 4.37 4.61 4.75  free: 6G avail  disk: 62G free
+== now: 2026-09-30 15:55:43 IST / 10:25:43 UTC  load: 4.77 4.68 4.76  free: 6G avail  disk: 62G free
 == units:
   backtest-20260930-061007.service loaded active running /bin/bash ./chain_final_select.sh
   backtest-20260930-100731.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_vwap_sep.sh"
@@ -30,5 +30,5 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-! newest config started/finished 15265s ago (>2.5h) while a unit is running -- possible stall
+! newest config started/finished 15335s ago (>2.5h) while a unit is running -- possible stall
 ```
