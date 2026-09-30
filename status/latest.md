@@ -1,35 +1,37 @@
-# btsync status  2026-09-30T13:23:31Z UTC / 2026-09-30 18:53:31 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-09-30T13:54:11Z UTC / 2026-09-30 19:24:11 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-09-30 18:53:31 IST / 13:23:31 UTC  load: 4.27 4.54 4.66  free: 8G avail  disk: 62G free
+== now: 2026-09-30 19:24:11 IST / 13:54:11 UTC  load: 0.08 0.04 0.82  free: 8G avail  disk: 62G free
 == units:
-  backtest-20260930-100731.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_vwap_sep.sh"
-== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
+(none running)
+== run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
 == chains (newest heartbeats):
+-- vwap_sep_chain.heartbeat
+2026-09-30 18:55:06 IST vwap_sep: r29 done (rc=0)
+2026-09-30 18:55:06 IST vwap_sep: start r30 (VWAP_PCR_Live_Convic)
+2026-09-30 18:57:18 IST vwap_sep: r30 done (rc=0)
+2026-09-30 18:57:19 IST vwap_sep: comparisons written
+2026-09-30 18:57:19 IST vwap_sep: reaper timer restarted
+2026-09-30 18:57:19 IST vwap_sep: chain finished
+-- r30_chain.heartbeat
+2026-09-30 18:55:06 IST r30: reaper timer stopped
+2026-09-30 18:55:07 IST r30: QC ok; 19 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 53208abd
+2026-09-30 18:57:18 IST r30: sweep finished rc=0
+2026-09-30 18:57:18 IST r30: chain finished
 -- r29_chain.heartbeat
 2026-09-30 18:52:52 IST r29: reaper timer stopped
 2026-09-30 18:52:54 IST r29: QC ok; 19 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 53208abd
--- vwap_sep_chain.heartbeat
-2026-09-30 15:37:31 IST vwap_sep: waiting for the EMA chain (backtest-20260930-061007.service) and any other sweep to finish
-2026-09-30 18:52:52 IST vwap_sep: box free
-2026-09-30 18:52:52 IST vwap_sep: reaper timer stopped for the chain
-2026-09-30 18:52:52 IST vwap_sep: start r29 (VWAP_Base)
--- final_select_chain.heartbeat
-2026-09-30 11:40:07 IST final_select: start r27 (EMA_Base_Q5Floor_TSL)
-2026-09-30 16:00:00 IST final_select: r27 done (rc=0)
-2026-09-30 16:00:00 IST final_select: start r28 (EMA_Convic_Paper_Q5Floor_1p1)
-2026-09-30 18:52:32 IST final_select: r28 done (rc=0)
-2026-09-30 18:52:32 IST final_select: reaper timer restarted
-2026-09-30 18:52:32 IST final_select: chain finished
+2026-09-30 18:55:06 IST r29: sweep finished rc=0
+2026-09-30 18:55:06 IST r29: chain finished
 == last 8 s6_status lines:
-[2026-09-30T13:22:32Z] [r28] EMA_Convic_Paper_Q5Floor_1p1 OK (10350s, 1789 trades, 62G free)
-[2026-09-30T13:22:32Z] [r28] ==========================================
-[2026-09-30T13:22:32Z] [r28] sweep [r28] COMPLETE -> data/historical/backtest_reports/s6_r28 (172min)
-[2026-09-30T13:22:32Z] [r28] ==========================================
-[2026-09-30T13:22:54Z] [r29] ==========================================
-[2026-09-30T13:22:54Z] [r29] sweep [r29] -> data/historical/backtest_reports/s6_r29 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
-[2026-09-30T13:22:54Z] [r29] ==========================================
-[2026-09-30T13:22:54Z] [r29] --- VWAP_Base (vwap_pullback, src=futures_proxy) params={"exit_legs": [{"kind": "core", "qty_fraction": 0.5, "use_structure": true, "trail_lock_fraction": 0.5, "trail_acti
-== finished configs (all chains): 506
+[2026-09-30T13:25:07Z] [r30] ==========================================
+[2026-09-30T13:25:07Z] [r30] sweep [r30] -> data/historical/backtest_reports/s6_r30 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
+[2026-09-30T13:25:07Z] [r30] ==========================================
+[2026-09-30T13:25:07Z] [r30] --- VWAP_PCR_Live_Convic (vwap_pullback_conviction, src=futures_proxy) params={"trail_min_buffer_pct": 0.015, "pcr_directional_ce_min": 1.1, "pcr_directional_pe_max": 1.0,
+[2026-09-30T13:27:18Z] [r30] VWAP_PCR_Live_Convic OK (131s, 203 trades, 62G free)
+[2026-09-30T13:27:18Z] [r30] ==========================================
+[2026-09-30T13:27:18Z] [r30] sweep [r30] COMPLETE -> data/historical/backtest_reports/s6_r30 (2min)
+[2026-09-30T13:27:18Z] [r30] ==========================================
+== finished configs (all chains): 508
 == md5:
 53208abd backend/scripts/run_backtest.py
 c8da7ba7 run_sweep_perday.sh
