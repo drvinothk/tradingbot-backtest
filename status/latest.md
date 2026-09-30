@@ -1,9 +1,9 @@
-# btsync status  2026-09-30T20:10:04Z UTC / 2026-10-01 01:40:04 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-09-30T20:41:09Z UTC / 2026-10-01 02:11:09 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-01 01:40:04 IST / 20:10:04 UTC  load: 3.83 4.44 4.65  free: 9G avail  disk: 62G free
+== now: 2026-10-01 02:11:09 IST / 20:41:09 UTC  load: 4.71 4.72 4.79  free: 7G avail  disk: 62G free
 == units:
   backtest-20260930-143356.service loaded active running /bin/bash ./chain_final_select2.sh
-== run_backtest procs: 0   reaper timer: inactive   leaked backtest DBs: 0
+== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
 -- r29_chain.heartbeat
 2026-09-30 18:52:52 IST r29: reaper timer stopped
@@ -11,6 +11,7 @@
 2026-09-30 18:55:06 IST r29: sweep finished rc=0
 2026-09-30 18:55:06 IST r29: chain finished
 2026-10-01 01:40:02 IST r29: reaper timer stopped
+2026-10-01 01:40:04 IST r29: QC ok; 1636 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 53208abd
 -- final_select2_chain.heartbeat
 2026-09-30 20:03:56 IST final_select2: reaper timer stopped for the whole chain
 2026-09-30 20:03:56 IST final_select2: start r24 (EMA_Convic_Paper_ATRonly)
@@ -24,14 +25,14 @@
 2026-10-01 01:40:02 IST r25: sweep finished rc=0
 2026-10-01 01:40:02 IST r25: chain finished
 == last 8 s6_status lines:
-[2026-09-30T17:20:26Z] [r25] ==========================================
-[2026-09-30T17:20:26Z] [r25] sweep [r25] -> data/historical/backtest_reports/s6_r25 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
-[2026-09-30T17:20:26Z] [r25] ==========================================
-[2026-09-30T17:20:26Z] [r25] --- EMA_Convic_Paper_PDTonly (ema_micro_pullback_conviction, src=combined_2020) params={"stop_pct": 0.08, "target_pct": 0.12, "trail_lock_fraction": 0.6, "trail_activation
 [2026-09-30T20:10:02Z] [r25] EMA_Convic_Paper_PDTonly OK (10176s, 1484 trades, 62G free)
 [2026-09-30T20:10:02Z] [r25] ==========================================
 [2026-09-30T20:10:02Z] [r25] sweep [r25] COMPLETE -> data/historical/backtest_reports/s6_r25 (169min)
 [2026-09-30T20:10:02Z] [r25] ==========================================
+[2026-09-30T20:10:04Z] [r29] ==========================================
+[2026-09-30T20:10:04Z] [r29] sweep [r29] -> data/historical/backtest_reports/s6_r29 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
+[2026-09-30T20:10:04Z] [r29] ==========================================
+[2026-09-30T20:10:04Z] [r29] --- EMA_Base_Q5Floor_TSL_RedBar1100 (ema_micro_pullback_conviction, src=combined_2020) params={"min_ema_spread_atr_ratio": 1.042, "trail_activation_fraction": 0.3, "trail_
 == finished configs (all chains): 510
 == md5:
 53208abd backend/scripts/run_backtest.py
