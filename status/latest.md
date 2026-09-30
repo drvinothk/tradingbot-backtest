@@ -1,19 +1,19 @@
-# btsync status  2026-09-30T10:06:59Z UTC / 2026-09-30 15:36:59 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-09-30T10:08:09Z UTC / 2026-09-30 15:38:09 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-09-30 15:36:59 IST / 10:06:59 UTC  load: 5.73 5.17 4.86  free: 6G avail  disk: 62G free
+== now: 2026-09-30 15:38:09 IST / 10:08:09 UTC  load: 5.36 5.20 4.90  free: 6G avail  disk: 62G free
 == units:
   backtest-20260930-061007.service loaded active running /bin/bash ./chain_final_select.sh
+  backtest-20260930-100731.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_vwap_sep.sh"
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
+-- vwap_sep_chain.heartbeat
+2026-09-30 15:37:31 IST vwap_sep: waiting for the EMA chain (backtest-20260930-061007.service) and any other sweep to finish
 -- r27_chain.heartbeat
 2026-09-30 11:40:07 IST r27: reaper timer stopped
 2026-09-30 11:40:08 IST r27: QC ok; 1636 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 53208abd
 -- final_select_chain.heartbeat
 2026-09-30 11:40:07 IST final_select: reaper timer stopped for the whole chain
 2026-09-30 11:40:07 IST final_select: start r27 (EMA_Base_Q5Floor_TSL)
--- r24_chain.heartbeat
-2026-09-30 10:46:19 IST r24: reaper timer stopped
-2026-09-30 10:46:20 IST r24: QC ok; 1636 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 53208abd
 == last 8 s6_status lines:
 [2026-09-30T05:16:20Z] [r24] ==========================================
 [2026-09-30T05:16:20Z] [r24] sweep [r24] -> data/historical/backtest_reports/s6_r24 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
@@ -30,5 +30,5 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-! newest config started/finished 14211s ago (>2.5h) while a unit is running -- possible stall
+! newest config started/finished 14281s ago (>2.5h) while a unit is running -- possible stall
 ```
