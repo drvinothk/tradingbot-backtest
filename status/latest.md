@@ -1,39 +1,41 @@
-# btsync status  2026-10-01T14:18:52Z UTC / 2026-10-01 19:48:52 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-01T14:37:23Z UTC / 2026-10-01 20:07:23 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-01 19:48:52 IST / 14:18:52 UTC  load: 4.52 4.77 4.80  free: 6G avail  disk: 61G free
+== now: 2026-10-01 20:07:23 IST / 14:37:23 UTC  load: 4.04 4.51 4.70  free: 7G avail  disk: 61G free
 == units:
 (none running)
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
--- r32_chain.heartbeat
-2026-10-01 17:15:47 IST r32: reaper timer stopped
-2026-10-01 17:15:49 IST r32: QC ok; 1636 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 53208abd
+-- r33_chain.heartbeat
+2026-10-01 20:06:49 IST r33: reaper timer stopped
+2026-10-01 20:06:52 IST r33: QC ok; 1636 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 53208abd
 -- atr_grid1_chain.heartbeat
 2026-10-01 13:43:52 IST atr_grid1: reaper timer stopped for the whole chain
 2026-10-01 13:43:52 IST atr_grid1: start r31 (EMA_Convic_Paper_ATR_L05)
 2026-10-01 17:15:47 IST atr_grid1: r31 done (rc=0)
 2026-10-01 17:15:47 IST atr_grid1: start r32 (EMA_Convic_Paper_ATR_L10)
--- r31_chain.heartbeat
-2026-10-01 13:43:52 IST r31: reaper timer stopped
-2026-10-01 13:43:54 IST r31: QC ok; 1636 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 53208abd
-2026-10-01 17:15:47 IST r31: sweep finished rc=0
-2026-10-01 17:15:47 IST r31: chain finished
+2026-10-01 20:06:49 IST atr_grid1: r32 done (rc=0)
+2026-10-01 20:06:49 IST atr_grid1: start r33 (EMA_Convic_Paper_ATR_R08)
+-- r32_chain.heartbeat
+2026-10-01 17:15:47 IST r32: reaper timer stopped
+2026-10-01 17:15:49 IST r32: QC ok; 1636 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 53208abd
+2026-10-01 20:06:49 IST r32: sweep finished rc=0
+2026-10-01 20:06:49 IST r32: chain finished
 == last 8 s6_status lines:
-[2026-10-01T11:45:47Z] [r31] EMA_Convic_Paper_ATR_L05 OK (12713s, 1932 trades, 61G free)
-[2026-10-01T11:45:47Z] [r31] ==========================================
-[2026-10-01T11:45:47Z] [r31] sweep [r31] COMPLETE -> data/historical/backtest_reports/s6_r31 (211min)
-[2026-10-01T11:45:47Z] [r31] ==========================================
-[2026-10-01T11:45:49Z] [r32] ==========================================
-[2026-10-01T11:45:49Z] [r32] sweep [r32] -> data/historical/backtest_reports/s6_r32 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
-[2026-10-01T11:45:49Z] [r32] ==========================================
-[2026-10-01T11:45:49Z] [r32] --- EMA_Convic_Paper_ATR_L10 (ema_micro_pullback_conviction, src=combined_2020) params={"stop_pct": 0.08, "target_pct": 0.12, "trail_lock_fraction": 0.6, "trail_activation
-== finished configs (all chains): 513
+[2026-10-01T14:36:49Z] [r32] EMA_Convic_Paper_ATR_L10 OK (10260s, 1834 trades, 61G free)
+[2026-10-01T14:36:49Z] [r32] ==========================================
+[2026-10-01T14:36:49Z] [r32] sweep [r32] COMPLETE -> data/historical/backtest_reports/s6_r32 (171min)
+[2026-10-01T14:36:49Z] [r32] ==========================================
+[2026-10-01T14:36:52Z] [r33] ==========================================
+[2026-10-01T14:36:52Z] [r33] sweep [r33] -> data/historical/backtest_reports/s6_r33 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
+[2026-10-01T14:36:52Z] [r33] ==========================================
+[2026-10-01T14:36:52Z] [r33] --- EMA_Convic_Paper_ATR_R08 (ema_micro_pullback_conviction, src=combined_2020) params={"stop_pct": 0.08, "target_pct": 0.12, "trail_lock_fraction": 0.6, "trail_activation
+== finished configs (all chains): 514
 == md5:
 53208abd backend/scripts/run_backtest.py
 c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-! chain r32_chain.heartbeat ended without a finish line (last: 2026-10-01 17:15:49 IST r32: QC ok; 1636 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 53208abd)
-! chain atr_grid1_chain.heartbeat ended without a finish line (last: 2026-10-01 17:15:47 IST atr_grid1: start r32 (EMA_Convic_Paper_ATR_L10))
+! chain r33_chain.heartbeat ended without a finish line (last: 2026-10-01 20:06:52 IST r33: QC ok; 1636 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 53208abd)
+! chain atr_grid1_chain.heartbeat ended without a finish line (last: 2026-10-01 20:06:49 IST atr_grid1: start r33 (EMA_Convic_Paper_ATR_R08))
 ```
