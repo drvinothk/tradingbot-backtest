@@ -1,8 +1,8 @@
-# btsync status  2026-10-02T19:36:08Z UTC / 2026-10-03 01:06:08 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-02T19:41:37Z UTC / 2026-10-03 01:11:37 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-03 01:06:08 IST / 19:36:08 UTC  load: 2.46 4.09 3.86  free: 9G avail  disk: 61G free
+== now: 2026-10-03 01:11:37 IST / 19:41:37 UTC  load: 0.58 1.50 2.74  free: 9G avail  disk: 61G free
 == units:
-(none running)
+  backtest-20261002-194056.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && python3 analysis/build_optvol_proxy.py > log
 == run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
 == chains (newest heartbeats):
 -- r31_chain.heartbeat
@@ -40,5 +40,5 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-! chain r31_chain.heartbeat ended without a finish line (last: 2026-10-03 01:10 IST r31_VWAP: complete; outputs in backtest_reports/s6_r31_VWAP (heartbeat/log files above carry the tag r31))
+ATTENTION: none
 ```
