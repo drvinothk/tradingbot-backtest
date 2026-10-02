@@ -1,12 +1,13 @@
-# btsync status  2026-10-02T07:51:20Z UTC / 2026-10-02 13:21:20 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-02T07:52:31Z UTC / 2026-10-02 13:22:31 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-02 13:21:20 IST / 07:51:20 UTC  load: 0.10 0.03 0.01  free: 10G avail  disk: 61G free
+== now: 2026-10-02 13:22:31 IST / 07:52:31 UTC  load: 3.08 0.93 0.32  free: 8G avail  disk: 61G free
 == units:
 (none running)
-== run_backtest procs: 0   reaper timer: inactive   leaked backtest DBs: 0
+== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
 -- r38_chain.heartbeat
 2026-10-02 13:21:20 IST r38: reaper timer stopped
+2026-10-02 13:21:21 IST r38: QC ok; 1636 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 53208abd
 -- atr_grid2_chain.heartbeat
 2026-10-02 04:43:07 IST atr_grid2: start r36 (EMA_Convic_Paper_ATR_R11)
 2026-10-02 07:32:15 IST atr_grid2: r36 done (rc=0)
@@ -20,14 +21,14 @@
 2026-10-02 10:23:00 IST r37: sweep finished rc=0
 2026-10-02 10:23:00 IST r37: chain finished
 == last 8 s6_status lines:
-[2026-10-02T02:02:17Z] [r37] ==========================================
-[2026-10-02T02:02:17Z] [r37] sweep [r37] -> data/historical/backtest_reports/s6_r37 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
-[2026-10-02T02:02:17Z] [r37] ==========================================
-[2026-10-02T02:02:17Z] [r37] --- EMA_Convic_Paper_PDT_B20 (ema_micro_pullback_conviction, src=combined_2020) params={"stop_pct": 0.08, "target_pct": 0.12, "trail_lock_fraction": 0.6, "trail_activation
 [2026-10-02T04:53:00Z] [r37] EMA_Convic_Paper_PDT_B20 OK (10243s, 1591 trades, 61G free)
 [2026-10-02T04:53:00Z] [r37] ==========================================
 [2026-10-02T04:53:00Z] [r37] sweep [r37] COMPLETE -> data/historical/backtest_reports/s6_r37 (170min)
 [2026-10-02T04:53:00Z] [r37] ==========================================
+[2026-10-02T07:51:21Z] [r38] ==========================================
+[2026-10-02T07:51:21Z] [r38] sweep [r38] -> data/historical/backtest_reports/s6_r38 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
+[2026-10-02T07:51:21Z] [r38] ==========================================
+[2026-10-02T07:51:21Z] [r38] --- EMA_Base_Q5Floor_TSL_ATRonly (ema_micro_pullback_conviction, src=combined_2020) params={"min_ema_spread_atr_ratio": 1.042, "trail_activation_fraction": 0.3, "trail_loc
 == finished configs (all chains): 519
 == md5:
 53208abd backend/scripts/run_backtest.py
@@ -35,5 +36,5 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-! chain r38_chain.heartbeat ended without a finish line (last: 2026-10-02 13:21:20 IST r38: reaper timer stopped)
+! chain r38_chain.heartbeat ended without a finish line (last: 2026-10-02 13:21:21 IST r38: QC ok; 1636 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 53208abd)
 ```
