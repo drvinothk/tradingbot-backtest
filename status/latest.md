@@ -1,10 +1,19 @@
-# btsync status  2026-10-02T19:41:37Z UTC / 2026-10-03 01:11:37 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-02T20:01:10Z UTC / 2026-10-03 01:31:10 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-03 01:11:37 IST / 19:41:37 UTC  load: 0.58 1.50 2.74  free: 9G avail  disk: 61G free
+== now: 2026-10-03 01:31:10 IST / 20:01:10 UTC  load: 4.19 4.22 3.78  free: 7G avail  disk: 61G free
 == units:
-  backtest-20261002-194056.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && python3 analysis/build_optvol_proxy.py > log
-== run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
+  backtest-20261002-195957.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./launch_config_run_optvol.sh r33_VWAP sweep
+== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
+-- r33_VWAP_chain.heartbeat
+2026-10-03 01:29:57 IST r33_VWAP: reaper timer stopped
+2026-10-03 01:29:58 IST r33_VWAP: QC ok; 1472 day:expiry pairs, 4 config(s), SHARD_COUNT=4, engine 53208abd
+-- r32_VWAP_chain.heartbeat
+2026-10-03 01:14:24 IST r32_VWAP: reaper timer stopped
+2026-10-03 01:14:26 IST r32_VWAP: QC ok; 70 day:expiry pairs, 2 config(s), SHARD_COUNT=4, engine 53208abd
+2026-10-03 01:29:43 IST r32_VWAP: sweep finished rc=0
+2026-10-03 01:29:43 IST r32_VWAP: chain finished
+2026-10-03 01:29:43 IST r32_VWAP: reaper timer restarted
 -- r31_chain.heartbeat
 2026-10-03 00:36:32 IST r31: reaper timer stopped
 2026-10-03 00:36:34 IST r31: QC ok; 70 day:expiry pairs, 4 config(s), SHARD_COUNT=4, engine 53208abd
@@ -12,27 +21,15 @@
 2026-10-03 01:05:32 IST r31: chain finished
 2026-10-03 01:05:32 IST r31: reaper timer restarted
 2026-10-03 01:10 IST r31_VWAP: complete; outputs in backtest_reports/s6_r31_VWAP (heartbeat/log files above carry the tag r31)
--- r39_chain.heartbeat
-2026-10-02 20:59:10 IST r39: reaper timer stopped
-2026-10-02 20:59:12 IST r39: QC ok; 1636 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 53208abd
-2026-10-02 23:50:05 IST r39: sweep finished rc=0
-2026-10-02 23:50:05 IST r39: chain finished
-2026-10-02 23:50:05 IST r39: reaper timer restarted
--- r38_chain.heartbeat
-2026-10-02 13:21:20 IST r38: reaper timer stopped
-2026-10-02 13:21:21 IST r38: QC ok; 1636 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 53208abd
-2026-10-02 16:17:46 IST r38: sweep finished rc=0
-2026-10-02 16:17:46 IST r38: chain finished
-2026-10-02 16:17:46 IST r38: reaper timer restarted
 == last 8 s6_status lines:
-[2026-10-02T19:21:08Z] [r31] VWAP_PCR_Live_Convic OK (429s, 633 trades, 61G free)
-[2026-10-02T19:21:08Z] [r31] --- VWAP_Conviction (vwap_pullback_conviction, src=futures_proxy) params={"exit_legs": [{"kind": "core", "stop_pct": 0.08, "qty_fraction": 0.4, "use_structure": true, "tra
-[2026-10-02T19:28:07Z] [r31] VWAP_Conviction OK (419s, 462 trades, 61G free)
-[2026-10-02T19:28:07Z] [r31] --- VWAP_Base_Test4 (vwap_pullback, src=futures_proxy) params={"structure_break_persistence_seconds": 120.0}
-[2026-10-02T19:35:32Z] [r31] VWAP_Base_Test4 OK (445s, 1009 trades, 61G free)
-[2026-10-02T19:35:32Z] [r31] ==========================================
-[2026-10-02T19:35:32Z] [r31] sweep [r31] COMPLETE -> data/historical/backtest_reports/s6_r31 (28min)
-[2026-10-02T19:35:32Z] [r31] ==========================================
+[2026-10-02T19:59:43Z] [r32_VWAP] VWAP_PCR_Live_Convic OK (447s, 710 trades, 61G free)
+[2026-10-02T19:59:43Z] [r32_VWAP] ==========================================
+[2026-10-02T19:59:43Z] [r32_VWAP] sweep [r32_VWAP] COMPLETE -> data/historical/backtest_reports/s6_r32_VWAP (15min)
+[2026-10-02T19:59:43Z] [r32_VWAP] ==========================================
+[2026-10-02T19:59:58Z] [r33_VWAP] ==========================================
+[2026-10-02T19:59:58Z] [r33_VWAP] sweep [r33_VWAP] -> data/historical/backtest_reports/s6_r33_VWAP (4 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --data-dir 
+[2026-10-02T19:59:58Z] [r33_VWAP] ==========================================
+[2026-10-02T19:59:58Z] [r33_VWAP] --- VWAP_Base (vwap_pullback, src=futures_proxy) params={"exit_legs": [{"kind": "core", "qty_fraction": 0.5, "use_structure": true, "trail_lock_fraction": 0.5, "trail
 == finished configs (all chains): 523
 == md5:
 53208abd backend/scripts/run_backtest.py
