@@ -1,13 +1,16 @@
-# btsync status  2026-10-03T08:16:40Z UTC / 2026-10-03 13:46:40 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-03T08:17:50Z UTC / 2026-10-03 13:47:50 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-03 13:46:40 IST / 08:16:40 UTC  load: 3.44 4.43 4.64  free: 8G avail  disk: 61G free
+== now: 2026-10-03 13:47:50 IST / 08:17:50 UTC  load: 1.07 3.50 4.30  free: 9G avail  disk: 61G free
 == units:
-  backtest-20261002-195957.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./launch_config_run_optvol.sh r33_VWAP sweep
-== run_backtest procs: 1   reaper timer: inactive   leaked backtest DBs: 4
+(none running)
+== run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
 == chains (newest heartbeats):
 -- r33_VWAP_chain.heartbeat
 2026-10-03 01:29:57 IST r33_VWAP: reaper timer stopped
 2026-10-03 01:29:58 IST r33_VWAP: QC ok; 1472 day:expiry pairs, 4 config(s), SHARD_COUNT=4, engine 53208abd
+2026-10-03 13:46:42 IST r33_VWAP: sweep finished rc=0
+2026-10-03 13:46:42 IST r33_VWAP: chain finished
+2026-10-03 13:46:42 IST r33_VWAP: reaper timer restarted
 -- r32_VWAP_chain.heartbeat
 2026-10-03 01:14:24 IST r32_VWAP: reaper timer stopped
 2026-10-03 01:14:26 IST r32_VWAP: QC ok; 70 day:expiry pairs, 2 config(s), SHARD_COUNT=4, engine 53208abd
@@ -22,14 +25,14 @@
 2026-10-03 01:05:32 IST r31: reaper timer restarted
 2026-10-03 01:10 IST r31_VWAP: complete; outputs in backtest_reports/s6_r31_VWAP (heartbeat/log files above carry the tag r31)
 == last 8 s6_status lines:
-[2026-10-02T19:59:58Z] [r33_VWAP] ==========================================
-[2026-10-02T19:59:58Z] [r33_VWAP] --- VWAP_Base (vwap_pullback, src=futures_proxy) params={"exit_legs": [{"kind": "core", "qty_fraction": 0.5, "use_structure": true, "trail_lock_fraction": 0.5, "trail
-[2026-10-02T23:02:33Z] [r33_VWAP] VWAP_Base OK (10954s, 19613 trades, 61G free)
-[2026-10-02T23:02:33Z] [r33_VWAP] --- VWAP_PCR_Live_Convic (vwap_pullback_conviction, src=futures_proxy) params={"trail_min_buffer_pct": 0.015, "pcr_directional_ce_min": 1.1, "pcr_directional_pe_max":
 [2026-10-03T01:59:13Z] [r33_VWAP] VWAP_PCR_Live_Convic OK (10600s, 13890 trades, 61G free)
 [2026-10-03T01:59:13Z] [r33_VWAP] --- VWAP_Conviction (vwap_pullback_conviction, src=futures_proxy) params={"exit_legs": [{"kind": "core", "stop_pct": 0.08, "qty_fraction": 0.4, "use_structure": true,
 [2026-10-03T04:52:43Z] [r33_VWAP] VWAP_Conviction OK (10410s, 9733 trades, 61G free)
 [2026-10-03T04:52:43Z] [r33_VWAP] --- VWAP_Base_Test4 (vwap_pullback, src=futures_proxy) params={"structure_break_persistence_seconds": 120.0}
+[2026-10-03T08:16:42Z] [r33_VWAP] VWAP_Base_Test4 OK (12239s, 19854 trades, 61G free)
+[2026-10-03T08:16:42Z] [r33_VWAP] ==========================================
+[2026-10-03T08:16:42Z] [r33_VWAP] sweep [r33_VWAP] COMPLETE -> data/historical/backtest_reports/s6_r33_VWAP (736min)
+[2026-10-03T08:16:42Z] [r33_VWAP] ==========================================
 == finished configs (all chains): 523
 == md5:
 53208abd backend/scripts/run_backtest.py
@@ -37,5 +40,5 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-! newest config started/finished 12237s ago (>2.5h) while a unit is running -- possible stall
+! chain r31_chain.heartbeat ended without a finish line (last: 2026-10-03 01:10 IST r31_VWAP: complete; outputs in backtest_reports/s6_r31_VWAP (heartbeat/log files above carry the tag r31))
 ```
