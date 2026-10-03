@@ -1,12 +1,14 @@
-# btsync status  2026-10-03T17:01:08Z UTC / 2026-10-03 22:31:08 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-03T17:02:18Z UTC / 2026-10-03 22:32:18 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-03 22:31:08 IST / 17:01:08 UTC  load: 1.44 1.88 1.81  free: 9G avail  disk: 61G free
+== now: 2026-10-03 22:32:18 IST / 17:02:18 UTC  load: 1.33 1.68 1.74  free: 7G avail  disk: 61G free
 == units:
-(none running)
-== run_backtest procs: 1   reaper timer: inactive   leaked backtest DBs: 0
+  backtest-20261003-170203.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && BT_DECISION_TIME_CHAIN=1 KEEP_REAPER_STOPPED
+== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
 -- fxema_chain.heartbeat
 2026-10-03 22:31:06 IST fxema: ABORT -- a sweep is running
+2026-10-03 22:32:03 IST fxema: reaper timer stopped
+2026-10-03 22:32:04 IST fxema: QC ok; 1636 day:expiry pairs, 4 config(s), SHARD_COUNT=4, engine 039d5d7b
 -- fx1_chain.heartbeat
 2026-10-03 22:28:19 IST fx1: reaper timer stopped
 2026-10-03 22:28:20 IST fx1: QC ok; 15 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 039d5d7b
@@ -18,14 +20,14 @@
 2026-10-03 22:28:18 IST fx0: sweep finished rc=0
 2026-10-03 22:28:18 IST fx0: chain finished
 == last 8 s6_status lines:
-[2026-10-03T16:58:20Z] [fx1] ==========================================
-[2026-10-03T16:58:20Z] [fx1] sweep [fx1] -> data/historical/backtest_reports/s6_fx1 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
-[2026-10-03T16:58:20Z] [fx1] ==========================================
-[2026-10-03T16:58:20Z] [fx1] --- EMA_Convic_Paper_Q5Floor_1p1 (ema_micro_pullback_conviction, src=combined_2020) params={"stop_pct": 0.08, "target_pct": 0.12, "trail_lock_fraction": 0.6, "trail_activa
 [2026-10-03T17:00:04Z] [fx1] EMA_Convic_Paper_Q5Floor_1p1 OK (104s, 24 trades, 61G free)
 [2026-10-03T17:00:04Z] [fx1] ==========================================
 [2026-10-03T17:00:04Z] [fx1] sweep [fx1] COMPLETE -> data/historical/backtest_reports/s6_fx1 (1min)
 [2026-10-03T17:00:04Z] [fx1] ==========================================
+[2026-10-03T17:02:04Z] [fxema] ==========================================
+[2026-10-03T17:02:04Z] [fxema] sweep [fxema] -> data/historical/backtest_reports/s6_fxema (4 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
+[2026-10-03T17:02:04Z] [fxema] ==========================================
+[2026-10-03T17:02:04Z] [fxema] --- EMA_FX_r28spec_t05 (ema_micro_pullback_conviction, src=combined_2020) params={"stop_pct": 0.08, "target_pct": 0.12, "trail_lock_fraction": 0.6, "trail_activation_fra
 == finished configs (all chains): 523
 == md5:
 039d5d7b backend/scripts/run_backtest.py
@@ -33,6 +35,5 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-! chain fxema_chain.heartbeat ended without a finish line (last: 2026-10-03 22:31:06 IST fxema: ABORT -- a sweep is running)
-! fxema_chain.heartbeat: 2026-10-03 22:31:06 IST fxema: ABORT -- a sweep is running
+ATTENTION: none
 ```
