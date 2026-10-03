@@ -1,12 +1,10 @@
-# btsync status  2026-10-03T16:42:33Z UTC / 2026-10-03 22:12:33 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-03T16:43:43Z UTC / 2026-10-03 22:13:43 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-03 22:12:33 IST / 16:42:33 UTC  load: 0.03 1.32 3.14  free: 9G avail  disk: 61G free
+== now: 2026-10-03 22:13:43 IST / 16:43:43 UTC  load: 0.01 1.04 2.91  free: 9G avail  disk: 61G free
 == units:
 (none running)
 == run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
 == chains (newest heartbeats):
-sort: fflush failed: 'standard output': Broken pipe
-sort: write error
 -- vwap_overlays_chain.heartbeat
 2026-10-03 15:58:53 IST vwap_overlays: start r34_VWAP_redbar (overlay redbar_zone_trend11) engine 1b5fd13a
 2026-10-03 19:07:26 IST vwap_overlays: r34_VWAP_redbar done (rc=0)
@@ -40,7 +38,5 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-sort: fflush failed: 'standard output': Broken pipe
-sort: write error
 ATTENTION: none
 ```
