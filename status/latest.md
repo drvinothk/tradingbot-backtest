@@ -1,12 +1,10 @@
-# btsync status  2026-10-03T08:49:03Z UTC / 2026-10-03 14:19:03 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-03T08:51:21Z UTC / 2026-10-03 14:21:21 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-03 14:19:04 IST / 08:49:04 UTC  load: 0.02 0.02 0.56  free: 9G avail  disk: 61G free
+== now: 2026-10-03 14:21:21 IST / 08:51:21 UTC  load: 0.00 0.01 0.47  free: 9G avail  disk: 61G free
 == units:
 (none running)
 == run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
 == chains (newest heartbeats):
-sort: fflush failed: 'standard output': Broken pipe
-sort: write error
 -- r33_VWAP_chain.heartbeat
 2026-10-03 01:29:57 IST r33_VWAP: reaper timer stopped
 2026-10-03 01:29:58 IST r33_VWAP: QC ok; 1472 day:expiry pairs, 4 config(s), SHARD_COUNT=4, engine 53208abd
@@ -42,7 +40,5 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-sort: fflush failed: 'standard output': Broken pipe
-sort: write error
 ! chain r31_chain.heartbeat ended without a finish line (last: 2026-10-03 01:10 IST r31_VWAP: complete; outputs in backtest_reports/s6_r31_VWAP (heartbeat/log files above carry the tag r31))
 ```
