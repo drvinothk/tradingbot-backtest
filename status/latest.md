@@ -1,6 +1,6 @@
-# btsync status  2026-10-03T10:01:41Z UTC / 2026-10-03 15:31:41 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-03T10:05:03Z UTC / 2026-10-03 15:35:03 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-03 15:31:41 IST / 10:01:41 UTC  load: 0.02 0.01 0.00  free: 9G avail  disk: 61G free
+== now: 2026-10-03 15:35:03 IST / 10:05:03 UTC  load: 0.00 0.00 0.00  free: 9G avail  disk: 61G free
 == units:
 (none running)
 == run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
@@ -40,5 +40,7 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
+sort: fflush failed: 'standard output': Broken pipe
+sort: write error
 ! chain r31_chain.heartbeat ended without a finish line (last: 2026-10-03 01:10 IST r31_VWAP: complete; outputs in backtest_reports/s6_r31_VWAP (heartbeat/log files above carry the tag r31))
 ```
