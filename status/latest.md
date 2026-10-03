@@ -1,42 +1,38 @@
-# btsync status  2026-10-03T16:43:43Z UTC / 2026-10-03 22:13:43 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-03T17:01:08Z UTC / 2026-10-03 22:31:08 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-03 22:13:43 IST / 16:43:43 UTC  load: 0.01 1.04 2.91  free: 9G avail  disk: 61G free
+== now: 2026-10-03 22:31:08 IST / 17:01:08 UTC  load: 1.44 1.88 1.81  free: 9G avail  disk: 61G free
 == units:
 (none running)
-== run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
+== run_backtest procs: 1   reaper timer: inactive   leaked backtest DBs: 0
 == chains (newest heartbeats):
--- vwap_overlays_chain.heartbeat
-2026-10-03 15:58:53 IST vwap_overlays: start r34_VWAP_redbar (overlay redbar_zone_trend11) engine 1b5fd13a
-2026-10-03 19:07:26 IST vwap_overlays: r34_VWAP_redbar done (rc=0)
-2026-10-03 19:07:26 IST vwap_overlays: start r35_VWAP_ema30 (overlay ema30_aligned) engine 1b5fd13a
-2026-10-03 22:06:21 IST vwap_overlays: r35_VWAP_ema30 done (rc=0)
-2026-10-03 22:06:21 IST vwap_overlays: reaper timer restarted
-2026-10-03 22:06:21 IST vwap_overlays: chain finished
--- r35_VWAP_ema30_chain.heartbeat
-2026-10-03 19:07:26 IST r35_VWAP_ema30: reaper timer stopped
-2026-10-03 19:07:28 IST r35_VWAP_ema30: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 1b5fd13a
-2026-10-03 22:06:21 IST r35_VWAP_ema30: sweep finished rc=0
-2026-10-03 22:06:21 IST r35_VWAP_ema30: chain finished
--- r34_VWAP_redbar_chain.heartbeat
-2026-10-03 15:58:53 IST r34_VWAP_redbar: reaper timer stopped
-2026-10-03 15:58:54 IST r34_VWAP_redbar: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 1b5fd13a
-2026-10-03 19:07:26 IST r34_VWAP_redbar: sweep finished rc=0
-2026-10-03 19:07:26 IST r34_VWAP_redbar: chain finished
+-- fxema_chain.heartbeat
+2026-10-03 22:31:06 IST fxema: ABORT -- a sweep is running
+-- fx1_chain.heartbeat
+2026-10-03 22:28:19 IST fx1: reaper timer stopped
+2026-10-03 22:28:20 IST fx1: QC ok; 15 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 039d5d7b
+2026-10-03 22:30:05 IST fx1: sweep finished rc=0
+2026-10-03 22:30:05 IST fx1: chain finished
+-- fx0_chain.heartbeat
+2026-10-03 22:26:37 IST fx0: reaper timer stopped
+2026-10-03 22:26:38 IST fx0: QC ok; 15 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 039d5d7b
+2026-10-03 22:28:18 IST fx0: sweep finished rc=0
+2026-10-03 22:28:18 IST fx0: chain finished
 == last 8 s6_status lines:
-[2026-10-03T13:37:28Z] [r35_VWAP_ema30] ==========================================
-[2026-10-03T13:37:28Z] [r35_VWAP_ema30] sweep [r35_VWAP_ema30] -> data/historical/backtest_reports/s6_r35_VWAP_ema30 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-d
-[2026-10-03T13:37:28Z] [r35_VWAP_ema30] ==========================================
-[2026-10-03T13:37:28Z] [r35_VWAP_ema30] --- VWAP_Base (vwap_pullback, src=futures_proxy) params={"exit_legs": [{"kind": "core", "qty_fraction": 0.5, "use_structure": true, "trail_lock_fraction": 0.5, 
-[2026-10-03T16:36:21Z] [r35_VWAP_ema30] VWAP_Base OK (10733s, 14407 trades, 61G free)
-[2026-10-03T16:36:21Z] [r35_VWAP_ema30] ==========================================
-[2026-10-03T16:36:21Z] [r35_VWAP_ema30] sweep [r35_VWAP_ema30] COMPLETE -> data/historical/backtest_reports/s6_r35_VWAP_ema30 (178min)
-[2026-10-03T16:36:21Z] [r35_VWAP_ema30] ==========================================
+[2026-10-03T16:58:20Z] [fx1] ==========================================
+[2026-10-03T16:58:20Z] [fx1] sweep [fx1] -> data/historical/backtest_reports/s6_fx1 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
+[2026-10-03T16:58:20Z] [fx1] ==========================================
+[2026-10-03T16:58:20Z] [fx1] --- EMA_Convic_Paper_Q5Floor_1p1 (ema_micro_pullback_conviction, src=combined_2020) params={"stop_pct": 0.08, "target_pct": 0.12, "trail_lock_fraction": 0.6, "trail_activa
+[2026-10-03T17:00:04Z] [fx1] EMA_Convic_Paper_Q5Floor_1p1 OK (104s, 24 trades, 61G free)
+[2026-10-03T17:00:04Z] [fx1] ==========================================
+[2026-10-03T17:00:04Z] [fx1] sweep [fx1] COMPLETE -> data/historical/backtest_reports/s6_fx1 (1min)
+[2026-10-03T17:00:04Z] [fx1] ==========================================
 == finished configs (all chains): 523
 == md5:
-1b5fd13a backend/scripts/run_backtest.py
+039d5d7b backend/scripts/run_backtest.py
 c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-ATTENTION: none
+! chain fxema_chain.heartbeat ended without a finish line (last: 2026-10-03 22:31:06 IST fxema: ABORT -- a sweep is running)
+! fxema_chain.heartbeat: 2026-10-03 22:31:06 IST fxema: ABORT -- a sweep is running
 ```
