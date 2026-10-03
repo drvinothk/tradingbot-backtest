@@ -1,32 +1,36 @@
-# btsync status  2026-10-03T16:35:53Z UTC / 2026-10-03 22:05:53 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-03T16:37:04Z UTC / 2026-10-03 22:07:04 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-03 22:05:53 IST / 16:35:53 UTC  load: 4.86 4.78 4.77  free: 6G avail  disk: 61G free
+== now: 2026-10-03 22:07:04 IST / 16:37:04 UTC  load: 1.97 3.99 4.49  free: 9G avail  disk: 61G free
 == units:
-  backtest-20261003-102853.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_vwap_overlays.sh"
-== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
+(none running)
+== run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
 == chains (newest heartbeats):
--- r35_VWAP_ema30_chain.heartbeat
-2026-10-03 19:07:26 IST r35_VWAP_ema30: reaper timer stopped
-2026-10-03 19:07:28 IST r35_VWAP_ema30: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 1b5fd13a
 -- vwap_overlays_chain.heartbeat
-2026-10-03 15:58:53 IST vwap_overlays: reaper timer stopped
 2026-10-03 15:58:53 IST vwap_overlays: start r34_VWAP_redbar (overlay redbar_zone_trend11) engine 1b5fd13a
 2026-10-03 19:07:26 IST vwap_overlays: r34_VWAP_redbar done (rc=0)
 2026-10-03 19:07:26 IST vwap_overlays: start r35_VWAP_ema30 (overlay ema30_aligned) engine 1b5fd13a
+2026-10-03 22:06:21 IST vwap_overlays: r35_VWAP_ema30 done (rc=0)
+2026-10-03 22:06:21 IST vwap_overlays: reaper timer restarted
+2026-10-03 22:06:21 IST vwap_overlays: chain finished
+-- r35_VWAP_ema30_chain.heartbeat
+2026-10-03 19:07:26 IST r35_VWAP_ema30: reaper timer stopped
+2026-10-03 19:07:28 IST r35_VWAP_ema30: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 1b5fd13a
+2026-10-03 22:06:21 IST r35_VWAP_ema30: sweep finished rc=0
+2026-10-03 22:06:21 IST r35_VWAP_ema30: chain finished
 -- r34_VWAP_redbar_chain.heartbeat
 2026-10-03 15:58:53 IST r34_VWAP_redbar: reaper timer stopped
 2026-10-03 15:58:54 IST r34_VWAP_redbar: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 1b5fd13a
 2026-10-03 19:07:26 IST r34_VWAP_redbar: sweep finished rc=0
 2026-10-03 19:07:26 IST r34_VWAP_redbar: chain finished
 == last 8 s6_status lines:
-[2026-10-03T13:37:25Z] [r34_VWAP_redbar] VWAP_Base OK (11311s, 15699 trades, 61G free)
-[2026-10-03T13:37:25Z] [r34_VWAP_redbar] ==========================================
-[2026-10-03T13:37:25Z] [r34_VWAP_redbar] sweep [r34_VWAP_redbar] COMPLETE -> data/historical/backtest_reports/s6_r34_VWAP_redbar (188min)
-[2026-10-03T13:37:25Z] [r34_VWAP_redbar] ==========================================
 [2026-10-03T13:37:28Z] [r35_VWAP_ema30] ==========================================
 [2026-10-03T13:37:28Z] [r35_VWAP_ema30] sweep [r35_VWAP_ema30] -> data/historical/backtest_reports/s6_r35_VWAP_ema30 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-d
 [2026-10-03T13:37:28Z] [r35_VWAP_ema30] ==========================================
 [2026-10-03T13:37:28Z] [r35_VWAP_ema30] --- VWAP_Base (vwap_pullback, src=futures_proxy) params={"exit_legs": [{"kind": "core", "qty_fraction": 0.5, "use_structure": true, "trail_lock_fraction": 0.5, 
+[2026-10-03T16:36:21Z] [r35_VWAP_ema30] VWAP_Base OK (10733s, 14407 trades, 61G free)
+[2026-10-03T16:36:21Z] [r35_VWAP_ema30] ==========================================
+[2026-10-03T16:36:21Z] [r35_VWAP_ema30] sweep [r35_VWAP_ema30] COMPLETE -> data/historical/backtest_reports/s6_r35_VWAP_ema30 (178min)
+[2026-10-03T16:36:21Z] [r35_VWAP_ema30] ==========================================
 == finished configs (all chains): 523
 == md5:
 1b5fd13a backend/scripts/run_backtest.py
@@ -34,5 +38,5 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-! newest config started/finished 10706s ago (>2.5h) while a unit is running -- possible stall
+ATTENTION: none
 ```
