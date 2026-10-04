@@ -1,10 +1,15 @@
-# btsync status  2026-10-04T19:47:13Z UTC / 2026-10-05 01:17:13 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-04T19:49:30Z UTC / 2026-10-05 01:19:30 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-05 01:17:13 IST / 19:47:13 UTC  load: 1.58 3.80 4.40  free: 10G avail  disk: 59G free
+== now: 2026-10-05 01:19:30 IST / 19:49:30 UTC  load: 4.21 4.06 4.41  free: 8G avail  disk: 59G free
 == units:
   backtest-20261004-184613.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_fxema3.sh"
-== run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
+== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
+sort: fflush failed: 'standard output': Broken pipe
+sort: write error
+-- fxema3_chain.heartbeat
+2026-10-05 01:17:16 IST fxema3: reaper timer stopped
+2026-10-05 01:17:18 IST fxema3: QC ok; 1636 day:expiry pairs, 2 config(s), SHARD_COUNT=4, engine b3b361d7
 -- fxema2_chain.heartbeat
 2026-10-04 14:17:54 IST fxema2: reaper timer stopped
 2026-10-04 14:17:56 IST fxema2: QC ok; 1636 day:expiry pairs, 4 config(s), SHARD_COUNT=4, engine b3b361d7
@@ -16,20 +21,15 @@
 2026-10-04 13:09:59 IST fxv1: QC ok; 8 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine b3b361d7
 2026-10-04 13:11:05 IST fxv1: sweep finished rc=0
 2026-10-04 13:11:05 IST fxv1: chain finished
--- fxv0_chain.heartbeat
-2026-10-04 13:08:50 IST fxv0: reaper timer stopped
-2026-10-04 13:08:51 IST fxv0: QC ok; 8 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine b3b361d7
-2026-10-04 13:09:57 IST fxv0: sweep finished rc=0
-2026-10-04 13:09:57 IST fxv0: chain finished
 == last 8 s6_status lines:
-[2026-10-04T14:20:48Z] [fxema2] EMA_FX2_r22spec_t03 OK (9968s, 1173 trades, 60G free)
-[2026-10-04T14:20:48Z] [fxema2] --- EMA_FX2_r36spec_t05 (ema_micro_pullback_conviction, src=combined_2020) params={"stop_pct": 0.08, "target_pct": 0.12, "trail_lock_fraction": 0.6, "trail_activation_f
-[2026-10-04T17:03:35Z] [fxema2] EMA_FX2_r36spec_t05 OK (9767s, 1019 trades, 59G free)
-[2026-10-04T17:03:35Z] [fxema2] --- EMA_FX2_floor14_t05 (ema_micro_pullback_conviction, src=combined_2020) params={"stop_pct": 0.08, "target_pct": 0.12, "trail_lock_fraction": 0.6, "trail_activation_f
 [2026-10-04T19:46:11Z] [fxema2] EMA_FX2_floor14_t05 OK (9756s, 632 trades, 59G free)
 [2026-10-04T19:46:11Z] [fxema2] ==========================================
 [2026-10-04T19:46:11Z] [fxema2] sweep [fxema2] COMPLETE -> data/historical/backtest_reports/s6_fxema2 (658min)
 [2026-10-04T19:46:11Z] [fxema2] ==========================================
+[2026-10-04T19:47:18Z] [fxema3] ==========================================
+[2026-10-04T19:47:18Z] [fxema3] sweep [fxema3] -> data/historical/backtest_reports/s6_fxema3 (2 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
+[2026-10-04T19:47:18Z] [fxema3] ==========================================
+[2026-10-04T19:47:18Z] [fxema3] --- EMA_FX3_floor115_t05 (ema_micro_pullback_conviction, src=combined_2020) params={"stop_pct": 0.08, "target_pct": 0.12, "trail_lock_fraction": 0.6, "trail_activation_
 == finished configs (all chains): 531
 == md5:
 b3b361d7 backend/scripts/run_backtest.py
