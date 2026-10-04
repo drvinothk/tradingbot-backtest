@@ -1,6 +1,6 @@
-# btsync status  2026-10-04T11:33:53Z UTC / 2026-10-04 17:03:53 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-04T11:35:03Z UTC / 2026-10-04 17:05:03 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-04 17:03:53 IST / 11:33:53 UTC  load: 5.10 4.95 4.86  free: 8G avail  disk: 59G free
+== now: 2026-10-04 17:05:03 IST / 11:35:03 UTC  load: 4.36 4.71 4.79  free: 8G avail  disk: 59G free
 == units:
   backtest-20261004-084754.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./launch_config_run.sh fxema2 sweep_configs/
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
@@ -19,22 +19,20 @@
 2026-10-04 13:09:57 IST fxv0: sweep finished rc=0
 2026-10-04 13:09:57 IST fxv0: chain finished
 == last 8 s6_status lines:
-[2026-10-04T07:41:05Z] [fxv1] VWAP_Base OK (66s, 107 trades, 60G free)
-[2026-10-04T07:41:05Z] [fxv1] ==========================================
 [2026-10-04T07:41:05Z] [fxv1] sweep [fxv1] COMPLETE -> data/historical/backtest_reports/s6_fxv1 (1min)
 [2026-10-04T07:41:05Z] [fxv1] ==========================================
 [2026-10-04T08:47:56Z] [fxema2] ==========================================
 [2026-10-04T08:47:56Z] [fxema2] sweep [fxema2] -> data/historical/backtest_reports/s6_fxema2 (4 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
 [2026-10-04T08:47:56Z] [fxema2] ==========================================
 [2026-10-04T08:47:56Z] [fxema2] --- EMA_FX2_r22spec_t05 (ema_micro_pullback_conviction, src=combined_2020) params={"stop_pct": 0.08, "target_pct": 0.12, "trail_lock_fraction": 0.6, "trail_activation_f
-== finished configs (all chains): 527
+[2026-10-04T11:34:40Z] [fxema2] EMA_FX2_r22spec_t05 OK (10004s, 1157 trades, 60G free)
+[2026-10-04T11:34:40Z] [fxema2] --- EMA_FX2_r22spec_t03 (ema_micro_pullback_conviction, src=combined_2020) params={"stop_pct": 0.08, "target_pct": 0.12, "trail_lock_fraction": 0.6, "trail_activation_f
+== finished configs (all chains): 528
 == md5:
 b3b361d7 backend/scripts/run_backtest.py
 c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-sort: fflush failed: 'standard output': Broken pipe
-sort: write error
-! newest config started/finished 9957s ago (>2.5h) while a unit is running -- possible stall
+ATTENTION: none
 ```
