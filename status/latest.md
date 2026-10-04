@@ -1,6 +1,6 @@
-# btsync status  2026-10-04T17:03:14Z UTC / 2026-10-04 22:33:14 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-04T17:04:23Z UTC / 2026-10-04 22:34:23 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-04 22:33:14 IST / 17:03:14 UTC  load: 4.61 4.78 4.76  free: 7G avail  disk: 59G free
+== now: 2026-10-04 22:34:23 IST / 17:04:23 UTC  load: 4.20 4.60 4.70  free: 8G avail  disk: 59G free
 == units:
   backtest-20261004-084754.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./launch_config_run.sh fxema2 sweep_configs/
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
@@ -20,21 +20,19 @@
 2026-10-04 13:09:57 IST fxv0: chain finished
 == last 8 s6_status lines:
 [2026-10-04T08:47:56Z] [fxema2] ==========================================
-[2026-10-04T08:47:56Z] [fxema2] sweep [fxema2] -> data/historical/backtest_reports/s6_fxema2 (4 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
-[2026-10-04T08:47:56Z] [fxema2] ==========================================
 [2026-10-04T08:47:56Z] [fxema2] --- EMA_FX2_r22spec_t05 (ema_micro_pullback_conviction, src=combined_2020) params={"stop_pct": 0.08, "target_pct": 0.12, "trail_lock_fraction": 0.6, "trail_activation_f
 [2026-10-04T11:34:40Z] [fxema2] EMA_FX2_r22spec_t05 OK (10004s, 1157 trades, 60G free)
 [2026-10-04T11:34:40Z] [fxema2] --- EMA_FX2_r22spec_t03 (ema_micro_pullback_conviction, src=combined_2020) params={"stop_pct": 0.08, "target_pct": 0.12, "trail_lock_fraction": 0.6, "trail_activation_f
 [2026-10-04T14:20:48Z] [fxema2] EMA_FX2_r22spec_t03 OK (9968s, 1173 trades, 60G free)
 [2026-10-04T14:20:48Z] [fxema2] --- EMA_FX2_r36spec_t05 (ema_micro_pullback_conviction, src=combined_2020) params={"stop_pct": 0.08, "target_pct": 0.12, "trail_lock_fraction": 0.6, "trail_activation_f
-== finished configs (all chains): 529
+[2026-10-04T17:03:35Z] [fxema2] EMA_FX2_r36spec_t05 OK (9767s, 1019 trades, 59G free)
+[2026-10-04T17:03:35Z] [fxema2] --- EMA_FX2_floor14_t05 (ema_micro_pullback_conviction, src=combined_2020) params={"stop_pct": 0.08, "target_pct": 0.12, "trail_lock_fraction": 0.6, "trail_activation_f
+== finished configs (all chains): 530
 == md5:
 b3b361d7 backend/scripts/run_backtest.py
 c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-sort: fflush failed: 'standard output': Broken pipe
-sort: write error
-! newest config started/finished 9746s ago (>2.5h) while a unit is running -- possible stall
+ATTENTION: none
 ```
