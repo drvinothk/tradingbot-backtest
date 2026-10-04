@@ -1,2 +1,0 @@
-# loop test
-ci_test|renko_trend|{"brick_size_mode": "fixed", "fixed_brick_size_points": 8.33, "brick_source_timeframe_minutes": 5, "direction_filter_mode": "none", "confirm_bricks": 2, "entry_mode": "breakout", "max_signals_per_direction": 1}

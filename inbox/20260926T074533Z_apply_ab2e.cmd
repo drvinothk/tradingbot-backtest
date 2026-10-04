@@ -1,1 +1,0 @@
-apply sweep_configs/renko13t_ci_test.txt
