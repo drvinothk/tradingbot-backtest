@@ -1,9 +1,9 @@
-# btsync status  2026-10-04T07:32:51Z UTC / 2026-10-04 13:02:51 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-04T07:34:01Z UTC / 2026-10-04 13:04:01 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-04 13:02:51 IST / 07:32:51 UTC  load: 3.10 3.08 2.30  free: 7G avail  disk: 60G free
+== now: 2026-10-04 13:04:01 IST / 07:34:01 UTC  load: 3.23 3.13 2.38  free: 8G avail  disk: 60G free
 == units:
   backtest-20261004-073118.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && AB_P=3 ./setup/ab_gate/ab.sh"
-== run_backtest procs: 1   reaper timer: inactive   leaked backtest DBs: 3
+== run_backtest procs: 2   reaper timer: inactive   leaked backtest DBs: 2
 == chains (newest heartbeats):
 -- fxema_chain.heartbeat
 2026-10-03 22:31:06 IST fxema: ABORT -- a sweep is running
@@ -37,7 +37,5 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-sort: fflush failed: 'standard output': Broken pipe
-sort: write error
-! newest config started/finished 9809s ago (>2.5h) while a unit is running -- possible stall
+! newest config started/finished 9879s ago (>2.5h) while a unit is running -- possible stall
 ```
