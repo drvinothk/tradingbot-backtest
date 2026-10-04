@@ -1,6 +1,6 @@
-# btsync status  2026-10-04T01:45:13Z UTC / 2026-10-04 07:15:13 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-04T01:46:19Z UTC / 2026-10-04 07:16:19 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-04 07:15:13 IST / 01:45:13 UTC  load: 4.90 4.77 4.72  free: 7G avail  disk: 61G free
+== now: 2026-10-04 07:16:19 IST / 01:46:19 UTC  load: 4.34 4.62 4.67  free: 8G avail  disk: 61G free
 == units:
   backtest-20261003-170203.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && BT_DECISION_TIME_CHAIN=1 KEEP_REAPER_STOPPED
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
@@ -21,21 +21,19 @@
 2026-10-03 22:28:18 IST fx0: chain finished
 == last 8 s6_status lines:
 [2026-10-03T17:02:04Z] [fxema] ==========================================
-[2026-10-03T17:02:04Z] [fxema] sweep [fxema] -> data/historical/backtest_reports/s6_fxema (4 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
-[2026-10-03T17:02:04Z] [fxema] ==========================================
 [2026-10-03T17:02:04Z] [fxema] --- EMA_FX_r28spec_t05 (ema_micro_pullback_conviction, src=combined_2020) params={"stop_pct": 0.08, "target_pct": 0.12, "trail_lock_fraction": 0.6, "trail_activation_fra
 [2026-10-03T19:53:24Z] [fxema] EMA_FX_r28spec_t05 OK (10280s, 1779 trades, 61G free)
 [2026-10-03T19:53:24Z] [fxema] --- EMA_FX_ConvicPaper_t03 (ema_micro_pullback_conviction, src=combined_2020) params={"stop_pct": 0.08, "target_pct": 0.12, "trail_lock_fraction": 0.6, "trail_activation
 [2026-10-03T22:45:13Z] [fxema] EMA_FX_ConvicPaper_t03 OK (10309s, 1806 trades, 61G free)
 [2026-10-03T22:45:13Z] [fxema] --- EMA_FX_Base_app (ema_micro_pullback_conviction, src=combined_2020) params={"stop_pct": 0.08, "target_pct": 0.12, "trail_lock_fraction": 0.6, "trail_activation_fracti
-== finished configs (all chains): 525
+[2026-10-04T01:45:56Z] [fxema] EMA_FX_Base_app OK (10843s, 3963 trades, 61G free)
+[2026-10-04T01:45:56Z] [fxema] --- EMA_FX_r39spec_t05 (ema_micro_pullback_conviction, src=combined_2020) params={"stop_pct": 0.08, "target_pct": 0.12, "trail_lock_fraction": 0.6, "trail_activation_fra
+== finished configs (all chains): 526
 == md5:
 039d5d7b backend/scripts/run_backtest.py
 c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-sort: fflush failed: 'standard output': Broken pipe
-sort: write error
-! newest config started/finished 10800s ago (>2.5h) while a unit is running -- possible stall
+ATTENTION: none
 ```
