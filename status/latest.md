@@ -1,6 +1,6 @@
-# btsync status  2026-10-04T19:42:31Z UTC / 2026-10-05 01:12:31 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-04T19:43:42Z UTC / 2026-10-05 01:13:42 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-05 01:12:31 IST / 19:42:31 UTC  load: 4.72 4.72 4.72  free: 8G avail  disk: 59G free
+== now: 2026-10-05 01:13:42 IST / 19:43:42 UTC  load: 4.71 4.71 4.71  free: 8G avail  disk: 59G free
 == units:
   backtest-20261004-084754.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./launch_config_run.sh fxema2 sweep_configs/
   backtest-20261004-184613.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_fxema3.sh"
@@ -35,5 +35,5 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-! newest config started/finished 9536s ago (>2.5h) while a unit is running -- possible stall
+! newest config started/finished 9607s ago (>2.5h) while a unit is running -- possible stall
 ```
