@@ -1,6 +1,6 @@
-# btsync status  2026-10-04T22:19:02Z UTC / 2026-10-05 03:49:02 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-04T22:20:12Z UTC / 2026-10-05 03:50:12 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-05 03:49:02 IST / 22:19:02 UTC  load: 5.00 4.83 4.76  free: 8G avail  disk: 59G free
+== now: 2026-10-05 03:50:12 IST / 22:20:12 UTC  load: 4.66 4.77 4.74  free: 8G avail  disk: 59G free
 == units:
   backtest-20261004-184613.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_fxema3.sh"
   backtest-20261004-210148.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ALLOW_MARKET_WINDOW=1 ./chain_next.sh fxema3
@@ -36,5 +36,7 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-! newest config started/finished 9104s ago (>2.5h) while a unit is running -- possible stall
+sort: fflush failed: 'standard output': Broken pipe
+sort: write error
+! newest config started/finished 9174s ago (>2.5h) while a unit is running -- possible stall
 ```
