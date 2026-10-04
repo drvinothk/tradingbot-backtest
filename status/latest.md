@@ -1,10 +1,15 @@
-# btsync status  2026-10-04T08:30:50Z UTC / 2026-10-04 14:00:50 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-04T08:48:24Z UTC / 2026-10-04 14:18:24 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-04 14:00:50 IST / 08:30:50 UTC  load: 0.00 0.00 0.09  free: 9G avail  disk: 60G free
+== now: 2026-10-04 14:18:24 IST / 08:48:24 UTC  load: 1.50 0.37 0.13  free: 7G avail  disk: 60G free
 == units:
-(none running)
-== run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
+  backtest-20261004-084754.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./launch_config_run.sh fxema2 sweep_configs/
+== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
+sort: fflush failed: 'standard output': Broken pipe
+sort: write error
+-- fxema2_chain.heartbeat
+2026-10-04 14:17:54 IST fxema2: reaper timer stopped
+2026-10-04 14:17:56 IST fxema2: QC ok; 1636 day:expiry pairs, 4 config(s), SHARD_COUNT=4, engine b3b361d7
 -- fxv1_chain.heartbeat
 2026-10-04 13:09:58 IST fxv1: reaper timer stopped
 2026-10-04 13:09:59 IST fxv1: QC ok; 8 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine b3b361d7
@@ -15,20 +20,15 @@
 2026-10-04 13:08:51 IST fxv0: QC ok; 8 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine b3b361d7
 2026-10-04 13:09:57 IST fxv0: sweep finished rc=0
 2026-10-04 13:09:57 IST fxv0: chain finished
--- fx3_chain.heartbeat
-2026-10-04 13:07:09 IST fx3: reaper timer stopped
-2026-10-04 13:07:10 IST fx3: QC ok; 15 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine b3b361d7
-2026-10-04 13:08:50 IST fx3: sweep finished rc=0
-2026-10-04 13:08:50 IST fx3: chain finished
 == last 8 s6_status lines:
-[2026-10-04T07:39:59Z] [fxv1] ==========================================
-[2026-10-04T07:39:59Z] [fxv1] sweep [fxv1] -> data/historical/backtest_reports/s6_fxv1 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --data-dir /home/ubuntu
-[2026-10-04T07:39:59Z] [fxv1] ==========================================
-[2026-10-04T07:39:59Z] [fxv1] --- VWAP_Base (vwap_pullback, src=futures_proxy) params={"exit_legs": [{"kind": "core", "qty_fraction": 0.5, "use_structure": true, "trail_lock_fraction": 0.5, "trail_act
 [2026-10-04T07:41:05Z] [fxv1] VWAP_Base OK (66s, 107 trades, 60G free)
 [2026-10-04T07:41:05Z] [fxv1] ==========================================
 [2026-10-04T07:41:05Z] [fxv1] sweep [fxv1] COMPLETE -> data/historical/backtest_reports/s6_fxv1 (1min)
 [2026-10-04T07:41:05Z] [fxv1] ==========================================
+[2026-10-04T08:47:56Z] [fxema2] ==========================================
+[2026-10-04T08:47:56Z] [fxema2] sweep [fxema2] -> data/historical/backtest_reports/s6_fxema2 (4 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
+[2026-10-04T08:47:56Z] [fxema2] ==========================================
+[2026-10-04T08:47:56Z] [fxema2] --- EMA_FX2_r22spec_t05 (ema_micro_pullback_conviction, src=combined_2020) params={"stop_pct": 0.08, "target_pct": 0.12, "trail_lock_fraction": 0.6, "trail_activation_f
 == finished configs (all chains): 527
 == md5:
 b3b361d7 backend/scripts/run_backtest.py
@@ -36,5 +36,7 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
+sort: fflush failed: 'standard output': Broken pipe
+sort: write error
 ATTENTION: none
 ```
