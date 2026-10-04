@@ -1,1 +1,0 @@
-analyze w13b
