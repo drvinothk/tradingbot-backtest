@@ -1,1 +1,0 @@
-apply sweep_configs/renko14a_combo_batch.txt
