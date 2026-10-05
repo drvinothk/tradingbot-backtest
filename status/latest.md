@@ -1,6 +1,6 @@
-# btsync status  2026-10-05T14:14:59Z UTC / 2026-10-05 19:44:59 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-05T14:16:09Z UTC / 2026-10-05 19:46:09 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-05 19:44:59 IST / 14:14:59 UTC  load: 4.60 4.64 4.71  free: 6G avail  disk: 59G free
+== now: 2026-10-05 19:46:09 IST / 14:16:09 UTC  load: 4.71 4.65 4.70  free: 6G avail  disk: 59G free
 == units:
   backtest-20261005-121858.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./launch_config_run.sh fxema5 sweep_configs/
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
