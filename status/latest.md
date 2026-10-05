@@ -1,6 +1,6 @@
-# btsync status  2026-10-05T12:34:10Z UTC / 2026-10-05 18:04:10 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-05T12:41:59Z UTC / 2026-10-05 18:11:59 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-05 18:04:10 IST / 12:34:10 UTC  load: 4.42 4.46 2.98  free: 7G avail  disk: 59G free
+== now: 2026-10-05 18:11:59 IST / 12:41:59 UTC  load: 4.96 4.79 3.73  free: 7G avail  disk: 59G free
 == units:
   backtest-20261005-121858.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./launch_config_run.sh fxema5 sweep_configs/
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
@@ -36,7 +36,5 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-sort: fflush failed: 'standard output': Broken pipe
-sort: write error
 ATTENTION: none
 ```
