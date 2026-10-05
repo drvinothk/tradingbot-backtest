@@ -1,10 +1,12 @@
-# btsync status  2026-10-05T02:24:03Z UTC / 2026-10-05 07:54:03 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-05T02:25:13Z UTC / 2026-10-05 07:55:13 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-05 07:54:03 IST / 02:24:03 UTC  load: 4.93 4.75 4.72  free: 8G avail  disk: 59G free
+== now: 2026-10-05 07:55:13 IST / 02:25:13 UTC  load: 4.73 4.73 4.72  free: 8G avail  disk: 59G free
 == units:
   backtest-20261004-210148.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ALLOW_MARKET_WINDOW=1 ./chain_next.sh fxema3
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
+sort: fflush failed: 'standard output': Broken pipe
+sort: write error
 -- fxema4_chain.heartbeat
 2026-10-05 06:56:03 IST fxema4: reaper timer stopped
 2026-10-05 06:56:05 IST fxema4: QC ok; 1636 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine b3b361d7
