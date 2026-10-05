@@ -1,6 +1,0 @@
-### id=20260927T173039Z_results_76ff started=2026-09-27T17:30:44Z request: results w14a
-[2026-09-27T12:36:28Z] [w14a] w14_s1_pe_msd1 OK (2871s, 44 trades, 74G free)
-[2026-09-27T13:24:43Z] [w14a] w14_s1_pe_exit_wide OK (2895s, 60 trades, 74G free)
-[2026-09-27T15:04:01Z] [w14a] w14_base_pe_msd1_wide OK (5958s, 182 trades, 74G free)
-[2026-09-27T16:45:21Z] [w14a] w14_mv50_pe_msd1 OK (6080s, 81 trades, 74G free)
-### exit=0 finished=2026-09-27T17:30:44Z
