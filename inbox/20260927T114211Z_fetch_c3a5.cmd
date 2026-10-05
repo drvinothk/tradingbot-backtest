@@ -1,1 +1,0 @@
-fetch sweep_configs/renko12a_warm_batch.txt
