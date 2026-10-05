@@ -1,1 +1,0 @@
-analyze w14a
