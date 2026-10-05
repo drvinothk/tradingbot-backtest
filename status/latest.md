@@ -1,6 +1,6 @@
-# btsync status  2026-10-05T00:47:03Z UTC / 2026-10-05 06:17:03 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-05T00:50:23Z UTC / 2026-10-05 06:20:23 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-05 06:17:03 IST / 00:47:03 UTC  load: 4.71 4.72 4.72  free: 8G avail  disk: 59G free
+== now: 2026-10-05 06:20:23 IST / 00:50:23 UTC  load: 4.91 4.83 4.77  free: 8G avail  disk: 59G free
 == units:
   backtest-20261004-184613.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_fxema3.sh"
   backtest-20261004-210148.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ALLOW_MARKET_WINDOW=1 ./chain_next.sh fxema3
