@@ -1,10 +1,12 @@
-# btsync status  2026-10-07T21:12:10Z UTC / 2026-10-08 02:42:10 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-07T21:13:22Z UTC / 2026-10-08 02:43:22 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-08 02:42:10 IST / 21:12:10 UTC  load: 4.80 4.68 4.70  free: 9G avail  disk: 56G free
+== now: 2026-10-08 02:43:22 IST / 21:13:22 UTC  load: 4.91 4.72 4.72  free: 9G avail  disk: 56G free
 == units:
   backtest-20261007-181522.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_fx_1007.sh"
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
+sort: fflush failed: 'standard output': Broken pipe
+sort: write error
 -- fxvwap2_chain.heartbeat
 2026-10-08 02:31:03 IST fxvwap2: reaper timer stopped
 2026-10-08 02:31:04 IST fxvwap2: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 2d185d39
