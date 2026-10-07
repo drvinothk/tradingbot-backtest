@@ -1,40 +1,36 @@
-# btsync status  2026-10-07T18:00:40Z UTC / 2026-10-07 23:30:40 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-07T18:10:30Z UTC / 2026-10-07 23:40:30 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-07 23:30:40 IST / 18:00:40 UTC  load: 0.01 0.06 0.03  free: 8G avail  disk: 57G free
+== now: 2026-10-07 23:40:30 IST / 18:10:30 UTC  load: 3.91 1.71 0.65  free: 7G avail  disk: 57G free
 == units:
-(none running)
-== run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
+  backtest-20261007-180802.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./qc_ovl_1007.sh"
+== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
+-- qcovl_log_chain.heartbeat
+2026-10-07 23:39:58 IST qcovl_log: reaper timer stopped
+2026-10-07 23:39:59 IST qcovl_log: QC ok; 15 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 2d185d39
+-- qcovl_off_chain.heartbeat
+2026-10-07 23:38:02 IST qcovl_off: reaper timer stopped
+2026-10-07 23:38:04 IST qcovl_off: QC ok; 15 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 2d185d39
+2026-10-07 23:39:58 IST qcovl_off: sweep finished rc=0
+2026-10-07 23:39:58 IST qcovl_off: chain finished
 -- fxvwap1_chain.heartbeat
 2026-10-07 15:35:17 IST fxvwap1: reaper timer stopped
 2026-10-07 15:35:19 IST fxvwap1: QC ok; 1472 day:expiry pairs, 2 config(s), SHARD_COUNT=4, engine b3b361d7
 2026-10-07 21:28:27 IST fxvwap1: sweep finished rc=0
 2026-10-07 21:28:27 IST fxvwap1: chain finished
 2026-10-07 21:28:27 IST fxvwap1: reaper timer restarted
--- fxema5_chain.heartbeat
-2026-10-05 17:48:58 IST fxema5: reaper timer stopped
-2026-10-05 17:49:00 IST fxema5: QC ok; 1636 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine b3b361d7
-2026-10-05 20:41:12 IST fxema5: sweep finished rc=0
-2026-10-05 20:41:12 IST fxema5: chain finished
-2026-10-05 20:41:12 IST fxema5: reaper timer restarted
--- fxema4_chain.heartbeat
-2026-10-05 06:56:03 IST fxema4: reaper timer stopped
-2026-10-05 06:56:05 IST fxema4: QC ok; 1636 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine b3b361d7
-2026-10-05 09:59:55 IST fxema4: sweep finished rc=0
-2026-10-05 09:59:55 IST fxema4: chain finished
-2026-10-05 09:59:55 IST fxema4: reaper timer restarted
 == last 8 s6_status lines:
-[2026-10-07T10:05:19Z] [fxvwap1] ==========================================
-[2026-10-07T10:05:19Z] [fxvwap1] --- VWAP_FX_live (vwap_pullback_conviction, src=futures_proxy) params={"pcr_directional_ce_min": 1.1, "pcr_directional_pe_max": 1.0, "pcr_directional_ce_max2": 0.85, "
-[2026-10-07T13:00:26Z] [fxvwap1] VWAP_FX_live OK (10507s, 13906 trades, 57G free)
-[2026-10-07T13:00:26Z] [fxvwap1] --- VWAP_FX_nopcr (vwap_pullback_conviction, src=futures_proxy) params={}
-[2026-10-07T15:58:27Z] [fxvwap1] VWAP_FX_nopcr OK (10681s, 20323 trades, 57G free)
-[2026-10-07T15:58:27Z] [fxvwap1] ==========================================
-[2026-10-07T15:58:27Z] [fxvwap1] sweep [fxvwap1] COMPLETE -> data/historical/backtest_reports/s6_fxvwap1 (353min)
-[2026-10-07T15:58:27Z] [fxvwap1] ==========================================
+[2026-10-07T18:09:57Z] [qcovl_off] VWAP_FX_nopcr OK (113s, 224 trades, 57G free)
+[2026-10-07T18:09:57Z] [qcovl_off] ==========================================
+[2026-10-07T18:09:57Z] [qcovl_off] sweep [qcovl_off] COMPLETE -> data/historical/backtest_reports/s6_qcovl_off (1min)
+[2026-10-07T18:09:57Z] [qcovl_off] ==========================================
+[2026-10-07T18:09:59Z] [qcovl_log] ==========================================
+[2026-10-07T18:09:59Z] [qcovl_log] sweep [qcovl_log] -> data/historical/backtest_reports/s6_qcovl_log (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --data-d
+[2026-10-07T18:09:59Z] [qcovl_log] ==========================================
+[2026-10-07T18:09:59Z] [qcovl_log] --- VWAP_FX_nopcr (vwap_pullback_conviction, src=futures_proxy) params={}
 == finished configs (all chains): 537
 == md5:
-b3b361d7 backend/scripts/run_backtest.py
+2d185d39 backend/scripts/run_backtest.py
 c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
