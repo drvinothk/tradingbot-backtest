@@ -1,25 +1,32 @@
-# btsync status  2026-10-07T18:14:56Z UTC / 2026-10-07 23:44:56 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-07T18:16:03Z UTC / 2026-10-07 23:46:03 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-07 23:44:56 IST / 18:14:56 UTC  load: 1.54 2.45 1.30  free: 8G avail  disk: 57G free
+== now: 2026-10-07 23:46:03 IST / 18:16:03 UTC  load: 2.80 2.55 1.40  free: 7G avail  disk: 57G free
 == units:
-(none running)
-== run_backtest procs: 1   reaper timer: active   leaked backtest DBs: 0
+  backtest-20261007-181522.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_fx_1007.sh"
+== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
--- fxema6_chain.heartbeat
-2026-10-07 23:44:56 IST fxema6: ABORT -- a sweep is running
--- fxvwap2_chain.heartbeat
-2026-10-07 23:44:55 IST fxvwap2: ABORT -- a sweep is running
 -- fxorb1_chain.heartbeat
-2026-10-07 23:44:55 IST fxorb1: ABORT -- a sweep is running
+2026-10-07 23:45:22 IST fxorb1: reaper timer stopped
+2026-10-07 23:45:23 IST fxorb1: QC ok; 1636 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 2d185d39
+-- qcovl_on_chain.heartbeat
+2026-10-07 23:41:59 IST qcovl_on: reaper timer stopped
+2026-10-07 23:42:00 IST qcovl_on: QC ok; 15 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 2d185d39
+2026-10-07 23:43:56 IST qcovl_on: sweep finished rc=0
+2026-10-07 23:43:56 IST qcovl_on: chain finished
+-- qcovl_log_chain.heartbeat
+2026-10-07 23:39:58 IST qcovl_log: reaper timer stopped
+2026-10-07 23:39:59 IST qcovl_log: QC ok; 15 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 2d185d39
+2026-10-07 23:41:59 IST qcovl_log: sweep finished rc=0
+2026-10-07 23:41:59 IST qcovl_log: chain finished
 == last 8 s6_status lines:
-[2026-10-07T18:12:00Z] [qcovl_on] ==========================================
-[2026-10-07T18:12:00Z] [qcovl_on] sweep [qcovl_on] -> data/historical/backtest_reports/s6_qcovl_on (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --data-dir 
-[2026-10-07T18:12:00Z] [qcovl_on] ==========================================
-[2026-10-07T18:12:00Z] [qcovl_on] --- VWAP_FX_nopcr (vwap_pullback_conviction, src=futures_proxy) params={}
 [2026-10-07T18:13:56Z] [qcovl_on] VWAP_FX_nopcr OK (116s, 63 trades, 57G free)
 [2026-10-07T18:13:56Z] [qcovl_on] ==========================================
 [2026-10-07T18:13:56Z] [qcovl_on] sweep [qcovl_on] COMPLETE -> data/historical/backtest_reports/s6_qcovl_on (1min)
 [2026-10-07T18:13:56Z] [qcovl_on] ==========================================
+[2026-10-07T18:15:23Z] [fxorb1] ==========================================
+[2026-10-07T18:15:23Z] [fxorb1] sweep [fxorb1] -> data/historical/backtest_reports/s6_fxorb1 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
+[2026-10-07T18:15:23Z] [fxorb1] ==========================================
+[2026-10-07T18:15:23Z] [fxorb1] --- ORB_FX_live (orb_conviction, src=combined_2020) params={"stop_pct": 0.2, "target_pct": 0.66, "trail_activation_fraction": 0.18, "trail_lock_fraction": 0.7, "orb_ent
 == finished configs (all chains): 537
 == md5:
 2d185d39 backend/scripts/run_backtest.py
@@ -27,10 +34,5 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-! chain fxema6_chain.heartbeat ended without a finish line (last: 2026-10-07 23:44:56 IST fxema6: ABORT -- a sweep is running)
-! fxema6_chain.heartbeat: 2026-10-07 23:44:56 IST fxema6: ABORT -- a sweep is running
-! chain fxvwap2_chain.heartbeat ended without a finish line (last: 2026-10-07 23:44:55 IST fxvwap2: ABORT -- a sweep is running)
-! fxvwap2_chain.heartbeat: 2026-10-07 23:44:55 IST fxvwap2: ABORT -- a sweep is running
-! chain fxorb1_chain.heartbeat ended without a finish line (last: 2026-10-07 23:44:55 IST fxorb1: ABORT -- a sweep is running)
-! fxorb1_chain.heartbeat: 2026-10-07 23:44:55 IST fxorb1: ABORT -- a sweep is running
+ATTENTION: none
 ```
