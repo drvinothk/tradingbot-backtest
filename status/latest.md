@@ -1,40 +1,38 @@
-# btsync status  2026-10-07T21:00:03Z UTC / 2026-10-08 02:30:03 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-07T21:01:13Z UTC / 2026-10-08 02:31:13 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-08 02:30:03 IST / 21:00:03 UTC  load: 4.59 4.68 4.71  free: 8G avail  disk: 56G free
+== now: 2026-10-08 02:31:13 IST / 21:01:13 UTC  load: 4.16 4.57 4.67  free: 9G avail  disk: 57G free
 == units:
   backtest-20261007-181522.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_fx_1007.sh"
-== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
+== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 0
 == chains (newest heartbeats):
-sort: fflush failed: 'standard output': Broken pipe
-sort: write error
+-- fxvwap2_chain.heartbeat
+2026-10-08 02:31:03 IST fxvwap2: reaper timer stopped
+2026-10-08 02:31:04 IST fxvwap2: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 2d185d39
 -- fxorb1_chain.heartbeat
 2026-10-07 23:45:22 IST fxorb1: reaper timer stopped
 2026-10-07 23:45:23 IST fxorb1: QC ok; 1636 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 2d185d39
+2026-10-08 02:31:03 IST fxorb1: sweep finished rc=0
+2026-10-08 02:31:03 IST fxorb1: chain finished
 -- qcovl_on_chain.heartbeat
 2026-10-07 23:41:59 IST qcovl_on: reaper timer stopped
 2026-10-07 23:42:00 IST qcovl_on: QC ok; 15 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 2d185d39
 2026-10-07 23:43:56 IST qcovl_on: sweep finished rc=0
 2026-10-07 23:43:56 IST qcovl_on: chain finished
--- qcovl_log_chain.heartbeat
-2026-10-07 23:39:58 IST qcovl_log: reaper timer stopped
-2026-10-07 23:39:59 IST qcovl_log: QC ok; 15 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 2d185d39
-2026-10-07 23:41:59 IST qcovl_log: sweep finished rc=0
-2026-10-07 23:41:59 IST qcovl_log: chain finished
 == last 8 s6_status lines:
-[2026-10-07T18:13:56Z] [qcovl_on] VWAP_FX_nopcr OK (116s, 63 trades, 57G free)
-[2026-10-07T18:13:56Z] [qcovl_on] ==========================================
-[2026-10-07T18:13:56Z] [qcovl_on] sweep [qcovl_on] COMPLETE -> data/historical/backtest_reports/s6_qcovl_on (1min)
-[2026-10-07T18:13:56Z] [qcovl_on] ==========================================
-[2026-10-07T18:15:23Z] [fxorb1] ==========================================
-[2026-10-07T18:15:23Z] [fxorb1] sweep [fxorb1] -> data/historical/backtest_reports/s6_fxorb1 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
-[2026-10-07T18:15:23Z] [fxorb1] ==========================================
-[2026-10-07T18:15:23Z] [fxorb1] --- ORB_FX_live (orb_conviction, src=combined_2020) params={"stop_pct": 0.2, "target_pct": 0.66, "trail_activation_fraction": 0.18, "trail_lock_fraction": 0.7, "orb_ent
-== finished configs (all chains): 537
+[2026-10-07T21:01:02Z] [fxorb1] ORB_FX_live OK (9939s, 897 trades, 57G free)
+[2026-10-07T21:01:02Z] [fxorb1] ==========================================
+[2026-10-07T21:01:02Z] [fxorb1] sweep [fxorb1] COMPLETE -> data/historical/backtest_reports/s6_fxorb1 (165min)
+[2026-10-07T21:01:02Z] [fxorb1] ==========================================
+[2026-10-07T21:01:04Z] [fxvwap2] ==========================================
+[2026-10-07T21:01:04Z] [fxvwap2] sweep [fxvwap2] -> data/historical/backtest_reports/s6_fxvwap2 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --data-dir /ho
+[2026-10-07T21:01:04Z] [fxvwap2] ==========================================
+[2026-10-07T21:01:04Z] [fxvwap2] --- VWAP_FX_nopcr_stack (vwap_pullback_conviction, src=futures_proxy) params={}
+== finished configs (all chains): 538
 == md5:
 2d185d39 backend/scripts/run_backtest.py
 c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-! newest config started/finished 9881s ago (>2.5h) while a unit is running -- possible stall
+ATTENTION: none
 ```
