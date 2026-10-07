@@ -1,12 +1,10 @@
-# btsync status  2026-10-07T13:00:04Z UTC / 2026-10-07 18:30:04 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-07T13:01:14Z UTC / 2026-10-07 18:31:14 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-07 18:30:04 IST / 13:00:04 UTC  load: 4.59 4.59 4.63  free: 6G avail  disk: 57G free
+== now: 2026-10-07 18:31:14 IST / 13:01:14 UTC  load: 4.44 4.51 4.60  free: 7G avail  disk: 57G free
 == units:
   backtest-20261007-100517.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./launch_config_run_optvol.sh fxvwap1 sweep_
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
-sort: fflush failed: 'standard output': Broken pipe
-sort: write error
 -- fxvwap1_chain.heartbeat
 2026-10-07 15:35:17 IST fxvwap1: reaper timer stopped
 2026-10-07 15:35:19 IST fxvwap1: QC ok; 1472 day:expiry pairs, 2 config(s), SHARD_COUNT=4, engine b3b361d7
@@ -23,22 +21,20 @@ sort: write error
 2026-10-05 09:59:55 IST fxema4: chain finished
 2026-10-05 09:59:55 IST fxema4: reaper timer restarted
 == last 8 s6_status lines:
-[2026-10-05T15:11:12Z] [fxema5] EMA_FX5_floor110_noatr_t05 OK (10332s, 2442 trades, 59G free)
-[2026-10-05T15:11:12Z] [fxema5] ==========================================
 [2026-10-05T15:11:12Z] [fxema5] sweep [fxema5] COMPLETE -> data/historical/backtest_reports/s6_fxema5 (172min)
 [2026-10-05T15:11:12Z] [fxema5] ==========================================
 [2026-10-07T10:05:19Z] [fxvwap1] ==========================================
 [2026-10-07T10:05:19Z] [fxvwap1] sweep [fxvwap1] -> data/historical/backtest_reports/s6_fxvwap1 (2 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --data-dir /ho
 [2026-10-07T10:05:19Z] [fxvwap1] ==========================================
 [2026-10-07T10:05:19Z] [fxvwap1] --- VWAP_FX_live (vwap_pullback_conviction, src=futures_proxy) params={"pcr_directional_ce_min": 1.1, "pcr_directional_pe_max": 1.0, "pcr_directional_ce_max2": 0.85, "
-== finished configs (all chains): 535
+[2026-10-07T13:00:26Z] [fxvwap1] VWAP_FX_live OK (10507s, 13906 trades, 57G free)
+[2026-10-07T13:00:26Z] [fxvwap1] --- VWAP_FX_nopcr (vwap_pullback_conviction, src=futures_proxy) params={}
+== finished configs (all chains): 536
 == md5:
 b3b361d7 backend/scripts/run_backtest.py
 c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-sort: fflush failed: 'standard output': Broken pipe
-sort: write error
-! newest config started/finished 10485s ago (>2.5h) while a unit is running -- possible stall
+ATTENTION: none
 ```
