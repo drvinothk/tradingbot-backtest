@@ -1,6 +1,6 @@
-# btsync status  2026-10-08T13:00:04Z UTC / 2026-10-08 18:30:04 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-08T13:01:15Z UTC / 2026-10-08 18:31:15 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-08 18:30:04 IST / 13:00:04 UTC  load: 4.51 4.63 4.69  free: 5G avail  disk: 55G free
+== now: 2026-10-08 18:31:15 IST / 13:01:15 UTC  load: 4.38 4.57 4.67  free: 5G avail  disk: 55G free
 == units:
   backtest-20261008-074234.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_rng_1008.sh"
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
@@ -34,5 +34,7 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-! newest config started/finished 10309s ago (>2.5h) while a unit is running -- possible stall
+sort: fflush failed: 'standard output': Broken pipe
+sort: write error
+! newest config started/finished 10379s ago (>2.5h) while a unit is running -- possible stall
 ```
