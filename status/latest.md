@@ -1,38 +1,40 @@
-# btsync status  2026-10-08T22:41:33Z UTC / 2026-10-09 04:11:33 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-08T22:42:44Z UTC / 2026-10-09 04:12:44 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-09 04:11:33 IST / 22:41:33 UTC  load: 4.83 4.73 4.70  free: 8G avail  disk: 55G free
+== now: 2026-10-09 04:12:44 IST / 22:42:44 UTC  load: 3.59 4.33 4.56  free: 8G avail  disk: 55G free
 == units:
   backtest-20261008-163306.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_ser_1008.sh"
-== run_backtest procs: 3   reaper timer: inactive   leaked backtest DBs: 4
+== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
-sort: fflush failed: 'standard output': Broken pipe
-sort: write error
+-- fxvwap11_chain.heartbeat
+2026-10-09 04:12:20 IST fxvwap11: reaper timer stopped
+2026-10-09 04:12:22 IST fxvwap11: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine a30b943b
 -- fxvwap10_chain.heartbeat
 2026-10-09 01:13:54 IST fxvwap10: reaper timer stopped
 2026-10-09 01:13:56 IST fxvwap10: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine a30b943b
+2026-10-09 04:12:20 IST fxvwap10: sweep finished rc=0
+2026-10-09 04:12:20 IST fxvwap10: chain finished
 -- fxvwap9_chain.heartbeat
 2026-10-08 22:03:06 IST fxvwap9: reaper timer stopped
 2026-10-08 22:03:07 IST fxvwap9: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine a30b943b
 2026-10-09 01:13:54 IST fxvwap9: sweep finished rc=0
 2026-10-09 01:13:54 IST fxvwap9: chain finished
--- fxvwap5_chain.heartbeat
-2026-10-08 21:48:48 IST fxvwap5: reaper timer stopped
-2026-10-08 21:48:49 IST fxvwap5: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine a30b943b
 == last 8 s6_status lines:
-[2026-10-08T19:43:54Z] [fxvwap9] VWAP_FX_rr11_t225a333 OK (11447s, 1623 trades, 55G free)
-[2026-10-08T19:43:54Z] [fxvwap9] ==========================================
-[2026-10-08T19:43:54Z] [fxvwap9] sweep [fxvwap9] COMPLETE -> data/historical/backtest_reports/s6_fxvwap9 (190min)
-[2026-10-08T19:43:54Z] [fxvwap9] ==========================================
-[2026-10-08T19:43:56Z] [fxvwap10] ==========================================
-[2026-10-08T19:43:56Z] [fxvwap10] sweep [fxvwap10] -> data/historical/backtest_reports/s6_fxvwap10 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --data-dir 
-[2026-10-08T19:43:56Z] [fxvwap10] ==========================================
-[2026-10-08T19:43:56Z] [fxvwap10] --- VWAP_FX_rr12_t225a333 (vwap_pullback_conviction, src=futures_proxy) params={"stop_pct": 0.1, "target_pct": 0.225, "trail_activation_fraction": 0.3333333, "trail_l
-== finished configs (all chains): 543
+[2026-10-08T22:42:20Z] [fxvwap10] VWAP_FX_rr12_t225a333 OK (10704s, 1215 trades, 55G free)
+[2026-10-08T22:42:20Z] [fxvwap10] ==========================================
+[2026-10-08T22:42:20Z] [fxvwap10] sweep [fxvwap10] COMPLETE -> data/historical/backtest_reports/s6_fxvwap10 (178min)
+[2026-10-08T22:42:20Z] [fxvwap10] ==========================================
+[2026-10-08T22:42:22Z] [fxvwap11] ==========================================
+[2026-10-08T22:42:22Z] [fxvwap11] sweep [fxvwap11] -> data/historical/backtest_reports/s6_fxvwap11 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --data-dir 
+[2026-10-08T22:42:22Z] [fxvwap11] ==========================================
+[2026-10-08T22:42:22Z] [fxvwap11] --- VWAP_FX_rr11_s15t225a333 (vwap_pullback_conviction, src=futures_proxy) params={"stop_pct": 0.15, "target_pct": 0.225, "trail_activation_fraction": 0.3333333, "tra
+== finished configs (all chains): 544
 == md5:
 a30b943b backend/scripts/run_backtest.py
 c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-! newest config started/finished 10657s ago (>2.5h) while a unit is running -- possible stall
+sort: fflush failed: 'standard output': Broken pipe
+sort: write error
+ATTENTION: none
 ```
