@@ -1,9 +1,9 @@
-# btsync status  2026-10-08T16:27:23Z UTC / 2026-10-08 21:57:23 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-08T16:32:54Z UTC / 2026-10-08 22:02:54 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-08 21:57:23 IST / 16:27:23 UTC  load: 4.59 4.12 3.71  free: 7G avail  disk: 56G free
+== now: 2026-10-08 22:02:54 IST / 16:32:54 UTC  load: 4.50 4.54 4.03  free: 9G avail  disk: 55G free
 == units:
-  backtest-20261008-161848.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_tgt_1008.sh"
-== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
+(none running)
+== run_backtest procs: 0   reaper timer: inactive   leaked backtest DBs: 0
 == chains (newest heartbeats):
 -- fxvwap5_chain.heartbeat
 2026-10-08 21:48:48 IST fxvwap5: reaper timer stopped
@@ -34,5 +34,5 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-ATTENTION: none
+! chain fxvwap5_chain.heartbeat ended without a finish line (last: 2026-10-08 21:48:49 IST fxvwap5: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine a30b943b)
 ```
