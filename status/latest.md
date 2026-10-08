@@ -1,6 +1,6 @@
-# btsync status  2026-10-08T14:42:23Z UTC / 2026-10-08 20:12:23 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-08T14:44:42Z UTC / 2026-10-08 20:14:43 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-08 20:12:23 IST / 14:42:23 UTC  load: 4.32 4.45 4.58  free: 6G avail  disk: 55G free
+== now: 2026-10-08 20:14:43 IST / 14:44:43 UTC  load: 4.61 4.52 4.58  free: 6G avail  disk: 55G free
 == units:
   backtest-20261008-074234.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_rng_1008.sh"
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
