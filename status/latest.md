@@ -1,9 +1,9 @@
-# btsync status  2026-10-08T10:01:14Z UTC / 2026-10-08 15:31:14 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-08T10:02:24Z UTC / 2026-10-08 15:32:24 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-08 15:31:14 IST / 10:01:14 UTC  load: 0.47 0.20 0.18  free: 7G avail  disk: 56G free
+== now: 2026-10-08 15:32:24 IST / 10:02:24 UTC  load: 3.63 1.23 0.55  free: 7G avail  disk: 56G free
 == units:
   backtest-20261008-074234.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_rng_1008.sh"
-== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 0
+== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
 -- qcrng_off_chain.heartbeat
 2026-10-08 15:31:05 IST qcrng_off: reaper timer stopped
