@@ -1,32 +1,32 @@
-# btsync status  2026-10-09T19:39:23Z UTC / 2026-10-10 01:09:23 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-09T19:40:32Z UTC / 2026-10-10 01:10:32 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-10 01:09:23 IST / 19:39:23 UTC  load: 3.49 4.38 4.55  free: 9G avail  disk: 54G free
+== now: 2026-10-10 01:10:32 IST / 19:40:32 UTC  load: 4.19 4.38 4.54  free: 8G avail  disk: 54G free
 == units:
   backtest-20261009-165623.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_htf15_1009.sh"
-== run_backtest procs: 1   reaper timer: inactive   leaked backtest DBs: 4
+== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
+-- fxvwap16_chain.heartbeat
+2026-10-10 01:09:25 IST fxvwap16: reaper timer stopped
+2026-10-10 01:09:27 IST fxvwap16: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 937113b0
 -- fxvwap15_chain.heartbeat
 2026-10-09 22:36:54 IST fxvwap15: reaper timer stopped
 2026-10-09 22:36:55 IST fxvwap15: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 937113b0
+2026-10-10 01:09:25 IST fxvwap15: sweep finished rc=0
+2026-10-10 01:09:25 IST fxvwap15: chain finished
 -- qch15_norr_chain.heartbeat
 2026-10-09 22:35:11 IST qch15_norr: reaper timer stopped
 2026-10-09 22:35:13 IST qch15_norr: QC ok; 15 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 937113b0
 2026-10-09 22:36:53 IST qch15_norr: sweep finished rc=0
 2026-10-09 22:36:53 IST qch15_norr: chain finished
--- qch15_tl6_chain.heartbeat
-2026-10-09 22:33:26 IST qch15_tl6: reaper timer stopped
-2026-10-09 22:33:27 IST qch15_tl6: QC ok; 15 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 937113b0
-2026-10-09 22:35:11 IST qch15_tl6: sweep finished rc=0
-2026-10-09 22:35:11 IST qch15_tl6: chain finished
 == last 8 s6_status lines:
-[2026-10-09T17:06:53Z] [qch15_norr] VWAP_FX_h15_norr OK (100s, 13 trades, 54G free)
-[2026-10-09T17:06:53Z] [qch15_norr] ==========================================
-[2026-10-09T17:06:53Z] [qch15_norr] sweep [qch15_norr] COMPLETE -> data/historical/backtest_reports/s6_qch15_norr (1min)
-[2026-10-09T17:06:53Z] [qch15_norr] ==========================================
-[2026-10-09T17:06:55Z] [fxvwap15] ==========================================
-[2026-10-09T17:06:55Z] [fxvwap15] sweep [fxvwap15] -> data/historical/backtest_reports/s6_fxvwap15 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --data-dir 
-[2026-10-09T17:06:55Z] [fxvwap15] ==========================================
-[2026-10-09T17:06:55Z] [fxvwap15] --- VWAP_FX_h15_c1245 (vwap_pullback_conviction, src=futures_proxy) params={"pullback_tolerance_frac": 0.002, "max_vwap_crosses_in_lookback": 1, "trail_activation_fra
+[2026-10-09T19:39:25Z] [fxvwap15] VWAP_FX_h15_c1245 OK (9150s, 436 trades, 54G free)
+[2026-10-09T19:39:25Z] [fxvwap15] ==========================================
+[2026-10-09T19:39:25Z] [fxvwap15] sweep [fxvwap15] COMPLETE -> data/historical/backtest_reports/s6_fxvwap15 (152min)
+[2026-10-09T19:39:25Z] [fxvwap15] ==========================================
+[2026-10-09T19:39:27Z] [fxvwap16] ==========================================
+[2026-10-09T19:39:27Z] [fxvwap16] sweep [fxvwap16] -> data/historical/backtest_reports/s6_fxvwap16 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --data-dir 
+[2026-10-09T19:39:27Z] [fxvwap16] ==========================================
+[2026-10-09T19:39:27Z] [fxvwap16] --- VWAP_FX_h15_s30t50 (vwap_pullback_conviction, src=futures_proxy) params={"pullback_tolerance_frac": 0.002, "max_vwap_crosses_in_lookback": 1, "trail_activation_fr
 == finished configs (all chains): 554
 == md5:
 937113b0 backend/scripts/run_backtest.py
@@ -34,5 +34,8 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-! newest config started/finished 9149s ago (>2.5h) while a unit is running -- possible stall
+! shard/merge failure in s6_status.log within the last 30h:
+[2026-10-09T06:23:08Z] [smokehtf5b] VWAP_FX_htf5 HAD SHARD FAILURES (18s, 0 trades, 55G free)
+[2026-10-09T06:23:25Z] [smokehtf15b] *** VWAP_FX_htf15 merge FAILED
+[2026-10-09T06:23:26Z] [smokehtf15b] VWAP_FX_htf15 HAD SHARD FAILURES (17s, 0 trades, 55G free)
 ```
