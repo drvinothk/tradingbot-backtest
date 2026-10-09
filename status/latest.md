@@ -1,12 +1,10 @@
-# btsync status  2026-10-09T08:22:13Z UTC / 2026-10-09 13:52:13 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-09T08:24:31Z UTC / 2026-10-09 13:54:31 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-09 13:52:13 IST / 08:22:13 UTC  load: 0.30 0.29 0.33  free: 8G avail  disk: 55G free
+== now: 2026-10-09 13:54:31 IST / 08:24:31 UTC  load: 0.48 0.36 0.35  free: 8G avail  disk: 55G free
 == units:
   backtest-20261009-062701.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_htf_1009.sh"
 == run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
 == chains (newest heartbeats):
-sort: fflush failed: 'standard output': Broken pipe
-sort: write error
 -- smokehtf15c_chain.heartbeat
 2026-10-09 11:55:53 IST smokehtf15c: reaper timer stopped
 2026-10-09 11:55:55 IST smokehtf15c: QC ok; 2 day:expiry pairs, 1 config(s), SHARD_COUNT=1, engine 937113b0
