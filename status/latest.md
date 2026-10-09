@@ -1,6 +1,6 @@
-# btsync status  2026-10-09T15:41:10Z UTC / 2026-10-09 21:11:10 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-09T15:42:20Z UTC / 2026-10-09 21:12:20 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-09 21:11:10 IST / 15:41:10 UTC  load: 0.00 0.09 1.35  free: 10G avail  disk: 54G free
+== now: 2026-10-09 21:12:20 IST / 15:42:20 UTC  load: 0.00 0.07 1.25  free: 10G avail  disk: 54G free
 == units:
 (none running)
 == run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
