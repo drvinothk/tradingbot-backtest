@@ -1,6 +1,6 @@
-# btsync status  2026-10-09T14:27:50Z UTC / 2026-10-09 19:57:50 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-09T14:29:01Z UTC / 2026-10-09 19:59:01 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-09 19:57:50 IST / 14:27:50 UTC  load: 4.60 4.70 4.66  free: 7G avail  disk: 54G free
+== now: 2026-10-09 19:59:01 IST / 14:29:01 UTC  load: 4.74 4.71 4.66  free: 7G avail  disk: 54G free
 == units:
   backtest-20261009-062701.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_htf_1009.sh"
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
@@ -38,4 +38,6 @@ c8da7ba7 run_sweep_perday.sh
 [2026-10-09T06:23:08Z] [smokehtf5b] VWAP_FX_htf5 HAD SHARD FAILURES (18s, 0 trades, 55G free)
 [2026-10-09T06:23:25Z] [smokehtf15b] *** VWAP_FX_htf15 merge FAILED
 [2026-10-09T06:23:26Z] [smokehtf15b] VWAP_FX_htf15 HAD SHARD FAILURES (17s, 0 trades, 55G free)
+sort: fflush failed: 'standard output': Broken pipe
+sort: write error
 ```
