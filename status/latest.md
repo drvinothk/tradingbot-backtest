@@ -1,35 +1,35 @@
-# btsync status  2026-10-09T17:03:10Z UTC / 2026-10-09 22:33:10 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-09T17:12:00Z UTC / 2026-10-09 22:42:00 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-09 22:33:10 IST / 17:03:10 UTC  load: 4.81 3.45 1.64  free: 8G avail  disk: 54G free
+== now: 2026-10-09 22:42:00 IST / 17:12:00 UTC  load: 4.65 4.37 2.90  free: 7G avail  disk: 54G free
 == units:
   backtest-20261009-165623.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_htf15_1009.sh"
-== run_backtest procs: 3   reaper timer: inactive   leaked backtest DBs: 4
+== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
 sort: fflush failed: 'standard output': Broken pipe
 sort: write error
--- qch15_tl3_chain.heartbeat
-2026-10-09 22:31:41 IST qch15_tl3: reaper timer stopped
-2026-10-09 22:31:42 IST qch15_tl3: QC ok; 15 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 937113b0
--- qch15_s40t80_chain.heartbeat
-2026-10-09 22:29:55 IST qch15_s40t80: reaper timer stopped
-2026-10-09 22:29:57 IST qch15_s40t80: QC ok; 15 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 937113b0
-2026-10-09 22:31:41 IST qch15_s40t80: sweep finished rc=0
-2026-10-09 22:31:41 IST qch15_s40t80: chain finished
--- qch15_s30t50_chain.heartbeat
-2026-10-09 22:28:10 IST qch15_s30t50: reaper timer stopped
-2026-10-09 22:28:12 IST qch15_s30t50: QC ok; 15 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 937113b0
-2026-10-09 22:29:55 IST qch15_s30t50: sweep finished rc=0
-2026-10-09 22:29:55 IST qch15_s30t50: chain finished
+-- fxvwap15_chain.heartbeat
+2026-10-09 22:36:54 IST fxvwap15: reaper timer stopped
+2026-10-09 22:36:55 IST fxvwap15: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 937113b0
+-- qch15_norr_chain.heartbeat
+2026-10-09 22:35:11 IST qch15_norr: reaper timer stopped
+2026-10-09 22:35:13 IST qch15_norr: QC ok; 15 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 937113b0
+2026-10-09 22:36:53 IST qch15_norr: sweep finished rc=0
+2026-10-09 22:36:53 IST qch15_norr: chain finished
+-- qch15_tl6_chain.heartbeat
+2026-10-09 22:33:26 IST qch15_tl6: reaper timer stopped
+2026-10-09 22:33:27 IST qch15_tl6: QC ok; 15 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 937113b0
+2026-10-09 22:35:11 IST qch15_tl6: sweep finished rc=0
+2026-10-09 22:35:11 IST qch15_tl6: chain finished
 == last 8 s6_status lines:
-[2026-10-09T17:01:40Z] [qch15_s40t80] VWAP_FX_h15_s40t80 OK (103s, 5 trades, 54G free)
-[2026-10-09T17:01:40Z] [qch15_s40t80] ==========================================
-[2026-10-09T17:01:40Z] [qch15_s40t80] sweep [qch15_s40t80] COMPLETE -> data/historical/backtest_reports/s6_qch15_s40t80 (1min)
-[2026-10-09T17:01:40Z] [qch15_s40t80] ==========================================
-[2026-10-09T17:01:42Z] [qch15_tl3] ==========================================
-[2026-10-09T17:01:42Z] [qch15_tl3] sweep [qch15_tl3] -> data/historical/backtest_reports/s6_qch15_tl3 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --data-d
-[2026-10-09T17:01:42Z] [qch15_tl3] ==========================================
-[2026-10-09T17:01:42Z] [qch15_tl3] --- VWAP_FX_h15_tl3 (vwap_pullback_conviction, src=futures_proxy) params={"pullback_tolerance_frac": 0.002, "max_vwap_crosses_in_lookback": 1, "trail_activation_frac
-== finished configs (all chains): 551
+[2026-10-09T17:06:53Z] [qch15_norr] VWAP_FX_h15_norr OK (100s, 13 trades, 54G free)
+[2026-10-09T17:06:53Z] [qch15_norr] ==========================================
+[2026-10-09T17:06:53Z] [qch15_norr] sweep [qch15_norr] COMPLETE -> data/historical/backtest_reports/s6_qch15_norr (1min)
+[2026-10-09T17:06:53Z] [qch15_norr] ==========================================
+[2026-10-09T17:06:55Z] [fxvwap15] ==========================================
+[2026-10-09T17:06:55Z] [fxvwap15] sweep [fxvwap15] -> data/historical/backtest_reports/s6_fxvwap15 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --data-dir 
+[2026-10-09T17:06:55Z] [fxvwap15] ==========================================
+[2026-10-09T17:06:55Z] [fxvwap15] --- VWAP_FX_h15_c1245 (vwap_pullback_conviction, src=futures_proxy) params={"pullback_tolerance_frac": 0.002, "max_vwap_crosses_in_lookback": 1, "trail_activation_fra
+== finished configs (all chains): 554
 == md5:
 937113b0 backend/scripts/run_backtest.py
 c8da7ba7 run_sweep_perday.sh
