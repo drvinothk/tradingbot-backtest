@@ -1,33 +1,35 @@
-# btsync status  2026-10-09T17:00:53Z UTC / 2026-10-09 22:30:53 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-09T17:03:10Z UTC / 2026-10-09 22:33:10 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-09 22:30:53 IST / 17:00:53 UTC  load: 4.46 2.66 1.13  free: 7G avail  disk: 54G free
+== now: 2026-10-09 22:33:10 IST / 17:03:10 UTC  load: 4.81 3.45 1.64  free: 8G avail  disk: 54G free
 == units:
   backtest-20261009-165623.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_htf15_1009.sh"
-== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
+== run_backtest procs: 3   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
+sort: fflush failed: 'standard output': Broken pipe
+sort: write error
+-- qch15_tl3_chain.heartbeat
+2026-10-09 22:31:41 IST qch15_tl3: reaper timer stopped
+2026-10-09 22:31:42 IST qch15_tl3: QC ok; 15 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 937113b0
 -- qch15_s40t80_chain.heartbeat
 2026-10-09 22:29:55 IST qch15_s40t80: reaper timer stopped
 2026-10-09 22:29:57 IST qch15_s40t80: QC ok; 15 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 937113b0
+2026-10-09 22:31:41 IST qch15_s40t80: sweep finished rc=0
+2026-10-09 22:31:41 IST qch15_s40t80: chain finished
 -- qch15_s30t50_chain.heartbeat
 2026-10-09 22:28:10 IST qch15_s30t50: reaper timer stopped
 2026-10-09 22:28:12 IST qch15_s30t50: QC ok; 15 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 937113b0
 2026-10-09 22:29:55 IST qch15_s30t50: sweep finished rc=0
 2026-10-09 22:29:55 IST qch15_s30t50: chain finished
--- qch15_c1245_chain.heartbeat
-2026-10-09 22:26:23 IST qch15_c1245: reaper timer stopped
-2026-10-09 22:26:25 IST qch15_c1245: QC ok; 15 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 937113b0
-2026-10-09 22:28:10 IST qch15_c1245: sweep finished rc=0
-2026-10-09 22:28:10 IST qch15_c1245: chain finished
 == last 8 s6_status lines:
-[2026-10-09T16:59:55Z] [qch15_s30t50] VWAP_FX_h15_s30t50 OK (103s, 5 trades, 54G free)
-[2026-10-09T16:59:55Z] [qch15_s30t50] ==========================================
-[2026-10-09T16:59:55Z] [qch15_s30t50] sweep [qch15_s30t50] COMPLETE -> data/historical/backtest_reports/s6_qch15_s30t50 (1min)
-[2026-10-09T16:59:55Z] [qch15_s30t50] ==========================================
-[2026-10-09T16:59:57Z] [qch15_s40t80] ==========================================
-[2026-10-09T16:59:57Z] [qch15_s40t80] sweep [qch15_s40t80] -> data/historical/backtest_reports/s6_qch15_s40t80 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12
-[2026-10-09T16:59:57Z] [qch15_s40t80] ==========================================
-[2026-10-09T16:59:57Z] [qch15_s40t80] --- VWAP_FX_h15_s40t80 (vwap_pullback_conviction, src=futures_proxy) params={"pullback_tolerance_frac": 0.002, "max_vwap_crosses_in_lookback": 1, "trail_activatio
-== finished configs (all chains): 550
+[2026-10-09T17:01:40Z] [qch15_s40t80] VWAP_FX_h15_s40t80 OK (103s, 5 trades, 54G free)
+[2026-10-09T17:01:40Z] [qch15_s40t80] ==========================================
+[2026-10-09T17:01:40Z] [qch15_s40t80] sweep [qch15_s40t80] COMPLETE -> data/historical/backtest_reports/s6_qch15_s40t80 (1min)
+[2026-10-09T17:01:40Z] [qch15_s40t80] ==========================================
+[2026-10-09T17:01:42Z] [qch15_tl3] ==========================================
+[2026-10-09T17:01:42Z] [qch15_tl3] sweep [qch15_tl3] -> data/historical/backtest_reports/s6_qch15_tl3 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --data-d
+[2026-10-09T17:01:42Z] [qch15_tl3] ==========================================
+[2026-10-09T17:01:42Z] [qch15_tl3] --- VWAP_FX_h15_tl3 (vwap_pullback_conviction, src=futures_proxy) params={"pullback_tolerance_frac": 0.002, "max_vwap_crosses_in_lookback": 1, "trail_activation_frac
+== finished configs (all chains): 551
 == md5:
 937113b0 backend/scripts/run_backtest.py
 c8da7ba7 run_sweep_perday.sh
