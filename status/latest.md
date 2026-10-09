@@ -1,9 +1,9 @@
-# btsync status  2026-10-09T19:38:14Z UTC / 2026-10-10 01:08:14 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-09T19:39:23Z UTC / 2026-10-10 01:09:23 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-10 01:08:14 IST / 19:38:14 UTC  load: 4.70 4.66 4.64  free: 6G avail  disk: 54G free
+== now: 2026-10-10 01:09:23 IST / 19:39:23 UTC  load: 3.49 4.38 4.55  free: 9G avail  disk: 54G free
 == units:
   backtest-20261009-165623.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_htf15_1009.sh"
-== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
+== run_backtest procs: 1   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
 -- fxvwap15_chain.heartbeat
 2026-10-09 22:36:54 IST fxvwap15: reaper timer stopped
@@ -34,5 +34,5 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-! newest config started/finished 9079s ago (>2.5h) while a unit is running -- possible stall
+! newest config started/finished 9149s ago (>2.5h) while a unit is running -- possible stall
 ```
