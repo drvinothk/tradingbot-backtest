@@ -1,13 +1,15 @@
-# btsync status  2026-10-09T15:21:51Z UTC / 2026-10-09 20:51:51 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-09T15:23:01Z UTC / 2026-10-09 20:53:01 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-09 20:51:51 IST / 15:21:51 UTC  load: 4.87 4.74 4.73  free: 7G avail  disk: 54G free
+== now: 2026-10-09 20:53:01 IST / 15:23:01 UTC  load: 2.07 3.97 4.47  free: 10G avail  disk: 54G free
 == units:
-  backtest-20261009-062701.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_htf_1009.sh"
-== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
+(none running)
+== run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
 == chains (newest heartbeats):
 -- fxvwap14_chain.heartbeat
 2026-10-09 18:20:35 IST fxvwap14: reaper timer stopped
 2026-10-09 18:20:37 IST fxvwap14: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 937113b0
+2026-10-09 20:52:22 IST fxvwap14: sweep finished rc=0
+2026-10-09 20:52:22 IST fxvwap14: chain finished
 -- fxvwap13_chain.heartbeat
 2026-10-09 15:37:30 IST fxvwap13: reaper timer stopped
 2026-10-09 15:37:31 IST fxvwap13: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 937113b0
@@ -19,14 +21,14 @@
 2026-10-09 15:37:27 IST qchtf15: sweep finished rc=0
 2026-10-09 15:37:27 IST qchtf15: chain finished
 == last 8 s6_status lines:
-[2026-10-09T12:50:35Z] [fxvwap13] VWAP_FX_htf5 OK (9784s, 609 trades, 54G free)
-[2026-10-09T12:50:35Z] [fxvwap13] ==========================================
-[2026-10-09T12:50:35Z] [fxvwap13] sweep [fxvwap13] COMPLETE -> data/historical/backtest_reports/s6_fxvwap13 (163min)
-[2026-10-09T12:50:35Z] [fxvwap13] ==========================================
 [2026-10-09T12:50:37Z] [fxvwap14] ==========================================
 [2026-10-09T12:50:37Z] [fxvwap14] sweep [fxvwap14] -> data/historical/backtest_reports/s6_fxvwap14 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --data-dir 
 [2026-10-09T12:50:37Z] [fxvwap14] ==========================================
 [2026-10-09T12:50:37Z] [fxvwap14] --- VWAP_FX_htf15 (vwap_pullback_conviction, src=futures_proxy) params={"pullback_tolerance_frac": 0.002, "trend_lookback_bars": 4, "max_vwap_crosses_in_lookback": 1,
+[2026-10-09T15:22:22Z] [fxvwap14] VWAP_FX_htf15 OK (9105s, 452 trades, 54G free)
+[2026-10-09T15:22:22Z] [fxvwap14] ==========================================
+[2026-10-09T15:22:22Z] [fxvwap14] sweep [fxvwap14] COMPLETE -> data/historical/backtest_reports/s6_fxvwap14 (151min)
+[2026-10-09T15:22:22Z] [fxvwap14] ==========================================
 == finished configs (all chains): 548
 == md5:
 937113b0 backend/scripts/run_backtest.py
@@ -38,5 +40,6 @@ c8da7ba7 run_sweep_perday.sh
 [2026-10-09T06:23:08Z] [smokehtf5b] VWAP_FX_htf5 HAD SHARD FAILURES (18s, 0 trades, 55G free)
 [2026-10-09T06:23:25Z] [smokehtf15b] *** VWAP_FX_htf15 merge FAILED
 [2026-10-09T06:23:26Z] [smokehtf15b] VWAP_FX_htf15 HAD SHARD FAILURES (17s, 0 trades, 55G free)
-! newest config started/finished 9075s ago (>2.5h) while a unit is running -- possible stall
+sort: fflush failed: 'standard output': Broken pipe
+sort: write error
 ```
