@@ -1,10 +1,12 @@
-# btsync status  2026-10-09T09:48:51Z UTC / 2026-10-09 15:18:51 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-09T09:49:58Z UTC / 2026-10-09 15:19:58 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-09 15:18:51 IST / 09:48:51 UTC  load: 0.24 0.25 0.26  free: 8G avail  disk: 54G free
+== now: 2026-10-09 15:19:58 IST / 09:49:58 UTC  load: 0.14 0.21 0.24  free: 8G avail  disk: 54G free
 == units:
   backtest-20261009-062701.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_htf_1009.sh"
 == run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
 == chains (newest heartbeats):
+sort: fflush failed: 'standard output': Broken pipe
+sort: write error
 -- smokehtf15c_chain.heartbeat
 2026-10-09 11:55:53 IST smokehtf15c: reaper timer stopped
 2026-10-09 11:55:55 IST smokehtf15c: QC ok; 2 day:expiry pairs, 1 config(s), SHARD_COUNT=1, engine 937113b0
@@ -40,9 +42,5 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-! shard/merge failure in s6_status.log within the last 30h:
-[2026-10-09T06:23:08Z] [smokehtf5b] VWAP_FX_htf5 HAD SHARD FAILURES (18s, 0 trades, 55G free)
-[2026-10-09T06:23:25Z] [smokehtf15b] *** VWAP_FX_htf15 merge FAILED
-[2026-10-09T06:23:26Z] [smokehtf15b] VWAP_FX_htf15 HAD SHARD FAILURES (17s, 0 trades, 55G free)
-! newest config started/finished 12145s ago (>2.5h) while a unit is running -- possible stall
+! newest config started/finished 12212s ago (>2.5h) while a unit is running -- possible stall
 ```
