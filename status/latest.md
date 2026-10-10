@@ -1,12 +1,10 @@
-# btsync status  2026-10-10T04:35:18Z UTC / 2026-10-10 10:05:18 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-10T04:36:29Z UTC / 2026-10-10 10:06:29 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-10 10:05:18 IST / 04:35:18 UTC  load: 4.61 4.81 4.82  free: 7G avail  disk: 54G free
+== now: 2026-10-10 10:06:29 IST / 04:36:29 UTC  load: 4.86 4.84 4.83  free: 7G avail  disk: 54G free
 == units:
   backtest-20261009-165623.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_htf15_1009.sh"
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
-sort: write failed: 'standard output': Broken pipe
-sort: write error
 -- fxvwap19_chain.heartbeat
 2026-10-10 08:54:44 IST fxvwap19: reaper timer stopped
 2026-10-10 08:54:46 IST fxvwap19: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 937113b0
@@ -40,6 +38,4 @@ c8da7ba7 run_sweep_perday.sh
 [2026-10-09T06:23:08Z] [smokehtf5b] VWAP_FX_htf5 HAD SHARD FAILURES (18s, 0 trades, 55G free)
 [2026-10-09T06:23:25Z] [smokehtf15b] *** VWAP_FX_htf15 merge FAILED
 [2026-10-09T06:23:26Z] [smokehtf15b] VWAP_FX_htf15 HAD SHARD FAILURES (17s, 0 trades, 55G free)
-sort: write failed: 'standard output': Broken pipe
-sort: write error
 ```
