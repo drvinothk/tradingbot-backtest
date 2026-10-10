@@ -1,6 +1,6 @@
-# btsync status  2026-10-10T14:56:40Z UTC / 2026-10-10 20:26:40 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-10T14:57:51Z UTC / 2026-10-10 20:27:51 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-10 20:26:40 IST / 14:56:40 UTC  load: 4.59 4.31 4.01  free: 8G avail  disk: 54G free
+== now: 2026-10-10 20:27:52 IST / 14:57:52 UTC  load: 4.75 4.44 4.08  free: 8G avail  disk: 54G free
 == units:
   backtest-20261010-121534.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_f15_1010.sh"
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
@@ -38,7 +38,5 @@ c8da7ba7 run_sweep_perday.sh
 == ATTENTION:
 ! shard/merge failure in s6_status.log within the last 30h:
 [2026-10-10T14:51:33Z] [fxvwap21] VWAP_FX_f15_log HAD SHARD FAILURES (8636s, 2477 trades, 54G free)
-sort: write failed: 'standard output': Broken pipe
-sort: write error
 ! 1 Traceback line(s) in current shard logs
 ```
