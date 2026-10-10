@@ -1,9 +1,9 @@
-# btsync status  2026-10-10T03:23:01Z UTC / 2026-10-10 08:53:01 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-10T03:24:11Z UTC / 2026-10-10 08:54:11 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-10 08:53:01 IST / 03:23:01 UTC  load: 4.52 4.62 4.63  free: 7G avail  disk: 54G free
+== now: 2026-10-10 08:54:11 IST / 03:24:11 UTC  load: 4.49 4.61 4.62  free: 8G avail  disk: 54G free
 == units:
   backtest-20261009-165623.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_htf15_1009.sh"
-== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
+== run_backtest procs: 3   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
 -- fxvwap18_chain.heartbeat
 2026-10-10 06:19:17 IST fxvwap18: reaper timer stopped
@@ -38,5 +38,5 @@ c8da7ba7 run_sweep_perday.sh
 [2026-10-09T06:23:08Z] [smokehtf5b] VWAP_FX_htf5 HAD SHARD FAILURES (18s, 0 trades, 55G free)
 [2026-10-09T06:23:25Z] [smokehtf15b] *** VWAP_FX_htf15 merge FAILED
 [2026-10-09T06:23:26Z] [smokehtf15b] VWAP_FX_htf15 HAD SHARD FAILURES (17s, 0 trades, 55G free)
-! newest config started/finished 9223s ago (>2.5h) while a unit is running -- possible stall
+! newest config started/finished 9293s ago (>2.5h) while a unit is running -- possible stall
 ```
