@@ -1,12 +1,10 @@
-# btsync status  2026-10-10T08:59:43Z UTC / 2026-10-10 14:29:43 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-10T09:02:00Z UTC / 2026-10-10 14:32:00 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-10 14:29:43 IST / 08:59:43 UTC  load: 0.00 0.00 0.63  free: 10G avail  disk: 54G free
+== now: 2026-10-10 14:32:00 IST / 09:02:00 UTC  load: 0.00 0.00 0.53  free: 10G avail  disk: 54G free
 == units:
 (none running)
 == run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
 == chains (newest heartbeats):
-sort: write failed: 'standard output': Broken pipe
-sort: write error
 -- fxvwap20_chain.heartbeat
 2026-10-10 11:26:33 IST fxvwap20: reaper timer stopped
 2026-10-10 11:26:35 IST fxvwap20: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 937113b0
@@ -38,8 +36,5 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-! shard/merge failure in s6_status.log within the last 30h:
-[2026-10-09T06:23:08Z] [smokehtf5b] VWAP_FX_htf5 HAD SHARD FAILURES (18s, 0 trades, 55G free)
-[2026-10-09T06:23:25Z] [smokehtf15b] *** VWAP_FX_htf15 merge FAILED
-[2026-10-09T06:23:26Z] [smokehtf15b] VWAP_FX_htf15 HAD SHARD FAILURES (17s, 0 trades, 55G free)
+ATTENTION: none
 ```
