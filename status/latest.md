@@ -1,6 +1,6 @@
-# btsync status  2026-10-11T14:00:00Z UTC / 2026-10-11 19:30:00 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-11T14:01:10Z UTC / 2026-10-11 19:31:10 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-11 19:30:00 IST / 14:00:00 UTC  load: 4.65 4.70 4.72  free: 7G avail  disk: 52G free
+== now: 2026-10-11 19:31:10 IST / 14:01:10 UTC  load: 4.71 4.73 4.73  free: 7G avail  disk: 52G free
 == units:
   backtest-20261011-085827.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_strike_1011.sh"
   backtest-20261011-124148.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_c4_1011.sh"
