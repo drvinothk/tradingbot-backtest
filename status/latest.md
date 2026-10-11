@@ -1,32 +1,32 @@
-# btsync status  2026-10-11T01:46:33Z UTC / 2026-10-11 07:16:33 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-11T01:47:43Z UTC / 2026-10-11 07:17:43 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-11 07:16:33 IST / 01:46:33 UTC  load: 5.12 4.88 4.78  free: 8G avail  disk: 54G free
+== now: 2026-10-11 07:17:43 IST / 01:47:43 UTC  load: 4.39 4.71 4.73  free: 8G avail  disk: 54G free
 == units:
   backtest-20261010-153335.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_f15b_1010.sh"
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
+-- fxvwap26_chain.heartbeat
+2026-10-11 07:17:16 IST fxvwap26: reaper timer stopped
+2026-10-11 07:17:17 IST fxvwap26: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine f5d4d5d0
 -- fxvwap25_chain.heartbeat
 2026-10-11 04:45:43 IST fxvwap25: reaper timer stopped
 2026-10-11 04:45:44 IST fxvwap25: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine f5d4d5d0
+2026-10-11 07:17:16 IST fxvwap25: sweep finished rc=0
+2026-10-11 07:17:16 IST fxvwap25: chain finished
 -- fxvwap24_chain.heartbeat
 2026-10-11 02:15:52 IST fxvwap24: reaper timer stopped
 2026-10-11 02:15:53 IST fxvwap24: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine f5d4d5d0
 2026-10-11 04:45:43 IST fxvwap24: sweep finished rc=0
 2026-10-11 04:45:43 IST fxvwap24: chain finished
--- fxvwap23_chain.heartbeat
-2026-10-10 23:45:17 IST fxvwap23: reaper timer stopped
-2026-10-10 23:45:19 IST fxvwap23: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine f5d4d5d0
-2026-10-11 02:15:52 IST fxvwap23: sweep finished rc=0
-2026-10-11 02:15:52 IST fxvwap23: chain finished
 == last 8 s6_status lines:
-[2026-10-10T23:15:43Z] [fxvwap24] VWAP_FX_f15_run OK (8989s, 978 trades, 54G free)
-[2026-10-10T23:15:43Z] [fxvwap24] ==========================================
-[2026-10-10T23:15:43Z] [fxvwap24] sweep [fxvwap24] COMPLETE -> data/historical/backtest_reports/s6_fxvwap24 (149min)
-[2026-10-10T23:15:43Z] [fxvwap24] ==========================================
-[2026-10-10T23:15:44Z] [fxvwap25] ==========================================
-[2026-10-10T23:15:44Z] [fxvwap25] sweep [fxvwap25] -> data/historical/backtest_reports/s6_fxvwap25 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --data-dir 
-[2026-10-10T23:15:44Z] [fxvwap25] ==========================================
-[2026-10-10T23:15:44Z] [fxvwap25] --- VWAP_FX_f15_tl3 (vwap_pullback_conviction, src=futures_proxy) params={"pullback_tolerance_frac": 0.002, "max_vwap_crosses_in_lookback": 1, "trail_activation_fract
+[2026-10-11T01:47:16Z] [fxvwap25] VWAP_FX_f15_tl3 OK (9092s, 1133 trades, 54G free)
+[2026-10-11T01:47:16Z] [fxvwap25] ==========================================
+[2026-10-11T01:47:16Z] [fxvwap25] sweep [fxvwap25] COMPLETE -> data/historical/backtest_reports/s6_fxvwap25 (151min)
+[2026-10-11T01:47:16Z] [fxvwap25] ==========================================
+[2026-10-11T01:47:17Z] [fxvwap26] ==========================================
+[2026-10-11T01:47:17Z] [fxvwap26] sweep [fxvwap26] -> data/historical/backtest_reports/s6_fxvwap26 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --data-dir 
+[2026-10-11T01:47:17Z] [fxvwap26] ==========================================
+[2026-10-11T01:47:17Z] [fxvwap26] --- VWAP_FX_f15_tol (vwap_pullback_conviction, src=futures_proxy) params={"pullback_tolerance_frac": 0.001, "max_vwap_crosses_in_lookback": 1, "trail_activation_fract
 == finished configs (all chains): 561
 == md5:
 f5d4d5d0 backend/scripts/run_backtest.py
@@ -34,5 +34,5 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-! newest config started/finished 9049s ago (>2.5h) while a unit is running -- possible stall
+ATTENTION: none
 ```
