@@ -1,6 +1,6 @@
-# btsync status  2026-10-11T13:38:32Z UTC / 2026-10-11 19:08:32 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-11T13:39:42Z UTC / 2026-10-11 19:09:42 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-11 19:08:32 IST / 13:38:32 UTC  load: 4.79 4.78 4.80  free: 7G avail  disk: 52G free
+== now: 2026-10-11 19:09:42 IST / 13:39:42 UTC  load: 4.70 4.75 4.79  free: 7G avail  disk: 52G free
 == units:
   backtest-20261011-085827.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_strike_1011.sh"
   backtest-20261011-124148.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_c4_1011.sh"
@@ -35,5 +35,6 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-ATTENTION: none
+! shard/merge failure in s6_status.log within the last 30h:
+[2026-10-10T14:51:33Z] [fxvwap21] VWAP_FX_f15_log HAD SHARD FAILURES (8636s, 2477 trades, 54G free)
 ```
