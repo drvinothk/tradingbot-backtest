@@ -1,32 +1,31 @@
-# btsync status  2026-10-11T04:48:14Z UTC / 2026-10-11 10:18:14 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-11T04:49:24Z UTC / 2026-10-11 10:19:24 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-11 10:18:14 IST / 04:48:14 UTC  load: 4.76 4.81 4.90  free: 6G avail  disk: 52G free
+== now: 2026-10-11 10:19:24 IST / 04:49:24 UTC  load: 4.27 4.73 4.87  free: 9G avail  disk: 52G free
 == units:
   backtest-20261010-153335.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_f15b_1010.sh"
-== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
+== run_backtest procs: 0   reaper timer: inactive   leaked backtest DBs: 0
 == chains (newest heartbeats):
+-- fxvwap27_chain.heartbeat
+2026-10-11 10:19:24 IST fxvwap27: reaper timer stopped
 -- fxvwap26_chain.heartbeat
 2026-10-11 07:17:16 IST fxvwap26: reaper timer stopped
 2026-10-11 07:17:17 IST fxvwap26: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine f5d4d5d0
+2026-10-11 10:19:24 IST fxvwap26: sweep finished rc=0
+2026-10-11 10:19:24 IST fxvwap26: chain finished
 -- fxvwap25_chain.heartbeat
 2026-10-11 04:45:43 IST fxvwap25: reaper timer stopped
 2026-10-11 04:45:44 IST fxvwap25: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine f5d4d5d0
 2026-10-11 07:17:16 IST fxvwap25: sweep finished rc=0
 2026-10-11 07:17:16 IST fxvwap25: chain finished
--- fxvwap24_chain.heartbeat
-2026-10-11 02:15:52 IST fxvwap24: reaper timer stopped
-2026-10-11 02:15:53 IST fxvwap24: QC ok; 1472 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine f5d4d5d0
-2026-10-11 04:45:43 IST fxvwap24: sweep finished rc=0
-2026-10-11 04:45:43 IST fxvwap24: chain finished
 == last 8 s6_status lines:
-[2026-10-11T01:47:16Z] [fxvwap25] VWAP_FX_f15_tl3 OK (9092s, 1133 trades, 54G free)
-[2026-10-11T01:47:16Z] [fxvwap25] ==========================================
-[2026-10-11T01:47:16Z] [fxvwap25] sweep [fxvwap25] COMPLETE -> data/historical/backtest_reports/s6_fxvwap25 (151min)
-[2026-10-11T01:47:16Z] [fxvwap25] ==========================================
 [2026-10-11T01:47:17Z] [fxvwap26] ==========================================
 [2026-10-11T01:47:17Z] [fxvwap26] sweep [fxvwap26] -> data/historical/backtest_reports/s6_fxvwap26 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --data-dir 
 [2026-10-11T01:47:17Z] [fxvwap26] ==========================================
 [2026-10-11T01:47:17Z] [fxvwap26] --- VWAP_FX_f15_tol (vwap_pullback_conviction, src=futures_proxy) params={"pullback_tolerance_frac": 0.001, "max_vwap_crosses_in_lookback": 1, "trail_activation_fract
+[2026-10-11T04:49:24Z] [fxvwap26] VWAP_FX_f15_tol OK (10926s, 879 trades, 52G free)
+[2026-10-11T04:49:24Z] [fxvwap26] ==========================================
+[2026-10-11T04:49:24Z] [fxvwap26] sweep [fxvwap26] COMPLETE -> data/historical/backtest_reports/s6_fxvwap26 (182min)
+[2026-10-11T04:49:24Z] [fxvwap26] ==========================================
 == finished configs (all chains): 561
 == md5:
 f5d4d5d0 backend/scripts/run_backtest.py
@@ -36,5 +35,6 @@ c8da7ba7 run_sweep_perday.sh
 == ATTENTION:
 ! shard/merge failure in s6_status.log within the last 30h:
 [2026-10-10T14:51:33Z] [fxvwap21] VWAP_FX_f15_log HAD SHARD FAILURES (8636s, 2477 trades, 54G free)
-! newest config started/finished 10857s ago (>2.5h) while a unit is running -- possible stall
+sort: write failed: 'standard output': Broken pipe
+sort: write error
 ```
