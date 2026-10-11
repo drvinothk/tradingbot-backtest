@@ -1,6 +1,6 @@
-# btsync status  2026-10-11T17:59:33Z UTC / 2026-10-11 23:29:33 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-11T18:00:43Z UTC / 2026-10-11 23:30:43 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-11 23:29:33 IST / 17:59:33 UTC  load: 0.00 0.00 0.04  free: 10G avail  disk: 52G free
+== now: 2026-10-11 23:30:43 IST / 18:00:43 UTC  load: 0.00 0.00 0.03  free: 10G avail  disk: 52G free
 == units:
 (none running)
 == run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
@@ -38,4 +38,6 @@ c8da7ba7 run_sweep_perday.sh
 == ATTENTION:
 ! shard/merge failure in s6_status.log within the last 30h:
 [2026-10-10T14:51:33Z] [fxvwap21] VWAP_FX_f15_log HAD SHARD FAILURES (8636s, 2477 trades, 54G free)
+sort: write failed: 'standard output': Broken pipe
+sort: write error
 ```
