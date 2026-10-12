@@ -1,9 +1,9 @@
-# btsync status  2026-10-12T07:55:00Z UTC / 2026-10-12 13:25:00 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-12T07:56:10Z UTC / 2026-10-12 13:26:10 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-12 13:25:00 IST / 07:55:00 UTC  load: 4.91 4.06 3.05  free: 7G avail  disk: 52G free
+== now: 2026-10-12 13:26:10 IST / 07:56:10 UTC  load: 4.85 4.22 3.18  free: 7G avail  disk: 52G free
 == units:
   backtest-20261012-073337.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./regress_fill_1012.sh"
-== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
+== run_backtest procs: 3   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
 -- rgL_ema_chain.heartbeat
 2026-10-12 13:22:46 IST rgL_ema: reaper timer stopped
