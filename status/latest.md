@@ -1,12 +1,10 @@
-# btsync status  2026-10-12T07:50:31Z UTC / 2026-10-12 13:20:31 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-12T07:51:42Z UTC / 2026-10-12 13:21:42 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-12 13:20:31 IST / 07:50:31 UTC  load: 4.20 3.90 2.74  free: 6G avail  disk: 52G free
+== now: 2026-10-12 13:21:42 IST / 07:51:42 UTC  load: 2.44 3.46 2.67  free: 6G avail  disk: 52G free
 == units:
   backtest-20261012-073337.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./regress_fill_1012.sh"
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
-sort: write failed: 'standard output': Broken pipe
-sort: write error
 -- rgL_vwap1_chain.heartbeat
 2026-10-12 13:18:27 IST rgL_vwap1: reaper timer stopped
 2026-10-12 13:18:29 IST rgL_vwap1: QC ok; 20 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 10912b27
@@ -36,5 +34,7 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
+sort: write failed: 'standard output': Broken pipe
+sort: write error
 ATTENTION: none
 ```
