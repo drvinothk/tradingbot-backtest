@@ -1,33 +1,32 @@
-# btsync status  2026-10-12T17:11:30Z UTC / 2026-10-12 22:41:30 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-12T17:12:41Z UTC / 2026-10-12 22:42:41 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-12 22:41:30 IST / 17:11:30 UTC  load: 4.15 4.02 4.44  free: 7G avail  disk: 52G free
+== now: 2026-10-12 22:42:41 IST / 17:12:41 UTC  load: 4.47 4.08 4.43  free: 7G avail  disk: 52G free
 == units:
   backtest-20261012-165208.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_night_1012.sh"
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
+-- rem_c4t5_chain.heartbeat
+2026-10-12 22:42:00 IST rem_c4t5: reaper timer stopped
+2026-10-12 22:42:01 IST rem_c4t5: QC ok; 764 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 214a0c09
 -- ngt_colsmoke_chain.heartbeat
 2026-10-12 22:41:12 IST ngt_colsmoke: reaper timer stopped
 2026-10-12 22:41:13 IST ngt_colsmoke: QC ok; 5 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 214a0c09
+2026-10-12 22:42:00 IST ngt_colsmoke: sweep finished rc=0
+2026-10-12 22:42:00 IST ngt_colsmoke: chain finished
 -- ngt_reg_c4_chain.heartbeat
 2026-10-12 22:39:08 IST ngt_reg_c4: reaper timer stopped
 2026-10-12 22:39:10 IST ngt_reg_c4: QC ok; 20 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 214a0c09
 2026-10-12 22:41:12 IST ngt_reg_c4: sweep finished rc=0
 2026-10-12 22:41:12 IST ngt_reg_c4: chain finished
--- rb3_ema_nt_chain.heartbeat
-2026-10-12 21:28:33 IST rb3_ema_nt: reaper timer stopped
-2026-10-12 21:28:34 IST rb3_ema_nt: QC ok; 707 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 10912b27
-2026-10-12 22:38:10 IST rb3_ema_nt: sweep finished rc=0
-2026-10-12 22:38:10 IST rb3_ema_nt: chain finished
-2026-10-12 22:38:10 IST rb3_ema_nt: reaper timer restarted
 == last 8 s6_status lines:
-[2026-10-12T17:11:12Z] [ngt_reg_c4] VWAP_FX_s15_expatm_p250 OK (122s, 27 trades, 52G free)
-[2026-10-12T17:11:12Z] [ngt_reg_c4] ==========================================
-[2026-10-12T17:11:12Z] [ngt_reg_c4] sweep [ngt_reg_c4] COMPLETE -> data/historical/backtest_reports/s6_ngt_reg_c4 (2min)
-[2026-10-12T17:11:12Z] [ngt_reg_c4] ==========================================
-[2026-10-12T17:11:13Z] [ngt_colsmoke] ==========================================
-[2026-10-12T17:11:13Z] [ngt_colsmoke] sweep [ngt_colsmoke] -> data/historical/backtest_reports/s6_ngt_colsmoke (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12
-[2026-10-12T17:11:13Z] [ngt_colsmoke] ==========================================
-[2026-10-12T17:11:13Z] [ngt_colsmoke] --- VWAP_FX_s15_expatm_p250 (vwap_pullback_conviction, src=futures_proxy) params={"pullback_tolerance_frac": 0.001, "max_vwap_crosses_in_lookback": 1, "trail_acti
+[2026-10-12T17:12:00Z] [ngt_colsmoke] VWAP_FX_s15_expatm_p250 OK (47s, 5 trades, 52G free)
+[2026-10-12T17:12:00Z] [ngt_colsmoke] ==========================================
+[2026-10-12T17:12:00Z] [ngt_colsmoke] sweep [ngt_colsmoke] COMPLETE -> data/historical/backtest_reports/s6_ngt_colsmoke (0min)
+[2026-10-12T17:12:00Z] [ngt_colsmoke] ==========================================
+[2026-10-12T17:12:01Z] [rem_c4t5] ==========================================
+[2026-10-12T17:12:01Z] [rem_c4t5] sweep [rem_c4t5] -> data/historical/backtest_reports/s6_rem_c4t5 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --data-dir 
+[2026-10-12T17:12:01Z] [rem_c4t5] ==========================================
+[2026-10-12T17:12:01Z] [rem_c4t5] --- VWAP_FX_s15_expatm_p250 (vwap_pullback_conviction, src=futures_proxy) params={"pullback_tolerance_frac": 0.001, "max_vwap_crosses_in_lookback": 1, "trail_activati
 == finished configs (all chains): 570
 == md5:
 214a0c09 backend/scripts/run_backtest.py
