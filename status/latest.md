@@ -1,32 +1,32 @@
-# btsync status  2026-10-12T20:59:13Z UTC / 2026-10-13 02:29:13 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-12T21:02:33Z UTC / 2026-10-13 02:32:33 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-13 02:29:13 IST / 20:59:13 UTC  load: 4.85 4.86 4.83  free: 8G avail  disk: 51G free
+== now: 2026-10-13 02:32:33 IST / 21:02:33 UTC  load: 4.64 4.67 4.75  free: 8G avail  disk: 51G free
 == units:
   backtest-20261012-165208.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_night_1012.sh"
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
+-- col_all3_chain.heartbeat
+2026-10-13 02:31:32 IST col_all3: reaper timer stopped
+2026-10-13 02:31:34 IST col_all3: QC ok; 709 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 214a0c09
 -- col_1p_chain.heartbeat
 2026-10-13 01:22:49 IST col_1p: reaper timer stopped
 2026-10-13 01:22:50 IST col_1p: QC ok; 709 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 214a0c09
+2026-10-13 02:31:32 IST col_1p: sweep finished rc=0
+2026-10-13 02:31:32 IST col_1p: chain finished
 -- rem_vwap1_chain.heartbeat
 2026-10-12 23:53:52 IST rem_vwap1: reaper timer stopped
 2026-10-12 23:53:54 IST rem_vwap1: QC ok; 764 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 214a0c09
 2026-10-13 01:22:49 IST rem_vwap1: sweep finished rc=0
 2026-10-13 01:22:49 IST rem_vwap1: chain finished
--- rem_c4t5_chain.heartbeat
-2026-10-12 22:42:00 IST rem_c4t5: reaper timer stopped
-2026-10-12 22:42:01 IST rem_c4t5: QC ok; 764 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 214a0c09
-2026-10-12 23:53:52 IST rem_c4t5: sweep finished rc=0
-2026-10-12 23:53:52 IST rem_c4t5: chain finished
 == last 8 s6_status lines:
-[2026-10-12T19:52:49Z] [rem_vwap1] VWAP_FX_stack_rr12 OK (5335s, 534 trades, 51G free)
-[2026-10-12T19:52:49Z] [rem_vwap1] ==========================================
-[2026-10-12T19:52:49Z] [rem_vwap1] sweep [rem_vwap1] COMPLETE -> data/historical/backtest_reports/s6_rem_vwap1 (88min)
-[2026-10-12T19:52:49Z] [rem_vwap1] ==========================================
-[2026-10-12T19:52:50Z] [col_1p] ==========================================
-[2026-10-12T19:52:50Z] [col_1p] sweep [col_1p] -> data/historical/backtest_reports/s6_col_1p (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --data-dir /home/
-[2026-10-12T19:52:50Z] [col_1p] ==========================================
-[2026-10-12T19:52:50Z] [col_1p] --- VWAP_FX_s15_expatm_p250 (vwap_pullback_conviction, src=futures_proxy) params={"pullback_tolerance_frac": 0.001, "max_vwap_crosses_in_lookback": 1, "trail_activation
+[2026-10-12T21:01:32Z] [col_1p] VWAP_FX_s15_expatm_p250 OK (4122s, 553 trades, 51G free)
+[2026-10-12T21:01:32Z] [col_1p] ==========================================
+[2026-10-12T21:01:32Z] [col_1p] sweep [col_1p] COMPLETE -> data/historical/backtest_reports/s6_col_1p (68min)
+[2026-10-12T21:01:32Z] [col_1p] ==========================================
+[2026-10-12T21:01:34Z] [col_all3] ==========================================
+[2026-10-12T21:01:34Z] [col_all3] sweep [col_all3] -> data/historical/backtest_reports/s6_col_all3 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --data-dir 
+[2026-10-12T21:01:34Z] [col_all3] ==========================================
+[2026-10-12T21:01:34Z] [col_all3] --- VWAP_FX_s15_expatm_p250 (vwap_pullback_conviction, src=futures_proxy) params={"pullback_tolerance_frac": 0.001, "max_vwap_crosses_in_lookback": 1, "trail_activati
 == finished configs (all chains): 570
 == md5:
 214a0c09 backend/scripts/run_backtest.py
