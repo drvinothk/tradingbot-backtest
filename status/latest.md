@@ -1,34 +1,35 @@
-# btsync status  2026-10-12T12:18:00Z UTC / 2026-10-12 17:48:00 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-12T12:32:10Z UTC / 2026-10-12 18:02:10 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-12 17:48:00 IST / 12:18:00 UTC  load: 4.70 4.70 4.72  free: 6G avail  disk: 51G free
+== now: 2026-10-12 18:02:10 IST / 12:32:10 UTC  load: 4.97 5.01 4.84  free: 7G avail  disk: 51G free
 == units:
   backtest-20261012-082852.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_rebase3y_1012.sh"
   backtest-20261012-115331.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_emanotrail_1012.sh"
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
+sort: write failed: 'standard output': Broken pipe
+sort: write error
+-- rb3_c4t1_chain.heartbeat
+2026-10-12 17:49:41 IST rb3_c4t1: reaper timer stopped
+2026-10-12 17:49:43 IST rb3_c4t1: QC ok; 709 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 10912b27
 -- rb3_orb_chain.heartbeat
 2026-10-12 16:42:35 IST rb3_orb: reaper timer stopped
 2026-10-12 16:42:37 IST rb3_orb: QC ok; 707 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 10912b27
+2026-10-12 17:49:41 IST rb3_orb: sweep finished rc=0
+2026-10-12 17:49:41 IST rb3_orb: chain finished
 -- rb3_ema_chain.heartbeat
 2026-10-12 15:31:23 IST rb3_ema: reaper timer stopped
 2026-10-12 15:31:24 IST rb3_ema: QC ok; 707 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 10912b27
 2026-10-12 16:42:35 IST rb3_ema: sweep finished rc=0
 2026-10-12 16:42:35 IST rb3_ema: chain finished
--- rgR_c4_chain.heartbeat
-2026-10-12 13:45:00 IST rgR_c4: reaper timer stopped
-2026-10-12 13:45:02 IST rgR_c4: QC ok; 20 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 10912b27
-2026-10-12 13:48:28 IST rgR_c4: sweep finished rc=0
-2026-10-12 13:48:28 IST rgR_c4: chain finished
-2026-10-12 13:48:28 IST rgR_c4: reaper timer restarted
 == last 8 s6_status lines:
-[2026-10-12T11:12:35Z] [rb3_ema] EMA_FX_r28spec_t05 OK (4271s, 605 trades, 51G free)
-[2026-10-12T11:12:35Z] [rb3_ema] ==========================================
-[2026-10-12T11:12:35Z] [rb3_ema] sweep [rb3_ema] COMPLETE -> data/historical/backtest_reports/s6_rb3_ema (71min)
-[2026-10-12T11:12:35Z] [rb3_ema] ==========================================
-[2026-10-12T11:12:37Z] [rb3_orb] ==========================================
-[2026-10-12T11:12:37Z] [rb3_orb] sweep [rb3_orb] -> data/historical/backtest_reports/s6_rb3_orb (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --multi-trade'
-[2026-10-12T11:12:37Z] [rb3_orb] ==========================================
-[2026-10-12T11:12:37Z] [rb3_orb] --- ORB_FX_live (orb_conviction, src=combined_2020) params={"stop_pct": 0.2, "target_pct": 0.66, "trail_activation_fraction": 0.18, "trail_lock_fraction": 0.7, "orb_en
+[2026-10-12T12:19:41Z] [rb3_orb] ORB_FX_live OK (4024s, 362 trades, 51G free)
+[2026-10-12T12:19:41Z] [rb3_orb] ==========================================
+[2026-10-12T12:19:41Z] [rb3_orb] sweep [rb3_orb] COMPLETE -> data/historical/backtest_reports/s6_rb3_orb (67min)
+[2026-10-12T12:19:41Z] [rb3_orb] ==========================================
+[2026-10-12T12:19:43Z] [rb3_c4t1] ==========================================
+[2026-10-12T12:19:43Z] [rb3_c4t1] sweep [rb3_c4t1] -> data/historical/backtest_reports/s6_rb3_c4t1 (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --data-dir 
+[2026-10-12T12:19:43Z] [rb3_c4t1] ==========================================
+[2026-10-12T12:19:43Z] [rb3_c4t1] --- VWAP_FX_s15_expatm_p250 (vwap_pullback_conviction, src=futures_proxy) params={"pullback_tolerance_frac": 0.001, "max_vwap_crosses_in_lookback": 1, "trail_activati
 == finished configs (all chains): 569
 == md5:
 10912b27 backend/scripts/run_backtest.py
