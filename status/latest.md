@@ -1,10 +1,12 @@
-# btsync status  2026-10-12T16:48:13Z UTC / 2026-10-12 22:18:13 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-12T16:51:38Z UTC / 2026-10-12 22:21:38 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-12 22:18:13 IST / 16:48:13 UTC  load: 4.99 4.84 4.74  free: 6G avail  disk: 51G free
+== now: 2026-10-12 22:21:38 IST / 16:51:38 UTC  load: 5.26 5.08 4.86  free: 6G avail  disk: 51G free
 == units:
   backtest-20261012-115331.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_emanotrail_1012.sh"
-== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
+== run_backtest procs: 4   reaper timer: active   leaked backtest DBs: 4
 == chains (newest heartbeats):
+-- ngt_reg_c4_chain.heartbeat
+2026-10-12 22:20:48 IST ngt_reg_c4: ABORT -- a sweep is running
 -- rb3_ema_nt_chain.heartbeat
 2026-10-12 21:28:33 IST rb3_ema_nt: reaper timer stopped
 2026-10-12 21:28:34 IST rb3_ema_nt: QC ok; 707 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 10912b27
@@ -13,11 +15,6 @@
 2026-10-12 20:05:45 IST rb3_vwap1: QC ok; 709 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 10912b27
 2026-10-12 21:28:29 IST rb3_vwap1: sweep finished rc=0
 2026-10-12 21:28:29 IST rb3_vwap1: chain finished
--- rb3_c4t5_chain.heartbeat
-2026-10-12 18:58:09 IST rb3_c4t5: reaper timer stopped
-2026-10-12 18:58:10 IST rb3_c4t5: QC ok; 709 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 10912b27
-2026-10-12 20:05:44 IST rb3_c4t5: sweep finished rc=0
-2026-10-12 20:05:44 IST rb3_c4t5: chain finished
 == last 8 s6_status lines:
 [2026-10-12T15:58:29Z] [rb3_vwap1] VWAP_FX_stack_rr12 OK (4964s, 542 trades, 52G free)
 [2026-10-12T15:58:29Z] [rb3_vwap1] ==========================================
@@ -34,5 +31,5 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-ATTENTION: none
+! ngt_reg_c4_chain.heartbeat: 2026-10-12 22:20:48 IST ngt_reg_c4: ABORT -- a sweep is running
 ```
