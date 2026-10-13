@@ -1,6 +1,6 @@
-# btsync status  2026-10-13T05:41:44Z UTC / 2026-10-13 11:11:44 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-13T05:42:52Z UTC / 2026-10-13 11:12:52 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-13 11:11:44 IST / 05:41:44 UTC  load: 0.20 0.38 0.37  free: 8G avail  disk: 52G free
+== now: 2026-10-13 11:12:52 IST / 05:42:52 UTC  load: 0.26 0.34 0.35  free: 8G avail  disk: 52G free
 == units:
 (none running)
 == run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
@@ -36,5 +36,7 @@ c8da7ba7 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
+sort: write failed: 'standard output': Broken pipe
+sort: write error
 ATTENTION: none
 ```
