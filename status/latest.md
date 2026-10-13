@@ -1,12 +1,10 @@
-# btsync status  2026-10-13T08:13:31Z UTC / 2026-10-13 13:43:31 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-13T08:14:42Z UTC / 2026-10-13 13:44:42 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-13 13:43:31 IST / 08:13:31 UTC  load: 4.95 4.39 4.30  free: 6G avail  disk: 51G free
+== now: 2026-10-13 13:44:42 IST / 08:14:42 UTC  load: 5.20 4.64 4.39  free: 6G avail  disk: 51G free
 == units:
   backtest-20261013-065339.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./run_rem_col1p.sh"
 == run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
 == chains (newest heartbeats):
-sort: write failed: 'standard output': Broken pipe
-sort: write error
 -- rem_col1p_chain.heartbeat
 2026-10-13 12:23:39 IST rem_col1p: reaper timer stopped
 2026-10-13 12:23:41 IST rem_col1p: QC ok; 764 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 214a0c09
