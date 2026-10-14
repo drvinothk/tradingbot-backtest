@@ -1,13 +1,16 @@
-# btsync status  2026-10-14T09:21:43Z UTC / 2026-10-14 14:51:43 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-14T09:29:23Z UTC / 2026-10-14 14:59:23 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-14 14:51:43 IST / 09:21:43 UTC  load: 4.53 4.03 3.02  free: 7G avail  disk: 51G free
+== now: 2026-10-14 14:59:23 IST / 09:29:23 UTC  load: 0.90 2.81 3.02  free: 8G avail  disk: 51G free
 == units:
-  backtest-20261014-090511.service loaded active running /bin/bash -c "cd /home/ubuntu/backtest_engine && ./chain_volcmp_1014.sh"
-== run_backtest procs: 4   reaper timer: inactive   leaked backtest DBs: 4
+(none running)
+== run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
 == chains (newest heartbeats):
 -- vc_old_chain.heartbeat
 2026-10-14 14:46:39 IST vc_old: reaper timer stopped
 2026-10-14 14:46:40 IST vc_old: QC ok; 79 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 214a0c09
+2026-10-14 14:58:14 IST vc_old: sweep finished rc=0
+2026-10-14 14:58:14 IST vc_old: chain finished
+2026-10-14 14:58:14 IST vc_old: reaper timer restarted
 -- vc_new_chain.heartbeat
 2026-10-14 14:35:11 IST vc_new: reaper timer stopped
 2026-10-14 14:35:13 IST vc_new: QC ok; 79 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 214a0c09
@@ -21,14 +24,14 @@
 2026-10-13 14:15:36 IST rem_col1p: chain finished
 2026-10-13 14:15:36 IST rem_col1p: reaper timer restarted
 == last 8 s6_status lines:
-[2026-10-14T09:16:38Z] [vc_new] ==========================================
-[2026-10-14T09:16:38Z] [vc_new] sweep [vc_new] COMPLETE -> data/historical/backtest_reports/s6_vc_new (11min)
-[2026-10-14T09:16:38Z] [vc_new] ==========================================
-[2026-10-14T09:16:40Z] [vc_old] ==========================================
 [2026-10-14T09:16:40Z] [vc_old] sweep [vc_old] -> data/historical/backtest_reports/s6_vc_old (1 configs, 4 shards) harness=MULTI-TRADE per day (default) extra='--extra-warmup-days 12 --data-dir /home/
 [2026-10-14T09:16:40Z] [vc_old] data_through=2026-10-13 pairs=/home/ubuntu/backtest_engine/sweep_configs/pairs_volcmp_20261014.txt
 [2026-10-14T09:16:40Z] [vc_old] ==========================================
 [2026-10-14T09:16:40Z] [vc_old] --- VWAP_FX_s15_expatm_p250 (vwap_pullback_conviction, src=futures_proxy) params={"pullback_tolerance_frac": 0.001, "max_vwap_crosses_in_lookback": 1, "trail_activation
+[2026-10-14T09:28:14Z] [vc_old] VWAP_FX_s15_expatm_p250 OK (694s, 65 trades, 51G free)
+[2026-10-14T09:28:14Z] [vc_old] ==========================================
+[2026-10-14T09:28:14Z] [vc_old] sweep [vc_old] COMPLETE -> data/historical/backtest_reports/s6_vc_old (11min)
+[2026-10-14T09:28:14Z] [vc_old] ==========================================
 == finished configs (all chains): 570
 == md5:
 214a0c09 backend/scripts/run_backtest.py
