@@ -1,12 +1,10 @@
-# btsync status  2026-10-14T07:36:20Z UTC / 2026-10-14 13:06:20 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-14T07:40:43Z UTC / 2026-10-14 13:10:43 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-14 13:06:20 IST / 07:36:20 UTC  load: 0.33 0.45 0.39  free: 8G avail  disk: 51G free
+== now: 2026-10-14 13:10:43 IST / 07:40:43 UTC  load: 0.82 0.55 0.43  free: 8G avail  disk: 51G free
 == units:
 (none running)
 == run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
 == chains (newest heartbeats):
-sort: write failed: 'standard output': Broken pipe
-sort: write error
 -- rem_col1p_chain.heartbeat
 2026-10-13 12:23:39 IST rem_col1p: reaper timer stopped
 2026-10-13 12:23:41 IST rem_col1p: QC ok; 764 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 214a0c09
@@ -35,7 +33,7 @@ sort: write error
 == finished configs (all chains): 570
 == md5:
 214a0c09 backend/scripts/run_backtest.py
-c8da7ba7 run_sweep_perday.sh
+81d4fcc0 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
