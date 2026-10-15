@@ -1,6 +1,6 @@
-# btsync status  2026-10-15T18:00:08Z UTC / 2026-10-15 23:30:08 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-15T18:01:19Z UTC / 2026-10-15 23:31:19 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-15 23:30:09 IST / 18:00:09 UTC  load: 3.95 1.22 0.43  free: 6G avail  disk: 50G free
+== now: 2026-10-15 23:31:19 IST / 18:01:19 UTC  load: 5.37 2.21 0.83  free: 6G avail  disk: 50G free
 == units:
   backtest-20261015-175856.service loaded active running /home/ubuntu/backtest_engine/gate_88340099.sh
 == run_backtest procs: 5   reaper timer: active   leaked backtest DBs: 5
@@ -39,5 +39,5 @@
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
 == ATTENTION:
-! newest config started/finished 104018s ago (>2.5h) while a unit is running -- possible stall
+! newest config started/finished 104088s ago (>2.5h) while a unit is running -- possible stall
 ```
