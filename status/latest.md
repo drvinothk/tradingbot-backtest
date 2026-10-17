@@ -1,6 +1,6 @@
-# btsync status  2026-10-17T12:20:19Z UTC / 2026-10-17 17:50:19 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-17T12:24:43Z UTC / 2026-10-17 17:54:43 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-17 17:50:19 IST / 12:20:19 UTC  load: 0.01 0.01 0.00  free: 8G avail  disk: 50G free
+== now: 2026-10-17 17:54:43 IST / 12:24:43 UTC  load: 0.26 0.12 0.04  free: 8G avail  disk: 50G free
 == units:
 (none running)
 == run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
@@ -34,7 +34,7 @@
 [2026-10-14T13:06:31Z] [par_a1] ==========================================
 == finished configs (all chains): 570
 == md5:
-88340099 backend/scripts/run_backtest.py
+5d294bc6 backend/scripts/run_backtest.py
 54526971 run_sweep_perday.sh
 0bb606be run_sweep_default.sh
 6a26192c launch_chain.sh
