@@ -1,10 +1,12 @@
-# btsync status  2026-10-21T04:39:13Z UTC / 2026-10-21 10:09:13 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
+# btsync status  2026-10-21T04:43:40Z UTC / 2026-10-21 10:13:40 IST  (refreshed every 30 min, on ATTENTION change, and after commands)
 ```
-== now: 2026-10-21 10:09:13 IST / 04:39:13 UTC  load: 0.06 0.23 0.23  free: 8G avail  disk: 47G free
+== now: 2026-10-21 10:13:40 IST / 04:43:40 UTC  load: 0.74 0.42 0.29  free: 8G avail  disk: 47G free
 == units:
 (none running)
 == run_backtest procs: 0   reaper timer: active   leaked backtest DBs: 0
 == chains (newest heartbeats):
+sort: write failed: 'standard output': Broken pipe
+sort: write error
 -- par_a1_chain.heartbeat
 2026-10-14 18:34:43 IST par_a1: reaper timer stopped
 2026-10-14 18:34:45 IST par_a1: QC ok; 15 day:expiry pairs, 1 config(s), SHARD_COUNT=4, engine 214a0c09
